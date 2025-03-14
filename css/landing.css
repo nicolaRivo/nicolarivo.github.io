@@ -1,169 +1,365 @@
+/* 
+* Nicola Rivo - Dual Career Website
+* Landing Page Styles
+* 
+* This stylesheet manages the split-screen layout that showcases
+* Nicola Rivo's dual career as a music teacher and sound designer.
+*/
 
-        :root {
-            --primary-color: #4a86e8;
-            --secondary-color: #ff3e82;
-            --bg-color: #111;
-            --text-color: #fff;
-            --transition: all 0.3s ease;
-        }
+/* ========== VARIABLES ========== */
+:root {
+    --primary-color: #4a86e8;      /* Teacher side blue */
+    --secondary-color: #ff3e82;    /* Sound designer side pink */
+    --bg-color: #111;              /* Dark background */
+    --text-color: #fff;            /* White text */
+    --transition: all 0.3s ease;   /* Smooth transitions */
+    --header-height: 80px;         /* Fixed header height */
+}
+
+/* ========== RESET & BASE STYLES ========== */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .split-container {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .split {
-            width: 50%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .split::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.3;
-            transition: var(--transition);
-        }
-        
-        .split:hover::before {
-            opacity: 0.5;
-            transform: scale(1.05);
-        }
-        
-        .teacher-side {
-            background-color: var(--primary-color);
-        }
-        
-        .teacher-side::before {
-            background-image: url('assets/images/teacher-bg.jpg');
-        }
-        
-        .sound-side {
-            background-color: var(--secondary-color);
-        }
-        
-        .sound-side::before {
-            background-image: url('assets/images/sound-bg.jpg');
-        }
-        
-        .content {
-            position: relative;
-            z-index: 2;
-            padding: 2rem;
-            text-align: center;
-            max-width: 500px;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            border: 2px solid var(--text-color);
-            transition: var(--transition);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .teacher-side .btn:hover {
-            background-color: var(--text-color);
-            color: var(--primary-color);
-        }
-        
-        .sound-side .btn:hover {
-            background-color: var(--text-color);
-            color: var(--secondary-color);
-        }
-        
-        .split-divider {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.3);
-            z-index: 10;
-        }
-        
-        .logo {
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            z-index: 10;
-        }
-        
-        @media (max-width: 992px) {
-            .split-container {
-                flex-direction: column;
-            }
-            
-            .split {
-                width: 100%;
-                height: 50%;
-            }
-            
-            .split-divider {
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 100%;
-                height: 2px;
-            }
-            
-            .logo {
-                top: 1rem;
-            }
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 3rem;
+    white-space: nowrap;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+/* ========== HEADER STYLES ========== */
+header {
+    height: var(--header-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    /* Removing the border-bottom for seamless connection */
+}
+
+/* Split header background */
+header::before, header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    z-index: -1;
+}
+
+header::before {
+    left: 0;
+    background-color: var(--primary-color);
+    /* Add the same background image as the teacher side but more faded */
+    background-image: url('../assets/images/teacher-bg.jpeg');
+    background-size: cover;
+    background-position: top center;
+    opacity: 0.15;
+}
+
+header::after {
+    right: 0;
+    background-color: var(--secondary-color);
+    /* Add the same background image as the sound side but more faded */
+    background-image: url('../assets/images/sound-bg.jpeg');
+    background-size: cover;
+    background-position: top center;
+    opacity: 0.15;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-color);
+}
+
+/* ========== MAIN LAYOUT ========== */
+.split-container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+/* ========== SPLIT SECTIONS ========== */
+.split-container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+.split {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.teacher-side {
+    background-color: var(--primary-color);
+}
+
+.sound-side {
+    background-color: var(--secondary-color);
+}
+
+/* Create two background colors that extend through the entire page */
+.left-bg, .right-bg {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 50%;
+    z-index: 1;
+}
+
+.left-bg {
+    left: 0;
+    background-color: var(--primary-color);
+}
+
+.right-bg {
+    right: 0;
+    background-color: var(--secondary-color);
+}
+
+/* Background images for content sections */
+.teacher-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/teacher-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    transition: var(--transition);
+}
+
+.sound-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/images/sound-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    transition: var(--transition);
+}
+
+.split:hover::before {
+    opacity: 0.5;
+    transform: scale(1.05);
+}
+
+/* ========== CONTENT LAYOUT ========== */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.content {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 5vh; /* Position content at top of the top quarter */
+}
+
+.btn-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 15vh; /* Position button in bottom quarter */
+}
+
+/* ========== DIVIDER ========== */
+.split-divider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 10;
+}
+
+/* ========== RESET & BASE STYLES ========== */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+h2 {
+    font-size: 3rem;
+    white-space: nowrap;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+/* ========== BUTTON STYLES ========== */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    border: 2px solid var(--text-color);
+    transition: var(--transition);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.teacher-side .btn:hover {
+    background-color: var(--text-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sound-side .btn:hover {
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 992px) {
+    .split-container {
+        flex-direction: column;
+    }
+
+    .split {
+        height: 50%;
+    }
+
+    .content {
+        padding-top: 5vh;
+        max-width: 90%;
+    }
+
+    .btn-container {
+        padding-bottom: 5vh;
+    }
+
+    .split-divider {
+        left: 0;
+        top: calc(50% + (var(--header-height) / 2)); /* Adjusted for header */
+        transform: translateY(-50%);
+        width: 100%;
+        height: 2px;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+}
+
+/* Small screens and mobile devices */
+@media (max-width: 576px) {
+    :root {
+        --header-height: 60px; /* Smaller header on mobile */
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.6rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ========== ACCESSIBILITY ENHANCEMENTS ========== */
+.btn:focus {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .split::before {
+        opacity: 0.15;
+    }
+    
+    .btn {
+        border-width: 3px;
+    }
+}

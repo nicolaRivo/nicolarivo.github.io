@@ -3,31 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicola Rivo</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Nicola Rivo | Professional Music Teacher & Sound Designer</title>
+    <meta name="title" content="Nicola Rivo | Professional Music Teacher & Sound Designer">
+    <meta name="description" content="Discover Nicola Rivo's dual expertise as a professional music teacher offering personalized piano, guitar, and theory lessons, and as a creative sound designer crafting immersive audio experiences for films and games.">
+    <meta name="keywords" content="music teacher, sound designer, piano lessons, guitar lessons, music theory, sound design, audio production, film audio, game sound, music education">
+    <meta name="author" content="Nicola Rivo">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nicolarivo.com/">
+    <meta property="og:title" content="Nicola Rivo | Professional Music Teacher & Sound Designer">
+    <meta property="og:description" content="Discover Nicola Rivo's dual expertise as a professional music teacher offering personalized piano, guitar, and theory lessons, and as a creative sound designer crafting immersive audio experiences for films and games.">
+    <meta property="og:image" content="https://nicolarivo.com/assets/images/nicola-rivo-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nicolarivo.com/">
+    <meta property="twitter:title" content="Nicola Rivo | Professional Music Teacher & Sound Designer">
+    <meta property="twitter:description" content="Discover Nicola Rivo's dual expertise as a professional music teacher offering personalized piano, guitar, and theory lessons, and as a creative sound designer crafting immersive audio experiences for films and games.">
+    <meta property="twitter:image" content="https://nicolarivo.com/assets/images/nicola-rivo-og.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nicolarivo.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="css/landing.css">
-
 </head>
 <body>
-    <div class="logo">Nicola Rivo</div>
+    <!-- Vertical divider that runs through header and content -->
+    <div class="split-divider" aria-hidden="true"></div>
     
-    <div class="split-container">
-        <div class="split teacher-side">
-            <div class="content">
-                <h1>Music Teacher</h1>
-                <p>Discover your musical potential with personalized lessons in piano, guitar, and music theory for all ages and levels.</p>
-                <a href="/teacher" class="btn">Visit Teaching Site</a>
+    <!-- Header with brand name -->
+    <header>
+        <h1 class="logo">Nicola Rivo</h1>
+    </header>
+
+    <!-- Main content area with dual career paths -->
+    <main class="split-container">
+        <!-- Music Teacher section -->
+        <section class="split teacher-side" aria-labelledby="teacher-heading">
+            <div class="content-wrapper">
+                <div class="content">
+                    <h2 id="teacher-heading">Music Teacher</h2>
+                    <p>Transform your musical journey with expert personalized lessons in piano, guitar, and comprehensive music theory. Serving students of all ages and skill levels with tailored curriculum and inspiring guidance.</p>
+                </div>
+                <div class="btn-container">
+                    <a href="/teacher" class="btn" aria-label="Visit Nicola Rivo's Music Teaching Website">Explore Teaching Services</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="split sound-side">
-            <div class="content">
-                <h1>Sound Designer</h1>
-                <p>Explore immersive sonic experiences created for films, games, and interactive media with creative audio technology.</p>
-                <a href="/sound" class="btn">Visit Sound Design</a>
+        </section>
+
+        <!-- Sound Designer section -->
+        <section class="split sound-side" aria-labelledby="sound-heading">
+            <div class="content-wrapper">
+                <div class="content">
+                    <h2 id="sound-heading">Sound Designer</h2>
+                    <p>Experience captivating sonic landscapes crafted for award-winning films, immersive games, and interactive media. Specializing in atmospheric sound design, custom audio effects, and innovative audio technology solutions.</p>
+                </div>
+                <div class="btn-container">
+                    <a href="/sound" class="btn" aria-label="Visit Nicola Rivo's Sound Design Portfolio">View Sound Portfolio</a>
+                </div>
             </div>
-        </div>
-    </div>
-    
-    <div class="split-divider"></div>
+        </section>
+
+        <!-- Visual divider -->
+        <div class="split-divider" aria-hidden="true"></div>
+    </main>
+
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nicola Rivo",
+        "url": "https://nicolarivo.com",
+        "sameAs": [
+            "https://www.instagram.com/9inefm",
+            "https://www.linkedin.com/in/nicola-rivosecchi-649240112/",
+            "https://soundcloud.com/nicolarivo"
+        ],
+        "jobTitle": ["Music Teacher", "Sound Designer"],
+        "knowsAbout": ["Piano", "Guitar", "Music Theory", "Sound Design", "Audio Production"],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Nicola Rivo Music Studio"
+        }
+    }
+    </script>
 </body>
 </html>
