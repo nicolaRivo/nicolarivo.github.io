@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nicola Rivo - Sound Designer and Creative Coder specializing in immersive audio experiences for film, games, and interactive media.">
+    <title>Nicola Rivo | Sound Designer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/glitch.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Noise overlay -->
+    <div class="noise"></div>
+    
+    <!-- VHS effect elements -->
+    <div class="scanlines"></div>
+    <div class="vhs-flicker"></div>
+    <div class="color-bars"></div>
+    
+    <header>
+        <div class="logo glitch" data-text="NICOLA_RIVO">NICOLA_RIVO</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#work" data-text="WORK">WORK</a></li>
+                <li><a href="#skills" data-text="SKILLS">SKILLS</a></li>
+                <li><a href="#about" data-text="ABOUT">ABOUT</a></li>
+                <li><a href="#contact" data-text="CONTACT">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="glitch-title" data-text="SOUND DESIGN & AUDIO ENGINEERING">SOUND DESIGN & AUDIO ENGINEERING</h1>
+                        <div class="typewriter">
+                            <p>Creating immersive sonic experiences for film, games, and interactive media</p>
+                        </div>
+                        <div class="hero-buttons">
+                            <a href="#work" class="btn primary-btn">View Portfolio</a>
+                            <a href="#contact" class="btn secondary-btn">Get In Touch</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="audio-visualizer"></div>
+                <div id="sound-trigger">
+                    <span class="audio-indicator">
+                        <span class="audio-wave"></span>
+                        <span class="audio-wave"></span>
+                        <span class="audio-wave"></span>
+                    </span>
+                    <span class="audio-label">EXPERIENCE THE SOUND</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio section would go here -->
+        
+        <!-- Skills section would go here -->
+        
+        <!-- About section would go here -->
+        
+        <!-- Contact section would go here -->
+    </main>
+    
+    <footer>
+        <!-- Footer content would go here -->
+    </footer>
+    
+    <!-- Modal for project details -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <button class="modal-close"></button>
+            <div class="modal-header">
+                <h3 class="modal-title">Project Title</h3>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/visualizer.js"></script>
+</body>
+</html>
