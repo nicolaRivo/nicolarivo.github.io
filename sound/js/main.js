@@ -1,29 +1,87 @@
 /**
- * Main JavaScript for Nicola Rivo - Sound Designer Website
+ * Enhanced JavaScript for Nicola Rivosecchi Sound Designer Website
+ * Streamlined code with unused functions removed
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Navigation functionality
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav');
+    // Create and populate YouTube thumbnails
+    setupYouTubeThumbnails();
     
-    hamburger.addEventListener('click', function() {
-        nav.classList.toggle('active');
-        hamburger.classList.toggle('active');
+    // Initialize animations
+    setTimeout(checkAnimatedElements, 300);
+    
+    // Handle page loading
+    handlePageLoading();
+    
+    // Setup navigation
+    setupNavigation();
+    
+    // Setup contact form
+    setupContactForm();
+});
+
+/**
+ * Handle initial page loading and transitions
+ */
+function handlePageLoading() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    
+    // Hide loading overlay after a slight delay
+    setTimeout(() => {
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('hidden');
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 500);
+        }
+    }, 800);
+}
+
+/**
+ * Sets up navigation, scroll effects, and mobile menu
+ */
+function setupNavigation() {
+    const header = document.getElementById('header');
+    const hamburger = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Handle scroll events
+    window.addEventListener('scroll', function() {
+        // Header scroll effect
+        if (window.scrollY > 50) {
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+        
+        // Check for elements to animate
+        checkAnimatedElements();
+        
+        // Update active nav link based on scroll position
+        updateActiveNavLink();
     });
     
-    // Close mobile nav when clicking a link
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', function() {
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
+    // Mobile menu toggle
+    if (hamburger && nav) {
+        hamburger.addEventListener('click', function() {
+            nav.classList.toggle('open');
+            hamburger.classList.toggle('active');
         });
-    });
+        
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('open');
+                hamburger.classList.remove('active');
+            });
+        });
+    }
     
-    // Smooth scrolling for navigation
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -33,174 +91,159 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                const headerHeight = header?.offsetHeight || 0;
+                
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: targetElement.offsetTop - headerHeight,
                     behavior: 'smooth'
                 });
             }
         });
     });
+}
+
+/**
+ * Updates the active navigation link based on scroll position
+ */
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    // Header scroll effect
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    // Get current scroll position with some offset
+    const scrollPosition = window.scrollY + 150;
     
-    // Animate skill bars when in viewport
-    const skillBars = document.querySelectorAll('.skill-progress');
-    const animateSkillBars = () => {
-        skillBars.forEach(bar => {
-            const barPosition = bar.getBoundingClientRect().top;
-            if (barPosition < window.innerHeight - 100) {
-                const progress = bar.getAttribute('data-progress');
-                bar.style.width = `${progress}%`;
-            }
-        });
-    };
-    
-    // Scroll animations for fade-in elements
-    const fadeInElements = document.querySelectorAll('.skills, .about, .contact, .project-card');
-    const animateFadeIn = () => {
-        fadeInElements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            if (elementPosition < window.innerHeight - 100) {
-                element.classList.add('fade-in');
-            }
-        });
-    };
-    
-    // Run animations on scroll
-    window.addEventListener('scroll', function() {
-        animateSkillBars();
-        animateFadeIn();
-    });
-    
-    // Run animations on load
-    animateSkillBars();
-    animateFadeIn();
-    
-    // Project modal functionality
-    const modal = document.getElementById('project-modal');
-    const modalTitle = document.querySelector('.modal-title');
-    const modalBody = document.querySelector('.modal-body');
-    const modalClose = document.querySelector('.modal-close');
-    
-    // Project details
-    const projectDetails = {
-        project1: {
-            title: 'Echoes of the Void',
-            description: 'A sci-fi short film set in deep space, where the protagonist encounters an anomaly that warps sound and reality. I created a rich soundscape that blends organic and synthetic elements to portray the alienness of space and the psychological journey of the main character.',
-            role: 'Lead Sound Designer',
-            client: 'Nova Films',
-            year: '2024',
-            techniques: 'Field Recording, Granular Synthesis, Max/MSP, Spatial Audio',
-            imageUrl: 'assets/images/project1-detail.jpg'
-        },
-        project2: {
-            title: 'Forgotten Realms',
-            description: 'An open-world fantasy RPG that takes players through diverse environments from misty forests to abandoned ruins and volcanic mountains. I developed a dynamic audio system that seamlessly transitions between different environmental soundscapes based on player location and game events.',
-            role: 'Audio Director',
-            client: 'Arcane Studios',
-            year: '2023',
-            techniques: 'Procedural Audio, Middleware Implementation, Foley, Synthesis',
-            imageUrl: 'assets/images/project2-detail.jpg'
-        },
-        project3: {
-            title: 'Urban Rhythms',
-            description: 'An interactive installation that transforms public spaces into immersive soundscapes. Using motion sensors and microphones, the system captures movement and ambient sounds from the environment, processes them in real-time, and generates a constantly evolving musical composition.',
-            role: 'Creator & Developer',
-            client: 'Urban Arts Foundation',
-            year: '2024',
-            techniques: 'Web Audio API, Sensor Integration, Algorithmic Composition',
-            imageUrl: 'assets/images/project3-detail.jpg'
-        },
-        project4: {
-            title: 'Whispers of Nature',
-            description: 'A six-part documentary series exploring remote ecosystems around the world. I spent three months in the field capturing the sounds of these environments, from the Amazon rainforest to the Arctic tundra.',
-            role: 'Field Recordist & Sound Designer',
-            client: 'Natural World Media',
-            year: '2022',
-            techniques: 'Field Recording, Ambisonics, Restoration, Sound Editing',
-            imageUrl: 'assets/images/project4-detail.jpg'
-        },
-        project5: {
-            title: 'Synthetic Dreams',
-            description: 'An experimental electronic music album created entirely using custom Max/MSP patches and modular synthesis. The project explores the boundary between structured composition and generative music.',
-            role: 'Composer & Sound Designer',
-            client: 'Self-released',
-            year: '2023',
-            techniques: 'Max/MSP, Modular Synthesis, Generative Composition',
-            imageUrl: 'assets/images/project5-detail.jpg'
-        },
-        project6: {
-            title: 'Emotional Resonance',
-            description: 'An interactive web experience that generates personalized music based on the emotional state of users. Visitors answer a series of questions or allow the application to analyze their text input for emotional content, which then influences various musical parameters.',
-            role: 'Developer & Sound Designer',
-            client: 'Interactive Arts Collective',
-            year: '2024',
-            techniques: 'Tone.js, Sentiment Analysis, Algorithmic Composition',
-            imageUrl: 'assets/images/project6-detail.jpg'
-        }
-    };
-    
-    // Open modal
-    document.querySelectorAll('.project-details-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const projectId = this.getAttribute('data-project');
-            const project = projectDetails[projectId];
+    // Find the current section
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
             
-            if (project) {
-                modalTitle.textContent = project.title;
-                modalBody.innerHTML = `
-                    <div class="project-detail-image">
-                        <img src="${project.imageUrl || 'assets/images/placeholder.jpg'}" alt="${project.title}">
-                    </div>
-                    <div class="project-detail-content">
-                        <p>${project.description}</p>
-                        <div class="project-meta">
-                            <div class="meta-item">
-                                <strong>Role:</strong> ${project.role}
-                            </div>
-                            <div class="meta-item">
-                                <strong>Client:</strong> ${project.client}
-                            </div>
-                            <div class="meta-item">
-                                <strong>Year:</strong> ${project.year}
-                            </div>
-                            <div class="meta-item">
-                                <strong>Techniques:</strong> ${project.techniques}
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                modal.classList.add('open');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
             }
-        });
-    });
-    
-    // Close modal
-    modalClose.addEventListener('click', function() {
-        modal.classList.remove('open');
-        document.body.style.overflow = ''; // Re-enable scrolling
-    });
-    
-    // Close modal when clicking outside
-    window.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.classList.remove('open');
-            document.body.style.overflow = ''; // Re-enable scrolling
         }
     });
+}
+
+/**
+ * Creates high-quality YouTube thumbnails with play buttons
+ */
+function setupYouTubeThumbnails() {
+    const iframeContainers = document.querySelectorAll('.iframe-container');
     
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
+    iframeContainers.forEach(container => {
+        // Get video ID from src attribute
+        const src = container.getAttribute('data-src');
+        if (!src) return;
+        
+        // Extract YouTube video ID
+        const videoId = extractYouTubeId(src);
+        if (!videoId) return;
+        
+        // Create thumbnail element
+        const thumbnail = document.createElement('div');
+        thumbnail.className = 'youtube-thumbnail';
+        
+        // Set high-quality thumbnail as background
+        thumbnail.style.backgroundImage = `url(https://img.youtube.com/vi/${videoId}/hqdefault.jpg)`;
+        
+        // Add play button
+        const playButton = document.createElement('div');
+        playButton.className = 'play-button';
+        thumbnail.appendChild(playButton);
+        
+        // Replace container content with thumbnail
+        container.innerHTML = '';
+        container.appendChild(thumbnail);
+        
+        // Add click event to load iframe
+        thumbnail.addEventListener('click', function() {
+            const iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            
+            const fullContainer = document.createElement('div');
+            fullContainer.style.position = 'relative';
+            fullContainer.style.width = '100%';
+            fullContainer.style.paddingBottom = '56.25%';
+            fullContainer.style.marginBottom = '2.5rem';
+            fullContainer.style.borderRadius = '8px';
+            fullContainer.style.overflow = 'hidden';
+            
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            
+            fullContainer.appendChild(iframe);
+            container.parentNode.replaceChild(fullContainer, container);
+        });
+    });
+}
+
+/**
+ * Extract YouTube video ID from URL
+ */
+function extractYouTubeId(url) {
+    const regExp = /^.*(?:youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[1].length === 11) ? match[1] : null;
+}
+
+/**
+ * Check which animated elements are visible and animate them
+ */
+function checkAnimatedElements() {
+    const elements = document.querySelectorAll('.animated');
+    
+    elements.forEach(element => {
+        if (isElementInViewport(element) && !element.classList.contains('in-view')) {
+            element.classList.add('in-view');
+            
+            // Special handling for skill progress bars
+            if (element.classList.contains('skill-category')) {
+                const progressBars = element.querySelectorAll('.skill-progress');
+                progressBars.forEach((bar, index) => {
+                    const progress = bar.getAttribute('data-progress');
+                    bar.style.setProperty('--progress-value', `${progress}%`);
+                    
+                    setTimeout(() => {
+                        bar.classList.add('in-view');
+                    }, 100 + (index * 100));
+                });
+            }
+        }
+    });
+}
+
+/**
+ * Check if element is in viewport
+ */
+function isElementInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    return (
+        rect.top <= windowHeight * 0.85 && 
+        rect.bottom >= 0
+    );
+}
+
+/**
+ * Contact form submission handling
+ */
+function setupContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -208,63 +251,30 @@ document.addEventListener('DOMContentLoaded', function() {
             // Simple form validation
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            if (!name || !email || !subject || !message) {
-                alert('Please fill in all fields.');
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields.');
                 return;
             }
             
-            // In a real-world scenario, you would send this data to a server
-            // For GitHub Pages, you can use services like Formspree or Netlify Forms
-            alert(`Thanks for your message, ${name}! I'll get back to you soon.`);
-            contactForm.reset();
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem;">Message Sent!</h3>
+                    <p>Thank you for reaching out, ${name}. I'll get back to you soon.</p>
+                </div>
+            `;
             
-            /* Example with Formspree:
-            
-            const formData = new FormData(contactForm);
-            
-            fetch('https://formspree.io/f/your-form-id', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert(`Thanks for your message, ${name}! I'll get back to you soon.`);
-                    contactForm.reset();
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                alert('There was a problem submitting your form. Please try again later.');
-                console.error(error);
-            });
-            */
+            // Replace form with success message
+            contactForm.parentNode.replaceChild(successMessage, contactForm);
         });
     }
-    
-    // Occasional glitch effect for the whole page
-    const triggerRandomGlitch = () => {
-        const colorBars = document.querySelector('.color-bars');
-        colorBars.style.opacity = '0.2';
-        
-        setTimeout(() => {
-            colorBars.style.opacity = '0';
-        }, 100);
-    };
-    
-    // Random glitch timing
-    setInterval(() => {
-        if (Math.random() < 0.3) { // 30% chance
-            triggerRandomGlitch();
-        }
-    }, 10000); // Every 10 seconds check
-    
-    // Create a small glitch on page load
-    setTimeout(triggerRandomGlitch, 3000);
-});
+}
+
+// Trigger animations on scroll
+window.addEventListener('scroll', checkAnimatedElements);

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nicola Rivosecchi's Creative Coding - Interactive p5.js experiments exploring the intersection of sound, visuals, and code.">
+    <title>Nicola Rivosecchi | Creative Coding</title>
+    
+    <!-- Google Fonts - Lato with multiple weights -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/creative-coding.css">
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+    
+    <header id="header">
+        <div class="logo">NICOLA RIVOSECCHI</div>
+        <div class="hamburger" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="/">← Back to Main Site</a></li>
+                <li><a href="#gallery" class="nav-link active">Gallery</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="animated slide-up">CREATIVE CODING</h1>
+                    <div class="hero-description animated slide-up stagger-1">
+                        <p>A collection of interactive experiments exploring the intersection of sound, visuals, and code.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section">
+            <div class="container">
+                <h2 class="section-title animated slide-up">GALLERY</h2>
+                <div class="sketch-grid">
+                    <!-- Example sketch cards - these will link to individual sketches -->
+                    <div class="sketch-card animated slide-up stagger-1">
+                        <div class="sketch-thumbnail">
+                            <a href="sketches/audio-visualizer/">
+                                <img src="images/thumbnails/audio-visualizer.jpg" alt="Audio Visualizer" class="sketch-img">
+                                <div class="sketch-overlay">
+                                    <span class="view-btn"><i class="fas fa-eye"></i> View</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sketch-info">
+                            <h3>Audio Visualizer</h3>
+                            <p>Interactive audio visualization responding to microphone input or uploaded audio files.</p>
+                            <div class="sketch-tags">
+                                <span class="tag">p5.js</span>
+                                <span class="tag">Audio</span>
+                                <span class="tag">Interactive</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sketch-card animated slide-up stagger-2">
+                        <div class="sketch-thumbnail">
+                            <a href="sketches/particle-system/">
+                                <img src="images/thumbnails/particle-system.jpg" alt="Particle System" class="sketch-img">
+                                <div class="sketch-overlay">
+                                    <span class="view-btn"><i class="fas fa-eye"></i> View</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sketch-info">
+                            <h3>Particle System</h3>
+                            <p>Physics-based particle system with fluid dynamics and user interaction.</p>
+                            <div class="sketch-tags">
+                                <span class="tag">p5.js</span>
+                                <span class="tag">Physics</span>
+                                <span class="tag">Interactive</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sketch-card animated slide-up stagger-3">
+                        <div class="sketch-thumbnail">
+                            <a href="sketches/procedural-soundscape/">
+                                <img src="images/thumbnails/procedural-soundscape.jpg" alt="Procedural Soundscape" class="sketch-img">
+                                <div class="sketch-overlay">
+                                    <span class="view-btn"><i class="fas fa-eye"></i> View</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sketch-info">
+                            <h3>Procedural Soundscape</h3>
+                            <p>Generative audio environment that creates evolving ambient soundscapes.</p>
+                            <div class="sketch-tags">
+                                <span class="tag">p5.js</span>
+                                <span class="tag">Web Audio</span>
+                                <span class="tag">Generative</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more sketch cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title animated slide-up">ABOUT CREATIVE CODING</h2>
+                <div class="about-content animated slide-up stagger-1">
+                    <p>These experiments represent my exploration of the creative possibilities at the intersection of code, sound, and visual art. Using technologies like p5.js and the Web Audio API, I create interactive experiences that respond to user input and generate unique audio-visual outcomes.</p>
+                    
+                    <p>Each piece in this collection is an opportunity to experiment with different coding techniques and algorithmic approaches to creative expression. Many of these experiments directly inform my sound design practice, allowing me to prototype new ideas and discover unexpected sonic possibilities.</p>
+                    
+                    <p>All sketches are built with open web technologies and are interactive - you're encouraged to play, modify, and explore them. The source code for most experiments is also available on <a href="https://github.com/nicolarivo" target="_blank">GitHub</a>.</p>
+                    
+                    <div class="tech-stack">
+                        <h3>Technologies Used:</h3>
+                        <div class="tech-icons">
+                            <span class="tech-icon"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-icon"><img src="images/icons/p5js.svg" alt="p5.js icon"> p5.js</span>
+                            <span class="tech-icon"><i class="fas fa-volume-up"></i> Web Audio API</span>
+                            <span class="tech-icon"><i class="fas fa-cube"></i> WebGL</span>
+                            <span class="tech-icon"><i class="fas fa-code-branch"></i> GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">NICOLA RIVOSECCHI</div>
+                <div class="footer-nav">
+                    <a href="/">Back to Main Site</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#about">About</a>
+                </div>
+                <p class="copyright">&copy; <span id="year"></span> Nicola Rivosecchi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/creative-coding.js"></script>
+</body>
+</html>

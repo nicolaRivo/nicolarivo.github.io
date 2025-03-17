@@ -1,9 +1,9 @@
 /* 
-* Nicola Rivo - Dual Career Website
+* Nicola Rivosecchi - Dual Career Website
 * Landing Page Styles
 * 
 * This stylesheet manages the split-screen layout that showcases
-* Nicola Rivo's dual career as a music teacher and sound designer.
+* Nicola Rivosecchi's dual career as a music teacher and sound designer.
 */
 
 /* ========== VARIABLES ========== */
@@ -14,6 +14,14 @@
     --text-color: #fff;            /* White text */
     --transition: all 0.3s ease;   /* Smooth transitions */
     --header-height: 80px;         /* Fixed header height */
+    
+    /* Font family updated to Lato */
+    --font-main: 'Lato', sans-serif;
+    --font-weight-thin: 100;       /* Ultra thin for headings */
+    --font-weight-light: 300;      /* Light for subheadings */
+    --font-weight-regular: 400;    /* Regular for body text */
+    --font-weight-bold: 700;       /* Bold for emphasis */
+    --font-weight-black: 900;      /* Extra bold for strong emphasis */
 }
 
 /* ========== RESET & BASE STYLES ========== */
@@ -24,7 +32,7 @@
 }
         
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-main);
     color: var(--text-color);
     margin: 0;
     height: 100vh;
@@ -40,6 +48,7 @@ h1, h2 {
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
+    font-weight: var(--font-weight-thin);
 }
 
 h2 {
@@ -52,6 +61,7 @@ p {
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 0.5rem;
+    font-weight: var(--font-weight-light);
 }
 
 /* ========== HEADER STYLES ========== */
@@ -65,7 +75,7 @@ header {
     /* Removing the border-bottom for seamless connection */
 }
 
-/* Split header background */
+/* Split header background - Extending the same colors as the body */
 header::before, header::after {
     content: '';
     position: absolute;
@@ -97,7 +107,7 @@ header::after {
 
 .logo {
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: var(--font-weight-thin);
     text-transform: uppercase;
     letter-spacing: 3px;
     color: var(--text-color);
@@ -263,7 +273,7 @@ p {
     background-color: rgba(0, 0, 0, 0.3);
     color: var(--text-color);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: var(--font-weight-regular);
     border-radius: 50px;
     border: 2px solid var(--text-color);
     transition: var(--transition);

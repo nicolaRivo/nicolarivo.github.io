@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[SKETCH_NAME] - An interactive p5.js experiment by Nicola Rivosecchi exploring [BRIEF_DESCRIPTION].">
+    <title>[SKETCH_NAME] | Nicola Rivosecchi</title>
+    
+    <!-- Google Fonts - Lato with multiple weights -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Roboto+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    
+    <!-- Add p5.sound if needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../css/creative-coding.css">
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loader"></div>
+    </div>
+    
+    <header id="header">
+        <div class="logo">NICOLA RIVOSECCHI</div>
+        <div class="hamburger" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="../../">← Back to Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="sketch-header">
+                    <h1 class="animated slide-up">[SKETCH_NAME]</h1>
+                    <p class="animated slide-up stagger-1">[SKETCH_DESCRIPTION_SHORT]</p>
+                </div>
+                
+                <div class="sketch-container animated slide-up stagger-2">
+                    <!-- p5.js canvas will be inserted here -->
+                    <div id="sketch-canvas-container" class="sketch-canvas-container"></div>
+                    
+                    <!-- Controls for the sketch -->
+                    <div class="sketch-controls">
+                        <h3>Controls</h3>
+                        
+                        <!-- Example controls - customize as needed -->
+                        <div class="control-group">
+                            <label for="speed-slider" class="control-label">Speed</label>
+                            <input type="range" id="speed-slider" class="slider" min="0" max="100" value="50">
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="color-slider" class="control-label">Color Intensity</label>
+                            <input type="range" id="color-slider" class="slider" min="0" max="100" value="75">
+                        </div>
+                        
+                        <div class="control-group">
+                            <button id="reset-btn" class="btn-control">Reset</button>
+                            <button id="save-btn" class="btn-control">Save Image</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Description of the sketch -->
+                    <div class="sketch-description">
+                        <h3>About This Experiment</h3>
+                        <p>[DETAILED_DESCRIPTION]</p>
+                        <p>This experiment explores [CONCEPT_OR_TECHNIQUE], using p5.js to create an interactive experience that responds to user input.</p>
+                        <p>Try adjusting the controls above to see how they affect the visualization, or interact directly with the canvas by clicking and dragging.</p>
+                    </div>
+                    
+                    <!-- Code section - can be toggled -->
+                    <div class="sketch-code">
+                        <div class="code-header">
+                            <h3>Source Code</h3>
+                            <button class="code-toggle">Show Code</button>
+                        </div>
+                        <div class="code-block">
+                            <pre><code>
+// [SKETCH_NAME] by Nicola Rivosecchi
+// [DATE]
+
+let speed = 0.5;
+let colorIntensity = 75;
+
+function setup() {
+  // Create canvas inside the container
+  const container = document.getElementById('sketch-canvas-container');
+  const canvas = createCanvas(
+    container.offsetWidth, 
+    min(container.offsetWidth * 0.75, 600)
+  );
+  canvas.parent('sketch-canvas-container');
+  
+  // Initialize sketch
+  background(0);
+  
+  // Set up event listeners for controls
+  document.getElementById('speed-slider').addEventListener('input', function() {
+    speed = this.value / 100;
+  });
+  
+  document.getElementById('color-slider').addEventListener('input', function() {
+    colorIntensity = this.value;
+  });
+  
+  document.getElementById('reset-btn').addEventListener('click', resetSketch);
+  document.getElementById('save-btn').addEventListener('click', saveCanvas);
+}
+
+function draw() {
+  // Main drawing code
+  background(0, 10);
+  
+  // Example drawing code - replace with your own
+  translate(width/2, height/2);
+  
+  for (let i = 0; i < 10; i++) {
+    fill(
+      colorIntensity * 2.55, 
+      100, 
+      200, 
+      150
+    );
+    noStroke();
+    
+    let x = sin(frameCount * speed * 0.01 + i) * 100;
+    let y = cos(frameCount * speed * 0.01 + i) * 100;
+    
+    ellipse(x, y, 20, 20);
+  }
+}
+
+function resetSketch() {
+  // Reset all variables and controls
+  document.getElementById('speed-slider').value = 50;
+  document.getElementById('color-slider').value = 75;
+  speed = 0.5;
+  colorIntensity = 75;
+}
+
+function windowResized() {
+  // Resize canvas when window is resized
+  const container = document.getElementById('sketch-canvas-container');
+  resizeCanvas(
+    container.offsetWidth, 
+    min(container.offsetWidth * 0.75, 600)
+  );
+}
+            </code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation buttons to other sketches -->
+                <div class="sketch-navigation animated slide-up stagger-3">
+                    <h3>Explore More</h3>
+                    <div class="nav-buttons">
+                        <a href="../[PREV_SKETCH_PATH]/" class="btn-control">← Previous Experiment</a>
+                        <a href="../../" class="btn-control">All Experiments</a>
+                        <a href="../[NEXT_SKETCH_PATH]/" class="btn-control">Next Experiment →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">NICOLA RIVOSECCHI</div>
+                <div class="footer-nav">
+                    <a href="../../">Back to Gallery</a>
+                    <a href="/">Main Site</a>
+                </div>
+                <p class="copyright">&copy; <span id="year"></span> Nicola Rivosecchi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Main Script -->
+    <script src="../../js/creative-coding.js"></script>
+    
+    <!-- Sketch-specific script -->
+    <script src="sketch.js"></script>
+</body>
+</html>
