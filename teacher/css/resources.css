@@ -1,0 +1,420 @@
+/* 
+* Nicola Rivosecchi - Music Teacher Website
+* Resources Page Stylesheet
+*/
+
+/* Resources Preview Section on Main Page */
+.resources-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.resources-preview-container:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.resources-preview-content {
+    flex: 3;
+    min-width: 300px;
+    padding: 3rem;
+}
+
+.resources-preview-image {
+    flex: 2;
+    min-width: 300px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    position: relative;
+}
+
+.resources-preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.resources-preview-list {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.resources-preview-list li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.resources-preview-list i {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.resources-cta {
+    margin-top: 2rem;
+}
+
+/* Resources Page Styles */
+.resources-page main {
+    margin-top: 120px;
+    padding-bottom: 3rem;
+}
+
+.resources-hero {
+    padding: 5rem 0 3rem;
+    background-color: var(--primary);
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.resources-hero h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.resources-hero p {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.resources-introduction {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.resources-access-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+}
+
+.resources-access-info h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.resources-access-info i {
+    color: var(--primary);
+}
+
+/* Resource Navigation */
+.resources-navigation {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.resource-nav-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.resource-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 150px;
+}
+
+.resource-nav-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    background-color: var(--primary);
+    color: white;
+}
+
+.resource-nav-item i {
+    font-size: 2rem;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.resource-nav-item:hover i {
+    color: white;
+}
+
+.resource-nav-item span {
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+/* Resource Sections */
+.resource-section {
+    margin-bottom: 5rem;
+    padding-top: 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.section-header h2 i {
+    color: var(--primary);
+}
+
+/* Resources Filter */
+.resources-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.resources-filter span {
+    font-weight: 400;
+    margin-right: 0.5rem;
+    color: var(--text-muted);
+}
+
+.filter-btn {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Resources Grid */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.resource-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.resource-thumbnail {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+.audio-thumbnail {
+    padding-top: 40%; /* Shorter for audio cards */
+}
+
+.placeholder-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+}
+
+.placeholder-thumbnail i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.resource-card:hover .placeholder-thumbnail i {
+    transform: scale(1.2);
+}
+
+.placeholder-thumbnail span {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 0.3rem 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+}
+
+.resource-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.resource-meta {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.resource-category, .resource-level {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    background-color: #f0f0f0;
+}
+
+.resource-category {
+    background-color: var(--primary);
+    color: white;
+}
+
+.resource-level {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.resource-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+    font-weight: 400;
+}
+
+.resource-info p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+/* Request Materials Section */
+.resources-request {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.resources-request-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.resources-request h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    font-weight: 400;
+}
+
+.resources-request .cta-button {
+    margin-top: 1.5rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .resources-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .resources-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .resource-nav-item {
+        padding: 1.2rem;
+        min-width: 130px;
+    }
+    
+    .resource-nav-item i {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .resources-page main {
+        margin-top: 100px;
+    }
+    
+    .resources-hero {
+        padding: 3rem 0 2rem;
+    }
+    
+    .resources-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .resources-hero p {
+        font-size: 1rem;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resources-request-content {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .resource-nav-container {
+        gap: 1rem;
+    }
+    
+    .resource-nav-item {
+        padding: 1rem;
+        min-width: 100px;
+    }
+    
+    .resource-nav-item i {
+        font-size: 1.5rem;
+    }
+    
+    .resource-nav-item span {
+        font-size: 0.9rem;
+    }
+}
