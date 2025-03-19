@@ -203,23 +203,78 @@ header.scrolled {
     transition: var(--transition);
 }
 
-/* Hero Section */
+/* Hero Section with Video Background */
 .hero {
     text-align: center;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
     color: var(--text-light);
     padding-top: 180px;
     margin-bottom: 0;
+    position: relative;
+}
+
+/* Video Background Styles */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+/* For portrait video (from iPhone) */
+@media (orientation: portrait) {
+    .video-background video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* For landscape view */
+@media (orientation: landscape) {
+    .video-background video {
+        width: auto;
+        height: 100%;
+    }
+}
+
+.video-background .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay to ensure text is readable */
+}
+
+/* Video fallback styles */
+.video-background.video-fallback {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/hero.jpeg');
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -260,9 +315,23 @@ header.scrolled {
 /* Feature Cards */
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-bottom: 2rem;
+}
+
+/* For larger screens, show 4 in a row */
+@media (min-width: 1200px) {
+    .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* For smaller screens, stack them */
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .feature-card {
