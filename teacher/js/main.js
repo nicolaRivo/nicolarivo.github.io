@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer copyright
     document.getElementById('year').textContent = new Date().getFullYear();
     
+    // Setup video background
+    setupVideoBackground();
+    
     // Handle navigation menu toggle for mobile
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
@@ -211,6 +214,51 @@ document.addEventListener('DOMContentLoaded', function() {
         updateActiveNavOnScroll();
     }, 100);
 });
+
+/**
+ * Handle video background loading and fallback
+ */
+function setupVideoBackground() {
+    const heroVideo = document.querySelector('.video-background video');
+    
+    if (heroVideo) {
+        // Check if the browser supports video
+        const isVideoSupported = !!document.createElement('video').canPlayType;
+        
+        if (!isVideoSupported) {
+            // If video is not supported, make sure the poster image is displayed properly
+            const videoBg = document.querySelector('.video-background');
+            if (videoBg) {
+                videoBg.classList.add('video-fallback');
+            }
+        }
+        
+        // Handle video loading error
+        heroVideo.addEventListener('error', function() {
+            console.log('Video failed to load, falling back to image');
+            const videoBg = document.querySelector('.video-background');
+            if (videoBg) {
+                videoBg.classList.add('video-fallback');
+            }
+        });
+        
+        // Check if video is playing after a short delay
+        setTimeout(() => {
+            if (heroVideo.paused) {
+                console.log('Video failed to autoplay, attempting to play manually');
+                // Try to play the video manually
+                heroVideo.play().catch(error => {
+                    console.log('Manual play failed:', error);
+                    // If manual play fails, fall back to image
+                    const videoBg = document.querySelector('.video-background');
+                    if (videoBg) {
+                        videoBg.classList.add('video-fallback');
+                    }
+                });
+            }
+        }, 1000);
+    }
+}
 
 /**
  * Setup contact form with direct email submission
