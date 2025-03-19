@@ -1,4 +1,13 @@
-/* 
+/* Video Background Styles */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}/* 
 * Nicola Rivosecchi - Music Teacher Website
 * Main Stylesheet with Lato font integration
 */
@@ -110,25 +119,25 @@ a:hover {
     color: var(--text-muted);
 }
 
-/* Header Styles */
+/* Header Styles - Initially only showing the logo */
 header {
-    background: linear-gradient(135deg, var(--primary) 0%, #7c4dff 100%);
+    background: transparent;
     color: var(--text-light);
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 0.5rem;
     text-align: center;
-    box-shadow: var(--shadow);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    transition: var(--transition);
+    transition: all 0.5s ease;
 }
 
 header.scrolled {
     padding: 0.8rem 0;
     background: linear-gradient(135deg, rgba(74, 134, 232, 0.95) 0%, rgba(124, 77, 255, 0.95) 100%);
     backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
 }
 
 .logo {
@@ -136,13 +145,33 @@ header.scrolled {
     font-weight: 100; /* Thin weight */
     letter-spacing: 3px;
     margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add shadow to make it readable against video */
 }
 
 .tagline {
     font-size: 1rem;
     font-weight: 300; /* Light weight */
-    opacity: 0.9;
+    opacity: 0;
     margin-bottom: 1rem;
+    transition: opacity 0.6s ease;
+}
+
+header.scrolled .tagline {
+    opacity: 0.9;
+}
+
+/* Navigation styles */
+#main-nav {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.6s ease;
+    pointer-events: none; /* Prevent clicking until visible */
+}
+
+header.scrolled #main-nav {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all; /* Enable clicking when visible */
 }
 
 /* Navigation styles */
@@ -206,12 +235,14 @@ header.scrolled {
 /* Hero Section with Video Background */
 .hero {
     text-align: center;
-    min-height: 100vh;
+    min-height: 120vh; /* Increased from 100vh to make it taller */
+    height: auto; /* Allow the hero to grow even taller based on content */
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-light);
     padding-top: 180px;
+    padding-bottom: 100px; /* Increased bottom padding */
     margin-bottom: 0;
     position: relative;
 }
@@ -245,6 +276,11 @@ header.scrolled {
         width: 100%;
         height: auto;
     }
+    
+    /* Make hero taller for portrait video */
+    .hero {
+        min-height: 120vh;
+    }
 }
 
 /* For landscape view */
@@ -264,11 +300,11 @@ header.scrolled {
     background: rgba(0, 0, 0, 0.7); /* Dark overlay to ensure text is readable */
 }
 
-/* Video fallback styles */
+/* Video fallback styles - crop from right side */
 .video-background.video-fallback {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/hero.jpeg');
     background-size: cover;
-    background-position: center;
+    background-position: left center; /* Align to left side to crop from right */
 }
 
 .hero-content {
