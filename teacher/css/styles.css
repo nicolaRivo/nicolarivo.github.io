@@ -1,13 +1,4 @@
-/* Video Background Styles */
-.video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-}/* 
+/* 
 * Nicola Rivosecchi - Music Teacher Website
 * Main Stylesheet with Lato font integration
 */
@@ -119,7 +110,7 @@ a:hover {
     color: var(--text-muted);
 }
 
-/* Header Styles - Initially only showing the logo */
+/* Header Styles */
 header {
     background: transparent;
     color: var(--text-light);
@@ -172,11 +163,6 @@ header.scrolled #main-nav {
     opacity: 1;
     transform: translateY(0);
     pointer-events: all; /* Enable clicking when visible */
-}
-
-/* Navigation styles */
-#main-nav {
-    transition: var(--transition);
 }
 
 #main-nav ul {
@@ -235,14 +221,14 @@ header.scrolled #main-nav {
 /* Hero Section with Video Background */
 .hero {
     text-align: center;
-    min-height: 120vh; /* Increased from 100vh to make it taller */
-    height: auto; /* Allow the hero to grow even taller based on content */
+    min-height: 120vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-light);
     padding-top: 180px;
-    padding-bottom: 100px; /* Increased bottom padding */
+    padding-bottom: 100px;
     margin-bottom: 0;
     position: relative;
 }
@@ -270,27 +256,6 @@ header.scrolled #main-nav {
     object-fit: cover;
 }
 
-/* For portrait video (from iPhone) */
-@media (orientation: portrait) {
-    .video-background video {
-        width: 100%;
-        height: auto;
-    }
-    
-    /* Make hero taller for portrait video */
-    .hero {
-        min-height: 120vh;
-    }
-}
-
-/* For landscape view */
-@media (orientation: landscape) {
-    .video-background video {
-        width: auto;
-        height: 100%;
-    }
-}
-
 .video-background .overlay {
     position: absolute;
     top: 0;
@@ -300,11 +265,11 @@ header.scrolled #main-nav {
     background: rgba(0, 0, 0, 0.7); /* Dark overlay to ensure text is readable */
 }
 
-/* Video fallback styles - crop from right side */
+/* Video fallback styles */
 .video-background.video-fallback {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/images/hero.jpeg');
     background-size: cover;
-    background-position: left center; /* Align to left side to crop from right */
+    background-position: left center;
 }
 
 .hero-content {
@@ -354,20 +319,6 @@ header.scrolled #main-nav {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-bottom: 2rem;
-}
-
-/* For larger screens, show 4 in a row */
-@media (min-width: 1200px) {
-    .features-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-/* For smaller screens, stack them */
-@media (max-width: 768px) {
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 .feature-card {
@@ -1200,6 +1151,13 @@ footer {
 }
 
 /* Mobile responsive styles */
+@media (max-width: 1200px) {
+    /* For larger screens, show 4 in a row */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 992px) {
     h1 {
         font-size: 2.5rem;
@@ -1226,61 +1184,156 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Reduce hero height on mobile */
+    .hero {
+        min-height: 100vh;
+        padding-top: 120px;
+        padding-bottom: 60px;
+    }
+    
+    /* Better video handling for mobile */
+    .video-background video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+    
+    /* Darker overlay for better text readability on mobile */
+    .video-background .overlay {
+        background: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Ensure text is readable on small screens */
+    .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Make hamburger more visible and better positioned */
+    .hamburger {
+        display: flex;
+        top: 1.2rem;
+        right: 1.5rem;
+        z-index: 1002;
+        background: rgba(74, 134, 232, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    /* Improve hamburger visuals */
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin-bottom: 5px;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Fix navigation menu */
+    #main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: rgba(74, 134, 232, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 80px;
+        z-index: 1001;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* When menu is open */
+    #main-nav.open {
+        right: 0;
+    }
+    
+    /* Better spacing for nav items */
+    #main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    #main-nav ul li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 10px 0;
+    }
+    
+    #main-nav a {
+        font-size: 1.1rem;
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    /* Better hamburger animation */
+    .hamburger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+    
+    .hamburger.open span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+    
+    /* Add page overlay when menu is open */
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s;
+    }
+    
+    body.menu-open::after {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Fix header for mobile */
     header {
-        padding: 1rem 0;
+        padding: 1rem;
     }
     
     .logo {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        text-align: left;
+        padding-left: 10px;
     }
     
     .tagline {
         font-size: 0.9rem;
     }
     
-    .hamburger {
-        display: flex;
-    }
-    
-    #main-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        max-width: 300px;
-        height: 100vh;
-        background-color: var(--primary);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        transition: right 0.3s ease;
-    }
-    
-    #main-nav.open {
-        right: 0;
-    }
-    
-    #main-nav ul {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    #main-nav a {
-        font-size: 1.2rem;
-    }
-    
-    .hero {
-        padding-top: 150px;
-    }
-    
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
+    /* Features grid for mobile */
+    .features-grid {
+        grid-template-columns: 1fr;
     }
     
     .about-content,
@@ -1294,18 +1347,6 @@ footer {
     
     .testimonial-text {
         font-size: 1rem;
-    }
-    
-    .hamburger.open span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .hamburger.open span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger.open span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
     }
     
     .contact-form {
@@ -1364,5 +1405,27 @@ footer {
     
     .testimonial-content {
         padding: 1.5rem;
+    }
+}
+
+/* For portrait video (from iPhone) */
+@media (orientation: portrait) {
+    .video-background video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+/* For landscape view */
+@media (orientation: landscape) and (max-width: 768px) {
+    .hero {
+        min-height: 120vh; /* Make hero taller on landscape mobile */
+    }
+    
+    .video-background video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
