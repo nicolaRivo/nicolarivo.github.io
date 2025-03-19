@@ -35,8 +35,8 @@ body {
     font-family: var(--font-main);
     color: var(--text-color);
     margin: 0;
-    height: 100vh;
-    overflow: hidden;
+    /* Removed fixed height and overflow:hidden to allow scrolling */
+    min-height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -118,19 +118,15 @@ header::after {
     display: flex;
     flex: 1;
     width: 100%;
+    /* Ensure it can grow for mobile layouts */
+    min-height: calc(100vh - var(--header-height));
 }
 
 /* ========== SPLIT SECTIONS ========== */
-.split-container {
-    display: flex;
-    flex: 1;
-    width: 100%;
-}
-
 .split {
     flex: 1;
     position: relative;
-    overflow: hidden;
+    /* Removed overflow:hidden to allow content to be visible */
     transition: var(--transition);
     display: flex;
     flex-direction: column;
@@ -240,32 +236,6 @@ header::after {
     z-index: 10;
 }
 
-/* ========== RESET & BASE STYLES ========== */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
-/* ========== TYPOGRAPHY ========== */
-h1, h2 {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 0;
-}
-
-h2 {
-    font-size: 3rem;
-    white-space: nowrap;
-    margin-bottom: 1.5rem;
-}
-
-p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-}
-
 /* ========== BUTTON STYLES ========== */
 .btn {
     display: inline-block;
@@ -304,10 +274,14 @@ p {
 @media (max-width: 992px) {
     .split-container {
         flex-direction: column;
+        /* Remove fixed heights to allow content to determine height */
+        min-height: auto;
     }
 
     .split {
-        height: 50%;
+        /* Use min-height instead of fixed height */
+        min-height: 50vh;
+        flex: 0 0 auto;
     }
 
     .content {
@@ -330,6 +304,8 @@ p {
     h2 {
         font-size: 2.5rem;
         text-align: center;
+        /* Allow wrapping if needed */
+        white-space: normal;
     }
 }
 
@@ -339,12 +315,19 @@ p {
         --header-height: 60px; /* Smaller header on mobile */
     }
     
+    /* Allow vertical scrolling for mobile */
+    body {
+        overflow-y: auto;
+    }
+    
     .logo {
         font-size: 1.5rem;
     }
     
     h2 {
         font-size: 2rem;
+        /* Make sure heading can wrap on small screens */
+        white-space: normal;
     }
     
     p {
@@ -354,6 +337,28 @@ p {
     .btn {
         padding: 0.8rem 1.6rem;
         font-size: 0.9rem;
+    }
+    
+    /* Adjust split sections to have enough height on mobile */
+    .split {
+        min-height: 80vh;
+    }
+    
+    /* Fix divider on mobile */
+    .split-divider {
+        height: 2px;
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+    
+    /* Adjust content spacing */
+    .content {
+        padding-top: 2rem;
+    }
+    
+    .btn-container {
+        padding-bottom: 2rem;
     }
 }
 
