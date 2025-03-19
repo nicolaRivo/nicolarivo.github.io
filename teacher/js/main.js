@@ -64,13 +64,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Header shrink on scroll
+    // Header appear gradually on scroll
     const header = document.getElementById('header');
     
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+        const scrollPosition = window.scrollY;
+        
+        // Start showing nav elements at 50px, fully visible by 250px
+        if (scrollPosition > 50) {
+            const opacity = Math.min((scrollPosition - 50) / 200, 1);
+            const headerOpacity = Math.min((scrollPosition - 50) / 100, 1);
+            
+            // Apply gradual background
+            header.style.background = `linear-gradient(135deg, 
+                rgba(74, 134, 232, ${headerOpacity * 0.95}) 0%, 
+                rgba(124, 77, 255, ${headerOpacity * 0.95}) 100%)`;
+            
+            // Add scrolled class when fully visible
+            if (scrollPosition > 200) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Add subtle shadow as we scroll
+            header.style.boxShadow = `0 ${headerOpacity * 4}px ${headerOpacity * 6}px rgba(0, 0, 0, ${headerOpacity * 0.1})`;
         } else {
+            // Reset at top of page
+            header.style.background = 'transparent';
+            header.style.boxShadow = 'none';
             header.classList.remove('scrolled');
         }
         
