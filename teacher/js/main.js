@@ -152,24 +152,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form submission
-    const contactForm = document.getElementById('lesson-inquiry-form');
-    const formSuccess = document.getElementById('form-success');
-    
-    if (contactForm && formSuccess) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // In a real implementation, you would send form data to a server here
-            // For now, we'll just simulate a successful submission
-            
-            // Hide form and show success message after a short delay
-            setTimeout(() => {
-                contactForm.style.display = 'none';
-                formSuccess.classList.remove('hidden');
-            }, 500);
-        });
-    }
+    // Contact form handling
+    setupContactForm();
     
     // Function to check if an element is in viewport
     function isElementInViewport(el) {
@@ -227,3 +211,122 @@ document.addEventListener('DOMContentLoaded', function() {
         updateActiveNavOnScroll();
     }, 100);
 });
+
+/**
+ * Setup contact form with direct email submission
+ * This creates a direct mailto link based on form input
+ */
+function setupContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            // Prevent the default form submission
+            e.preventDefault();
+            
+            // Simple validation
+            if (!validateForm(contactForm)) {
+                return;
+            }
+            
+            // Create and open a mailto link with the form data
+            const mailtoLink = createMailtoLink(contactForm);
+            window.open(mailtoLink, '_blank');
+            
+            // Show success message
+            contactForm.style.display = 'none';
+            formSuccess.classList.remove('hidden');
+            
+            // Reset form for if they come back
+            setTimeout(() => {
+                contactForm.reset();
+            }, 1000);
+            
+            // Log successful submission
+            console.log('Form submitted via mailto link');
+        });
+    }
+}
+
+/**
+ * Validate form fields
+ * @param {HTMLFormElement} form - The form to validate
+ * @returns {boolean} - Whether the form is valid
+ */
+function validateForm(form) {
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            
+            // Add invalid class for styling
+            field.classList.add('invalid');
+            
+            // Focus the first invalid field
+            if (isValid === false) {
+                field.focus();
+            }
+        } else {
+            field.classList.remove('invalid');
+        }
+    });
+    
+    return isValid;
+}
+
+/**
+ * Creates a mailto link with form data, formatted for readability
+ * This creates a professional-looking email that flows naturally
+ * 
+ * @param {HTMLFormElement} form - The form containing user input
+ * @returns {string} - A formatted mailto URL
+ */
+function createMailtoLink(form) {
+    // Get form values
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const phone = form.phone.value.trim() || 'Not provided';
+    const instrument = form.instrument.value;
+    const experience = form.experience.value;
+    const message = form.message.value.trim();
+    
+    // Create a well-formatted email body
+    const bodyText = 
+`New Lesson Inquiry from your website
+
+Dear Nicola,
+
+You've received a new lesson inquiry from ${name}. Here are their details:
+
+STUDENT INFORMATION:
+--------------------
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+
+LESSON DETAILS:
+--------------
+Instrument: ${instrument}
+Experience: ${experience}
+
+MESSAGE:
+--------
+${message}
+
+--------------------
+This inquiry was submitted through your website contact form.
+To respond, simply reply to this email.`;
+
+    // Create the subject line
+    const subject = `Lesson Inquiry from ${name} - ${instrument}`;
+    
+    // Encode for mailto - this should preserve the line breaks in most email clients
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(bodyText);
+    
+    // Return the mailto link
+    return `mailto:nicola.rivosecchi@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+}
