@@ -3,486 +3,996 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nicola Rivosecchi (also known as Nicola Rivo) - Sound Designer, Composer, Sound Mixer, and Audio Editor specializing in immersive audio experiences for film, games, and interactive media.">
-    <title>Nicola Rivosecchi | Sound Designer & Composer</title>
-    
-    <!-- Google Fonts - Lato with multiple weights -->
+    <title>Nicola Rivosecchi — Sound Designer & Composer | London</title>
+    <meta name="description" content="Nicola Rivosecchi is a London-based sound designer, composer, and audio engineer specialising in film sound design, game audio, interactive media, and creative audio technology. MSc Sound Design.">
+    <meta name="keywords" content="Nicola Rivosecchi, Nicola Rivosecchi sound designer, sound designer London, film sound designer, game audio designer, audio engineer London, sound design portfolio, composer London, Nicola Rivosecchi audio, freelance sound designer UK, sound effects artist, foley artist London">
+    <meta name="author" content="Nicola Rivosecchi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nicolarivo.co.uk/sound">
+
+    <meta property="og:title" content="Nicola Rivosecchi — Sound Designer & Composer | London">
+    <meta property="og:description" content="Sound design, composition & audio engineering for film, games and interactive media. View portfolio.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nicolarivo.co.uk/sound">
+    <meta property="og:locale" content="en_GB">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nicola Rivosecchi",
+        "alternateName": "Nico Rivosecchi",
+        "jobTitle": "Sound Designer & Composer",
+        "url": "https://nicolarivo.co.uk/sound",
+        "telephone": "+447438779924",
+        "email": "nicola.rivosecchi@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "London",
+            "addressRegion": "Greater London",
+            "addressCountry": "GB"
+        },
+        "alumniOf": [
+            {"@type": "CollegeOrUniversity", "name": "London Centre of Contemporary Music"},
+            {"@type": "CollegeOrUniversity", "name": "University of Edinburgh"}
+        ],
+        "knowsAbout": ["Sound Design","Film Sound","Game Audio","Audio Engineering","Composition","Foley","Field Recording","Max/MSP","Ableton Live","Pro Tools","Sound Mixing"],
+        "sameAs": [
+            "https://nicolarivo.co.uk",
+            "https://nicolarivo.co.uk/teacher",
+            "https://www.instagram.com/9inefm",
+            "https://www.linkedin.com/in/nicola-rivosecchi-649240112/",
+            "https://soundcloud.com/nicolarivo",
+            "https://www.youtube.com/@nicolarivo"
+        ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #08080D;
+            --bg-card: #111118;
+            --bg-card-hover: #16161F;
+            --cyan: #00C8FF;
+            --cyan-dim: rgba(0,200,255,0.15);
+            --cyan-glow: rgba(0,200,255,0.08);
+            --purple: #7B5CFF;
+            --purple-dim: rgba(123,92,255,0.12);
+            --text: #E8E6E1;
+            --text-dim: rgba(255,255,255,0.5);
+            --text-muted: rgba(255,255,255,0.35);
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --radius: 12px;
+            --radius-lg: 18px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+        h1, h2, h3 { font-weight: 600; line-height: 1.2; }
+        code, .mono { font-family: 'Space Mono', monospace; }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8,8,13,0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .nav-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .nav-logo span { color: var(--cyan); }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            letter-spacing: 0.03em;
+        }
+        .nav-links a:hover { color: var(--cyan); }
+        .nav-cta {
+            color: var(--cyan) !important;
+            border: 1.5px solid rgba(0,200,255,0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            transition: all 0.2s !important;
+        }
+        .nav-cta:hover {
+            background: rgba(0,200,255,0.08) !important;
+            border-color: var(--cyan) !important;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 30%;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(123,92,255,0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 28px;
+            padding: 8px 20px;
+            border: 1px solid rgba(0,200,255,0.2);
+            border-radius: 50px;
+            background: rgba(0,200,255,0.04);
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+        .hero h1 em {
+            color: var(--cyan);
+            font-style: normal;
+        }
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 640px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            background: var(--cyan);
+            color: var(--bg);
+            box-shadow: 0 0 24px rgba(0,200,255,0.2);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(0,200,255,0.35);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            color: var(--text-dim);
+            border: 1.5px solid var(--border-hover);
+        }
+        .btn-outline:hover {
+            border-color: rgba(255,255,255,0.25);
+            color: var(--text);
+            background: rgba(255,255,255,0.03);
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 24px; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--cyan);
+            margin-bottom: 12px;
+            display: block;
+        }
+        .section-title {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio { border-top: 1px solid var(--border); }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+        .project-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+        }
+        .project-card:hover::after {
+            transform: scaleX(1);
+        }
+        .project-card.featured {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .project-category {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--cyan);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+        .project-card p {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.75;
+        }
+        .project-year {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+        }
+        .project-tag {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 50px;
+            background: var(--cyan-glow);
+            color: var(--cyan);
+            border: 1px solid rgba(0,200,255,0.1);
+            font-weight: 500;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills { border-top: 1px solid var(--border); }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .skill-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: all 0.3s ease;
+        }
+        .skill-group:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+        }
+        .skill-group h3 {
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        .skill-group h3 span {
+            color: var(--cyan);
+        }
+        .skill-list {
+            list-style: none;
+        }
+        .skill-list li {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .skill-list li:last-child { border-bottom: none; }
+        .skill-list li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--cyan);
+            flex-shrink: 0;
+            opacity: 0.5;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            border-top: 1px solid var(--border);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 48px;
+        }
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .about-image img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: grayscale(30%) contrast(1.05);
+            transition: filter 0.4s ease;
+        }
+        .about-image:hover img {
+            filter: grayscale(0%) contrast(1);
+        }
+        .about-content p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 28px;
+        }
+        .about-stat {
+            padding: 18px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+        .about-stat-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--cyan);
+            margin-bottom: 2px;
+        }
+        .about-stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            border-top: 1px solid var(--border);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            margin-top: 48px;
+        }
+        .contact-info p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 28px;
+            line-height: 1.8;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--cyan-glow);
+            border: 1px solid rgba(0,200,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .contact-text {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+        .contact-text a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+        .contact-text a:hover { text-decoration: underline; }
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+        .social-link {
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .social-link:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            background: var(--cyan-glow);
+        }
+
+        .contact-form form {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-family: 'Space Mono', monospace;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--bg);
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 2px rgba(0,200,255,0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+        footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.78rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--cyan); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-toggle { display: block; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .project-card.featured {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+            .skills-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; gap: 36px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+            .form-row { grid-template-columns: 1fr; }
+            .social-links { flex-wrap: wrap; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- Loading overlay for stable loading -->
-    <div class="loading-overlay" id="loading-overlay">
-        <div class="loader"></div>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="https://nicolarivo.co.uk" class="nav-logo">NICOLA_<span>RIVOSECCHI</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://nicolarivo.co.uk/creative-coding/">Creative Coding</a></li>
+            <li><a href="https://nicolarivo.co.uk/teacher">Teaching</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
-    
-    <header id="header">
-        <div class="logo glitch" data-text="NICOLA_RIVOSECCHI">NICOLA_RIVOSECCHI</div>
-        <div class="hamburger" id="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-inner">
+        <div class="hero-label">Sound Designer · Composer · Audio Engineer</div>
+        <h1>Crafting <em>immersive sound</em> for film, games & media</h1>
+        <p class="hero-sub">I'm Nicola Rivosecchi — a London-based sound designer and composer with an MSc in Sound Design. I create sonic worlds that bring stories to life, from atmospheric film soundscapes to interactive game audio and experimental sound art.</p>
+        <div class="hero-actions">
+            <a href="#work" class="btn-primary">View Portfolio ↓</a>
+            <a href="#contact" class="btn-outline">Get In Touch</a>
         </div>
-        <nav id="main-nav">
-            <ul>
-                <li><a href="#hero" class="nav-link active">Home</a></li>
-                <li><a href="#work" class="nav-link">Work</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <section id="hero" class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 class="glitch-title animated fade" data-text="SOUND DESIGN & AUDIO ENGINEERING">SOUND DESIGN & AUDIO ENGINEERING</h1>
-                        <div class="typewriter animated slide-up stagger-1">
-                            <p>Creating immersive sonic experiences for film, games, and interactive media with creative audio technology.</p>
-                        </div>
-                        <div class="hero-buttons animated slide-up stagger-2">
-                            <a href="#work" class="btn primary-btn">View Portfolio</a>
-                            <a href="#contact" class="btn secondary-btn">Get In Touch</a>
-                            <a href="/creative-coding/" class="btn accent-btn">Creative Coding</a>
-                        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="work">
+    <div class="section-inner">
+        <div class="reveal">
+            <span class="section-label">// Portfolio</span>
+            <h2 class="section-title">Selected Work</h2>
+            <p class="section-desc">Sound design, composition, and audio engineering across film, documentary, interactive media, and software.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="project-card featured reveal">
+                <div>
+                    <span class="project-category">Documentary · Sound Design</span>
+                    <h3>Duncan X (2025)</h3>
+                    <p>A compelling documentary for Earth House exploring the life and art of Duncan X, a renowned musician and tattoo artist. The sound design and music create an intimate audio landscape that captures the raw emotion and creative intensity of his world.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Sound Design</span>
+                        <span class="project-tag">Music</span>
+                        <span class="project-tag">Documentary</span>
                     </div>
+                    <div class="project-year">2025 · Earth House</div>
+                </div>
+                <div style="background: var(--bg); border-radius: var(--radius); height: 200px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border);">
+                    <span style="font-size: 3rem; opacity: 0.2;">🎬</span>
                 </div>
             </div>
-        </section>
- 
-        <!-- Work/Portfolio Section -->
-        <section id="work" class="section">
-            <div class="container">
-                <h2 class="section-title glitch animated slide-up" data-text="PORTFOLIO">PORTFOLIO</h2>
-                
-                <!-- Sound Design Projects -->
-                <div class="portfolio-category animated slide-up">
-                    <h3 class="category-title animated slide-left">Sound Design</h3>
-                    
-                    <!-- New Documentary Project -->
-                    <div class="project-card animated slide-up">
-                        <h4>DUNCAN X (2025)</h4>
-                        <div class="project-description">
-                            <p>A compelling documentary for Earth House that explores the life and art of Duncan X, a renowned musician and tattoo artist. The sound design and music create an intimate audio landscape that captures the raw emotion and creative intensity of Duncan's world.</p>
-                            
-                            <p>By blending ambient textures with carefully crafted musical cues, the audio supports the visual storytelling while establishing a distinct sonic identity that resonates with the subject's artistic philosophy and life experiences.</p>
-                        </div>
-                        <div class="project-media">
-                            <div class="project-grid">
-                                <div class="project-item animated slide-up stagger-1">
-                                    <div class="youtube-thumbnail" style="background-image: url('https://www.youtube.com/embed/QhBDyUbIr-U')">
-                                        <div class="play-button"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- New Horror Film Project -->
-                    <div class="project-card animated slide-up">
-                        <h4>Gestare (2023)</h4>
-                        <div class="project-description">
-                            <p>A haunting horror short film by director Stella Segar that confronts the implications of reproductive rights and the overturn of Roe v. Wade. The sound design combines visceral bodily sounds with unsettling abstract elements to create a deeply affecting psychological horror experience.</p>
-                            
-                            <p>Through layered audio design and subtle musical textures, the soundscape amplifies the film's exploration of bodily autonomy and societal control, reinforcing its powerful social commentary through carefully manipulated sonic elements.</p>
-                        </div>
-                        <div class="project-media">
-                            <div class="project-grid">
-                                <div class="project-item animated slide-up stagger-1">
-                                    <div class="youtube-thumbnail" style="background-image: url('https://youtu.be/embed/bY9sJxaMszU')">
-                                        <div class="play-button"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Hand of the Wind -->
-                    <div class="project-card animated slide-up">
-                        <h4>Hand of the Wind (2020)</h4>
-                        <div class="project-description">
-                            <p>An atmospheric short film by Pietro F. Pingitore set in the Mustang Vally, Nepal. The film describes, via the means of folk allegoric storytelling , the endless fight between good and evil, old and new, chaos and order. The sound design creates a rich sonic landscape that blends organic and processed elements, giving the wind its  own voice as one of the main characters involved in this epic.</p>
-                        </div>
-                        <div class="project-media">
-                            <div class="project-grid">
-                                <div class="project-item animated slide-up stagger-1">
-                                    <div class="iframe-container" data-src="https://www.youtube.com/embed/nCkD6japtt4"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card animated slide-up">
-                        <h4>Sounds of Obscure Sorrows</h4>
-                        <div class="project-description">
-                            <p>The "Sounds of Obscure Sorrows" series is a sound design exploration inspired by John Koenig's Dictionary of Obscure Sorrows, which catalogs emotions that lack defined terms in our language. Each piece creates a sonic narrative that embodies the essence of these invented words, capturing complex emotional states through carefully crafted soundscapes using unprocessed field recordings.</p>
-                            
-                            <p>Through these sonic explorations, the project invites listeners to recognize and embrace these unnamed but universally felt emotional states, giving voice to the subtle complexities of human experience.</p>
-                        </div>
-                        <div class="project-media">
-                            <div class="project-grid">
-                                <div class="project-item animated slide-up stagger-1">
-                                    <h5>Vemödalen</h5>
-                                    <div class="iframe-container" data-src="https://www.youtube.com/embed/QdXr3KM_TQ8"></div>
-                                </div>
-                                <div class="project-item animated slide-up stagger-2">
-                                    <h5>Trumspringa</h5>
-                                    <div class="iframe-container" data-src="https://www.youtube.com/embed/Vlk5w65sN6U"></div>
-                                </div>
-                                <div class="project-item animated slide-up stagger-3">
-                                    <h5>Rubatosis</h5>
-                                    <div class="iframe-container" data-src="https://www.youtube.com/embed/zbzwmKkAHS8"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card animated slide-up">
-                        <h4>Inhabitants and Inhabited</h4>
-                        <div class="project-media inhabitants-media">
-                            <img src="assets/images/GraphicScore.jpeg" alt="Graphic Score" class="graphic-score animated scale-up">
-                            <div class="audio-player animated slide-up">
-                                <audio controls>
-                                    <source src="assets/audio/nr_whosInhabitingAndWhosInhabited.ogg" type="audio/ogg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card animated slide-up">
-                        <h4>Short Films</h4>
-                        <div class="project-grid">
-                            <div class="project-item animated slide-up stagger-1">
-                                <h5>In The Cards</h5>
-                                <div class="project-description">
-                                    <p>A suspenseful short film exploring fate and choice through a card reading. The sound design builds tension through subtle environmental sounds and carefully crafted moments of silence, drawing the viewer into the psychological space of the protagonist.</p>
-                                </div>
-                                <div class="iframe-container" data-src="https://www.youtube.com/embed/qm9u6u_VTUs"></div>
-                            </div>
-                            <div class="project-item animated slide-up stagger-2">
-                                <h5>Mary LeBone</h5>
-                                <div class="project-description">
-                                    <p>A gothic-inspired short film with immersive sound design that blends natural and supernatural elements. The audio landscape evolves from grounded reality to ethereal otherworldliness, reflecting the character's journey.</p>
-                                </div>
-                                <div class="iframe-container" data-src="https://www.youtube.com/embed/SMic-oK7lgk"></div>
-                            </div>
-                            <div class="project-item animated slide-up stagger-3">
-                                <h5>Hand of the Wind</h5>
-                                <div class="project-description">
-                                    <p>An atmospheric short film that captures the ethereal movement of wind through natural spaces. The sound design creates a rich sonic landscape that blends organic and processed elements, evolving like shifting air currents.</p>
-                                </div>
-                                <div class="iframe-container" data-src="https://www.youtube.com/embed/nCkD6japtt4"></div>
-                            </div>
-                        </div>
-                    </div>
+
+            <div class="project-card reveal">
+                <span class="project-category">Horror · Sound Design</span>
+                <h3>Gestare (2023)</h3>
+                <p>A haunting horror short film by Stella Segar confronting reproductive rights. The sound design combines visceral bodily sounds with unsettling abstract elements to create a deeply affecting psychological horror experience.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Sound Design</span>
+                    <span class="project-tag">Horror</span>
+                    <span class="project-tag">Short Film</span>
                 </div>
-                
-                <!-- Composition Projects -->
-                <div class="portfolio-category animated slide-up">
-                    <h3 class="category-title animated slide-left">Composition</h3>
-                    
-                    <div class="project-grid">
-                        <div class="project-item animated slide-up stagger-1">
-                            <h5>Sobhraj</h5>
-                            <div class="project-description">
-                                <p>A tense, dramatic composition inspired by the notorious figure Charles Sobhraj. The piece uses textural elements and rhythmic intensity to create a psychological portrait through sound, balancing beauty and unease.</p>
-                            </div>
-                            <div class="iframe-container" data-src="https://www.youtube.com/embed/d6PftRQaXNE"></div>
-                        </div>
-                        <div class="project-item animated slide-up stagger-2">
-                            <h5>Tom & Jerry</h5>
-                            <div class="project-description">
-                                <p>A playful reinterpretation of classic cartoon aesthetics through modern sound design techniques. This composition combines detailed foley work with musical elements to create a contemporary twist on nostalgic animation sound.</p>
-                            </div>
-                            <div class="iframe-container" data-src="https://www.youtube.com/embed/kxqiVSSbUh8"></div>
-                        </div>
-                        <div class="project-item animated slide-up stagger-3">
-                            <h5>Ondine's Theme</h5>
-                            <div class="project-description">
-                                <p>A delicate, flowing composition inspired by the water nymph of myth and legend. Shimmering textures and liquid-like movements in sound create an immersive underwater atmosphere that captures the essence of this mythical being.</p>
-                            </div>
-                            <div class="iframe-container" data-src="https://www.youtube.com/embed/UzIs8wy50-M"></div>
-                        </div>
-                    </div>
+                <div class="project-year">2023</div>
+            </div>
+
+            <div class="project-card reveal">
+                <span class="project-category">Film · Sound Design</span>
+                <h3>Hand of the Wind (2020)</h3>
+                <p>An atmospheric short film set in Nepal's Mustang Valley. Through folk allegoric storytelling, the sound design creates a rich sonic landscape, giving the wind its own voice as a main character in this epic tale.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Sound Design</span>
+                    <span class="project-tag">Atmospheric</span>
+                    <span class="project-tag">Nepal</span>
                 </div>
-                
-                <!-- New Orchestral Compositions Section -->
-                <div class="portfolio-category animated slide-up">
-                    <h3 class="category-title animated slide-left">Orchestral Compositions</h3>
-                    
-                    <div class="project-card animated slide-up">
-                        <h4>Classical Adaptations & Arrangements</h4>
-                        <div class="project-description">
-                            <p>These orchestral compositions showcase my approach to reinterpreting and expanding existing musical works. Through careful arrangement and thoughtful instrumentation, I explore new dimensions within familiar pieces while preserving their essential character.</p>
-                        </div>
-                        <div class="project-grid">
-                            <div class="project-item animated slide-up stagger-1">
-                                <h5>Images Oubliées (Debussy) - String Quartet & Harp Expansion</h5>
-                                <div class="project-description">
-                                    <p>A delicate expansion of Debussy's "Images Oubliées" arranged for string quartet and harp. This adaptation preserves the impressionist quality of the original piano work while exploring new timbral possibilities through the expanded instrumentation, bringing fresh perspective to this lesser-known Debussy composition.</p>
-                                </div>
-                                <div class="youtube-thumbnail" style="background-image: url('/api/placeholder/1280/720')">
-                                    <div class="play-button"></div>
-                                </div>
-                            </div>
-                            <div class="project-item animated slide-up stagger-2">
-                                <h5>Twin Peaks Suite - Small Orchestra Arrangement</h5>
-                                <div class="project-description">
-                                    <p>An atmospheric orchestral arrangement of three iconic themes from Angelo Badalamenti's Twin Peaks soundtrack: "Falling," "Dance of the Dream Man," and "Laura Palmer's Theme." This suite reinterprets the haunting melodies and distinctive mood of the original score for small orchestra, preserving their emotional impact while adding new textural dimensions.</p>
-                                </div>
-                                <div class="youtube-thumbnail" style="background-image: url('/api/placeholder/1280/720')">
-                                    <div class="play-button"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Software Projects -->
-                <div class="portfolio-category animated slide-up">
-                    <h3 class="category-title animated slide-left">Software</h3>
-                    
-                    <div class="project-grid">
-                        <div class="project-item animated slide-up stagger-1">
-                            <h5>BIOSOUNDS</h5>
-                            <div class="project-description">
-                                <p>A generative audio system that transforms biological data into evolving soundscapes. This custom software uses algorithms to interpret natural patterns and translate them into musical expressions that maintain the organic quality of their source material.</p>
-                            </div>
-                            <div class="iframe-container" data-src="https://www.youtube.com/embed/plQkoRI_qXQ"></div>
-                        </div>
-                        <div class="project-item animated slide-up stagger-2">
-                            <h5>DRONE</h5>
-                            <div class="project-description">
-                                <p>An evolving drone synthesis engine that creates complex, textural soundscapes. This custom software blends multiple layers of harmonic content with subtle modulation to produce richly detailed ambient environments.</p>
-                            </div>
-                            <div class="iframe-container" data-src="https://www.youtube.com/embed/_Awxf5QOLC8"></div>
-                        </div>
-                        <div class="project-item animated slide-up stagger-3">
-                            <h5>HUMMINGBOT</h5>
-                            <div class="project-description">
-                                <p>An algorithmic composition tool that generates melodic patterns inspired by hummingbird flight patterns. This experimental software translates movement data into musical phrases with an emphasis on rapid, intricate sequences.</p>
-                            </div>
-                            <div class="iframe-container" data-src="https://www.youtube.com/embed/Y_xNDgRDc2E"></div>
-                        </div>
-                    </div>
+                <div class="project-year">2020 · Dir. Pietro F. Pingitore</div>
+            </div>
+
+            <div class="project-card reveal">
+                <span class="project-category">Experimental · Soundscapes</span>
+                <h3>Sounds of Obscure Sorrows</h3>
+                <p>A sound design series inspired by John Koenig's Dictionary of Obscure Sorrows. Each piece creates a sonic narrative embodying emotions that lack defined terms — crafted entirely from unprocessed field recordings.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Field Recording</span>
+                    <span class="project-tag">Soundscape</span>
+                    <span class="project-tag">Experimental</span>
                 </div>
             </div>
-        </section>
-        
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <div class="container">
-                <h2 class="section-title glitch animated slide-up" data-text="SKILLS">SKILLS</h2>
-                
-                <div class="skills-container">
-                    <div class="skill-category animated scale-up stagger-1">
-                        <h3>Sound Design</h3>
-                        <div class="skill-bars">
-                            <div class="skill-item">
-                                <span class="skill-name">Field Recording</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="95"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Foley Art</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="90"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Sound Effects Editing</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="95"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Ambisonics</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="85"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category animated scale-up stagger-2">
-                        <h3>Audio Engineering</h3>
-                        <div class="skill-bars">
-                            <div class="skill-item">
-                                <span class="skill-name">Pro Tools</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="95"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Ableton Live</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="90"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Logic Pro</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Reaper</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="80"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category animated scale-up stagger-3">
-                        <h3>Audio Programming</h3>
-                        <div class="skill-bars">
-                            <div class="skill-item">
-                                <span class="skill-name">Max/MSP</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="90"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Web Audio API</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Pure Data</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="80"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">SuperCollider</span>
-                                <div class="skill-bar-container">
-                                    <div class="skill-progress" data-progress="75"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+            <div class="project-card reveal">
+                <span class="project-category">Composition</span>
+                <h3>Orchestral & Original Works</h3>
+                <p>Original compositions and orchestral arrangements including a string quartet & harp expansion of Debussy's "Images Oubliées" and a small orchestra arrangement of Angelo Badalamenti's Twin Peaks suite.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Orchestral</span>
+                    <span class="project-tag">Arrangement</span>
+                    <span class="project-tag">Composition</span>
                 </div>
             </div>
-        </section>
-        
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <h2 class="section-title glitch animated slide-up" data-text="ABOUT">ABOUT</h2>
-                
-                <div class="about-content">
-                    <div class="about-image animated slide-right">
-                        <img src="assets/images/profile.jpeg" alt="Nicola Rivosecchi - Sound Designer" onerror="this.src='assets/images/profile-placeholder.jpg'">
-                    </div>
-                    <div class="about-text animated slide-left">
-                        <p>I'm a sound designer, composer, sound mixer, audio editor, and sound artist passionate about crafting immersive audio experiences. With extensive experience across the entire audio production workflow, I can handle all areas of film sound from recording to soundtrack composing and producing to dialogue editing, foley, and final mixing.</p>
-                        
-                        <p>My approach to sound merges artistic intuition with technical precision. I'm constantly exploring the boundaries between organic and synthetic sounds, seeking to create sonic landscapes that evoke emotion and enhance storytelling.</p>
-                        
-                        <p>As a creative professional, I bring a unique perspective to every project, whether it's atmospheric film soundscapes, interactive game audio, or experimental sound art installations.</p>
-                        
-                        <p>When I'm not in the studio, I can be found field recording in unusual locations, experimenting with modular synthesis, or teaching the next generation of audio professionals.</p>
-                    </div>
+
+            <div class="project-card reveal">
+                <span class="project-category">Software · Creative Coding</span>
+                <h3>Audio Software & Tools</h3>
+                <p>Custom generative audio systems including BIOSOUNDS (biological data sonification), DRONE (evolving synthesis engine), and HUMMINGBOT (algorithmic composition from movement data).</p>
+                <div class="project-tags">
+                    <span class="project-tag">Max/MSP</span>
+                    <span class="project-tag">Generative</span>
+                    <span class="project-tag">Software</span>
                 </div>
             </div>
-        </section>
-        
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title glitch animated slide-up" data-text="CONTACT">CONTACT</h2>
-                
-                <div class="contact-container">
-                    <div class="contact-info animated slide-right">
-                        <h3>Get In Touch</h3>
-                        <p>Interested in working together? I'm currently available for freelance sound design, composition, and audio engineering projects.</p>
-                        
-                        <div class="contact-methods">
-                            <div class="contact-method">
-                                <span class="contact-icon">✉️</span>
-                                <span class="contact-detail">nicola.rivosecchi@gmail.com</span>
-                            </div>
-                            <div class="contact-method">
-                                <span class="contact-icon">📱</span>
-                                <span class="contact-detail">UK: +44 7767132805</span>
-                            </div>
-                            <div class="contact-method">
-                                <span class="contact-icon">📱</span>
-                                <span class="contact-detail">Italy: +39 353 4560615</span>
-                            </div>
-                            <div class="contact-method">
-                                <span class="contact-icon">📍</span>
-                                <span class="contact-detail">London, UK</span>
-                            </div>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="https://www.instagram.com/9inefm" class="social-link" target="_blank">Instagram</a>
-                            <a href="https://www.linkedin.com/in/nicola-rivosecchi-649240112/" class="social-link" target="_blank">LinkedIn</a>
-                            <a href="https://soundcloud.com/nicolarivo" class="social-link" target="_blank">SoundCloud</a>
-                            <a href="https://www.youtube.com/@nicolarivo" class="social-link" target="_blank">YouTube</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-form animated slide-left">
-                        <form id="contact-form">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn primary-btn">Send Message</button>
-                        </form>
-                    </div>
+
+            <div class="project-card reveal">
+                <span class="project-category">Short Films</span>
+                <h3>Additional Film Work</h3>
+                <p>Sound design across multiple short films including "In The Cards" (suspense), "Mary LeBone" (gothic), and original compositions for "Sobhraj" and "Ondine's Theme" — each exploring distinct sonic territories.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Film</span>
+                    <span class="project-tag">Foley</span>
+                    <span class="project-tag">Scoring</span>
                 </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">NICOLA_RIVOSECCHI</div>
-                <p class="footer-tagline">Sound Designer | Composer | Sound Mixer | Audio Editor</p>
-                <div class="footer-nav">
-                    <a href="#hero">Home</a>
-                    <a href="#work">Work</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <p class="copyright">&copy; <span id="year"></span> Nicola Rivosecchi. All rights reserved.</p>
-                <p class="disclaimer">This website showcases my portfolio and features media that I do not own. All media used is intended to showcase my skills and abilities only.</p>
             </div>
         </div>
-    </footer>
-    
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+    <div class="section-inner">
+        <div class="reveal">
+            <span class="section-label">// Capabilities</span>
+            <h2 class="section-title">Skills & Tools</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-group reveal">
+                <h3><span>//</span> Sound Design</h3>
+                <ul class="skill-list">
+                    <li>Field Recording</li>
+                    <li>Foley Art</li>
+                    <li>Sound Effects Editing</li>
+                    <li>Ambisonics</li>
+                    <li>Dialogue Editing</li>
+                    <li>Sound Mixing</li>
+                </ul>
+            </div>
+            <div class="skill-group reveal">
+                <h3><span>//</span> Audio Engineering</h3>
+                <ul class="skill-list">
+                    <li>Pro Tools</li>
+                    <li>Ableton Live</li>
+                    <li>Logic Pro</li>
+                    <li>Reaper</li>
+                    <li>Studio Recording</li>
+                    <li>Location Sound</li>
+                </ul>
+            </div>
+            <div class="skill-group reveal">
+                <h3><span>//</span> Audio Programming</h3>
+                <ul class="skill-list">
+                    <li>Max/MSP</li>
+                    <li>Web Audio API</li>
+                    <li>Pure Data</li>
+                    <li>SuperCollider</li>
+                    <li>C++ Audio</li>
+                    <li>JavaScript / Python</li>
+                </ul>
+            </div>
+            <div class="skill-group reveal">
+                <h3><span>//</span> Composition</h3>
+                <ul class="skill-list">
+                    <li>Film Scoring</li>
+                    <li>Orchestral Arrangement</li>
+                    <li>Electronic / Ambient</li>
+                    <li>Generative Music</li>
+                    <li>Sound Art</li>
+                    <li>Music Production</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="section-inner">
+        <div class="about-grid">
+            <div class="about-image reveal">
+                <img src="https://nicolarivo.co.uk/assets/images/profile.jpeg" alt="Nicola Rivosecchi — Sound Designer and Composer based in London" loading="lazy">
+            </div>
+            <div class="about-content reveal">
+                <span class="section-label">// About</span>
+                <h2 class="section-title">Nicola Rivosecchi</h2>
+                <p>I'm a sound designer, composer, sound mixer, audio editor, and sound artist based in London. With experience across the entire audio production workflow, I handle all areas of film sound — from recording and composing to dialogue editing, foley, and final mixing.</p>
+                <p>My approach merges artistic intuition with technical precision. I'm constantly exploring the boundaries between organic and synthetic sound, creating sonic landscapes that evoke emotion and enhance storytelling.</p>
+                <p>Whether it's atmospheric film soundscapes, interactive game audio, experimental sound installations, or generative audio systems — I bring a unique perspective shaped by my background in music, sound design, and creative coding.</p>
+                <div class="about-stats">
+                    <div class="about-stat">
+                        <div class="about-stat-value">MSc</div>
+                        <div class="about-stat-label">Sound Design — Edinburgh</div>
+                    </div>
+                    <div class="about-stat">
+                        <div class="about-stat-value">BA</div>
+                        <div class="about-stat-label">Music — LCCM London</div>
+                    </div>
+                    <div class="about-stat">
+                        <div class="about-stat-value">10+</div>
+                        <div class="about-stat-label">Years in Audio</div>
+                    </div>
+                    <div class="about-stat">
+                        <div class="about-stat-value">London</div>
+                        <div class="about-stat-label">Based — Available Worldwide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="section-inner">
+        <div class="reveal">
+            <span class="section-label">// Contact</span>
+            <h2 class="section-title">Let's Work Together</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <p>Currently available for freelance sound design, composition, and audio engineering projects. Whether you need atmospheric film sound, game audio, or something experimental — let's talk.</p>
+
+                <div class="contact-detail">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-text">
+                        <a href="mailto:nicola.rivosecchi@gmail.com">nicola.rivosecchi@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-text">
+                        <a href="tel:+447438779924">+44 7438 779924</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text">London, UK — Available for remote projects worldwide</div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.instagram.com/9inefm" target="_blank" rel="noopener" class="social-link">Instagram</a>
+                    <a href="https://www.linkedin.com/in/nicola-rivosecchi-649240112/" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+                    <a href="https://soundcloud.com/nicolarivo" target="_blank" rel="noopener" class="social-link">SoundCloud</a>
+                    <a href="https://www.youtube.com/@nicolarivo" target="_blank" rel="noopener" class="social-link">YouTube</a>
+                </div>
+            </div>
+
+            <div class="contact-form reveal">
+                <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Project type">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary form-submit">Send Message →</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">NICOLA_RIVOSECCHI</div>
+        <ul class="footer-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://nicolarivo.co.uk/teacher">Teaching</a></li>
+        </ul>
+        <p>&copy; 2025 Nicola Rivosecchi. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
