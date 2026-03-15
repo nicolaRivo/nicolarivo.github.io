@@ -458,10 +458,10 @@ var DEFAULT_VIDEOS = [
 // ── GitHub helpers ──
 function ghConfig() {
     return {
-        owner:  sessionStorage.getItem('gh-owner')  || '',
-        repo:   sessionStorage.getItem('gh-repo')   || '',
-        branch: sessionStorage.getItem('gh-branch') || 'main',
-        token:  sessionStorage.getItem('gh-token')  || ''
+        owner:  localStorage.getItem('gh-owner')  || '',
+        repo:   localStorage.getItem('gh-repo')   || '',
+        branch: localStorage.getItem('gh-branch') || 'main',
+        token:  localStorage.getItem('gh-token')  || ''
     };
 }
 function ghReady() { var c = ghConfig(); return c.owner && c.repo && c.token; }
@@ -859,10 +859,10 @@ document.getElementById('ghSaveBtn').addEventListener('click', function() {
     var ok  = document.getElementById('settingsOk');
     err.style.display='none'; ok.style.display='none';
     if (!owner||!repo||!token) { err.textContent='Please fill in all fields.'; err.style.display='block'; return; }
-    sessionStorage.setItem('gh-owner', owner);
-    sessionStorage.setItem('gh-repo', repo);
-    sessionStorage.setItem('gh-branch', branch);
-    sessionStorage.setItem('gh-token', token);
+    localStorage.setItem('gh-owner', owner);
+    localStorage.setItem('gh-repo', repo);
+    localStorage.setItem('gh-branch', branch);
+    localStorage.setItem('gh-token', token);
     ok.textContent = '✓ Settings saved for this session. Reloading data…';
     ok.style.display='block';
     checkGhWarning();
