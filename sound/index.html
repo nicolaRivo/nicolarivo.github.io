@@ -32,7 +32,6 @@
             --mono:'Space Mono',monospace;--sans:'Outfit',sans-serif;
             --play-bg:rgba(0,229,204,0.9);
         }
-        /* Slate — dark blue-grey */
         [data-theme="slate"]{
             --bg:#0a0e14;--surface:#121820;--border:rgba(255,255,255,0.07);
             --accent:#7EB8F7;--accent-dim:rgba(126,184,247,0.08);
@@ -40,7 +39,6 @@
             --nav-bg:rgba(10,14,20,0.92);--filter-bg:rgba(10,14,20,0.94);--modal-bg:#131a23;--input-bg:#0c1018;
             --play-bg:rgba(126,184,247,0.9);
         }
-        /* Dusk — warm charcoal */
         [data-theme="dusk"]{
             --bg:#100c0a;--surface:#1a1512;--border:rgba(255,220,180,0.07);
             --accent:#F0A05A;--accent-dim:rgba(240,160,90,0.08);
@@ -48,7 +46,6 @@
             --nav-bg:rgba(16,12,10,0.92);--filter-bg:rgba(16,12,10,0.94);--modal-bg:#1a1512;--input-bg:#120e0b;
             --play-bg:rgba(240,160,90,0.9);
         }
-        /* Fog — soft light mode */
         [data-theme="fog"]{
             --bg:#F4F2EF;--surface:#ECEAE6;--border:rgba(0,0,0,0.08);
             --accent:#2563EB;--accent-dim:rgba(37,99,235,0.08);
@@ -56,7 +53,6 @@
             --nav-bg:rgba(244,242,239,0.92);--filter-bg:rgba(244,242,239,0.95);--modal-bg:#ECEAE6;--input-bg:#E4E2DE;
             --play-bg:rgba(37,99,235,0.9);
         }
-        /* Forest — deep green */
         [data-theme="forest"]{
             --bg:#060e08;--surface:#0c1a0f;--border:rgba(120,220,140,0.07);
             --accent:#5DDC7E;--accent-dim:rgba(93,220,126,0.08);
@@ -68,7 +64,6 @@
         html{scroll-behavior:smooth}
         body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .35s,color .35s}
 
-        /* NAV */
         .nav{position:fixed;top:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .35s,border-color .35s}
         .nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
         .nav-logo{font-family:var(--mono);font-size:.8rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:.04em}
@@ -81,19 +76,16 @@
         .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
         .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text);margin:4px 0}
 
-        /* HERO */
         .hero{padding:140px 24px 60px;text-align:center}
         .hero h1{font-weight:200;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
         .hero h1 strong{font-weight:500;color:var(--accent)}
         .hero p{font-size:.95rem;color:var(--text-dim);max-width:520px;margin:0 auto;line-height:1.7}
 
-        /* FILTERS */
         .filters{padding:20px 24px 32px;text-align:center;position:sticky;top:60px;z-index:100;background:var(--filter-bg);backdrop-filter:blur(12px);transition:background .35s}
         .filter-btn{font-family:var(--mono);font-size:.7rem;font-weight:400;padding:7px 18px;border-radius:50px;cursor:pointer;background:transparent;color:var(--text-dim);border:1px solid var(--border);margin:0 4px 8px;transition:all .2s;letter-spacing:.04em;text-transform:uppercase}
         .filter-btn:hover{border-color:color-mix(in srgb,var(--text) 20%,transparent);color:var(--text)}
         .filter-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}
 
-        /* MOSAIC */
         .mosaic{max-width:1400px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
         .tile{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--surface);border-radius:4px;transition:background .35s}
         .tile-thumb{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .5s ease;filter:brightness(0.7)}
@@ -124,7 +116,6 @@
         .player-info .tile-tags{margin-top:16px}
         .player-info .tile-tag{font-size:.62rem;padding:3px 10px}
 
-        /* ABOUT */
         .about{padding:80px 24px;border-top:1px solid var(--border)}
         .about-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:48px;align-items:start}
         .about-photo{width:120px;flex-shrink:0}
@@ -140,52 +131,43 @@
         .about-socials a{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--text-dim);transition:all .2s}
         .about-socials a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
 
-        /* FOOTER */
         footer{border-top:1px solid var(--border);padding:24px;text-align:center}
         footer p{font-size:.68rem;color:var(--text-muted)}
         footer a{color:var(--text-muted);text-decoration:none}
         footer a:hover{color:var(--text-dim)}
 
-        /* ADMIN TRIGGER */
+        /* ── ADMIN ── */
         .admin-trigger{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:900;transition:all .25s}
         .admin-trigger:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
-
-        /* ADMIN OVERLAY & MODAL */
         .admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:1100;align-items:center;justify-content:center}
         .admin-overlay.open{display:flex}
-        .admin-modal{background:var(--modal-bg);border:1px solid var(--border);border-radius:12px;width:min(560px,94vw);max-height:90vh;overflow-y:auto;padding:32px;position:relative;transition:background .35s,border-color .35s}
+        .admin-modal{background:var(--modal-bg);border:1px solid var(--border);border-radius:12px;width:min(580px,94vw);max-height:90vh;overflow-y:auto;padding:32px;position:relative;transition:background .35s,border-color .35s}
         .admin-modal::-webkit-scrollbar{width:4px}
-        .admin-modal::-webkit-scrollbar-track{background:transparent}
         .admin-modal::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-
-        /* ADMIN TABS */
+        .admin-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.2rem;line-height:1;transition:color .2s}
+        .admin-close:hover{color:var(--text)}
         .admin-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px}
         .admin-tab{font-family:var(--mono);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer;background:none;border:none;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
         .admin-tab:hover{color:var(--text-dim)}
         .admin-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
         .admin-panel{display:none;flex-direction:column;gap:14px}
         .admin-panel.visible{display:flex}
-
-        /* ADMIN LOGIN */
         .admin-login{display:flex;flex-direction:column;gap:14px}
         .admin-login.hidden{display:none}
-        .admin-locked{display:flex;flex-direction:column;gap:14px}
-        .admin-locked.hidden{display:none}
-
-        /* FORMS */
+        .admin-unlocked{display:flex;flex-direction:column}
+        .admin-unlocked.hidden{display:none}
         .admin-modal h2{font-family:var(--mono);font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
-        .admin-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.2rem;line-height:1;transition:color .2s}
-        .admin-close:hover{color:var(--text)}
         .a-label{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
         .admin-input{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .2s,background .35s}
         .admin-input:focus{border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
         .admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-        .admin-btn{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 20px;border-radius:6px;cursor:pointer;border:none;background:var(--accent);color:var(--bg);transition:opacity .2s}
+        .admin-btn{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 20px;border-radius:6px;cursor:pointer;border:none;background:var(--accent);color:var(--bg);transition:opacity .2s,filter .2s}
         .admin-btn:hover{opacity:.82}
+        .admin-btn:disabled{opacity:.4;cursor:not-allowed}
         .admin-btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-dim)}
         .admin-btn.ghost:hover{border-color:var(--accent);color:var(--accent);opacity:1}
-        .admin-btn.danger{background:rgba(220,60,60,0.15);border:1px solid rgba(220,60,60,0.3);color:#f87171}
-        .admin-btn.danger:hover{background:rgba(220,60,60,0.25);opacity:1}
+        .admin-btn.danger{background:rgba(220,60,60,0.12);border:1px solid rgba(220,60,60,0.3);color:#f87171}
+        .admin-btn.danger:hover{background:rgba(220,60,60,0.22);opacity:1}
         .admin-btn-row{display:flex;gap:8px;flex-wrap:wrap}
         .admin-err{font-size:.72rem;color:#f87171;font-family:var(--mono)}
         .admin-ok{font-size:.72rem;color:var(--accent);font-family:var(--mono)}
@@ -193,9 +175,7 @@
         .admin-preview img{width:100%;height:100%;object-fit:cover}
         .admin-preview span{font-size:.62rem;font-family:var(--mono);color:var(--text-muted)}
         select.admin-input{appearance:none;cursor:pointer}
-
-        /* VIDEO LIST (manage tab) */
-        .video-list{display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto}
+        .video-list{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto}
         .video-list::-webkit-scrollbar{width:4px}
         .video-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
         .vitem{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:6px;background:var(--input-bg);border:1px solid var(--border);cursor:pointer;transition:border-color .2s}
@@ -206,16 +186,21 @@
         .vitem-title{font-size:.8rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
         .vitem-meta{font-family:var(--mono);font-size:.58rem;color:var(--text-muted);margin-top:2px}
         .vitem-tag{font-family:var(--mono);font-size:.52rem;padding:1px 6px;border-radius:50px;background:var(--accent-dim);color:var(--accent);text-transform:uppercase}
+        .theme-swatches{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+        .swatch{width:36px;height:36px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s,border-color .2s;position:relative}
+        .swatch:hover{transform:scale(1.12)}
+        .swatch.active{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
+        .swatch-name{font-family:var(--mono);font-size:.58rem;color:var(--text-muted);text-align:center;margin-top:4px}
+        .swatch-wrap{display:flex;flex-direction:column;align-items:center;gap:0}
+        .github-setup{background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:.78rem;color:var(--text-dim);line-height:1.7}
+        .github-setup code{font-family:var(--mono);font-size:.7rem;background:rgba(128,128,128,0.15);padding:1px 5px;border-radius:3px;color:var(--text)}
+        .spinner{display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
+        .status-dot.ok{background:#4ade80}
+        .status-dot.err{background:#f87171}
+        .status-dot.pending{background:#fbbf24}
 
-        /* THEME SWATCHES */
-        .theme-swatches{display:flex;gap:8px;flex-wrap:wrap}
-        .swatch{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s,border-color .2s;position:relative}
-        .swatch:hover{transform:scale(1.15)}
-        .swatch.active{border-color:var(--accent)}
-        .swatch::after{content:attr(data-name);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.52rem;color:var(--text-muted);white-space:nowrap;opacity:0;transition:opacity .2s}
-        .swatch:hover::after{opacity:1}
-
-        /* RESPONSIVE */
         @media(max-width:1024px){
             .mosaic{grid-template-columns:repeat(3,1fr)}
             .player-wrapper{grid-template-columns:1fr}
@@ -260,42 +245,12 @@
     <button class="filter-btn" data-filter="software">Software</button>
 </div>
 
-<div class="mosaic" id="work">
-
-    <!-- FILM SOUND -->
-    <div class="tile" data-youtube="h_u0grD7bVQ"  data-category="film-sound"   data-year="2024" data-title="Le Parole Sono Pietre"          data-desc="Documentary film sound. Intimate sonic landscape blending ambient textures with musical cues."></div>
-    <div class="tile" data-youtube="HMU5f3hDvT8"  data-category="film-sound"   data-year="2024" data-title="Gestare"                        data-desc="Horror short by Stella Segar. Visceral bodily sounds create psychological horror exploring bodily autonomy."></div>
-    <div class="tile" data-youtube="fl7CV_QEHws"  data-category="film-sound"   data-year="2024" data-title="Re-Creations"                   data-desc="Short film sound design. Layered sonic environments crafted to evoke memory and transformation."></div>
-    <div class="tile" data-youtube="qm9u6u_VTUs"  data-category="film-sound"   data-year="2021" data-title="In The Cards"                   data-desc="Suspenseful short exploring fate and choice. Tension built through environmental sounds and crafted silence."></div>
-    <div class="tile" data-youtube="SMic-oK7lgk"  data-category="film-sound"   data-year="2020" data-title="Mary La Bone"                   data-desc="Gothic-inspired short. Audio evolves from grounded reality to ethereal otherworldliness."></div>
-    <div class="tile" data-youtube="nCkD6japtt4"  data-category="film-sound"   data-year="2020" data-title="The Hand of the Wind"            data-desc="Atmospheric short set in Mustang Valley, Nepal. The wind becomes a character through blended organic and processed sound."></div>
-
-    <!-- SOUND DESIGN -->
-    <div class="tile" data-youtube="QdXr3KM_TQ8"  data-category="sound-design" data-year="2022" data-title="Obscure Sorrows — Vemödalen"    data-desc="Sonic narrative from John Koenig's Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions."></div>
-    <div class="tile" data-youtube="zbzwmKkAHS8"  data-category="sound-design" data-year="2022" data-title="Obscure Sorrows — Rubatosis"    data-desc="An unsettling awareness of your own heartbeat rendered through carefully crafted soundscapes."></div>
-    <div class="tile" data-youtube="Vlk5w65sN6U"  data-category="sound-design" data-year="2022" data-title="Obscure Sorrows — Trumspringa"  data-desc="The ache of a life unlived rendered through layered field recordings."></div>
-
-    <!-- COMPOSITION -->
-    <div class="tile" data-youtube="UzIs8wy50-M"  data-category="composition"  data-year="2022" data-title="Ondine's Theme"                 data-desc="Delicate composition inspired by the water nymph. Shimmering textures create an immersive underwater atmosphere."></div>
-    <div class="tile" data-youtube="IELbdpEHDks"  data-category="composition"  data-year="2020" data-title="Action!"                        data-desc="Cinematic composition exploring tension and release. Rhythmic intensity meets orchestral breadth."></div>
-    <div class="tile" data-youtube="d6PftRQaXNE"  data-category="composition"  data-year="2019" data-title="Sobhraj"                        data-desc="Tense composition using textural elements and rhythmic intensity — a psychological portrait."></div>
-    <div class="tile" data-youtube="kxqiVSSbUh8"  data-category="composition"  data-year="2019" data-title="Tom &amp; Jerry"                data-desc="Playful reinterpretation of cartoon aesthetics. Detailed foley meets contemporary musical techniques."></div>
-    <div class="tile" data-youtube="PUuq5YRfbPw"  data-category="composition"  data-year="2019" data-title="O2"                             data-desc="Minimalist composition exploring breath and space. Sparse harmonic textures evolve slowly over time."></div>
-    <div class="tile" data-youtube="1m9ioSIsD24"  data-category="composition"  data-year="2019" data-title="What a Dream"                   data-desc="Dreamy impressionistic composition drawing from surrealist imagery and film score traditions."></div>
-    <div class="tile" data-youtube="O6e4vxhFwJo"  data-category="composition"  data-year="2019" data-title="AmEx"                           data-desc="Advertising composition with a sophisticated harmonic palette and polished production aesthetic."></div>
-
-    <!-- SOFTWARE -->
-    <div class="tile" data-youtube="_Awxf5QOLC8"  data-category="software"     data-year="2023" data-title="evolvingDrone"                  data-desc="Evolving drone synthesis engine. Layered harmonics and subtle modulation produce detailed ambient environments."></div>
-    <div class="tile" data-youtube="Y_xNDgRDc2E"  data-category="software"     data-year="2023" data-title="hummingBot"                     data-desc="Algorithmic composition tool. Melodic patterns inspired by hummingbird flight translated from movement data."></div>
-    <div class="tile" data-youtube="9fJ-gJ6vCk0"  data-category="software"     data-year="2023" data-title="SWAMP"                          data-desc="Generative audio environment inspired by wetland ecosystems."></div>
-    <div class="tile" data-youtube="kf7i229dozE"  data-category="software"     data-year="2023" data-title="VOX POPULI"                     data-desc="Voice-driven generative system. Spoken input transformed into evolving harmonic and rhythmic structures."></div>
-    <div class="tile" data-youtube="plQkoRI_qXQ"  data-category="software"     data-year="2022" data-title="BioSounds"                      data-desc="Generative system transforming biological data into evolving soundscapes through custom algorithms."></div>
-
-</div>
+<!-- Grid is populated from videos.json on load -->
+<div class="mosaic" id="work"></div>
 
 <section class="about" id="about"><div class="about-inner">
     <div class="about-photo">
-        <img src="assets/images/profile_crop.jpeg" alt="Nicola Rivosecchi">
+        <img src="undersound/assets/images/profile_crop.jpeg" alt="Nicola Rivosecchi">
     </div>
     <div class="about-bio">
         <h2>About <strong>Nicola</strong></h2>
@@ -330,14 +285,14 @@
     <p style="margin-top:6px">Portfolio features media used to showcase professional skills and abilities.</p>
 </footer>
 
-<!-- ── Admin gear icon ── -->
+<!-- Admin gear -->
 <button class="admin-trigger" id="adminTrigger" aria-label="Admin panel">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 </button>
 
-<!-- ── Admin overlay ── -->
+<!-- Admin modal -->
 <div class="admin-overlay" id="adminOverlay">
-  <div class="admin-modal" id="adminModal">
+  <div class="admin-modal">
     <button class="admin-close" id="adminClose">&times;</button>
 
     <!-- LOGIN -->
@@ -351,17 +306,25 @@
       <button class="admin-btn" id="adminLoginBtn">Unlock</button>
     </div>
 
-    <!-- UNLOCKED AREA -->
-    <div class="admin-locked hidden" id="adminUnlocked">
+    <!-- UNLOCKED -->
+    <div class="admin-unlocked hidden" id="adminUnlocked">
 
-      <!-- Tab bar -->
+      <!-- GitHub not configured warning -->
+      <div id="ghWarning" style="display:none;margin-bottom:16px">
+        <div class="github-setup">
+          <strong style="color:var(--text)">⚠ GitHub not configured</strong><br>
+          Go to the <strong>Settings</strong> tab and enter your GitHub repo details + Personal Access Token to enable persistent saves.
+        </div>
+      </div>
+
       <div class="admin-tabs">
         <button class="admin-tab active" data-tab="add">Add</button>
         <button class="admin-tab" data-tab="manage">Manage</button>
         <button class="admin-tab" data-tab="theme">Theme</button>
+        <button class="admin-tab" data-tab="settings">Settings</button>
       </div>
 
-      <!-- ── TAB: ADD ── -->
+      <!-- ── ADD ── -->
       <div class="admin-panel visible" id="tabAdd">
         <h2>// Add Video</h2>
         <div>
@@ -370,14 +333,8 @@
         </div>
         <div class="admin-preview" id="adminPreview"><span>Thumbnail preview</span></div>
         <div class="admin-row">
-          <div>
-            <label class="a-label" for="newTitle">Title</label>
-            <input class="admin-input" type="text" id="newTitle" placeholder="Project name">
-          </div>
-          <div>
-            <label class="a-label" for="newYear">Year</label>
-            <input class="admin-input" type="text" id="newYear" placeholder="2025">
-          </div>
+          <div><label class="a-label" for="newTitle">Title</label><input class="admin-input" type="text" id="newTitle" placeholder="Project name"></div>
+          <div><label class="a-label" for="newYear">Year</label><input class="admin-input" type="text" id="newYear" placeholder="2025"></div>
         </div>
         <div>
           <label class="a-label" for="newCategory">Category</label>
@@ -388,34 +345,24 @@
             <option value="software">Software</option>
           </select>
         </div>
-        <div>
-          <label class="a-label" for="newDesc">Description</label>
-          <input class="admin-input" type="text" id="newDesc" placeholder="One or two sentence description.">
-        </div>
+        <div><label class="a-label" for="newDesc">Description</label><input class="admin-input" type="text" id="newDesc" placeholder="One or two sentence description."></div>
         <div id="addErr" class="admin-err" style="display:none"></div>
-        <div id="addOk"  class="admin-ok"  style="display:none">✓ Video added.</div>
+        <div id="addOk"  class="admin-ok"  style="display:none"></div>
         <div class="admin-btn-row">
-          <button class="admin-btn" id="adminAddBtn">Add Video</button>
+          <button class="admin-btn" id="adminAddBtn">Add &amp; Save</button>
           <button class="admin-btn ghost" id="adminLogoutBtn">Lock</button>
         </div>
       </div>
 
-      <!-- ── TAB: MANAGE ── -->
+      <!-- ── MANAGE ── -->
       <div class="admin-panel" id="tabManage">
         <h2>// Manage Videos</h2>
         <div id="videoList" class="video-list"></div>
-        <!-- Edit form (hidden until a video is selected) -->
         <div id="editForm" style="display:none;flex-direction:column;gap:12px;border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
           <div style="font-family:var(--mono);font-size:.62rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase">Editing: <span id="editingLabel"></span></div>
           <div class="admin-row">
-            <div>
-              <label class="a-label" for="editTitle">Title</label>
-              <input class="admin-input" type="text" id="editTitle">
-            </div>
-            <div>
-              <label class="a-label" for="editYear">Year</label>
-              <input class="admin-input" type="text" id="editYear">
-            </div>
+            <div><label class="a-label" for="editTitle">Title</label><input class="admin-input" type="text" id="editTitle"></div>
+            <div><label class="a-label" for="editYear">Year</label><input class="admin-input" type="text" id="editYear"></div>
           </div>
           <div>
             <label class="a-label" for="editCategory">Category</label>
@@ -426,30 +373,50 @@
               <option value="software">Software</option>
             </select>
           </div>
-          <div>
-            <label class="a-label" for="editDesc">Description</label>
-            <input class="admin-input" type="text" id="editDesc">
-          </div>
+          <div><label class="a-label" for="editDesc">Description</label><input class="admin-input" type="text" id="editDesc"></div>
           <div id="manageErr" class="admin-err" style="display:none"></div>
-          <div id="manageOk"  class="admin-ok"  style="display:none">✓ Saved.</div>
+          <div id="manageOk"  class="admin-ok"  style="display:none"></div>
           <div class="admin-btn-row">
-            <button class="admin-btn" id="editSaveBtn">Save Changes</button>
+            <button class="admin-btn" id="editSaveBtn">Save &amp; Publish</button>
             <button class="admin-btn danger" id="editDeleteBtn">Remove</button>
             <button class="admin-btn ghost" id="editCancelBtn">Cancel</button>
           </div>
         </div>
       </div>
 
-      <!-- ── TAB: THEME ── -->
+      <!-- ── THEME ── -->
       <div class="admin-panel" id="tabTheme">
         <h2>// Colour Theme</h2>
-        <p style="font-size:.8rem;color:var(--text-dim);margin-bottom:16px">Pick a colour scheme. Your choice is saved in the browser.</p>
-        <div class="theme-swatches" id="themeSwatches">
-          <div class="swatch active" data-theme=""       data-name="Void"   style="background:linear-gradient(135deg,#080808,#101010)"></div>
-          <div class="swatch"        data-theme="slate"  data-name="Slate"  style="background:linear-gradient(135deg,#0a0e14,#7EB8F7)"></div>
-          <div class="swatch"        data-theme="dusk"   data-name="Dusk"   style="background:linear-gradient(135deg,#100c0a,#F0A05A)"></div>
-          <div class="swatch"        data-theme="fog"    data-name="Fog"    style="background:linear-gradient(135deg,#F4F2EF,#2563EB)"></div>
-          <div class="swatch"        data-theme="forest" data-name="Forest" style="background:linear-gradient(135deg,#060e08,#5DDC7E)"></div>
+        <p style="font-size:.8rem;color:var(--text-dim);margin-bottom:8px">Choose a theme — saved to your repo so all visitors see it.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <div class="swatch-wrap"><div class="swatch active" data-theme=""       style="background:linear-gradient(135deg,#080808,#00E5CC)"></div><div class="swatch-name">Void</div></div>
+          <div class="swatch-wrap"><div class="swatch"        data-theme="slate"  style="background:linear-gradient(135deg,#0a0e14,#7EB8F7)"></div><div class="swatch-name">Slate</div></div>
+          <div class="swatch-wrap"><div class="swatch"        data-theme="dusk"   style="background:linear-gradient(135deg,#100c0a,#F0A05A)"></div><div class="swatch-name">Dusk</div></div>
+          <div class="swatch-wrap"><div class="swatch"        data-theme="fog"    style="background:linear-gradient(135deg,#F4F2EF,#2563EB)"></div><div class="swatch-name">Fog</div></div>
+          <div class="swatch-wrap"><div class="swatch"        data-theme="forest" style="background:linear-gradient(135deg,#060e08,#5DDC7E)"></div><div class="swatch-name">Forest</div></div>
+        </div>
+        <div id="themeErr" class="admin-err" style="display:none;margin-top:10px"></div>
+        <div id="themeOk"  class="admin-ok"  style="display:none;margin-top:10px"></div>
+      </div>
+
+      <!-- ── SETTINGS ── -->
+      <div class="admin-panel" id="tabSettings">
+        <h2>// GitHub Settings</h2>
+        <div class="github-setup" style="margin-bottom:16px">
+          Enter your GitHub repo details and a Personal Access Token.<br>
+          The token only needs <code>Contents: Read &amp; Write</code> permission.<br>
+          <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener" style="color:var(--accent)">Create a fine-grained token →</a>
+        </div>
+        <div><label class="a-label" for="ghOwner">GitHub Username</label><input class="admin-input" type="text" id="ghOwner" placeholder="e.g. nicolarivo"></div>
+        <div><label class="a-label" for="ghRepo">Repository Name</label><input class="admin-input" type="text" id="ghRepo" placeholder="e.g. nicolarivo.github.io"></div>
+        <div><label class="a-label" for="ghBranch">Branch</label><input class="admin-input" type="text" id="ghBranch" placeholder="main" value="main"></div>
+        <div><label class="a-label" for="ghToken">Personal Access Token</label><input class="admin-input" type="password" id="ghToken" placeholder="github_pat_..."></div>
+        <p style="font-size:.7rem;color:var(--text-muted);margin-top:-6px">Stored only in your browser session — never sent anywhere except GitHub's API.</p>
+        <div id="settingsErr" class="admin-err" style="display:none"></div>
+        <div id="settingsOk"  class="admin-ok"  style="display:none"></div>
+        <div class="admin-btn-row">
+          <button class="admin-btn" id="ghSaveBtn">Save Settings</button>
+          <button class="admin-btn ghost" id="ghTestBtn">Test Connection</button>
         </div>
       </div>
 
@@ -458,29 +425,117 @@
 </div>
 
 <script>
-// ─────────────────────────────────────
-// CHANGE THIS TO YOUR OWN PASSWORD:
+// ─────────────────────────────────────────────
+// CONFIG — change password here
 var ADMIN_PASSWORD = 'nicola2025';
-// ─────────────────────────────────────
 
-// ── Tile builder ──
-function buildTileHTML(yt, cat, year, title, desc) {
-    var thumb = 'https://img.youtube.com/vi/' + yt + '/hqdefault.jpg';
-    var label = cat.replace('-', ' ');
+// Default video list (used if videos.json doesn't exist yet in the repo)
+var DEFAULT_VIDEOS = [
+  {youtube:"h_u0grD7bVQ",  category:"film-sound",   year:"2024", title:"Le Parole Sono Pietre",         desc:"Documentary film sound. Intimate sonic landscape blending ambient textures with musical cues."},
+  {youtube:"HMU5f3hDvT8",  category:"film-sound",   year:"2024", title:"Gestare",                       desc:"Horror short by Stella Segar. Visceral bodily sounds create psychological horror exploring bodily autonomy."},
+  {youtube:"fl7CV_QEHws",  category:"film-sound",   year:"2024", title:"Re-Creations",                  desc:"Short film sound design. Layered sonic environments crafted to evoke memory and transformation."},
+  {youtube:"qm9u6u_VTUs",  category:"film-sound",   year:"2021", title:"In The Cards",                  desc:"Suspenseful short exploring fate and choice. Tension built through environmental sounds and crafted silence."},
+  {youtube:"SMic-oK7lgk",  category:"film-sound",   year:"2020", title:"Mary La Bone",                  desc:"Gothic-inspired short. Audio evolves from grounded reality to ethereal otherworldliness."},
+  {youtube:"nCkD6japtt4",  category:"film-sound",   year:"2020", title:"The Hand of the Wind",          desc:"Atmospheric short set in Mustang Valley, Nepal. The wind becomes a character through blended organic and processed sound."},
+  {youtube:"QdXr3KM_TQ8",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Vemödalen",   desc:"Sonic narrative from John Koenig's Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions."},
+  {youtube:"zbzwmKkAHS8",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Rubatosis",   desc:"An unsettling awareness of your own heartbeat rendered through carefully crafted soundscapes."},
+  {youtube:"Vlk5w65sN6U",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Trumspringa", desc:"The ache of a life unlived rendered through layered field recordings."},
+  {youtube:"UzIs8wy50-M",  category:"composition",  year:"2022", title:"Ondine's Theme",                desc:"Delicate composition inspired by the water nymph. Shimmering textures create an immersive underwater atmosphere."},
+  {youtube:"IELbdpEHDks",  category:"composition",  year:"2020", title:"Action!",                       desc:"Cinematic composition exploring tension and release. Rhythmic intensity meets orchestral breadth."},
+  {youtube:"d6PftRQaXNE",  category:"composition",  year:"2019", title:"Sobhraj",                       desc:"Tense composition using textural elements and rhythmic intensity — a psychological portrait."},
+  {youtube:"kxqiVSSbUh8",  category:"composition",  year:"2019", title:"Tom & Jerry",                   desc:"Playful reinterpretation of cartoon aesthetics. Detailed foley meets contemporary musical techniques."},
+  {youtube:"PUuq5YRfbPw",  category:"composition",  year:"2019", title:"O2",                            desc:"Minimalist composition exploring breath and space. Sparse harmonic textures evolve slowly over time."},
+  {youtube:"1m9ioSIsD24",  category:"composition",  year:"2019", title:"What a Dream",                  desc:"Dreamy impressionistic composition drawing from surrealist imagery and film score traditions."},
+  {youtube:"O6e4vxhFwJo",  category:"composition",  year:"2019", title:"AmEx",                          desc:"Advertising composition with a sophisticated harmonic palette and polished production aesthetic."},
+  {youtube:"_Awxf5QOLC8",  category:"software",     year:"2023", title:"evolvingDrone",                 desc:"Evolving drone synthesis engine. Layered harmonics and subtle modulation produce detailed ambient environments."},
+  {youtube:"Y_xNDgRDc2E",  category:"software",     year:"2023", title:"hummingBot",                    desc:"Algorithmic composition tool. Melodic patterns inspired by hummingbird flight translated from movement data."},
+  {youtube:"9fJ-gJ6vCk0",  category:"software",     year:"2023", title:"SWAMP",                         desc:"Generative audio environment inspired by wetland ecosystems."},
+  {youtube:"kf7i229dozE",  category:"software",     year:"2023", title:"VOX POPULI",                    desc:"Voice-driven generative system. Spoken input transformed into evolving harmonic and rhythmic structures."},
+  {youtube:"plQkoRI_qXQ",  category:"software",     year:"2022", title:"BioSounds",                     desc:"Generative system transforming biological data into evolving soundscapes through custom algorithms."}
+];
+// ─────────────────────────────────────────────
+
+// ── GitHub helpers ──
+function ghConfig() {
+    return {
+        owner:  sessionStorage.getItem('gh-owner')  || '',
+        repo:   sessionStorage.getItem('gh-repo')   || '',
+        branch: sessionStorage.getItem('gh-branch') || 'main',
+        token:  sessionStorage.getItem('gh-token')  || ''
+    };
+}
+function ghReady() { var c = ghConfig(); return c.owner && c.repo && c.token; }
+
+async function ghGet(path) {
+    var c = ghConfig();
+    var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + path + '?ref=' + c.branch;
+    var r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github+json' } });
+    if (!r.ok) { if (r.status === 404) return null; throw new Error('GitHub ' + r.status); }
+    return r.json();
+}
+
+async function ghPut(path, content, message, sha) {
+    var c = ghConfig();
+    var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + path;
+    var body = { message: message, content: btoa(unescape(encodeURIComponent(content))), branch: c.branch };
+    if (sha) body.sha = sha;
+    var r = await fetch(url, { method: 'PUT', headers: { 'Authorization': 'Bearer ' + c.token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' }, body: JSON.stringify(body) });
+    if (!r.ok) { var e = await r.json(); throw new Error(e.message || 'GitHub ' + r.status); }
+    return r.json();
+}
+
+async function saveVideos(videos, msg) {
+    var existing = await ghGet('videos.json');
+    var sha = existing ? existing.sha : undefined;
+    await ghPut('videos.json', JSON.stringify(videos, null, 2), msg || 'Update videos.json', sha);
+}
+
+async function saveConfig(cfg, msg) {
+    var existing = await ghGet('config.json');
+    var sha = existing ? existing.sha : undefined;
+    await ghPut('config.json', JSON.stringify(cfg, null, 2), msg || 'Update config.json', sha);
+}
+
+// ── Load data from GitHub (or fallback to defaults) ──
+var VIDEOS = [];
+var SITE_CONFIG = { theme: '' };
+
+async function loadData() {
+    if (!ghReady()) {
+        VIDEOS = DEFAULT_VIDEOS.slice();
+        renderGrid(VIDEOS);
+        return;
+    }
+    try {
+        var vf = await ghGet('videos.json');
+        VIDEOS = vf ? JSON.parse(decodeURIComponent(escape(atob(vf.content.replace(/\n/g,''))))) : DEFAULT_VIDEOS.slice();
+    } catch(e) { VIDEOS = DEFAULT_VIDEOS.slice(); }
+    try {
+        var cf = await ghGet('config.json');
+        SITE_CONFIG = cf ? JSON.parse(decodeURIComponent(escape(atob(cf.content.replace(/\n/g,''))))) : { theme: '' };
+    } catch(e) { SITE_CONFIG = { theme: '' }; }
+    applyTheme(SITE_CONFIG.theme || '');
+    updateSwatchUI(SITE_CONFIG.theme || '');
+    renderGrid(VIDEOS);
+}
+
+// ── Tile rendering ──
+function buildTileHTML(v) {
+    var label = v.category.replace('-', ' ');
     return (
-        '<img class="tile-thumb" src="' + thumb + '" alt="' + title + ' — Nicola Rivosecchi" loading="lazy">' +
+        '<img class="tile-thumb" src="https://img.youtube.com/vi/' + v.youtube + '/hqdefault.jpg" alt="' + v.title + ' — Nicola Rivosecchi" loading="lazy">' +
         '<div class="tile-play"></div>' +
         '<div class="tile-overlay">' +
-            '<div class="tile-year">' + year + '</div>' +
-            '<div class="tile-title">' + title + '</div>' +
+            '<div class="tile-year">' + v.year + '</div>' +
+            '<div class="tile-title">' + v.title + '</div>' +
             '<div class="tile-tags"><span class="tile-tag">' + label + '</span></div>' +
         '</div>' +
         '<div class="tile-player"><div class="player-wrapper">' +
             '<div class="player-video"></div>' +
             '<div class="player-info">' +
-                '<div class="tile-year">' + year + '</div>' +
-                '<div class="tile-title">' + title + '</div>' +
-                '<div class="tile-desc">' + desc + '</div>' +
+                '<div class="tile-year">' + v.year + '</div>' +
+                '<div class="tile-title">' + v.title + '</div>' +
+                '<div class="tile-desc">' + v.desc + '</div>' +
                 '<div class="tile-tags" style="margin-top:16px"><span class="tile-tag" style="font-size:.62rem;padding:3px 10px">' + label + '</span></div>' +
             '</div>' +
         '</div></div>' +
@@ -488,31 +543,44 @@ function buildTileHTML(yt, cat, year, title, desc) {
     );
 }
 
-function initTile(tile) {
-    tile.innerHTML = buildTileHTML(tile.dataset.youtube, tile.dataset.category, tile.dataset.year, tile.dataset.title, tile.dataset.desc);
+function initTile(tile, v) {
+    tile.dataset.youtube  = v.youtube;
+    tile.dataset.category = v.category;
+    tile.dataset.year     = v.year;
+    tile.dataset.title    = v.title;
+    tile.dataset.desc     = v.desc;
+    tile.innerHTML = buildTileHTML(v);
     tile.addEventListener('click', function(e) {
         if (e.target.closest('.player-close')) return;
         if (tile.classList.contains('expanded')) return;
-        document.querySelectorAll('.tile.expanded').forEach(function(t) { closeTile(t); });
+        document.querySelectorAll('.tile.expanded').forEach(closeTile);
         tile.classList.add('expanded');
         tile.querySelector('.player-video').innerHTML =
-            '<iframe src="https://www.youtube.com/embed/' + tile.dataset.youtube + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+            '<iframe src="https://www.youtube.com/embed/' + v.youtube + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
         setTimeout(function() { tile.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
     });
     var cb = tile.querySelector('.player-close');
     if (cb) cb.addEventListener('click', function(e) { e.stopPropagation(); closeTile(tile); });
-    // respect active filter
     var af = document.querySelector('.filter-btn.active');
-    if (af && af.dataset.filter !== 'all' && tile.dataset.category !== af.dataset.filter) tile.classList.add('hidden');
+    if (af && af.dataset.filter !== 'all' && v.category !== af.dataset.filter) tile.classList.add('hidden');
 }
 
 function closeTile(tile) {
     tile.classList.remove('expanded');
-    var v = tile.querySelector('.player-video');
-    if (v) v.innerHTML = '';
+    var pv = tile.querySelector('.player-video');
+    if (pv) pv.innerHTML = '';
 }
 
-document.querySelectorAll('.tile').forEach(initTile);
+function renderGrid(videos) {
+    var mosaic = document.getElementById('work');
+    mosaic.innerHTML = '';
+    videos.forEach(function(v) {
+        var tile = document.createElement('div');
+        tile.className = 'tile';
+        initTile(tile, v);
+        mosaic.appendChild(tile);
+    });
+}
 
 // ── Filters ──
 document.querySelectorAll('.filter-btn').forEach(function(btn) {
@@ -528,27 +596,30 @@ document.querySelectorAll('.filter-btn').forEach(function(btn) {
 });
 
 // ── Mobile nav ──
-document.getElementById('navToggle').addEventListener('click', function() {
-    document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('#navLinks a').forEach(function(a) {
-    a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); });
-});
+document.getElementById('navToggle').addEventListener('click', function() { document.getElementById('navLinks').classList.toggle('open'); });
+document.querySelectorAll('#navLinks a').forEach(function(a) { a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); }); });
 
-// ═══════════════════════════════════════
-//  ADMIN PANEL
-// ═══════════════════════════════════════
+// ═══════════════════════════════════════════
+//  ADMIN
+// ═══════════════════════════════════════════
 var unlocked = false;
-var selectedTile = null;
+var selectedIdx = null;
 
 var adminOverlay  = document.getElementById('adminOverlay');
 var adminLogin    = document.getElementById('adminLogin');
 var adminUnlocked = document.getElementById('adminUnlocked');
 var adminPassword = document.getElementById('adminPassword');
 
+function setBtn(id, loading, label) {
+    var b = document.getElementById(id);
+    b.disabled = loading;
+    b.innerHTML = loading ? '<span class="spinner"></span>' + label : label;
+}
+
 function openAdmin() {
     adminOverlay.classList.add('open');
-    if (!unlocked) { adminPassword.value = ''; document.getElementById('adminLoginErr').style.display = 'none'; setTimeout(function(){adminPassword.focus();}, 80); }
+    if (!unlocked) { adminPassword.value = ''; document.getElementById('adminLoginErr').style.display = 'none'; setTimeout(function(){adminPassword.focus();},80); }
+    else checkGhWarning();
 }
 function closeAdmin() { adminOverlay.classList.remove('open'); }
 
@@ -556,12 +627,24 @@ document.getElementById('adminTrigger').addEventListener('click', openAdmin);
 document.getElementById('adminClose').addEventListener('click', closeAdmin);
 adminOverlay.addEventListener('click', function(e) { if (e.target === adminOverlay) closeAdmin(); });
 
+function checkGhWarning() {
+    document.getElementById('ghWarning').style.display = ghReady() ? 'none' : 'block';
+}
+
 // Login
 document.getElementById('adminLoginBtn').addEventListener('click', function() {
     if (adminPassword.value === ADMIN_PASSWORD) {
         unlocked = true;
         adminLogin.classList.add('hidden');
         adminUnlocked.classList.remove('hidden');
+        // pre-fill settings if saved
+        var c = ghConfig();
+        if (c.owner)  document.getElementById('ghOwner').value  = c.owner;
+        if (c.repo)   document.getElementById('ghRepo').value   = c.repo;
+        if (c.branch) document.getElementById('ghBranch').value = c.branch;
+        checkGhWarning();
+        // re-load with github if credentials exist
+        if (ghReady()) loadData();
     } else {
         document.getElementById('adminLoginErr').style.display = 'block';
         adminPassword.value = ''; adminPassword.focus();
@@ -569,7 +652,6 @@ document.getElementById('adminLoginBtn').addEventListener('click', function() {
 });
 adminPassword.addEventListener('keydown', function(e) { if (e.key === 'Enter') document.getElementById('adminLoginBtn').click(); });
 
-// Logout
 document.getElementById('adminLogoutBtn').addEventListener('click', function() {
     unlocked = false;
     adminUnlocked.classList.add('hidden');
@@ -577,143 +659,231 @@ document.getElementById('adminLogoutBtn').addEventListener('click', function() {
     closeAdmin();
 });
 
-// ── Tabs ──
+// Tabs
 document.querySelectorAll('.admin-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
-        document.querySelectorAll('.admin-tab').forEach(function(t) { t.classList.remove('active'); });
-        document.querySelectorAll('.admin-panel').forEach(function(p) { p.classList.remove('visible'); });
+        document.querySelectorAll('.admin-tab').forEach(function(t){ t.classList.remove('active'); });
+        document.querySelectorAll('.admin-panel').forEach(function(p){ p.classList.remove('visible'); });
         tab.classList.add('active');
-        document.getElementById('tab' + tab.dataset.tab.charAt(0).toUpperCase() + tab.dataset.tab.slice(1)).classList.add('visible');
-        if (tab.dataset.tab === 'manage') refreshVideoList();
+        var name = tab.dataset.tab;
+        document.getElementById('tab' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('visible');
+        if (name === 'manage') refreshVideoList();
     });
 });
 
-// ── ADD tab ──
-var newYtIdEl = document.getElementById('newYtId');
-newYtIdEl.addEventListener('input', function() {
-    var id = newYtIdEl.value.trim();
+// ── ADD ──
+document.getElementById('newYtId').addEventListener('input', function() {
+    var id = this.value.trim();
     var p = document.getElementById('adminPreview');
-    p.innerHTML = id.length > 5
-        ? '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" onerror="this.parentElement.innerHTML=\'<span>Invalid ID</span>\'">'
-        : '<span>Thumbnail preview</span>';
+    p.innerHTML = id.length > 5 ? '<img src="https://img.youtube.com/vi/'+id+'/hqdefault.jpg" onerror="this.parentElement.innerHTML=\'<span>Invalid ID</span>\'">' : '<span>Thumbnail preview</span>';
 });
 
-document.getElementById('adminAddBtn').addEventListener('click', function() {
-    var yt  = newYtIdEl.value.trim();
+document.getElementById('adminAddBtn').addEventListener('click', async function() {
+    var yt  = document.getElementById('newYtId').value.trim();
     var ttl = document.getElementById('newTitle').value.trim();
     var yr  = document.getElementById('newYear').value.trim();
     var cat = document.getElementById('newCategory').value;
     var dsc = document.getElementById('newDesc').value.trim();
     var err = document.getElementById('addErr');
     var ok  = document.getElementById('addOk');
-    err.style.display = 'none'; ok.style.display = 'none';
-    if (!yt || !ttl || !yr || !dsc) { err.textContent = 'Please fill in all fields.'; err.style.display = 'block'; return; }
-    if (document.querySelector('.tile[data-youtube="' + yt + '"]')) { err.textContent = 'This video ID already exists.'; err.style.display = 'block'; return; }
-    var tile = document.createElement('div');
-    tile.className = 'tile';
-    tile.dataset.youtube = yt; tile.dataset.category = cat; tile.dataset.year = yr; tile.dataset.title = ttl; tile.dataset.desc = dsc;
-    var mosaic = document.getElementById('work');
-    mosaic.insertBefore(tile, mosaic.firstChild);
-    initTile(tile);
-    newYtIdEl.value = ''; document.getElementById('newTitle').value = ''; document.getElementById('newYear').value = ''; document.getElementById('newDesc').value = '';
-    document.getElementById('adminPreview').innerHTML = '<span>Thumbnail preview</span>';
-    ok.style.display = 'block'; setTimeout(function() { ok.style.display = 'none'; }, 3000);
+    err.style.display='none'; ok.style.display='none';
+    if (!yt||!ttl||!yr||!dsc) { err.textContent='Please fill in all fields.'; err.style.display='block'; return; }
+    if (VIDEOS.find(function(v){return v.youtube===yt;})) { err.textContent='This video ID already exists.'; err.style.display='block'; return; }
+
+    var entry = {youtube:yt, category:cat, year:yr, title:ttl, desc:dsc};
+    VIDEOS.unshift(entry);
+    renderGrid(VIDEOS);
+
+    if (ghReady()) {
+        setBtn('adminAddBtn', true, 'Saving…');
+        try {
+            await saveVideos(VIDEOS, 'Add video: ' + ttl);
+            ok.textContent = '✓ Saved to GitHub — live for all visitors.';
+        } catch(e) {
+            ok.textContent = '⚠ Added locally. GitHub save failed: ' + e.message;
+        }
+        setBtn('adminAddBtn', false, 'Add & Save');
+    } else {
+        ok.textContent = '✓ Added (configure GitHub in Settings to make it permanent).';
+    }
+    ok.style.display='block';
+    document.getElementById('newYtId').value='';
+    document.getElementById('newTitle').value='';
+    document.getElementById('newYear').value='';
+    document.getElementById('newDesc').value='';
+    document.getElementById('adminPreview').innerHTML='<span>Thumbnail preview</span>';
+    setTimeout(function(){ok.style.display='none';},4000);
 });
 
-// ── MANAGE tab ──
+// ── MANAGE ──
 function refreshVideoList() {
     var list = document.getElementById('videoList');
     list.innerHTML = '';
-    selectedTile = null;
+    selectedIdx = null;
     document.getElementById('editForm').style.display = 'none';
-    document.querySelectorAll('.tile').forEach(function(tile) {
+    VIDEOS.forEach(function(v, i) {
         var item = document.createElement('div');
         item.className = 'vitem';
         item.innerHTML =
-            '<img class="vitem-thumb" src="https://img.youtube.com/vi/' + tile.dataset.youtube + '/default.jpg" alt="">' +
-            '<div class="vitem-info">' +
-                '<div class="vitem-title">' + tile.dataset.title + '</div>' +
-                '<div class="vitem-meta">' + tile.dataset.year + ' &nbsp;<span class="vitem-tag">' + tile.dataset.category.replace('-',' ') + '</span></div>' +
-            '</div>';
+            '<img class="vitem-thumb" src="https://img.youtube.com/vi/'+v.youtube+'/default.jpg" alt="">' +
+            '<div class="vitem-info"><div class="vitem-title">'+v.title+'</div>' +
+            '<div class="vitem-meta">'+v.year+' &nbsp;<span class="vitem-tag">'+v.category.replace('-',' ')+'</span></div></div>';
         item.addEventListener('click', function() {
-            document.querySelectorAll('.vitem').forEach(function(v) { v.classList.remove('selected'); });
+            document.querySelectorAll('.vitem').forEach(function(x){x.classList.remove('selected');});
             item.classList.add('selected');
-            selectedTile = tile;
-            openEditForm(tile);
+            selectedIdx = i;
+            openEditForm(v);
         });
         list.appendChild(item);
     });
 }
 
-function openEditForm(tile) {
-    document.getElementById('editingLabel').textContent = tile.dataset.title;
-    document.getElementById('editTitle').value    = tile.dataset.title;
-    document.getElementById('editYear').value     = tile.dataset.year;
-    document.getElementById('editCategory').value = tile.dataset.category;
-    document.getElementById('editDesc').value     = tile.dataset.desc;
-    document.getElementById('manageErr').style.display = 'none';
-    document.getElementById('manageOk').style.display  = 'none';
+function openEditForm(v) {
+    document.getElementById('editingLabel').textContent = v.title;
+    document.getElementById('editTitle').value    = v.title;
+    document.getElementById('editYear').value     = v.year;
+    document.getElementById('editCategory').value = v.category;
+    document.getElementById('editDesc').value     = v.desc;
+    document.getElementById('manageErr').style.display='none';
+    document.getElementById('manageOk').style.display='none';
     var ef = document.getElementById('editForm');
-    ef.style.display = 'flex';
-    setTimeout(function() { ef.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+    ef.style.display='flex';
+    setTimeout(function(){ ef.scrollIntoView({behavior:'smooth',block:'nearest'}); },50);
 }
 
-document.getElementById('editSaveBtn').addEventListener('click', function() {
-    if (!selectedTile) return;
+document.getElementById('editSaveBtn').addEventListener('click', async function() {
+    if (selectedIdx === null) return;
     var err = document.getElementById('manageErr');
     var ok  = document.getElementById('manageOk');
     var ttl = document.getElementById('editTitle').value.trim();
     var yr  = document.getElementById('editYear').value.trim();
     var cat = document.getElementById('editCategory').value;
     var dsc = document.getElementById('editDesc').value.trim();
-    err.style.display = 'none'; ok.style.display = 'none';
-    if (!ttl || !yr || !dsc) { err.textContent = 'Please fill in all fields.'; err.style.display = 'block'; return; }
-    selectedTile.dataset.title    = ttl;
-    selectedTile.dataset.year     = yr;
-    selectedTile.dataset.category = cat;
-    selectedTile.dataset.desc     = dsc;
-    closeTile(selectedTile);
-    initTile(selectedTile);
+    err.style.display='none'; ok.style.display='none';
+    if (!ttl||!yr||!dsc) { err.textContent='Please fill in all fields.'; err.style.display='block'; return; }
+
+    VIDEOS[selectedIdx] = { youtube: VIDEOS[selectedIdx].youtube, category:cat, year:yr, title:ttl, desc:dsc };
+    renderGrid(VIDEOS);
     document.getElementById('editingLabel').textContent = ttl;
-    ok.style.display = 'block'; setTimeout(function() { ok.style.display = 'none'; }, 2500);
-    refreshVideoList();
+
+    if (ghReady()) {
+        setBtn('editSaveBtn', true, 'Saving…');
+        try {
+            await saveVideos(VIDEOS, 'Edit video: ' + ttl);
+            ok.textContent = '✓ Saved to GitHub.';
+        } catch(e) {
+            ok.textContent = '⚠ Updated locally. GitHub save failed: ' + e.message;
+        }
+        setBtn('editSaveBtn', false, 'Save & Publish');
+    } else {
+        ok.textContent = '✓ Updated (configure GitHub to make it permanent).';
+    }
+    ok.style.display='block';
+    setTimeout(function(){ ok.style.display='none'; refreshVideoList(); },2500);
 });
 
-document.getElementById('editDeleteBtn').addEventListener('click', function() {
-    if (!selectedTile) return;
-    if (!confirm('Remove "' + selectedTile.dataset.title + '" from the grid?')) return;
-    selectedTile.remove();
-    selectedTile = null;
+document.getElementById('editDeleteBtn').addEventListener('click', async function() {
+    if (selectedIdx === null) return;
+    var ttl = VIDEOS[selectedIdx].title;
+    if (!confirm('Remove "' + ttl + '" from the portfolio?')) return;
+    VIDEOS.splice(selectedIdx, 1);
+    renderGrid(VIDEOS);
+
+    if (ghReady()) {
+        setBtn('editDeleteBtn', true, 'Removing…');
+        try { await saveVideos(VIDEOS, 'Remove video: ' + ttl); } catch(e) {}
+        setBtn('editDeleteBtn', false, 'Remove');
+    }
     refreshVideoList();
 });
 
 document.getElementById('editCancelBtn').addEventListener('click', function() {
-    document.getElementById('editForm').style.display = 'none';
-    document.querySelectorAll('.vitem').forEach(function(v) { v.classList.remove('selected'); });
-    selectedTile = null;
+    document.getElementById('editForm').style.display='none';
+    document.querySelectorAll('.vitem').forEach(function(x){x.classList.remove('selected');});
+    selectedIdx=null;
 });
 
-// ── THEME tab ──
-var savedTheme = localStorage.getItem('nr-theme') || '';
-applyTheme(savedTheme);
-document.querySelectorAll('.swatch').forEach(function(sw) {
-    if (sw.dataset.theme === savedTheme) sw.classList.add('active');
-    else sw.classList.remove('active');
-});
-
+// ── THEME ──
 function applyTheme(t) {
     if (t) document.documentElement.setAttribute('data-theme', t);
-    else document.documentElement.removeAttribute('data-theme');
+    else   document.documentElement.removeAttribute('data-theme');
+}
+function updateSwatchUI(t) {
+    document.querySelectorAll('.swatch').forEach(function(s) {
+        s.classList.toggle('active', s.dataset.theme === t);
+    });
 }
 
-document.getElementById('themeSwatches').addEventListener('click', function(e) {
-    var sw = e.target.closest('.swatch');
-    if (!sw) return;
-    var t = sw.dataset.theme;
-    applyTheme(t);
-    localStorage.setItem('nr-theme', t);
-    document.querySelectorAll('.swatch').forEach(function(s) { s.classList.toggle('active', s === sw); });
+document.querySelectorAll('.swatch').forEach(function(sw) {
+    sw.addEventListener('click', async function() {
+        var t = sw.dataset.theme;
+        applyTheme(t);
+        updateSwatchUI(t);
+        SITE_CONFIG.theme = t;
+        var err = document.getElementById('themeErr');
+        var ok  = document.getElementById('themeOk');
+        err.style.display='none'; ok.style.display='none';
+        if (ghReady()) {
+            try {
+                await saveConfig(SITE_CONFIG, 'Update theme: ' + (t||'void'));
+                ok.textContent = '✓ Theme saved — all visitors will see this.';
+            } catch(e) {
+                err.textContent = '⚠ Theme applied locally. GitHub save failed: ' + e.message;
+                err.style.display='block';
+            }
+            ok.style.display='block';
+            setTimeout(function(){ ok.style.display='none'; },3000);
+        } else {
+            ok.textContent = 'Theme applied locally. Configure GitHub in Settings to make it permanent.';
+            ok.style.display='block';
+            setTimeout(function(){ ok.style.display='none'; },3000);
+        }
+    });
 });
+
+// ── SETTINGS ──
+document.getElementById('ghSaveBtn').addEventListener('click', function() {
+    var owner  = document.getElementById('ghOwner').value.trim();
+    var repo   = document.getElementById('ghRepo').value.trim();
+    var branch = document.getElementById('ghBranch').value.trim() || 'main';
+    var token  = document.getElementById('ghToken').value.trim();
+    var err = document.getElementById('settingsErr');
+    var ok  = document.getElementById('settingsOk');
+    err.style.display='none'; ok.style.display='none';
+    if (!owner||!repo||!token) { err.textContent='Please fill in all fields.'; err.style.display='block'; return; }
+    sessionStorage.setItem('gh-owner', owner);
+    sessionStorage.setItem('gh-repo', repo);
+    sessionStorage.setItem('gh-branch', branch);
+    sessionStorage.setItem('gh-token', token);
+    ok.textContent = '✓ Settings saved for this session. Reloading data…';
+    ok.style.display='block';
+    checkGhWarning();
+    loadData();
+    setTimeout(function(){ ok.style.display='none'; },4000);
+});
+
+document.getElementById('ghTestBtn').addEventListener('click', async function() {
+    var err = document.getElementById('settingsErr');
+    var ok  = document.getElementById('settingsOk');
+    err.style.display='none'; ok.style.display='none';
+    if (!ghReady()) { err.textContent='Save your settings first.'; err.style.display='block'; return; }
+    setBtn('ghTestBtn', true, 'Testing…');
+    try {
+        var c = ghConfig();
+        var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo;
+        var r = await fetch(url, { headers:{ 'Authorization':'Bearer '+c.token, 'Accept':'application/vnd.github+json' }});
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        ok.textContent = '✓ Connected successfully to ' + c.owner + '/' + c.repo;
+        ok.style.display='block';
+    } catch(e) {
+        err.textContent = '✗ Connection failed: ' + e.message + '. Check your username, repo, and token.';
+        err.style.display='block';
+    }
+    setBtn('ghTestBtn', false, 'Test Connection');
+});
+
+// ── Boot ──
+loadData();
 </script>
 </body>
 </html>
