@@ -487,8 +487,8 @@ async function ghPut(path, content, message, sha) {
 async function getLatestSha(path) {
     // Always fetch a fresh SHA immediately before writing to avoid stale-SHA conflicts
     var c = ghConfig();
-    var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + path + '?ref=' + c.branch + '&_=' + Date.now();
-    var r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github+json', 'Cache-Control': 'no-cache' } });
+    var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + path + '?ref=' + c.branch;
+    var r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github+json' } });
     if (!r.ok) { if (r.status === 404) return null; throw new Error('GitHub ' + r.status); }
     var d = await r.json();
     return d.sha;
