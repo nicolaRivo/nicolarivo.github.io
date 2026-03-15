@@ -268,7 +268,7 @@
     </div>
     <div class="about-contact">
         <h3>Get In Touch</h3>
-        <a href="mailto:nicola.rivosecchi@gmail.com">nicola.rivosecchi@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#8fe1e6ece0e3eea1fde6f9e0fceaecece7e6cfe8e2eee6e3a1ece0e2"><span class="__cf_email__" data-cfemail="3f51565c50535e114d5649504c5a5c5c57567f58525e5653115c5052">[email&#160;protected]</span></a>
         <a href="tel:+447438779924">+44 7438 779924</a>
         <span style="font-size:.85rem;color:var(--text-dim)">London, UK</span>
         <div class="about-socials">
@@ -424,7 +424,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─────────────────────────────────────────────
 // CONFIG — change password here
 var ADMIN_PASSWORD = 'nicola2025';
@@ -484,15 +484,23 @@ async function ghPut(path, content, message, sha) {
     return r.json();
 }
 
+async function getLatestSha(path) {
+    // Always fetch a fresh SHA immediately before writing to avoid stale-SHA conflicts
+    var c = ghConfig();
+    var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + path + '?ref=' + c.branch + '&_=' + Date.now();
+    var r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github+json', 'Cache-Control': 'no-cache' } });
+    if (!r.ok) { if (r.status === 404) return null; throw new Error('GitHub ' + r.status); }
+    var d = await r.json();
+    return d.sha;
+}
+
 async function saveVideos(videos, msg) {
-    var existing = await ghGet('videos.json');
-    var sha = existing ? existing.sha : undefined;
+    var sha = await getLatestSha('videos.json');
     await ghPut('videos.json', JSON.stringify(videos, null, 2), msg || 'Update videos.json', sha);
 }
 
 async function saveConfig(cfg, msg) {
-    var existing = await ghGet('config.json');
-    var sha = existing ? existing.sha : undefined;
+    var sha = await getLatestSha('config.json');
     await ghPut('config.json', JSON.stringify(cfg, null, 2), msg || 'Update config.json', sha);
 }
 
@@ -876,14 +884,3 @@ document.getElementById('ghTestBtn').addEventListener('click', async function() 
         ok.textContent = '✓ Connected successfully to ' + c.owner + '/' + c.repo;
         ok.style.display='block';
     } catch(e) {
-        err.textContent = '✗ Connection failed: ' + e.message + '. Check your username, repo, and token.';
-        err.style.display='block';
-    }
-    setBtn('ghTestBtn', false, 'Test Connection');
-});
-
-// ── Boot ──
-loadData();
-</script>
-</body>
-</html>
