@@ -1,1 +1,149 @@
-[]
+[
+  {
+    "youtube": "h_u0grD7bVQ",
+    "category": "film-sound",
+    "year": "2024",
+    "title": "Le Parole Sono Pietre",
+    "desc": "Documentary film sound. Intimate sonic landscape blending ambient textures with musical cues."
+  },
+  {
+    "youtube": "HMU5f3hDvT8",
+    "category": "film-sound",
+    "year": "2024",
+    "title": "Gestare",
+    "desc": "Horror short by Stella Segar. Visceral bodily sounds create psychological horror exploring bodily autonomy."
+  },
+  {
+    "youtube": "fl7CV_QEHws",
+    "category": "film-sound",
+    "year": "2024",
+    "title": "Re-Creations",
+    "desc": "Short film sound design. Layered sonic environments crafted to evoke memory and transformation."
+  },
+  {
+    "youtube": "qm9u6u_VTUs",
+    "category": "film-sound",
+    "year": "2021",
+    "title": "In The Cards",
+    "desc": "Suspenseful short exploring fate and choice. Tension built through environmental sounds and crafted silence."
+  },
+  {
+    "youtube": "SMic-oK7lgk",
+    "category": "film-sound",
+    "year": "2020",
+    "title": "Mary La Bone",
+    "desc": "Gothic-inspired short. Audio evolves from grounded reality to ethereal otherworldliness."
+  },
+  {
+    "youtube": "nCkD6japtt4",
+    "category": "film-sound",
+    "year": "2020",
+    "title": "The Hand of the Wind",
+    "desc": "Atmospheric short set in Mustang Valley, Nepal. The wind becomes a character through blended organic and processed sound."
+  },
+  {
+    "youtube": "QdXr3KM_TQ8",
+    "category": "sound-design",
+    "year": "2022",
+    "title": "Obscure Sorrows — Vemödalen",
+    "desc": "Sonic narrative from John Koenig's Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions."
+  },
+  {
+    "youtube": "zbzwmKkAHS8",
+    "category": "sound-design",
+    "year": "2022",
+    "title": "Obscure Sorrows — Rubatosis",
+    "desc": "An unsettling awareness of your own heartbeat rendered through carefully crafted soundscapes."
+  },
+  {
+    "youtube": "Vlk5w65sN6U",
+    "category": "sound-design",
+    "year": "2022",
+    "title": "Obscure Sorrows — Trumspringa",
+    "desc": "The ache of a life unlived rendered through layered field recordings."
+  },
+  {
+    "youtube": "UzIs8wy50-M",
+    "category": "composition",
+    "year": "2022",
+    "title": "Ondine's Theme",
+    "desc": "Delicate composition inspired by the water nymph. Shimmering textures create an immersive underwater atmosphere."
+  },
+  {
+    "youtube": "IELbdpEHDks",
+    "category": "composition",
+    "year": "2020",
+    "title": "Action!",
+    "desc": "Cinematic composition exploring tension and release. Rhythmic intensity meets orchestral breadth."
+  },
+  {
+    "youtube": "d6PftRQaXNE",
+    "category": "composition",
+    "year": "2019",
+    "title": "Sobhraj",
+    "desc": "Tense composition using textural elements and rhythmic intensity — a psychological portrait."
+  },
+  {
+    "youtube": "kxqiVSSbUh8",
+    "category": "composition",
+    "year": "2019",
+    "title": "Tom & Jerry",
+    "desc": "Playful reinterpretation of cartoon aesthetics. Detailed foley meets contemporary musical techniques."
+  },
+  {
+    "youtube": "PUuq5YRfbPw",
+    "category": "composition",
+    "year": "2019",
+    "title": "O2",
+    "desc": "Minimalist composition exploring breath and space. Sparse harmonic textures evolve slowly over time."
+  },
+  {
+    "youtube": "1m9ioSIsD24",
+    "category": "composition",
+    "year": "2019",
+    "title": "What a Dream",
+    "desc": "Dreamy impressionistic composition drawing from surrealist imagery and film score traditions."
+  },
+  {
+    "youtube": "O6e4vxhFwJo",
+    "category": "composition",
+    "year": "2019",
+    "title": "AmEx",
+    "desc": "Advertising composition with a sophisticated harmonic palette and polished production aesthetic."
+  },
+  {
+    "youtube": "_Awxf5QOLC8",
+    "category": "software",
+    "year": "2023",
+    "title": "evolvingDrone",
+    "desc": "Evolving drone synthesis engine. Layered harmonics and subtle modulation produce detailed ambient environments."
+  },
+  {
+    "youtube": "Y_xNDgRDc2E",
+    "category": "software",
+    "year": "2023",
+    "title": "hummingBot",
+    "desc": "Algorithmic composition tool. Melodic patterns inspired by hummingbird flight translated from movement data."
+  },
+  {
+    "youtube": "9fJ-gJ6vCk0",
+    "category": "software",
+    "year": "2023",
+    "title": "SWAMP",
+    "desc": "Generative audio environment inspired by wetland ecosystems."
+  },
+  {
+    "youtube": "kf7i229dozE",
+    "category": "software",
+    "year": "2023",
+    "title": "VOX POPULI",
+    "desc": "Voice-driven generative system. Spoken input transformed into evolving harmonic and rhythmic structures."
+  },
+  {
+    "youtube": "plQkoRI_qXQ",
+    "category": "software",
+    "year": "2022",
+    "title": "BioSounds",
+    "desc": "Generative system transforming biological data into evolving soundscapes through custom algorithms."
+  }
+]
