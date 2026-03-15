@@ -509,19 +509,21 @@ var VIDEOS = [];
 var SITE_CONFIG = { theme: '' };
 
 async function loadData() {
-    if (!ghReady()) {
-        VIDEOS = DEFAULT_VIDEOS.slice();
-        renderGrid(VIDEOS);
-        return;
-    }
+    var c = ghConfig();
+    var base = 'https://raw.githubusercontent.com/' + (c.owner || 'nicolarivo') + '/' + (c.repo || 'nicolarivo.github.io') + '/' + (c.branch || 'main') + '/';
+
+    // Always load videos from the public raw URL — no token needed, works for all visitors
     try {
-        var vf = await ghGet('videos.json');
-        VIDEOS = vf ? JSON.parse(decodeURIComponent(escape(atob(vf.content.replace(/\n/g,''))))) : DEFAULT_VIDEOS.slice();
+        var vr = await fetch(base + 'videos.json?_=' + Date.now());
+        VIDEOS = vr.ok ? await vr.json() : DEFAULT_VIDEOS.slice();
     } catch(e) { VIDEOS = DEFAULT_VIDEOS.slice(); }
+
+    // Load config (theme) the same way
     try {
-        var cf = await ghGet('config.json');
-        SITE_CONFIG = cf ? JSON.parse(decodeURIComponent(escape(atob(cf.content.replace(/\n/g,''))))) : { theme: '' };
+        var cr = await fetch(base + 'config.json?_=' + Date.now());
+        SITE_CONFIG = cr.ok ? await cr.json() : { theme: '' };
     } catch(e) { SITE_CONFIG = { theme: '' }; }
+
     applyTheme(SITE_CONFIG.theme || '');
     updateSwatchUI(SITE_CONFIG.theme || '');
     renderGrid(VIDEOS);
