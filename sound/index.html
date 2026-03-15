@@ -22,113 +22,220 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#080808;--surface:#101010;--border:rgba(255,255,255,0.06);--cyan:#00E5CC;--cyan-dim:rgba(0,229,204,0.08);--text:rgba(255,255,255,0.9);--text-dim:rgba(255,255,255,0.45);--text-muted:rgba(255,255,255,0.2);--mono:'Space Mono',monospace;--sans:'Outfit',sans-serif}
+
+        /* ── THEMES ── */
+        :root{
+            --bg:#080808;--surface:#101010;--border:rgba(255,255,255,0.06);
+            --accent:#00E5CC;--accent-dim:rgba(0,229,204,0.08);
+            --text:rgba(255,255,255,0.9);--text-dim:rgba(255,255,255,0.45);--text-muted:rgba(255,255,255,0.2);
+            --nav-bg:rgba(8,8,8,0.9);--filter-bg:rgba(8,8,8,0.92);--modal-bg:#111;--input-bg:#0c0c0c;
+            --mono:'Space Mono',monospace;--sans:'Outfit',sans-serif;
+            --play-bg:rgba(0,229,204,0.9);
+        }
+        /* Slate — dark blue-grey */
+        [data-theme="slate"]{
+            --bg:#0a0e14;--surface:#121820;--border:rgba(255,255,255,0.07);
+            --accent:#7EB8F7;--accent-dim:rgba(126,184,247,0.08);
+            --text:rgba(255,255,255,0.88);--text-dim:rgba(255,255,255,0.42);--text-muted:rgba(255,255,255,0.18);
+            --nav-bg:rgba(10,14,20,0.92);--filter-bg:rgba(10,14,20,0.94);--modal-bg:#131a23;--input-bg:#0c1018;
+            --play-bg:rgba(126,184,247,0.9);
+        }
+        /* Dusk — warm charcoal */
+        [data-theme="dusk"]{
+            --bg:#100c0a;--surface:#1a1512;--border:rgba(255,220,180,0.07);
+            --accent:#F0A05A;--accent-dim:rgba(240,160,90,0.08);
+            --text:rgba(255,240,225,0.9);--text-dim:rgba(255,240,225,0.42);--text-muted:rgba(255,240,225,0.18);
+            --nav-bg:rgba(16,12,10,0.92);--filter-bg:rgba(16,12,10,0.94);--modal-bg:#1a1512;--input-bg:#120e0b;
+            --play-bg:rgba(240,160,90,0.9);
+        }
+        /* Fog — soft light mode */
+        [data-theme="fog"]{
+            --bg:#F4F2EF;--surface:#ECEAE6;--border:rgba(0,0,0,0.08);
+            --accent:#2563EB;--accent-dim:rgba(37,99,235,0.08);
+            --text:rgba(0,0,0,0.85);--text-dim:rgba(0,0,0,0.45);--text-muted:rgba(0,0,0,0.25);
+            --nav-bg:rgba(244,242,239,0.92);--filter-bg:rgba(244,242,239,0.95);--modal-bg:#ECEAE6;--input-bg:#E4E2DE;
+            --play-bg:rgba(37,99,235,0.9);
+        }
+        /* Forest — deep green */
+        [data-theme="forest"]{
+            --bg:#060e08;--surface:#0c1a0f;--border:rgba(120,220,140,0.07);
+            --accent:#5DDC7E;--accent-dim:rgba(93,220,126,0.08);
+            --text:rgba(220,255,230,0.88);--text-dim:rgba(220,255,230,0.42);--text-muted:rgba(220,255,230,0.18);
+            --nav-bg:rgba(6,14,8,0.92);--filter-bg:rgba(6,14,8,0.94);--modal-bg:#0c1a0f;--input-bg:#081008;
+            --play-bg:rgba(93,220,126,0.9);
+        }
+
         html{scroll-behavior:smooth}
-        body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden}
-        .nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(8,8,8,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+        body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .35s,color .35s}
+
+        /* NAV */
+        .nav{position:fixed;top:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .35s,border-color .35s}
         .nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
         .nav-logo{font-family:var(--mono);font-size:.8rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:.04em}
-        .nav-logo span{color:var(--cyan)}
+        .nav-logo span{color:var(--accent)}
         .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
         .nav-links a{text-decoration:none;color:var(--text-dim);font-size:.8rem;font-weight:400;transition:color .2s;letter-spacing:.02em}
-        .nav-links a:hover{color:var(--cyan)}
-        .nav-cta{color:var(--cyan)!important;border:1px solid rgba(0,229,204,0.25);padding:7px 18px;border-radius:50px;font-weight:500!important}
-        .nav-cta:hover{background:var(--cyan-dim);border-color:var(--cyan)}
+        .nav-links a:hover{color:var(--accent)}
+        .nav-cta{color:var(--accent)!important;border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);padding:7px 18px;border-radius:50px;font-weight:500!important}
+        .nav-cta:hover{background:var(--accent-dim);border-color:var(--accent)}
         .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
         .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text);margin:4px 0}
+
+        /* HERO */
         .hero{padding:140px 24px 60px;text-align:center}
-        .hero h1{font-family:var(--sans);font-weight:200;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
-        .hero h1 strong{font-weight:500;color:var(--cyan)}
+        .hero h1{font-weight:200;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
+        .hero h1 strong{font-weight:500;color:var(--accent)}
         .hero p{font-size:.95rem;color:var(--text-dim);max-width:520px;margin:0 auto;line-height:1.7}
-        .filters{padding:20px 24px 32px;text-align:center;position:sticky;top:60px;z-index:100;background:rgba(8,8,8,0.92);backdrop-filter:blur(12px)}
+
+        /* FILTERS */
+        .filters{padding:20px 24px 32px;text-align:center;position:sticky;top:60px;z-index:100;background:var(--filter-bg);backdrop-filter:blur(12px);transition:background .35s}
         .filter-btn{font-family:var(--mono);font-size:.7rem;font-weight:400;padding:7px 18px;border-radius:50px;cursor:pointer;background:transparent;color:var(--text-dim);border:1px solid var(--border);margin:0 4px 8px;transition:all .2s;letter-spacing:.04em;text-transform:uppercase}
-        .filter-btn:hover{border-color:rgba(255,255,255,0.15);color:var(--text)}
-        .filter-btn.active{background:var(--cyan);color:var(--bg);border-color:var(--cyan);font-weight:700}
+        .filter-btn:hover{border-color:color-mix(in srgb,var(--text) 20%,transparent);color:var(--text)}
+        .filter-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}
+
+        /* MOSAIC */
         .mosaic{max-width:1400px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-        .tile{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--surface);border-radius:4px}
+        .tile{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--surface);border-radius:4px;transition:background .35s}
         .tile-thumb{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .5s ease;filter:brightness(0.7)}
-        .tile:hover .tile-thumb{transform:scale(1.05);filter:brightness(0.35)}
+        .tile:hover .tile-thumb{transform:scale(1.05);filter:brightness(0.3)}
         .tile-overlay{position:absolute;inset:0;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transition:opacity .35s ease}
         .tile:hover .tile-overlay{opacity:1}
-        .tile-year{font-family:var(--mono);font-size:.62rem;color:var(--cyan);letter-spacing:.08em;margin-bottom:4px}
-        .tile-title{font-weight:500;font-size:.92rem;line-height:1.25;margin-bottom:4px}
-        .tile-desc{font-size:.72rem;color:var(--text-dim);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-        .tile-tags{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap}
-        .tile-tag{font-family:var(--mono);font-size:.55rem;padding:2px 8px;border-radius:50px;background:var(--cyan-dim);color:var(--cyan);letter-spacing:.04em;text-transform:uppercase}
-        .tile-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);width:48px;height:48px;border-radius:50%;background:rgba(0,229,204,0.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .35s ease}
+        .tile-year{font-family:var(--mono);font-size:.62rem;color:var(--accent);letter-spacing:.08em;margin-bottom:4px}
+        .tile-title{font-weight:500;font-size:.92rem;line-height:1.25;margin-bottom:6px}
+        .tile-tags{display:flex;gap:4px;flex-wrap:wrap}
+        .tile-tag{font-family:var(--mono);font-size:.55rem;padding:2px 8px;border-radius:50px;background:var(--accent-dim);color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
+        .tile-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);width:48px;height:48px;border-radius:50%;background:var(--play-bg);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .35s ease}
         .tile-play::after{content:'';width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid var(--bg);margin-left:3px}
         .tile:hover .tile-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
         .tile.expanded{grid-column:1/-1;aspect-ratio:auto}
         .tile.expanded .tile-thumb,.tile.expanded .tile-overlay,.tile.expanded .tile-play{display:none}
         .tile-player{display:none;width:100%}
         .tile.expanded .tile-player{display:block}
-        .player-wrapper{display:grid;grid-template-columns:2fr 1fr;gap:0;background:var(--surface);border-radius:4px;overflow:hidden}
+        .player-wrapper{display:grid;grid-template-columns:2fr 1fr;background:var(--surface);border-radius:4px;overflow:hidden;transition:background .35s}
         .player-video{aspect-ratio:16/9;width:100%}
         .player-video iframe{width:100%;height:100%;border:none}
         .player-info{padding:32px 28px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--border)}
-        .player-close{position:absolute;top:12px;right:16px;background:rgba(255,255,255,0.08);border:none;color:var(--text-dim);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center;transition:all .2s;z-index:5}
+        .player-close{position:absolute;top:12px;right:16px;background:rgba(128,128,128,0.15);border:none;color:var(--text-dim);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center;transition:all .2s;z-index:5}
         .tile.expanded .player-close{display:flex}
-        .player-close:hover{background:rgba(255,255,255,0.15);color:var(--text)}
+        .player-close:hover{background:rgba(128,128,128,0.25);color:var(--text)}
         .player-info .tile-year{margin-bottom:6px}
         .player-info .tile-title{font-size:1.3rem;margin-bottom:12px}
-        .player-info .tile-desc{-webkit-line-clamp:unset;font-size:.85rem;color:var(--text-dim);line-height:1.7}
+        .player-info .tile-desc{font-size:.85rem;color:var(--text-dim);line-height:1.7}
         .player-info .tile-tags{margin-top:16px}
         .player-info .tile-tag{font-size:.62rem;padding:3px 10px}
+
+        /* ABOUT */
         .about{padding:80px 24px;border-top:1px solid var(--border)}
         .about-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:48px;align-items:start}
         .about-photo{width:120px;flex-shrink:0}
         .about-photo img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--border);display:block}
-        .about-photo-placeholder{width:120px;height:120px;border-radius:50%;border:2px dashed rgba(0,229,204,0.25);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--text-muted);font-size:.6rem;font-family:var(--mono);letter-spacing:.06em;text-align:center;text-transform:uppercase;cursor:pointer;transition:all .3s}
-        .about-photo-placeholder:hover{border-color:var(--cyan);color:var(--cyan)}
-        .about-photo-placeholder svg{opacity:.4}
         .about-bio h2{font-weight:300;font-size:1.3rem;margin-bottom:14px;letter-spacing:-.01em}
         .about-bio h2 strong{font-weight:500}
         .about-bio p{font-size:.88rem;color:var(--text-dim);line-height:1.75}
-        .about-skills h3,.about-contact h3{font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+        .about-skills h3,.about-contact h3{font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
         .about-skills-list{font-size:.82rem;color:var(--text-dim);line-height:2}
         .about-contact a{display:block;color:var(--text-dim);text-decoration:none;font-size:.85rem;margin-bottom:8px;transition:color .2s}
-        .about-contact a:hover{color:var(--cyan)}
+        .about-contact a:hover{color:var(--accent)}
         .about-socials{display:flex;gap:10px;margin-top:16px}
         .about-socials a{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--text-dim);transition:all .2s}
-        .about-socials a:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim)}
+        .about-socials a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
 
-        /* ── Admin panel ── */
-        .admin-trigger{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:900;transition:all .25s;font-size:1.1rem}
-        .admin-trigger:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim)}
-        .admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);z-index:1100;align-items:center;justify-content:center}
-        .admin-overlay.open{display:flex}
-        .admin-modal{background:#111;border:1px solid var(--border);border-radius:12px;width:min(520px,92vw);padding:36px;position:relative}
-        .admin-modal h2{font-family:var(--mono);font-size:.75rem;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px}
-        .admin-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.2rem;line-height:1;transition:color .2s}
-        .admin-close:hover{color:var(--text)}
-        .admin-login{display:flex;flex-direction:column;gap:14px}
-        .admin-form{display:none;flex-direction:column;gap:14px}
-        .admin-form.visible{display:flex}
-        .admin-login.hidden{display:none}
-        label{font-family:var(--mono);font-size:.62rem;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
-        .admin-input{width:100%;background:#0c0c0c;border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .2s}
-        .admin-input:focus{border-color:rgba(0,229,204,0.4)}
-        .admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-        .admin-btn{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:11px 20px;border-radius:6px;cursor:pointer;border:none;background:var(--cyan);color:var(--bg);transition:opacity .2s}
-        .admin-btn:hover{opacity:.85}
-        .admin-btn.secondary{background:transparent;border:1px solid var(--border);color:var(--text-dim)}
-        .admin-btn.secondary:hover{border-color:var(--cyan);color:var(--cyan);opacity:1}
-        .admin-err{font-size:.75rem;color:#ff6b6b;font-family:var(--mono)}
-        .admin-success{font-size:.75rem;color:var(--cyan);font-family:var(--mono)}
-        .admin-preview{width:100%;aspect-ratio:16/9;background:#0c0c0c;border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:.75rem;font-family:var(--mono)}
-        .admin-preview img{width:100%;height:100%;object-fit:cover}
-        select.admin-input{appearance:none;cursor:pointer}
+        /* FOOTER */
         footer{border-top:1px solid var(--border);padding:24px;text-align:center}
         footer p{font-size:.68rem;color:var(--text-muted)}
         footer a{color:var(--text-muted);text-decoration:none}
         footer a:hover{color:var(--text-dim)}
-        @media(max-width:1024px){.mosaic{grid-template-columns:repeat(3,1fr)}.player-wrapper{grid-template-columns:1fr}.player-info{border-left:none;border-top:1px solid var(--border)}.about-inner{grid-template-columns:auto 1fr 1fr;gap:32px}}
-        @media(max-width:768px){.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--bg);padding:20px 24px;gap:14px;border-bottom:1px solid var(--border)}.nav-toggle{display:block}.mosaic{grid-template-columns:repeat(2,1fr);gap:4px}.about-inner{grid-template-columns:1fr;gap:32px}.about-photo{display:flex;justify-content:center}}
+
+        /* ADMIN TRIGGER */
+        .admin-trigger{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:900;transition:all .25s}
+        .admin-trigger:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+
+        /* ADMIN OVERLAY & MODAL */
+        .admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:1100;align-items:center;justify-content:center}
+        .admin-overlay.open{display:flex}
+        .admin-modal{background:var(--modal-bg);border:1px solid var(--border);border-radius:12px;width:min(560px,94vw);max-height:90vh;overflow-y:auto;padding:32px;position:relative;transition:background .35s,border-color .35s}
+        .admin-modal::-webkit-scrollbar{width:4px}
+        .admin-modal::-webkit-scrollbar-track{background:transparent}
+        .admin-modal::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+        /* ADMIN TABS */
+        .admin-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px}
+        .admin-tab{font-family:var(--mono);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer;background:none;border:none;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+        .admin-tab:hover{color:var(--text-dim)}
+        .admin-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+        .admin-panel{display:none;flex-direction:column;gap:14px}
+        .admin-panel.visible{display:flex}
+
+        /* ADMIN LOGIN */
+        .admin-login{display:flex;flex-direction:column;gap:14px}
+        .admin-login.hidden{display:none}
+        .admin-locked{display:flex;flex-direction:column;gap:14px}
+        .admin-locked.hidden{display:none}
+
+        /* FORMS */
+        .admin-modal h2{font-family:var(--mono);font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
+        .admin-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.2rem;line-height:1;transition:color .2s}
+        .admin-close:hover{color:var(--text)}
+        .a-label{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
+        .admin-input{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .2s,background .35s}
+        .admin-input:focus{border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+        .admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .admin-btn{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 20px;border-radius:6px;cursor:pointer;border:none;background:var(--accent);color:var(--bg);transition:opacity .2s}
+        .admin-btn:hover{opacity:.82}
+        .admin-btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-dim)}
+        .admin-btn.ghost:hover{border-color:var(--accent);color:var(--accent);opacity:1}
+        .admin-btn.danger{background:rgba(220,60,60,0.15);border:1px solid rgba(220,60,60,0.3);color:#f87171}
+        .admin-btn.danger:hover{background:rgba(220,60,60,0.25);opacity:1}
+        .admin-btn-row{display:flex;gap:8px;flex-wrap:wrap}
+        .admin-err{font-size:.72rem;color:#f87171;font-family:var(--mono)}
+        .admin-ok{font-size:.72rem;color:var(--accent);font-family:var(--mono)}
+        .admin-preview{width:100%;aspect-ratio:16/9;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+        .admin-preview img{width:100%;height:100%;object-fit:cover}
+        .admin-preview span{font-size:.62rem;font-family:var(--mono);color:var(--text-muted)}
+        select.admin-input{appearance:none;cursor:pointer}
+
+        /* VIDEO LIST (manage tab) */
+        .video-list{display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto}
+        .video-list::-webkit-scrollbar{width:4px}
+        .video-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+        .vitem{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:6px;background:var(--input-bg);border:1px solid var(--border);cursor:pointer;transition:border-color .2s}
+        .vitem:hover{border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+        .vitem.selected{border-color:var(--accent)}
+        .vitem-thumb{width:64px;height:36px;object-fit:cover;border-radius:3px;flex-shrink:0;background:var(--surface)}
+        .vitem-info{flex:1;min-width:0}
+        .vitem-title{font-size:.8rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .vitem-meta{font-family:var(--mono);font-size:.58rem;color:var(--text-muted);margin-top:2px}
+        .vitem-tag{font-family:var(--mono);font-size:.52rem;padding:1px 6px;border-radius:50px;background:var(--accent-dim);color:var(--accent);text-transform:uppercase}
+
+        /* THEME SWATCHES */
+        .theme-swatches{display:flex;gap:8px;flex-wrap:wrap}
+        .swatch{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s,border-color .2s;position:relative}
+        .swatch:hover{transform:scale(1.15)}
+        .swatch.active{border-color:var(--accent)}
+        .swatch::after{content:attr(data-name);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.52rem;color:var(--text-muted);white-space:nowrap;opacity:0;transition:opacity .2s}
+        .swatch:hover::after{opacity:1}
+
+        /* RESPONSIVE */
+        @media(max-width:1024px){
+            .mosaic{grid-template-columns:repeat(3,1fr)}
+            .player-wrapper{grid-template-columns:1fr}
+            .player-info{border-left:none;border-top:1px solid var(--border)}
+            .about-inner{grid-template-columns:auto 1fr 1fr;gap:32px}
+        }
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .nav-links.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--bg);padding:20px 24px;gap:14px;border-bottom:1px solid var(--border)}
+            .nav-toggle{display:block}
+            .mosaic{grid-template-columns:repeat(2,1fr);gap:4px}
+            .about-inner{grid-template-columns:1fr;gap:32px}
+            .about-photo{display:flex;justify-content:center}
+        }
         @media(max-width:480px){.mosaic{grid-template-columns:1fr}}
         .tile.hidden{display:none}
     </style>
 </head>
 <body>
+
 <nav class="nav"><div class="nav-inner">
     <a href="https://nicolarivo.co.uk/sound" class="nav-logo">NICOLA<span>_</span>RIVOSECCHI</a>
     <ul class="nav-links" id="navLinks">
@@ -155,199 +262,47 @@
 
 <div class="mosaic" id="work">
 
-    <!-- ==================== FILM SOUND ==================== -->
-    <!-- 8 months ago -->
-    <div class="tile"
-         data-youtube="h_u0grD7bVQ"
-         data-category="film-sound"
-         data-year="2024"
-         data-title="Le Parole Sono Pietre"
-         data-desc="Documentary film sound. Intimate sonic landscape blending ambient textures with musical cues."></div>
+    <!-- FILM SOUND -->
+    <div class="tile" data-youtube="h_u0grD7bVQ"  data-category="film-sound"   data-year="2024" data-title="Le Parole Sono Pietre"          data-desc="Documentary film sound. Intimate sonic landscape blending ambient textures with musical cues."></div>
+    <div class="tile" data-youtube="HMU5f3hDvT8"  data-category="film-sound"   data-year="2024" data-title="Gestare"                        data-desc="Horror short by Stella Segar. Visceral bodily sounds create psychological horror exploring bodily autonomy."></div>
+    <div class="tile" data-youtube="fl7CV_QEHws"  data-category="film-sound"   data-year="2024" data-title="Re-Creations"                   data-desc="Short film sound design. Layered sonic environments crafted to evoke memory and transformation."></div>
+    <div class="tile" data-youtube="qm9u6u_VTUs"  data-category="film-sound"   data-year="2021" data-title="In The Cards"                   data-desc="Suspenseful short exploring fate and choice. Tension built through environmental sounds and crafted silence."></div>
+    <div class="tile" data-youtube="SMic-oK7lgk"  data-category="film-sound"   data-year="2020" data-title="Mary La Bone"                   data-desc="Gothic-inspired short. Audio evolves from grounded reality to ethereal otherworldliness."></div>
+    <div class="tile" data-youtube="nCkD6japtt4"  data-category="film-sound"   data-year="2020" data-title="The Hand of the Wind"            data-desc="Atmospheric short set in Mustang Valley, Nepal. The wind becomes a character through blended organic and processed sound."></div>
 
-    <!-- 8 months ago -->
-    <div class="tile"
-         data-youtube="HMU5f3hDvT8"
-         data-category="film-sound"
-         data-year="2024"
-         data-title="Gestare"
-         data-desc="Horror short by Stella Segar. Visceral bodily sounds create psychological horror exploring bodily autonomy."></div>
+    <!-- SOUND DESIGN -->
+    <div class="tile" data-youtube="QdXr3KM_TQ8"  data-category="sound-design" data-year="2022" data-title="Obscure Sorrows — Vemödalen"    data-desc="Sonic narrative from John Koenig's Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions."></div>
+    <div class="tile" data-youtube="zbzwmKkAHS8"  data-category="sound-design" data-year="2022" data-title="Obscure Sorrows — Rubatosis"    data-desc="An unsettling awareness of your own heartbeat rendered through carefully crafted soundscapes."></div>
+    <div class="tile" data-youtube="Vlk5w65sN6U"  data-category="sound-design" data-year="2022" data-title="Obscure Sorrows — Trumspringa"  data-desc="The ache of a life unlived rendered through layered field recordings."></div>
 
-    <!-- 11 months ago -->
-    <div class="tile"
-         data-youtube="fl7CV_QEHws"
-         data-category="film-sound"
-         data-year="2024"
-         data-title="Re-Creations"
-         data-desc="Short film sound design. Layered sonic environments crafted to evoke memory and transformation."></div>
+    <!-- COMPOSITION -->
+    <div class="tile" data-youtube="UzIs8wy50-M"  data-category="composition"  data-year="2022" data-title="Ondine's Theme"                 data-desc="Delicate composition inspired by the water nymph. Shimmering textures create an immersive underwater atmosphere."></div>
+    <div class="tile" data-youtube="IELbdpEHDks"  data-category="composition"  data-year="2020" data-title="Action!"                        data-desc="Cinematic composition exploring tension and release. Rhythmic intensity meets orchestral breadth."></div>
+    <div class="tile" data-youtube="d6PftRQaXNE"  data-category="composition"  data-year="2019" data-title="Sobhraj"                        data-desc="Tense composition using textural elements and rhythmic intensity — a psychological portrait."></div>
+    <div class="tile" data-youtube="kxqiVSSbUh8"  data-category="composition"  data-year="2019" data-title="Tom &amp; Jerry"                data-desc="Playful reinterpretation of cartoon aesthetics. Detailed foley meets contemporary musical techniques."></div>
+    <div class="tile" data-youtube="PUuq5YRfbPw"  data-category="composition"  data-year="2019" data-title="O2"                             data-desc="Minimalist composition exploring breath and space. Sparse harmonic textures evolve slowly over time."></div>
+    <div class="tile" data-youtube="1m9ioSIsD24"  data-category="composition"  data-year="2019" data-title="What a Dream"                   data-desc="Dreamy impressionistic composition drawing from surrealist imagery and film score traditions."></div>
+    <div class="tile" data-youtube="O6e4vxhFwJo"  data-category="composition"  data-year="2019" data-title="AmEx"                           data-desc="Advertising composition with a sophisticated harmonic palette and polished production aesthetic."></div>
 
-    <!-- 3 years ago -->
-    <div class="tile"
-         data-youtube="qm9u6u_VTUs"
-         data-category="film-sound"
-         data-year="2021"
-         data-title="In The Cards"
-         data-desc="Suspenseful short exploring fate and choice. Tension built through environmental sounds and crafted silence."></div>
-
-    <!-- 5 years ago -->
-    <div class="tile"
-         data-youtube="SMic-oK7lgk"
-         data-category="film-sound"
-         data-year="2020"
-         data-title="Mary La Bone"
-         data-desc="Gothic-inspired short. Audio evolves from grounded reality to ethereal otherworldliness."></div>
-
-    <!-- 5 years ago -->
-    <div class="tile"
-         data-youtube="nCkD6japtt4"
-         data-category="film-sound"
-         data-year="2020"
-         data-title="The Hand of the Wind"
-         data-desc="Atmospheric short set in Mustang Valley, Nepal. The wind becomes a character through blended organic and processed sound."></div>
-
-    <!-- ==================== SOUND DESIGN ==================== -->
-    <!-- 3 years ago -->
-    <div class="tile"
-         data-youtube="QdXr3KM_TQ8"
-         data-category="sound-design"
-         data-year="2022"
-         data-title="Obscure Sorrows — Vemödalen"
-         data-desc="Sonic narrative from John Koenig's Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions."></div>
-
-    <!-- 3 years ago -->
-    <div class="tile"
-         data-youtube="zbzwmKkAHS8"
-         data-category="sound-design"
-         data-year="2022"
-         data-title="Obscure Sorrows — Rubatosis"
-         data-desc="An unsettling awareness of your own heartbeat rendered through carefully crafted soundscapes."></div>
-
-    <!-- 3 years ago -->
-    <div class="tile"
-         data-youtube="Vlk5w65sN6U"
-         data-category="sound-design"
-         data-year="2022"
-         data-title="Obscure Sorrows — Trumspringa"
-         data-desc="The ache of a life unlived — emotions we all feel but can't name, rendered through layered field recordings."></div>
-
-    <!-- ==================== COMPOSITION ==================== -->
-    <!-- 3 years ago -->
-    <div class="tile"
-         data-youtube="UzIs8wy50-M"
-         data-category="composition"
-         data-year="2022"
-         data-title="Ondine's Theme"
-         data-desc="Delicate composition inspired by the water nymph. Shimmering textures create an immersive underwater atmosphere."></div>
-
-    <!-- 5 years ago -->
-    <div class="tile"
-         data-youtube="IELbdpEHDks"
-         data-category="composition"
-         data-year="2020"
-         data-title="Action!"
-         data-desc="Cinematic composition exploring tension and release. Rhythmic intensity meets orchestral breadth."></div>
-
-    <!-- 6 years ago -->
-    <div class="tile"
-         data-youtube="d6PftRQaXNE"
-         data-category="composition"
-         data-year="2019"
-         data-title="Sobhraj"
-         data-desc="Tense composition using textural elements and rhythmic intensity — a psychological portrait balancing beauty and unease."></div>
-
-    <!-- 6 years ago -->
-    <div class="tile"
-         data-youtube="kxqiVSSbUh8"
-         data-category="composition"
-         data-year="2019"
-         data-title="Tom &amp; Jerry"
-         data-desc="Playful reinterpretation of cartoon aesthetics. Detailed foley meets contemporary musical techniques."></div>
-
-    <!-- 6 years ago -->
-    <div class="tile"
-         data-youtube="PUuq5YRfbPw"
-         data-category="composition"
-         data-year="2019"
-         data-title="O2"
-         data-desc="Minimalist composition exploring breath and space. Sparse harmonic textures evolve slowly over time."></div>
-
-    <!-- 6 years ago -->
-    <div class="tile"
-         data-youtube="1m9ioSIsD24"
-         data-category="composition"
-         data-year="2019"
-         data-title="What a Dream"
-         data-desc="Dreamy, impressionistic composition drawing from surrealist imagery and film score traditions."></div>
-
-    <!-- 6 years ago -->
-    <div class="tile"
-         data-youtube="O6e4vxhFwJo"
-         data-category="composition"
-         data-year="2019"
-         data-title="AmEx"
-         data-desc="Advertising composition with a sophisticated harmonic palette and polished production aesthetic."></div>
-
-    <!-- ==================== SOFTWARE ==================== -->
-    <!-- 2 years ago -->
-    <div class="tile"
-         data-youtube="_Awxf5QOLC8"
-         data-category="software"
-         data-year="2023"
-         data-title="evolvingDrone"
-         data-desc="Evolving drone synthesis engine. Layered harmonics and subtle modulation produce detailed ambient environments."></div>
-
-    <!-- 2 years ago -->
-    <div class="tile"
-         data-youtube="Y_xNDgRDc2E"
-         data-category="software"
-         data-year="2023"
-         data-title="hummingBot"
-         data-desc="Algorithmic composition tool. Melodic patterns inspired by hummingbird flight translated from movement data."></div>
-
-    <!-- 2 years ago -->
-    <div class="tile"
-         data-youtube="9fJ-gJ6vCk0"
-         data-category="software"
-         data-year="2023"
-         data-title="SWAMP"
-         data-desc="Generative audio environment inspired by wetland ecosystems. Organic textures produced through custom synthesis algorithms."></div>
-
-    <!-- 2 years ago -->
-    <div class="tile"
-         data-youtube="kf7i229dozE"
-         data-category="software"
-         data-year="2023"
-         data-title="VOX POPULI"
-         data-desc="Voice-driven generative system. Spoken input transformed into evolving harmonic and rhythmic structures."></div>
-
-    <!-- 3 years ago -->
-    <div class="tile"
-         data-youtube="plQkoRI_qXQ"
-         data-category="software"
-         data-year="2022"
-         data-title="BioSounds"
-         data-desc="Generative system transforming biological data into evolving soundscapes through custom algorithms."></div>
+    <!-- SOFTWARE -->
+    <div class="tile" data-youtube="_Awxf5QOLC8"  data-category="software"     data-year="2023" data-title="evolvingDrone"                  data-desc="Evolving drone synthesis engine. Layered harmonics and subtle modulation produce detailed ambient environments."></div>
+    <div class="tile" data-youtube="Y_xNDgRDc2E"  data-category="software"     data-year="2023" data-title="hummingBot"                     data-desc="Algorithmic composition tool. Melodic patterns inspired by hummingbird flight translated from movement data."></div>
+    <div class="tile" data-youtube="9fJ-gJ6vCk0"  data-category="software"     data-year="2023" data-title="SWAMP"                          data-desc="Generative audio environment inspired by wetland ecosystems."></div>
+    <div class="tile" data-youtube="kf7i229dozE"  data-category="software"     data-year="2023" data-title="VOX POPULI"                     data-desc="Voice-driven generative system. Spoken input transformed into evolving harmonic and rhythmic structures."></div>
+    <div class="tile" data-youtube="plQkoRI_qXQ"  data-category="software"     data-year="2022" data-title="BioSounds"                      data-desc="Generative system transforming biological data into evolving soundscapes through custom algorithms."></div>
 
 </div>
 
 <section class="about" id="about"><div class="about-inner">
     <div class="about-photo">
-        <!--
-            TO ADD YOUR PHOTO:
-            Replace the placeholder below with:
-            <img src="your-photo.jpg" alt="Nicola Rivosecchi">
-            Make sure the image is square (1:1) for best results.
-        -->
-        <div class="about-photo-placeholder" title="Add your photo here">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            <span>Your<br>photo</span>
-        </div>
+        <img src="undersound/assets/images/profile_crop.jpeg" alt="Nicola Rivosecchi">
     </div>
     <div class="about-bio">
         <h2>About <strong>Nicola</strong></h2>
         <p>Sound designer, composer, mixer, and audio engineer with a degree from LCCM London and an MSc in Sound Design from Edinburgh. I handle all areas of film sound — from recording and composition to dialogue editing, foley, and final mixing. Based in London, available worldwide.</p>
     </div>
     <div class="about-skills">
-        <h3>Tools & Skills</h3>
+        <h3>Tools &amp; Skills</h3>
         <div class="about-skills-list">
             Pro Tools · Ableton · Logic · Reaper<br>
             Max/MSP · Pure Data · SuperCollider<br>
@@ -370,82 +325,145 @@
     </div>
 </div></section>
 
-<!-- ── Admin trigger (bottom-right corner) ── -->
-<button class="admin-trigger" id="adminTrigger" title="Admin" aria-label="Admin panel">
+<footer>
+    <p>&copy; 2025 Nicola Rivosecchi · <a href="https://nicolarivo.co.uk">Home</a> · <a href="https://nicolarivo.co.uk/teacher">Teaching</a> · <a href="https://nicolarivo.co.uk/creative-coding/">Creative Coding</a></p>
+    <p style="margin-top:6px">Portfolio features media used to showcase professional skills and abilities.</p>
+</footer>
+
+<!-- ── Admin gear icon ── -->
+<button class="admin-trigger" id="adminTrigger" aria-label="Admin panel">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 </button>
 
 <!-- ── Admin overlay ── -->
 <div class="admin-overlay" id="adminOverlay">
-  <div class="admin-modal">
+  <div class="admin-modal" id="adminModal">
     <button class="admin-close" id="adminClose">&times;</button>
 
-    <!-- Login screen -->
+    <!-- LOGIN -->
     <div class="admin-login" id="adminLogin">
       <h2>// Admin Access</h2>
       <div>
-        <label for="adminPassword">Password</label>
+        <label class="a-label" for="adminPassword">Password</label>
         <input class="admin-input" type="password" id="adminPassword" placeholder="Enter password" autocomplete="current-password">
       </div>
       <div id="adminLoginErr" class="admin-err" style="display:none">Incorrect password.</div>
       <button class="admin-btn" id="adminLoginBtn">Unlock</button>
     </div>
 
-    <!-- Add video form -->
-    <div class="admin-form" id="adminForm">
-      <h2>// Add New Video</h2>
-      <div>
-        <label for="newYtId">YouTube Video ID</label>
-        <input class="admin-input" type="text" id="newYtId" placeholder="e.g. dQw4w9WgXcQ">
+    <!-- UNLOCKED AREA -->
+    <div class="admin-locked hidden" id="adminUnlocked">
+
+      <!-- Tab bar -->
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="add">Add</button>
+        <button class="admin-tab" data-tab="manage">Manage</button>
+        <button class="admin-tab" data-tab="theme">Theme</button>
       </div>
-      <div class="admin-preview" id="adminPreview">
-        <span style="font-size:.65rem;font-family:var(--mono);color:var(--text-muted)">Thumbnail preview</span>
-      </div>
-      <div class="admin-row">
+
+      <!-- ── TAB: ADD ── -->
+      <div class="admin-panel visible" id="tabAdd">
+        <h2>// Add Video</h2>
         <div>
-          <label for="newTitle">Title</label>
-          <input class="admin-input" type="text" id="newTitle" placeholder="Project name">
+          <label class="a-label" for="newYtId">YouTube Video ID</label>
+          <input class="admin-input" type="text" id="newYtId" placeholder="e.g. dQw4w9WgXcQ">
+        </div>
+        <div class="admin-preview" id="adminPreview"><span>Thumbnail preview</span></div>
+        <div class="admin-row">
+          <div>
+            <label class="a-label" for="newTitle">Title</label>
+            <input class="admin-input" type="text" id="newTitle" placeholder="Project name">
+          </div>
+          <div>
+            <label class="a-label" for="newYear">Year</label>
+            <input class="admin-input" type="text" id="newYear" placeholder="2025">
+          </div>
         </div>
         <div>
-          <label for="newYear">Year</label>
-          <input class="admin-input" type="text" id="newYear" placeholder="2025">
+          <label class="a-label" for="newCategory">Category</label>
+          <select class="admin-input" id="newCategory">
+            <option value="film-sound">Film Sound</option>
+            <option value="sound-design">Sound Design</option>
+            <option value="composition">Composition</option>
+            <option value="software">Software</option>
+          </select>
+        </div>
+        <div>
+          <label class="a-label" for="newDesc">Description</label>
+          <input class="admin-input" type="text" id="newDesc" placeholder="One or two sentence description.">
+        </div>
+        <div id="addErr" class="admin-err" style="display:none"></div>
+        <div id="addOk"  class="admin-ok"  style="display:none">✓ Video added.</div>
+        <div class="admin-btn-row">
+          <button class="admin-btn" id="adminAddBtn">Add Video</button>
+          <button class="admin-btn ghost" id="adminLogoutBtn">Lock</button>
         </div>
       </div>
-      <div>
-        <label for="newCategory">Category</label>
-        <select class="admin-input" id="newCategory">
-          <option value="film-sound">Film Sound</option>
-          <option value="sound-design">Sound Design</option>
-          <option value="composition">Composition</option>
-          <option value="software">Software</option>
-        </select>
+
+      <!-- ── TAB: MANAGE ── -->
+      <div class="admin-panel" id="tabManage">
+        <h2>// Manage Videos</h2>
+        <div id="videoList" class="video-list"></div>
+        <!-- Edit form (hidden until a video is selected) -->
+        <div id="editForm" style="display:none;flex-direction:column;gap:12px;border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
+          <div style="font-family:var(--mono);font-size:.62rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase">Editing: <span id="editingLabel"></span></div>
+          <div class="admin-row">
+            <div>
+              <label class="a-label" for="editTitle">Title</label>
+              <input class="admin-input" type="text" id="editTitle">
+            </div>
+            <div>
+              <label class="a-label" for="editYear">Year</label>
+              <input class="admin-input" type="text" id="editYear">
+            </div>
+          </div>
+          <div>
+            <label class="a-label" for="editCategory">Category</label>
+            <select class="admin-input" id="editCategory">
+              <option value="film-sound">Film Sound</option>
+              <option value="sound-design">Sound Design</option>
+              <option value="composition">Composition</option>
+              <option value="software">Software</option>
+            </select>
+          </div>
+          <div>
+            <label class="a-label" for="editDesc">Description</label>
+            <input class="admin-input" type="text" id="editDesc">
+          </div>
+          <div id="manageErr" class="admin-err" style="display:none"></div>
+          <div id="manageOk"  class="admin-ok"  style="display:none">✓ Saved.</div>
+          <div class="admin-btn-row">
+            <button class="admin-btn" id="editSaveBtn">Save Changes</button>
+            <button class="admin-btn danger" id="editDeleteBtn">Remove</button>
+            <button class="admin-btn ghost" id="editCancelBtn">Cancel</button>
+          </div>
+        </div>
       </div>
-      <div>
-        <label for="newDesc">Description</label>
-        <input class="admin-input" type="text" id="newDesc" placeholder="One or two sentence description.">
+
+      <!-- ── TAB: THEME ── -->
+      <div class="admin-panel" id="tabTheme">
+        <h2>// Colour Theme</h2>
+        <p style="font-size:.8rem;color:var(--text-dim);margin-bottom:16px">Pick a colour scheme. Your choice is saved in the browser.</p>
+        <div class="theme-swatches" id="themeSwatches">
+          <div class="swatch active" data-theme=""       data-name="Void"   style="background:linear-gradient(135deg,#080808,#101010)"></div>
+          <div class="swatch"        data-theme="slate"  data-name="Slate"  style="background:linear-gradient(135deg,#0a0e14,#7EB8F7)"></div>
+          <div class="swatch"        data-theme="dusk"   data-name="Dusk"   style="background:linear-gradient(135deg,#100c0a,#F0A05A)"></div>
+          <div class="swatch"        data-theme="fog"    data-name="Fog"    style="background:linear-gradient(135deg,#F4F2EF,#2563EB)"></div>
+          <div class="swatch"        data-theme="forest" data-name="Forest" style="background:linear-gradient(135deg,#060e08,#5DDC7E)"></div>
+        </div>
       </div>
-      <div id="adminFormErr" class="admin-err" style="display:none"></div>
-      <div id="adminFormOk" class="admin-success" style="display:none">✓ Video added to the grid.</div>
-      <div style="display:flex;gap:10px">
-        <button class="admin-btn" id="adminAddBtn">Add Video</button>
-        <button class="admin-btn secondary" id="adminLogoutBtn">Lock</button>
-      </div>
-    </div>
+
+    </div><!-- /adminUnlocked -->
   </div>
 </div>
 
-<footer>
-    <p>&copy; 2025 Nicola Rivosecchi · <a href="https://nicolarivo.co.uk">Home</a> · <a href="https://nicolarivo.co.uk/teacher">Teaching</a> · <a href="https://nicolarivo.co.uk/creative-coding/">Creative Coding</a></p>
-    <p style="margin-top:6px">Portfolio features media used to showcase professional skills and abilities.</p>
-</footer>
-
 <script>
-// ─────────────────────────────────────────────
-// CHANGE THIS PASSWORD TO YOUR OWN:
+// ─────────────────────────────────────
+// CHANGE THIS TO YOUR OWN PASSWORD:
 var ADMIN_PASSWORD = 'nicola2025';
-// ─────────────────────────────────────────────
+// ─────────────────────────────────────
 
-// ── Build tile HTML from data-* attributes ──
+// ── Tile builder ──
 function buildTileHTML(yt, cat, year, title, desc) {
     var thumb = 'https://img.youtube.com/vi/' + yt + '/hqdefault.jpg';
     var label = cat.replace('-', ' ');
@@ -457,30 +475,21 @@ function buildTileHTML(yt, cat, year, title, desc) {
             '<div class="tile-title">' + title + '</div>' +
             '<div class="tile-tags"><span class="tile-tag">' + label + '</span></div>' +
         '</div>' +
-        '<div class="tile-player">' +
-            '<div class="player-wrapper">' +
-                '<div class="player-video"></div>' +
-                '<div class="player-info">' +
-                    '<div class="tile-year">' + year + '</div>' +
-                    '<div class="tile-title">' + title + '</div>' +
-                    '<div class="tile-desc">' + desc + '</div>' +
-                    '<div class="tile-tags"><span class="tile-tag">' + label + '</span></div>' +
-                '</div>' +
+        '<div class="tile-player"><div class="player-wrapper">' +
+            '<div class="player-video"></div>' +
+            '<div class="player-info">' +
+                '<div class="tile-year">' + year + '</div>' +
+                '<div class="tile-title">' + title + '</div>' +
+                '<div class="tile-desc">' + desc + '</div>' +
+                '<div class="tile-tags" style="margin-top:16px"><span class="tile-tag" style="font-size:.62rem;padding:3px 10px">' + label + '</span></div>' +
             '</div>' +
-        '</div>' +
+        '</div></div>' +
         '<button class="player-close" aria-label="Close">&times;</button>'
     );
 }
 
-// ── Initialise a tile (events) ──
 function initTile(tile) {
-    tile.innerHTML = buildTileHTML(
-        tile.dataset.youtube,
-        tile.dataset.category,
-        tile.dataset.year,
-        tile.dataset.title,
-        tile.dataset.desc
-    );
+    tile.innerHTML = buildTileHTML(tile.dataset.youtube, tile.dataset.category, tile.dataset.year, tile.dataset.title, tile.dataset.desc);
     tile.addEventListener('click', function(e) {
         if (e.target.closest('.player-close')) return;
         if (tile.classList.contains('expanded')) return;
@@ -490,14 +499,11 @@ function initTile(tile) {
             '<iframe src="https://www.youtube.com/embed/' + tile.dataset.youtube + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
         setTimeout(function() { tile.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
     });
-    var closeBtn = tile.querySelector('.player-close');
-    if (closeBtn) closeBtn.addEventListener('click', function(e) { e.stopPropagation(); closeTile(tile); });
-
-    // Keep hidden if filter is active
-    var activeFilter = document.querySelector('.filter-btn.active');
-    if (activeFilter && activeFilter.dataset.filter !== 'all' && tile.dataset.category !== activeFilter.dataset.filter) {
-        tile.classList.add('hidden');
-    }
+    var cb = tile.querySelector('.player-close');
+    if (cb) cb.addEventListener('click', function(e) { e.stopPropagation(); closeTile(tile); });
+    // respect active filter
+    var af = document.querySelector('.filter-btn.active');
+    if (af && af.dataset.filter !== 'all' && tile.dataset.category !== af.dataset.filter) tile.classList.add('hidden');
 }
 
 function closeTile(tile) {
@@ -506,22 +512,17 @@ function closeTile(tile) {
     if (v) v.innerHTML = '';
 }
 
-// Build all existing tiles
-document.querySelectorAll('.tile').forEach(function(tile) { initTile(tile); });
+document.querySelectorAll('.tile').forEach(initTile);
 
-// ── Category filters ──
+// ── Filters ──
 document.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
-        document.querySelectorAll('.tile.expanded').forEach(function(t) { closeTile(t); });
+        document.querySelectorAll('.tile.expanded').forEach(closeTile);
         document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        var filter = btn.dataset.filter;
-        document.querySelectorAll('.tile').forEach(function(tile) {
-            if (filter === 'all' || tile.dataset.category === filter) {
-                tile.classList.remove('hidden');
-            } else {
-                tile.classList.add('hidden');
-            }
+        var f = btn.dataset.filter;
+        document.querySelectorAll('.tile').forEach(function(t) {
+            t.classList.toggle('hidden', f !== 'all' && t.dataset.category !== f);
         });
     });
 });
@@ -534,122 +535,184 @@ document.querySelectorAll('#navLinks a').forEach(function(a) {
     a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); });
 });
 
-// ─────────────────────────────────────────────
-// ADMIN PANEL
-// ─────────────────────────────────────────────
+// ═══════════════════════════════════════
+//  ADMIN PANEL
+// ═══════════════════════════════════════
+var unlocked = false;
+var selectedTile = null;
+
 var adminOverlay  = document.getElementById('adminOverlay');
 var adminLogin    = document.getElementById('adminLogin');
-var adminForm     = document.getElementById('adminForm');
+var adminUnlocked = document.getElementById('adminUnlocked');
 var adminPassword = document.getElementById('adminPassword');
-var adminLoginErr = document.getElementById('adminLoginErr');
-var adminFormErr  = document.getElementById('adminFormErr');
-var adminFormOk   = document.getElementById('adminFormOk');
-var adminPreview  = document.getElementById('adminPreview');
-var newYtId       = document.getElementById('newYtId');
-var unlocked      = false;
 
 function openAdmin() {
     adminOverlay.classList.add('open');
-    if (!unlocked) {
-        adminPassword.value = '';
-        adminLoginErr.style.display = 'none';
-        setTimeout(function() { adminPassword.focus(); }, 80);
-    }
+    if (!unlocked) { adminPassword.value = ''; document.getElementById('adminLoginErr').style.display = 'none'; setTimeout(function(){adminPassword.focus();}, 80); }
 }
-function closeAdmin() {
-    adminOverlay.classList.remove('open');
-}
-function showForm() {
-    adminLogin.classList.add('hidden');
-    adminForm.classList.add('visible');
-}
-function showLogin() {
-    adminLogin.classList.remove('hidden');
-    adminForm.classList.remove('visible');
-    unlocked = false;
-}
+function closeAdmin() { adminOverlay.classList.remove('open'); }
 
 document.getElementById('adminTrigger').addEventListener('click', openAdmin);
 document.getElementById('adminClose').addEventListener('click', closeAdmin);
 adminOverlay.addEventListener('click', function(e) { if (e.target === adminOverlay) closeAdmin(); });
 
+// Login
 document.getElementById('adminLoginBtn').addEventListener('click', function() {
     if (adminPassword.value === ADMIN_PASSWORD) {
         unlocked = true;
-        adminLoginErr.style.display = 'none';
-        showForm();
+        adminLogin.classList.add('hidden');
+        adminUnlocked.classList.remove('hidden');
     } else {
-        adminLoginErr.style.display = 'block';
-        adminPassword.value = '';
-        adminPassword.focus();
+        document.getElementById('adminLoginErr').style.display = 'block';
+        adminPassword.value = ''; adminPassword.focus();
     }
 });
-adminPassword.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') document.getElementById('adminLoginBtn').click();
-});
+adminPassword.addEventListener('keydown', function(e) { if (e.key === 'Enter') document.getElementById('adminLoginBtn').click(); });
 
+// Logout
 document.getElementById('adminLogoutBtn').addEventListener('click', function() {
-    showLogin();
+    unlocked = false;
+    adminUnlocked.classList.add('hidden');
+    adminLogin.classList.remove('hidden');
     closeAdmin();
 });
 
-// Live thumbnail preview
-newYtId.addEventListener('input', function() {
-    var id = newYtId.value.trim();
-    if (id.length > 5) {
-        adminPreview.innerHTML = '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML=\'<span style=\\\'font-size:.65rem;font-family:var(--mono);color:var(--text-muted)\\\'>Invalid ID or no thumbnail</span>\'">';
-    } else {
-        adminPreview.innerHTML = '<span style="font-size:.65rem;font-family:var(--mono);color:var(--text-muted)">Thumbnail preview</span>';
-    }
+// ── Tabs ──
+document.querySelectorAll('.admin-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.admin-tab').forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.admin-panel').forEach(function(p) { p.classList.remove('visible'); });
+        tab.classList.add('active');
+        document.getElementById('tab' + tab.dataset.tab.charAt(0).toUpperCase() + tab.dataset.tab.slice(1)).classList.add('visible');
+        if (tab.dataset.tab === 'manage') refreshVideoList();
+    });
 });
 
-// Add video
+// ── ADD tab ──
+var newYtIdEl = document.getElementById('newYtId');
+newYtIdEl.addEventListener('input', function() {
+    var id = newYtIdEl.value.trim();
+    var p = document.getElementById('adminPreview');
+    p.innerHTML = id.length > 5
+        ? '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" onerror="this.parentElement.innerHTML=\'<span>Invalid ID</span>\'">'
+        : '<span>Thumbnail preview</span>';
+});
+
 document.getElementById('adminAddBtn').addEventListener('click', function() {
-    var yt   = document.getElementById('newYtId').value.trim();
-    var ttl  = document.getElementById('newTitle').value.trim();
-    var yr   = document.getElementById('newYear').value.trim();
-    var cat  = document.getElementById('newCategory').value;
-    var dsc  = document.getElementById('newDesc').value.trim();
-
-    adminFormErr.style.display = 'none';
-    adminFormOk.style.display = 'none';
-
-    if (!yt || !ttl || !yr || !dsc) {
-        adminFormErr.textContent = 'Please fill in all fields.';
-        adminFormErr.style.display = 'block';
-        return;
-    }
-
-    // Check for duplicate
-    var existing = document.querySelector('.tile[data-youtube="' + yt + '"]');
-    if (existing) {
-        adminFormErr.textContent = 'A tile with this video ID already exists.';
-        adminFormErr.style.display = 'block';
-        return;
-    }
-
-    // Create tile
+    var yt  = newYtIdEl.value.trim();
+    var ttl = document.getElementById('newTitle').value.trim();
+    var yr  = document.getElementById('newYear').value.trim();
+    var cat = document.getElementById('newCategory').value;
+    var dsc = document.getElementById('newDesc').value.trim();
+    var err = document.getElementById('addErr');
+    var ok  = document.getElementById('addOk');
+    err.style.display = 'none'; ok.style.display = 'none';
+    if (!yt || !ttl || !yr || !dsc) { err.textContent = 'Please fill in all fields.'; err.style.display = 'block'; return; }
+    if (document.querySelector('.tile[data-youtube="' + yt + '"]')) { err.textContent = 'This video ID already exists.'; err.style.display = 'block'; return; }
     var tile = document.createElement('div');
     tile.className = 'tile';
-    tile.dataset.youtube  = yt;
-    tile.dataset.category = cat;
-    tile.dataset.year     = yr;
-    tile.dataset.title    = ttl;
-    tile.dataset.desc     = dsc;
-
-    // Insert at top of mosaic (most recent first)
+    tile.dataset.youtube = yt; tile.dataset.category = cat; tile.dataset.year = yr; tile.dataset.title = ttl; tile.dataset.desc = dsc;
     var mosaic = document.getElementById('work');
     mosaic.insertBefore(tile, mosaic.firstChild);
     initTile(tile);
+    newYtIdEl.value = ''; document.getElementById('newTitle').value = ''; document.getElementById('newYear').value = ''; document.getElementById('newDesc').value = '';
+    document.getElementById('adminPreview').innerHTML = '<span>Thumbnail preview</span>';
+    ok.style.display = 'block'; setTimeout(function() { ok.style.display = 'none'; }, 3000);
+});
 
-    // Clear form
-    document.getElementById('newYtId').value = '';
-    document.getElementById('newTitle').value = '';
-    document.getElementById('newYear').value = '';
-    document.getElementById('newDesc').value = '';
-    adminPreview.innerHTML = '<span style="font-size:.65rem;font-family:var(--mono);color:var(--text-muted)">Thumbnail preview</span>';
-    adminFormOk.style.display = 'block';
-    setTimeout(function() { adminFormOk.style.display = 'none'; }, 3000);
+// ── MANAGE tab ──
+function refreshVideoList() {
+    var list = document.getElementById('videoList');
+    list.innerHTML = '';
+    selectedTile = null;
+    document.getElementById('editForm').style.display = 'none';
+    document.querySelectorAll('.tile').forEach(function(tile) {
+        var item = document.createElement('div');
+        item.className = 'vitem';
+        item.innerHTML =
+            '<img class="vitem-thumb" src="https://img.youtube.com/vi/' + tile.dataset.youtube + '/default.jpg" alt="">' +
+            '<div class="vitem-info">' +
+                '<div class="vitem-title">' + tile.dataset.title + '</div>' +
+                '<div class="vitem-meta">' + tile.dataset.year + ' &nbsp;<span class="vitem-tag">' + tile.dataset.category.replace('-',' ') + '</span></div>' +
+            '</div>';
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.vitem').forEach(function(v) { v.classList.remove('selected'); });
+            item.classList.add('selected');
+            selectedTile = tile;
+            openEditForm(tile);
+        });
+        list.appendChild(item);
+    });
+}
+
+function openEditForm(tile) {
+    document.getElementById('editingLabel').textContent = tile.dataset.title;
+    document.getElementById('editTitle').value    = tile.dataset.title;
+    document.getElementById('editYear').value     = tile.dataset.year;
+    document.getElementById('editCategory').value = tile.dataset.category;
+    document.getElementById('editDesc').value     = tile.dataset.desc;
+    document.getElementById('manageErr').style.display = 'none';
+    document.getElementById('manageOk').style.display  = 'none';
+    var ef = document.getElementById('editForm');
+    ef.style.display = 'flex';
+    setTimeout(function() { ef.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+}
+
+document.getElementById('editSaveBtn').addEventListener('click', function() {
+    if (!selectedTile) return;
+    var err = document.getElementById('manageErr');
+    var ok  = document.getElementById('manageOk');
+    var ttl = document.getElementById('editTitle').value.trim();
+    var yr  = document.getElementById('editYear').value.trim();
+    var cat = document.getElementById('editCategory').value;
+    var dsc = document.getElementById('editDesc').value.trim();
+    err.style.display = 'none'; ok.style.display = 'none';
+    if (!ttl || !yr || !dsc) { err.textContent = 'Please fill in all fields.'; err.style.display = 'block'; return; }
+    selectedTile.dataset.title    = ttl;
+    selectedTile.dataset.year     = yr;
+    selectedTile.dataset.category = cat;
+    selectedTile.dataset.desc     = dsc;
+    closeTile(selectedTile);
+    initTile(selectedTile);
+    document.getElementById('editingLabel').textContent = ttl;
+    ok.style.display = 'block'; setTimeout(function() { ok.style.display = 'none'; }, 2500);
+    refreshVideoList();
+});
+
+document.getElementById('editDeleteBtn').addEventListener('click', function() {
+    if (!selectedTile) return;
+    if (!confirm('Remove "' + selectedTile.dataset.title + '" from the grid?')) return;
+    selectedTile.remove();
+    selectedTile = null;
+    refreshVideoList();
+});
+
+document.getElementById('editCancelBtn').addEventListener('click', function() {
+    document.getElementById('editForm').style.display = 'none';
+    document.querySelectorAll('.vitem').forEach(function(v) { v.classList.remove('selected'); });
+    selectedTile = null;
+});
+
+// ── THEME tab ──
+var savedTheme = localStorage.getItem('nr-theme') || '';
+applyTheme(savedTheme);
+document.querySelectorAll('.swatch').forEach(function(sw) {
+    if (sw.dataset.theme === savedTheme) sw.classList.add('active');
+    else sw.classList.remove('active');
+});
+
+function applyTheme(t) {
+    if (t) document.documentElement.setAttribute('data-theme', t);
+    else document.documentElement.removeAttribute('data-theme');
+}
+
+document.getElementById('themeSwatches').addEventListener('click', function(e) {
+    var sw = e.target.closest('.swatch');
+    if (!sw) return;
+    var t = sw.dataset.theme;
+    applyTheme(t);
+    localStorage.setItem('nr-theme', t);
+    document.querySelectorAll('.swatch').forEach(function(s) { s.classList.toggle('active', s === sw); });
 });
 </script>
 </body>
