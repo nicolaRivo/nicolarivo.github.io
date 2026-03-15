@@ -135,3 +135,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .DS_Store
+.DS_Store
+assets/.DS_Store
+sound copy/.DS_Store
+assets/.DS_Store
