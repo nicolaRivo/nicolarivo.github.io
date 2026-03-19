@@ -417,10 +417,10 @@ document.getElementById('contactForm').addEventListener('submit', async function
     btn.disabled = true;
     btn.textContent = 'Sending\u2026';
     try {
-        var res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        var res = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, email: email, message: message })
+            body: JSON.stringify({ access_key: 'ec97455f-23e8-4a32-81a7-4ae7335407df', name: name, email: email, message: message })
         });
         if (res.ok) {
             msg.textContent = '\u2713 Message sent \u2014 I\'ll be in touch soon.';
