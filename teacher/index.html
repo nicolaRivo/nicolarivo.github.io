@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-2DV4PTCEEQ');
 </script>
     <meta charset="UTF-8">
@@ -33,7 +32,6 @@
         "description": "Private piano and guitar lessons in London for all ages and levels. Specialising in Jazz, Rock, Pop, Soul, Funk, R&B, improvisation, ABRSM and RockSchool grades. DBS checked.",
         "url": "https://nicolarivo.co.uk/teacher",
         "telephone": "+447438779924",
-        "email": "nicola.rivosecchi@gmail.com",
         "image": "https://nicolarivo.co.uk/teacher/assets/images/profile.jpeg",
         "address": {"@type":"PostalAddress","streetAddress":"Stepney Green","addressLocality":"London","postalCode":"E1 3HU","addressCountry":"GB"},
         "areaServed": [
@@ -94,7 +92,6 @@
         body{font-family:'Nunito',sans-serif;color:var(--text-primary);background:var(--warm-cream);line-height:1.7;overflow-x:hidden}
         h1,h2,h3,h4{font-family:'DM Serif Display',serif;font-weight:400;line-height:1.2}
 
-        /* NAV */
         .nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(253,246,237,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(61,43,31,0.06);transition:all .3s}
         .nav.scrolled{box-shadow:var(--shadow-soft)}
         .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
@@ -108,19 +105,18 @@
         .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
         .nav-toggle span{display:block;width:24px;height:2px;background:var(--deep-brown);margin:5px 0;border-radius:2px}
 
-        /* HERO */
         .hero{min-height:100vh;display:flex;align-items:center;padding:120px 24px 80px;position:relative;overflow:hidden}
         .hero::before{content:'';position:absolute;top:-40%;right:-20%;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(192,115,74,0.08) 0%,transparent 70%);pointer-events:none}
         .hero::after{content:'';position:absolute;bottom:-30%;left:-15%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(138,154,123,0.08) 0%,transparent 70%);pointer-events:none}
         .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
         .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(192,115,74,0.1);color:var(--terracotta);padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:24px}
-        .hero-badge::before{content:'♪';font-size:1rem}
+        .hero-badge::before{content:'&#9834;';font-size:1rem}
         .hero h1{font-size:clamp(2.2rem,4.5vw,3.4rem);color:var(--deep-brown);margin-bottom:20px;letter-spacing:-.02em}
         .hero h1 em{color:var(--terracotta);font-style:italic}
         .hero-subtitle{font-size:1.05rem;color:var(--text-secondary);margin-bottom:20px;max-width:520px;line-height:1.85}
         .hero-trust{display:flex;align-items:center;gap:20px;margin-bottom:36px;flex-wrap:wrap}
         .hero-trust-item{display:flex;align-items:center;gap:6px;font-size:.83rem;color:var(--text-light);font-weight:600}
-        .hero-trust-item::before{content:'✓';color:var(--sage);font-weight:700}
+        .hero-trust-item::before{content:'&#10003;';color:var(--sage);font-weight:700}
         .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
         .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--terracotta);color:white;padding:16px 32px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.95rem;transition:all .3s;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(192,115,74,0.3)}
         .btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-2px);box-shadow:0 6px 28px rgba(192,115,74,0.4)}
@@ -135,21 +131,18 @@
         .hero-floating-card .card-sub{font-size:.75rem;color:var(--text-light)}
         @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-        /* SECTIONS */
         section{padding:100px 24px}
         .section-inner{max-width:1200px;margin:0 auto}
         .section-label{display:inline-block;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--terracotta);margin-bottom:12px}
         .section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--deep-brown);margin-bottom:16px;letter-spacing:-.01em}
         .section-desc{font-size:1.05rem;color:var(--text-secondary);max-width:600px;line-height:1.8}
 
-        /* PROOF BAR */
         .proof-bar{background:var(--deep-brown);padding:28px 24px}
         .proof-bar-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
         .proof-item{text-align:center;color:rgba(255,255,255,0.9)}
         .proof-item .number{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--muted-gold);display:block}
         .proof-item .label{font-size:.8rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;opacity:.75}
 
-        /* LESSONS */
         .lessons{background:var(--off-white)}
         .lessons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
         .lesson-card{background:white;border-radius:var(--radius-lg);padding:40px 36px;transition:all .3s;border:1px solid rgba(61,43,31,0.05);position:relative;overflow:hidden}
@@ -166,7 +159,6 @@
         .lesson-tags{display:flex;flex-wrap:wrap;gap:8px}
         .lesson-tag{font-size:.78rem;padding:5px 14px;border-radius:50px;background:var(--warm-cream);color:var(--text-secondary);font-weight:500}
 
-        /* ABOUT */
         .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:center;margin-top:48px}
         .about-image{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-medium)}
         .about-image img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
@@ -177,7 +169,6 @@
         .credential-text{font-size:.85rem;font-weight:600;color:var(--deep-brown)}
         .credential-sub{font-size:.78rem;color:var(--text-light)}
 
-        /* APPROACH */
         .approach{background:var(--deep-brown);color:white;position:relative;overflow:hidden}
         .approach::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(192,115,74,0.12) 0%,transparent 60%)}
         .approach .section-label{color:var(--muted-gold)}
@@ -190,7 +181,6 @@
         .approach-item h3{font-size:1.1rem;margin-bottom:10px;color:white}
         .approach-item p{font-size:.88rem;color:rgba(255,255,255,0.6);line-height:1.7}
 
-        /* TESTIMONIALS */
         .testimonials{background:var(--off-white)}
         .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
         .testimonial-card{background:white;border-radius:var(--radius-lg);padding:32px;border:1px solid rgba(61,43,31,0.05);display:flex;flex-direction:column;transition:box-shadow .3s}
@@ -201,21 +191,16 @@
         .testimonial-name{font-weight:700;font-size:.88rem;color:var(--deep-brown)}
         .testimonial-role{font-size:.78rem;color:var(--text-light)}
 
-        /* LOCATIONS */
         .locations{background:var(--warm-cream)}
-        .locations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+        .locations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
         .location-card{background:white;border-radius:var(--radius-lg);padding:32px 28px;border:1px solid rgba(61,43,31,0.05);transition:all .3s}
         .location-card:hover{box-shadow:var(--shadow-medium);transform:translateY(-3px)}
         .location-name{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--deep-brown);margin-bottom:8px}
         .location-desc{font-size:.88rem;color:var(--text-secondary);line-height:1.7}
         .location-tag{display:inline-block;margin-top:12px;font-size:.75rem;padding:4px 12px;border-radius:50px;background:rgba(192,115,74,0.08);color:var(--terracotta);font-weight:600}
-
-        /* LOCATIONS TOGGLE */
         .locations-toggle{display:inline-flex;align-items:center;gap:8px;background:transparent;border:2px solid var(--terracotta-light);color:var(--terracotta);padding:12px 24px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .25s;margin:0 auto}
         .locations-toggle:hover{background:rgba(192,115,74,0.06);border-color:var(--terracotta)}
-        .locations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 
-        /* PRICING */
         .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
         .price-card{background:white;border-radius:var(--radius-lg);padding:40px 32px;border:1px solid rgba(61,43,31,0.06);text-align:center;transition:all .3s;position:relative}
         .price-card.featured{border-color:var(--terracotta);box-shadow:var(--shadow-medium);transform:scale(1.03)}
@@ -228,12 +213,11 @@
         .price-note{font-size:.82rem;color:var(--text-light);margin-bottom:24px}
         .price-features{list-style:none;text-align:left;margin-bottom:28px}
         .price-features li{padding:8px 0;font-size:.88rem;color:var(--text-secondary);display:flex;align-items:flex-start;gap:10px}
-        .price-features li::before{content:'✓';color:var(--sage);font-weight:700;flex-shrink:0}
+        .price-features li::before{content:'&#10003;';color:var(--sage);font-weight:700;flex-shrink:0}
         .policy-note{margin-top:40px;padding:28px 32px;background:var(--warm-cream);border-radius:var(--radius);border-left:4px solid var(--terracotta);max-width:780px;margin-left:auto;margin-right:auto}
         .policy-note h4{font-size:1rem;color:var(--deep-brown);margin-bottom:8px}
         .policy-note p{font-size:.88rem;color:var(--text-secondary);line-height:1.75}
 
-        /* GOOGLE REVIEWS — hidden until live */
         .google-reviews{background:var(--warm-cream);text-align:center}
         .google-rating{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px}
         .google-rating-score{font-family:'DM Serif Display',serif;font-size:3rem;color:var(--deep-brown);line-height:1}
@@ -253,7 +237,6 @@
         .btn-google:hover{box-shadow:var(--shadow-medium);transform:translateY(-2px)}
         .btn-google svg{width:20px;height:20px}
 
-        /* FAQ */
         .faq{background:var(--off-white)}
         .faq-list{max-width:780px;margin:48px auto 0}
         .faq-item{background:white;border-radius:var(--radius);margin-bottom:12px;border:1px solid rgba(61,43,31,0.05);overflow:hidden}
@@ -265,7 +248,6 @@
         .faq-item.open .faq-answer{max-height:300px;padding:0 28px 22px}
         .faq-answer p{font-size:.9rem;color:var(--text-secondary);line-height:1.8}
 
-        /* CONTACT */
         .contact{background:var(--warm-cream)}
         .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:48px}
         .contact-info h3{font-size:1.5rem;color:var(--deep-brown);margin-bottom:16px}
@@ -288,7 +270,11 @@
         .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
         .form-submit{width:100%;padding:16px;margin-top:8px}
 
-        /* FOOTER */
+        /* form feedback */
+        .form-feedback{display:none;margin-top:14px;padding:14px 18px;border-radius:10px;font-size:.88rem;font-weight:600}
+        .form-feedback.ok{background:rgba(138,154,123,0.15);color:#4a6e40;border:1px solid rgba(138,154,123,0.3)}
+        .form-feedback.err{background:rgba(192,74,74,0.08);color:#8b3030;border:1px solid rgba(192,74,74,0.2)}
+
         footer{background:var(--deep-brown);color:rgba(255,255,255,0.6);padding:48px 24px}
         .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
         .footer-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:white}
@@ -297,22 +283,15 @@
         .footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:.82rem;transition:color .2s}
         .footer-links a:hover{color:var(--muted-gold)}
 
-        /* FLOATING CTA */
         .floating-cta{position:fixed;bottom:28px;right:28px;z-index:999;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
         .floating-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:transform .2s,box-shadow .2s;font-size:1.4rem}
         .floating-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(0,0,0,0.2)}
         .floating-whatsapp{background:#25D366;color:white}
-        .floating-email{background:var(--terracotta);color:white}
 
-        /* REVEAL */
         .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
         .reveal.visible{opacity:1;transform:translateY(0)}
 
-        /* RESPONSIVE */
-        @media(max-width:1024px){
-            .approach-grid{grid-template-columns:repeat(2,1fr)}
-            .locations-grid{grid-template-columns:repeat(2,1fr)}
-        }
+        @media(max-width:1024px){.approach-grid{grid-template-columns:repeat(2,1fr)}.locations-grid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:768px){
             .nav-links{display:none}
             .nav-links.open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--warm-cream);padding:24px;gap:16px;box-shadow:var(--shadow-medium)}
@@ -356,17 +335,17 @@
 <section class="hero" id="home">
     <div class="hero-inner">
         <div class="hero-content">
-            <div class="hero-badge">Piano & Guitar Lessons Across London</div>
+            <div class="hero-badge">Piano &amp; Guitar Lessons Across London</div>
             <h1>Let's make <em>music together</em> — it's never too early, or too late</h1>
             <p class="hero-subtitle">Ciao! I'm Nicola, an Italian piano and guitar teacher with over a decade of experience helping students of all ages discover the joy of making music. Whether you want to improvise in Jazz, play your favourite songs, or work towards your ABRSM grades — I'll build a path that works for <em>you</em>.</p>
             <div class="hero-trust">
                 <div class="hero-trust-item">10+ years teaching</div>
                 <div class="hero-trust-item">DBS checked</div>
-                <div class="hero-trust-item">In-person & online</div>
+                <div class="hero-trust-item">In-person &amp; online</div>
                 <div class="hero-trust-item">All ages welcome</div>
             </div>
             <div class="hero-actions">
-                <a href="#contact" class="btn-primary">Book a Free Trial →</a>
+                <a href="#contact" class="btn-primary">Book a Free Trial &rarr;</a>
                 <a href="#lessons" class="btn-secondary">View Lessons</a>
             </div>
         </div>
@@ -375,7 +354,7 @@
                 <img src="https://nicolarivo.co.uk/teacher/assets/images/profile.jpeg" alt="Nicola Rivosecchi — piano and guitar teacher in London">
             </div>
             <div class="hero-floating-card">
-                <div class="stars">★★★★★</div>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <div class="card-text">Loved by families</div>
                 <div class="card-sub">across London</div>
             </div>
@@ -401,27 +380,27 @@
         <div class="reveal">
             <span class="section-label">What I Teach</span>
             <h2 class="section-title">Lessons Tailored to What You Love</h2>
-            <p class="section-desc">Whether you're drawn to Rock, Jazz, Pop, Soul, Funk or R&B — or want to prepare for grades, dive into production, or just play the songs you love — my teaching adapts entirely to your goals.</p>
+            <p class="section-desc">Whether you're drawn to Rock, Jazz, Pop, Soul, Funk or R&amp;B — or want to prepare for grades, dive into production, or just play the songs you love — my teaching adapts entirely to your goals.</p>
         </div>
         <div class="lessons-grid">
             <div class="lesson-card reveal">
-                <div class="lesson-icon piano">🎹</div>
+                <div class="lesson-icon piano">&#127929;</div>
                 <h3>Piano Lessons</h3>
                 <p>From Jazz improvisation and Pop chords to classical technique and ABRSM grades — piano lessons built around your musical world, not a textbook. Whether you want to comp over a Jazz standard or nail a film score, we'll get there together.</p>
                 <div class="lesson-tags">
-                    <span class="lesson-tag">Jazz & Improvisation</span>
-                    <span class="lesson-tag">Rock & Pop</span>
+                    <span class="lesson-tag">Jazz &amp; Improvisation</span>
+                    <span class="lesson-tag">Rock &amp; Pop</span>
                     <span class="lesson-tag">ABRSM Grades</span>
                     <span class="lesson-tag">Chord Theory</span>
                     <span class="lesson-tag">Composition</span>
                 </div>
             </div>
             <div class="lesson-card reveal">
-                <div class="lesson-icon guitar">🎸</div>
+                <div class="lesson-icon guitar">&#127928;</div>
                 <h3>Guitar Lessons</h3>
                 <p>Acoustic or electric, beginner or advanced. I specialise in Rock and Jazz improvisation, fingerstyle, and groove — and I love helping students develop a genuine personal style rather than just copying tabs.</p>
                 <div class="lesson-tags">
-                    <span class="lesson-tag">Rock & Jazz</span>
+                    <span class="lesson-tag">Rock &amp; Jazz</span>
                     <span class="lesson-tag">Improvisation</span>
                     <span class="lesson-tag">Fingerstyle</span>
                     <span class="lesson-tag">RockSchool Grades</span>
@@ -429,22 +408,22 @@
                 </div>
             </div>
             <div class="lesson-card reveal">
-                <div class="lesson-icon theory">🎵</div>
-                <h3>Music Theory & Musicianship</h3>
+                <div class="lesson-icon theory">&#127925;</div>
+                <h3>Music Theory &amp; Musicianship</h3>
                 <p>Theory taught through playing, not dry textbooks. I focus on practical harmony, ear training, and the kind of understanding that actually improves your playing — from basic scales to complex jazz harmony.</p>
                 <div class="lesson-tags">
                     <span class="lesson-tag">Harmony</span>
                     <span class="lesson-tag">Ear Training</span>
-                    <span class="lesson-tag">Rhythm & Groove</span>
+                    <span class="lesson-tag">Rhythm &amp; Groove</span>
                     <span class="lesson-tag">Sight Reading</span>
                 </div>
             </div>
             <div class="lesson-card reveal">
-                <div class="lesson-icon production">🎧</div>
-                <h3>Music Production & Composition</h3>
+                <div class="lesson-icon production">&#127911;</div>
+                <h3>Music Production &amp; Composition</h3>
                 <p>Want to go beyond the instrument? I offer lessons in music production, composition, and creative music coding — from Ableton and Logic to MAX/MSP and sound design, using the same tools I use professionally.</p>
                 <div class="lesson-tags">
-                    <span class="lesson-tag">Ableton & Logic</span>
+                    <span class="lesson-tag">Ableton &amp; Logic</span>
                     <span class="lesson-tag">Sound Design</span>
                     <span class="lesson-tag">Composition</span>
                     <span class="lesson-tag">MAX/MSP</span>
@@ -468,10 +447,10 @@
                 <p>I have a particular passion for Jazz and Rock improvisation, but my teaching adapts entirely to what you want to achieve. Maybe you want to finally play the songs you love, jam with friends, explore harmony without reading a note — or go the other way and work towards ABRSM or RockSchool grades. Whatever the goal, we'll find a path that feels right for you.</p>
                 <p>I truly believe it's never too early — or too late — to follow your musical dreams. Most importantly, lessons should feel enjoyable. The progress comes naturally when you're having fun.</p>
                 <div class="about-credentials">
-                    <div class="credential"><div class="credential-icon">🎓</div><div><div class="credential-text">BA Piano Performance & Production</div><div class="credential-sub">LCCM, London — 2020</div></div></div>
-                    <div class="credential"><div class="credential-icon">🎓</div><div><div class="credential-text">MSc Sound Design</div><div class="credential-sub">University of Edinburgh</div></div></div>
-                    <div class="credential"><div class="credential-icon">✅</div><div><div class="credential-text">DBS Checked</div><div class="credential-sub">Safe & trusted for all ages</div></div></div>
-                    <div class="credential"><div class="credential-icon">🇮🇹</div><div><div class="credential-text">Italian Teacher</div><div class="credential-sub">Native Italian speaker</div></div></div>
+                    <div class="credential"><div class="credential-icon">&#127891;</div><div><div class="credential-text">BA Piano Performance &amp; Production</div><div class="credential-sub">LCCM, London &mdash; 2020</div></div></div>
+                    <div class="credential"><div class="credential-icon">&#127891;</div><div><div class="credential-text">MSc Sound Design</div><div class="credential-sub">University of Edinburgh</div></div></div>
+                    <div class="credential"><div class="credential-icon">&#9989;</div><div><div class="credential-text">DBS Checked</div><div class="credential-sub">Safe &amp; trusted for all ages</div></div></div>
+                    <div class="credential"><div class="credential-icon">&#127470;&#127481;</div><div><div class="credential-text">Italian Teacher</div><div class="credential-sub">Native Italian speaker</div></div></div>
                 </div>
             </div>
         </div>
@@ -488,7 +467,7 @@
         </div>
         <div class="approach-grid">
             <div class="approach-item reveal"><div class="approach-num">01</div><h3>Your Music, Your Goals</h3><p>We start from what you love and where you want to go. I build the curriculum around you, not a preset syllabus.</p></div>
-            <div class="approach-item reveal"><div class="approach-num">02</div><h3>Groove & Feel First</h3><p>Deep harmonic understanding and groove don't require reading a note. I prioritise practical musicianship — theory through playing, not theory for its own sake.</p></div>
+            <div class="approach-item reveal"><div class="approach-num">02</div><h3>Groove &amp; Feel First</h3><p>Deep harmonic understanding and groove don't require reading a note. I prioritise practical musicianship — theory through playing, not theory for its own sake.</p></div>
             <div class="approach-item reveal"><div class="approach-num">03</div><h3>Improvisation at the Core</h3><p>I have a particular passion for Jazz and Rock improvisation. Learning to improvise unlocks a new relationship with your instrument and your creativity.</p></div>
             <div class="approach-item reveal"><div class="approach-num">04</div><h3>No Pressure, Just Progress</h3><p>Lessons are a safe space to experiment, make mistakes, and enjoy the process. Progress happens naturally when you're having fun.</p></div>
         </div>
@@ -499,50 +478,50 @@
 <section class="testimonials" id="testimonials">
     <div class="section-inner">
         <div class="reveal">
-            <span class="section-label">What Students & Parents Say</span>
+            <span class="section-label">What Students &amp; Parents Say</span>
             <h2 class="section-title">Trusted by Families Across London</h2>
         </div>
         <div class="testimonials-grid">
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="testimonial-text">"I cannot thank you enough for all you have done for Seth. You have inspired a love of music, and huge advancement in his piano skills. He looks forward to your sessions, and it has been wonderful to have you in his life as a positive influence."</p>
-                <div class="testimonial-author"><div class="testimonial-name">Tamara G.</div><div class="testimonial-role">Mother of Seth, 9 — Piano lessons, Richmond</div></div>
+                <div class="testimonial-author"><div class="testimonial-name">Tamara G.</div><div class="testimonial-role">Mother of Seth, 9 &mdash; Piano lessons, Richmond</div></div>
             </div>
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="testimonial-text">"Nico is a great teacher. His relaxed teaching style makes you feel at ease whilst learning. He is both kind and good fun, and our daughter always enjoys his lessons!"</p>
-                <div class="testimonial-author"><div class="testimonial-name">Lucy</div><div class="testimonial-role">Mother of Pearl, 11 — Piano lessons, Clapham</div></div>
+                <div class="testimonial-author"><div class="testimonial-name">Lucy</div><div class="testimonial-role">Mother of Pearl, 11 &mdash; Piano lessons, Clapham</div></div>
             </div>
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="testimonial-text">"He managed to reignite my son's interest in learning. He uses playfulness and humour to make practising more fun. I can't recommend Nico highly enough."</p>
-                <div class="testimonial-author"><div class="testimonial-name">Katharina</div><div class="testimonial-role">Mother of Oskar, 13 — Guitar lessons, East London</div></div>
+                <div class="testimonial-author"><div class="testimonial-name">Katharina</div><div class="testimonial-role">Mother of Oskar, 13 &mdash; Guitar lessons, East London</div></div>
             </div>
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="testimonial-text">"His approach to production and music coding completely transformed my understanding. Within months I was creating professional-sounding tracks."</p>
-                <div class="testimonial-author"><div class="testimonial-name">Alex</div><div class="testimonial-role">Adult student — Music production, online</div></div>
+                <div class="testimonial-author"><div class="testimonial-name">Alex</div><div class="testimonial-role">Adult student &mdash; Music production, online</div></div>
             </div>
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="testimonial-text">"As someone who tried and failed to learn piano multiple times, Nicola's approach has been revolutionary. His focus on practical skills has kept me engaged. I can already play songs I love!"</p>
-                <div class="testimonial-author"><div class="testimonial-name">James</div><div class="testimonial-role">Adult beginner — Piano lessons, Tower Hill</div></div>
+                <div class="testimonial-author"><div class="testimonial-name">James</div><div class="testimonial-role">Adult beginner &mdash; Piano lessons, Tower Hill</div></div>
             </div>
             <div class="testimonial-card reveal">
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="testimonial-text">"We were privileged to have Nicola as a piano teacher for our boys. He was creative, engaged, enthusiastic and passed this on to them. He taught them the enjoyment of piano alongside theory and reading."</p>
-                <div class="testimonial-author"><div class="testimonial-name">Mark H.</div><div class="testimonial-role">Father of Winston & Finley, both 10 — Stepney Green</div></div>
+                <div class="testimonial-author"><div class="testimonial-name">Mark H.</div><div class="testimonial-role">Father of Winston &amp; Finley, both 10 &mdash; Stepney Green</div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- LOCATIONS — collapsible SEO section -->
+<!-- LOCATIONS -->
 <section class="locations" id="locations">
     <div class="section-inner">
         <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto">
             <span class="section-label">Where I Teach</span>
-            <h2 class="section-title">Teaching across London — in person & online</h2>
+            <h2 class="section-title">Teaching across London — in person &amp; online</h2>
             <p class="section-desc" style="margin:0 auto 32px">I travel to students across London and teach from my studio in Stepney Green. Online lessons available worldwide.</p>
             <button class="locations-toggle" id="locationsToggle" aria-expanded="false">
                 <span id="locationsToggleText">See all locations</span>
@@ -550,36 +529,12 @@
             </button>
         </div>
         <div class="locations-grid" id="locationsGrid" style="margin-top:36px;display:none">
-            <div class="location-card">
-                <div class="location-name">Richmond</div>
-                <p class="location-desc">Piano and guitar lessons in Richmond, Kew, Twickenham and surrounding areas — one of London's most musical communities.</p>
-                <span class="location-tag">Piano · Guitar · Theory</span>
-            </div>
-            <div class="location-card">
-                <div class="location-name">Clapham</div>
-                <p class="location-desc">In-home music lessons in Clapham, Clapham North, Clapham South, Brixton and South West London.</p>
-                <span class="location-tag">Piano · Guitar · Production</span>
-            </div>
-            <div class="location-card">
-                <div class="location-name">East London</div>
-                <p class="location-desc">Lessons across East London — Bethnal Green, Hackney, Bow, Whitechapel, Mile End. Also at my studio in Stepney Green (E1).</p>
-                <span class="location-tag">Piano · Guitar · Theory</span>
-            </div>
-            <div class="location-card">
-                <div class="location-name">Tower Hill & City</div>
-                <p class="location-desc">Flexible lesson times for professionals and families in Tower Hill, Aldgate, Shoreditch and the City of London.</p>
-                <span class="location-tag">Piano · Guitar · All Levels</span>
-            </div>
-            <div class="location-card">
-                <div class="location-name">Central London</div>
-                <p class="location-desc">Music lessons in Soho, Marylebone, Fitzrovia, Islington and across Central London — great for lessons near work or school.</p>
-                <span class="location-tag">Piano · Guitar · Production</span>
-            </div>
-            <div class="location-card">
-                <div class="location-name">Online — Worldwide</div>
-                <p class="location-desc">High-quality online piano and guitar lessons via Zoom or FaceTime, anywhere in the world. Just as effective as in-person.</p>
-                <span class="location-tag">All Subjects · All Timezones</span>
-            </div>
+            <div class="location-card"><div class="location-name">Richmond</div><p class="location-desc">Piano and guitar lessons in Richmond, Kew, Twickenham and surrounding areas — one of London's most musical communities.</p><span class="location-tag">Piano &middot; Guitar &middot; Theory</span></div>
+            <div class="location-card"><div class="location-name">Clapham</div><p class="location-desc">In-home music lessons in Clapham, Clapham North, Clapham South, Brixton and South West London.</p><span class="location-tag">Piano &middot; Guitar &middot; Production</span></div>
+            <div class="location-card"><div class="location-name">East London</div><p class="location-desc">Lessons across East London — Bethnal Green, Hackney, Bow, Whitechapel, Mile End. Also at my studio in Stepney Green (E1).</p><span class="location-tag">Piano &middot; Guitar &middot; Theory</span></div>
+            <div class="location-card"><div class="location-name">Tower Hill &amp; City</div><p class="location-desc">Flexible lesson times for professionals and families in Tower Hill, Aldgate, Shoreditch and the City of London.</p><span class="location-tag">Piano &middot; Guitar &middot; All Levels</span></div>
+            <div class="location-card"><div class="location-name">Central London</div><p class="location-desc">Music lessons in Soho, Marylebone, Fitzrovia, Islington and across Central London — great for lessons near work or school.</p><span class="location-tag">Piano &middot; Guitar &middot; Production</span></div>
+            <div class="location-card"><div class="location-name">Online — Worldwide</div><p class="location-desc">High-quality online piano and guitar lessons via Zoom or FaceTime, anywhere in the world. Just as effective as in-person.</p><span class="location-tag">All Subjects &middot; All Timezones</span></div>
         </div>
     </div>
 </section>
@@ -595,40 +550,40 @@
         <div class="pricing-grid">
             <div class="price-card reveal">
                 <h3>Pay As You Go</h3>
-                <div class="price-amount">£50–£70 <span>/ lesson</span></div>
-                <p class="price-note">Peak rates (3pm onwards, Mon–Fri)</p>
+                <div class="price-amount">&pound;50&ndash;&pound;70 <span>/ lesson</span></div>
+                <p class="price-note">Peak rates (3pm onwards, Mon&ndash;Fri)</p>
                 <ul class="price-features">
-                    <li>30 min — £50</li>
-                    <li>45 min — £60</li>
-                    <li>60 min — £70</li>
-                    <li>Off-peak (8am–3pm, studio): £10 less</li>
+                    <li>30 min &mdash; &pound;50</li>
+                    <li>45 min &mdash; &pound;60</li>
+                    <li>60 min &mdash; &pound;70</li>
+                    <li>Off-peak (8am&ndash;3pm, studio): &pound;10 less</li>
                     <li>In-person or online</li>
-                    <li>All ages & levels</li>
+                    <li>All ages &amp; levels</li>
                 </ul>
                 <a href="#contact" class="btn-primary form-submit" style="display:flex;justify-content:center">Book a Lesson</a>
             </div>
             <div class="price-card featured reveal">
                 <h3>Premium Package</h3>
-                <div class="price-amount">£45–£65 <span>/ lesson</span></div>
-                <p class="price-note">Buy 4+ lessons upfront — save £5 each</p>
+                <div class="price-amount">&pound;45&ndash;&pound;65 <span>/ lesson</span></div>
+                <p class="price-note">Buy 4+ lessons upfront &mdash; save &pound;5 each</p>
                 <ul class="price-features">
-                    <li>30 min — £45</li>
-                    <li>45 min — £55</li>
-                    <li>60 min — £65</li>
-                    <li>Off-peak (8am–3pm, studio): £10 less</li>
+                    <li>30 min &mdash; &pound;45</li>
+                    <li>45 min &mdash; &pound;55</li>
+                    <li>60 min &mdash; &pound;65</li>
+                    <li>Off-peak (8am&ndash;3pm, studio): &pound;10 less</li>
                     <li>WhatsApp support between lessons</li>
-                    <li>Video tutorials & homework recordings</li>
+                    <li>Video tutorials &amp; homework recordings</li>
                     <li>Priority scheduling</li>
                 </ul>
                 <a href="#contact" class="btn-primary form-submit" style="display:flex;justify-content:center">Become Premium</a>
             </div>
             <div class="price-card reveal">
                 <h3>Free Trial</h3>
-                <div class="price-amount">£0 <span>/ first session</span></div>
-                <p class="price-note">No commitment — let's see if we click</p>
+                <div class="price-amount">&pound;0 <span>/ first session</span></div>
+                <p class="price-note">No commitment &mdash; let's see if we click</p>
                 <ul class="price-features">
-                    <li>introductory session</li>
-                    <li>Discuss your goals & level</li>
+                    <li>Introductory session</li>
+                    <li>Discuss your goals &amp; level</li>
                     <li>Try my teaching approach first-hand</li>
                     <li>Get a personalised lesson plan</li>
                     <li>In-person or online</li>
@@ -637,13 +592,13 @@
             </div>
         </div>
         <div class="policy-note reveal">
-            <h4>📋 Cancellation Policy</h4>
+            <h4>&#128203; Cancellation Policy</h4>
             <p>Please give at least 24 hours' notice to cancel or reschedule. Late cancellations will be rescheduled within the same week where possible — if we can't find an alternative slot within 7 days, the lesson will be forfeited. I'm always happy to be flexible when given enough notice.</p>
         </div>
     </div>
 </section>
 
-<!-- GOOGLE REVIEWS — hidden until SHOW_GOOGLE_REVIEWS = true -->
+<!-- GOOGLE REVIEWS -->
 <section class="google-reviews" id="reviews">
     <div class="section-inner">
         <div class="reveal">
@@ -652,7 +607,7 @@
             <div class="google-rating">
                 <div class="google-rating-score">5.0</div>
                 <div>
-                    <div class="google-rating-stars">★★★★★</div>
+                    <div class="google-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <div class="google-rating-count">Based on Google Reviews</div>
                 </div>
             </div>
@@ -660,17 +615,17 @@
         <div class="google-review-cards">
             <div class="google-review-card reveal">
                 <div class="google-review-card-header"><div class="google-avatar">T</div><div><div class="google-review-name">Tamara G.</div><div class="google-review-date">Google Review</div></div></div>
-                <div class="google-review-stars">★★★★★</div>
+                <div class="google-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="google-review-text">"Nicola has inspired a love of music in my son and a huge advancement in his piano skills. His warm, patient approach makes every session a joy."</p>
             </div>
             <div class="google-review-card reveal">
                 <div class="google-review-card-header"><div class="google-avatar">K</div><div><div class="google-review-name">Katharina</div><div class="google-review-date">Google Review</div></div></div>
-                <div class="google-review-stars">★★★★★</div>
+                <div class="google-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="google-review-text">"He managed to reignite my son's interest in learning. He uses playfulness and humour to make practising fun. I can't recommend Nico highly enough."</p>
             </div>
             <div class="google-review-card reveal">
                 <div class="google-review-card-header"><div class="google-avatar">J</div><div><div class="google-review-name">James</div><div class="google-review-date">Google Review</div></div></div>
-                <div class="google-review-stars">★★★★★</div>
+                <div class="google-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                 <p class="google-review-text">"As someone who failed to learn piano multiple times before, Nicola's approach has been revolutionary. I can already play songs I love!"</p>
             </div>
         </div>
@@ -716,17 +671,22 @@
             <div class="contact-info reveal">
                 <h3>Let's Talk Music</h3>
                 <p>Whether you're looking for piano lessons in Richmond, guitar lessons in Clapham, or something entirely different — drop me a message and we'll find the right path for you.</p>
-                <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div class="contact-detail-text"><a href="/cdn-cgi/l/email-protection#ed83848e82818cc39f849b829e888e8e8584ad8a808c8481c38e8280d29e988f87888e99d0a0989e848ec8dfdda1889e9e8283c8dfdda8839c98849f94"><span class="__cf_email__" data-cfemail="0866616b676469267a617e677b6d6b6b6061486f65696164266b6765">[email&#160;protected]</span></a></div></div>
-                <div class="contact-detail"><div class="contact-detail-icon">📱</div><div class="contact-detail-text"><a href="https://wa.me/447438779924">+44 7438 779924 (WhatsApp)</a></div></div>
-                <div class="contact-detail"><div class="contact-detail-icon">📍</div><div class="contact-detail-text">Studio: Stepney Green, E1 3HU<br><span style="font-size:.82rem;color:var(--text-light)">Also teaching in Richmond, Clapham, East London, Tower Hill, Central London & online</span></div></div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">&#128241;</div>
+                    <div class="contact-detail-text"><a href="https://wa.me/447438779924">+44 7438 779924 (WhatsApp)</a></div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">&#128205;</div>
+                    <div class="contact-detail-text">Studio: Stepney Green, E1 3HU<br><span style="font-size:.82rem;color:var(--text-light)">Also teaching in Richmond, Clapham, East London, Tower Hill, Central London &amp; online</span></div>
+                </div>
                 <div class="contact-hours">
                     <h4>Availability</h4>
-                    <div class="hours-row"><span class="day">Monday – Friday</span><span>8:00 AM – 8:00 PM</span></div>
-                    <div class="hours-row"><span class="day">Saturday – Sunday</span><span>On request</span></div>
+                    <div class="hours-row"><span class="day">Monday &ndash; Friday</span><span>8:00 AM &ndash; 8:00 PM</span></div>
+                    <div class="hours-row"><span class="day">Saturday &ndash; Sunday</span><span>On request</span></div>
                 </div>
             </div>
             <div class="contact-form reveal">
-                <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form id="contactForm" novalidate>
                     <div class="form-row">
                         <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" required placeholder="Your name"></div>
                         <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" required placeholder="your@email.com"></div>
@@ -752,8 +712,8 @@
                             <label for="level">Experience Level</label>
                             <select id="level" name="level">
                                 <option value="">Select your level</option>
-                                <option value="Beginner">Beginner (0–1 years)</option>
-                                <option value="Intermediate">Intermediate (1–3 years)</option>
+                                <option value="Beginner">Beginner (0&ndash;1 years)</option>
+                                <option value="Intermediate">Intermediate (1&ndash;3 years)</option>
                                 <option value="Advanced">Advanced (3+ years)</option>
                             </select>
                         </div>
@@ -771,8 +731,23 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="referral">How did you hear about me?</label>
+                        <select id="referral" name="referral">
+                            <option value="">Please select&hellip;</option>
+                            <option value="Google Search">Google Search</option>
+                            <option value="Flyer">Flyer</option>
+                            <option value="School / Notice Board">School / Notice Board</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Referral / Word of Mouth">Referral / Word of Mouth</option>
+                            <option value="Bark / Tutorful / Platform">Bark / Tutorful / Platform</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
                     <div class="form-group"><label for="message">Tell Me About Your Goals</label><textarea id="message" name="message" placeholder="What do you want to learn? Any questions?"></textarea></div>
-                    <button type="submit" class="btn-primary form-submit">Send Message — It's Free →</button>
+                    <button type="submit" class="btn-primary form-submit">Send Message — It's Free &rarr;</button>
+                    <div class="form-feedback" id="formFeedback"></div>
                 </form>
             </div>
         </div>
@@ -790,23 +765,18 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="https://nicolarivo.co.uk/resources.html">Resources</a></li>
         </ul>
-        <p>&copy; 2025 Nicola Rivosecchi Music Teaching · <a href="https://nicolarivo.co.uk/sound" style="color:rgba(255,255,255,0.35)">Sound Design Portfolio</a></p>
+        <p>&copy; 2025 Nicola Rivosecchi Music Teaching &middot; <a href="https://nicolarivo.co.uk/sound" style="color:rgba(255,255,255,0.35)">Sound Design Portfolio</a></p>
     </div>
 </footer>
 
 <div class="floating-cta">
-    <a href="https://wa.me/447438779924" class="floating-btn floating-whatsapp" aria-label="WhatsApp" title="Message on WhatsApp">💬</a>
-    <!-- <a href="mailto:nicola.rivosecchi@gmail.com?subject=Music%20Lesson%20Inquiry" class="floating-btn floating-email" aria-label="Send email" title="Email">✉</a></div> -->
+    <a href="https://wa.me/447438779924" class="floating-btn floating-whatsapp" aria-label="WhatsApp" title="Message on WhatsApp">&#128172;</a>
+</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ─────────────────────────────────────────────────────
-    // Set to true when your Google Business page is live:
+<script>
+    // Google reviews toggle
     var SHOW_GOOGLE_REVIEWS = false;
-    // ─────────────────────────────────────────────────────
-    if (!SHOW_GOOGLE_REVIEWS) {
-        document.getElementById('reviews').style.display = 'none';
-        document.getElementById('navGoogleReviewsLi') && (document.getElementById('navGoogleReviewsLi').style.display = 'none');
-    }
+    if (!SHOW_GOOGLE_REVIEWS) { document.getElementById('reviews').style.display = 'none'; }
 
     // Nav scroll
     var nav = document.getElementById('nav');
@@ -818,7 +788,7 @@
     navToggle.addEventListener('click', function() { navLinks.classList.toggle('open'); });
     navLinks.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { navLinks.classList.remove('open'); }); });
 
-    // FAQ
+    // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(function(q) {
         q.addEventListener('click', function() {
             var item = q.parentElement;
@@ -843,10 +813,67 @@
         });
     }
 
+    // Contact form — Formspree
+    // Replace YOUR_FORM_ID with your Formspree form ID (https://formspree.io)
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var form = e.target;
+        var btn  = form.querySelector('button[type="submit"]');
+        var fb   = document.getElementById('formFeedback');
+        fb.className = 'form-feedback';
+        fb.style.display = 'none';
+
+        var name  = form.name.value.trim();
+        var email = form.email.value.trim();
+        if (!name || !email) {
+            fb.textContent = 'Please fill in your name and email address.';
+            fb.className = 'form-feedback err';
+            fb.style.display = 'block';
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending\u2026';
+
+        var data = {
+            name:     name,
+            email:    email,
+            phone:    form.phone.value.trim(),
+            subject:  form.instrument.value,
+            level:    form.level.value,
+            location: form.location.value,
+            referral: form.referral.value,
+            message:  form.message.value.trim()
+        };
+
+        try {
+            var res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify({ access_key: '39085a5d-a84a-45ab-90dc-8f846734ca47', ...data })
+            });
+            if (res.ok) {
+                fb.textContent = '\u2713 Message sent! I\u2019ll be in touch very soon.';
+                fb.className = 'form-feedback ok';
+                form.reset();
+            } else {
+                throw new Error('server');
+            }
+        } catch(err) {
+            fb.textContent = '\u2717 Something went wrong. Please try again or message me on WhatsApp.';
+            fb.className = 'form-feedback err';
+        }
+
+        fb.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Send Message \u2014 It\u2019s Free \u2192';
+    });
+
     // Scroll reveal
     var revealObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });</script>
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+</script>
 </body>
 </html>
