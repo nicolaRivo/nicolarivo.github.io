@@ -15,15 +15,13 @@
     <meta property="og:url" content="https://nicolarivo.co.uk/sound">
     <meta property="og:locale" content="en_GB">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Person","name":"Nicola Rivosecchi","alternateName":"Nico Rivosecchi","jobTitle":"Sound Designer & Audio Engineer","url":"https://nicolarivo.co.uk/sound","telephone":"+447438779924","email":"nicola.rivosecchi@gmail.com","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"sameAs":["https://nicolarivo.co.uk","https://www.instagram.com/9inefm","https://www.linkedin.com/in/nicola-rivosecchi-649240112/","https://soundcloud.com/nicolarivo","https://www.youtube.com/@nicolarivo"]}
+    {"@context":"https://schema.org","@type":"Person","name":"Nicola Rivosecchi","alternateName":"Nico Rivosecchi","jobTitle":"Sound Designer & Audio Engineer","url":"https://nicolarivo.co.uk/sound","telephone":"+447438779924","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"sameAs":["https://nicolarivo.co.uk","https://www.instagram.com/9inefm","https://www.linkedin.com/in/nicola-rivosecchi-649240112/","https://soundcloud.com/nicolarivo","https://www.youtube.com/@nicolarivo"]}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
-        /* ── THEMES ── */
         :root{
             --bg:#080808;--surface:#101010;--border:rgba(255,255,255,0.06);
             --accent:#00E5CC;--accent-dim:rgba(0,229,204,0.08);
@@ -32,38 +30,12 @@
             --mono:'Space Mono',monospace;--sans:'Outfit',sans-serif;
             --play-bg:rgba(0,229,204,0.9);
         }
-        [data-theme="slate"]{
-            --bg:#0a0e14;--surface:#121820;--border:rgba(255,255,255,0.07);
-            --accent:#7EB8F7;--accent-dim:rgba(126,184,247,0.08);
-            --text:rgba(255,255,255,0.88);--text-dim:rgba(255,255,255,0.42);--text-muted:rgba(255,255,255,0.18);
-            --nav-bg:rgba(10,14,20,0.92);--filter-bg:rgba(10,14,20,0.94);--modal-bg:#131a23;--input-bg:#0c1018;
-            --play-bg:rgba(126,184,247,0.9);
-        }
-        [data-theme="dusk"]{
-            --bg:#100c0a;--surface:#1a1512;--border:rgba(255,220,180,0.07);
-            --accent:#F0A05A;--accent-dim:rgba(240,160,90,0.08);
-            --text:rgba(255,240,225,0.9);--text-dim:rgba(255,240,225,0.42);--text-muted:rgba(255,240,225,0.18);
-            --nav-bg:rgba(16,12,10,0.92);--filter-bg:rgba(16,12,10,0.94);--modal-bg:#1a1512;--input-bg:#120e0b;
-            --play-bg:rgba(240,160,90,0.9);
-        }
-        [data-theme="fog"]{
-            --bg:#F4F2EF;--surface:#ECEAE6;--border:rgba(0,0,0,0.08);
-            --accent:#2563EB;--accent-dim:rgba(37,99,235,0.08);
-            --text:rgba(0,0,0,0.85);--text-dim:rgba(0,0,0,0.45);--text-muted:rgba(0,0,0,0.25);
-            --nav-bg:rgba(244,242,239,0.92);--filter-bg:rgba(244,242,239,0.95);--modal-bg:#ECEAE6;--input-bg:#E4E2DE;
-            --play-bg:rgba(37,99,235,0.9);
-        }
-        [data-theme="forest"]{
-            --bg:#060e08;--surface:#0c1a0f;--border:rgba(120,220,140,0.07);
-            --accent:#5DDC7E;--accent-dim:rgba(93,220,126,0.08);
-            --text:rgba(220,255,230,0.88);--text-dim:rgba(220,255,230,0.42);--text-muted:rgba(220,255,230,0.18);
-            --nav-bg:rgba(6,14,8,0.92);--filter-bg:rgba(6,14,8,0.94);--modal-bg:#0c1a0f;--input-bg:#081008;
-            --play-bg:rgba(93,220,126,0.9);
-        }
-
+        [data-theme="slate"]{--bg:#0a0e14;--surface:#121820;--border:rgba(255,255,255,0.07);--accent:#7EB8F7;--accent-dim:rgba(126,184,247,0.08);--text:rgba(255,255,255,0.88);--text-dim:rgba(255,255,255,0.42);--text-muted:rgba(255,255,255,0.18);--nav-bg:rgba(10,14,20,0.92);--filter-bg:rgba(10,14,20,0.94);--modal-bg:#131a23;--input-bg:#0c1018;--play-bg:rgba(126,184,247,0.9);}
+        [data-theme="dusk"]{--bg:#100c0a;--surface:#1a1512;--border:rgba(255,220,180,0.07);--accent:#F0A05A;--accent-dim:rgba(240,160,90,0.08);--text:rgba(255,240,225,0.9);--text-dim:rgba(255,240,225,0.42);--text-muted:rgba(255,240,225,0.18);--nav-bg:rgba(16,12,10,0.92);--filter-bg:rgba(16,12,10,0.94);--modal-bg:#1a1512;--input-bg:#120e0b;--play-bg:rgba(240,160,90,0.9);}
+        [data-theme="fog"]{--bg:#F4F2EF;--surface:#ECEAE6;--border:rgba(0,0,0,0.08);--accent:#2563EB;--accent-dim:rgba(37,99,235,0.08);--text:rgba(0,0,0,0.85);--text-dim:rgba(0,0,0,0.45);--text-muted:rgba(0,0,0,0.25);--nav-bg:rgba(244,242,239,0.92);--filter-bg:rgba(244,242,239,0.95);--modal-bg:#ECEAE6;--input-bg:#E4E2DE;--play-bg:rgba(37,99,235,0.9);}
+        [data-theme="forest"]{--bg:#060e08;--surface:#0c1a0f;--border:rgba(120,220,140,0.07);--accent:#5DDC7E;--accent-dim:rgba(93,220,126,0.08);--text:rgba(220,255,230,0.88);--text-dim:rgba(220,255,230,0.42);--text-muted:rgba(220,255,230,0.18);--nav-bg:rgba(6,14,8,0.92);--filter-bg:rgba(6,14,8,0.94);--modal-bg:#0c1a0f;--input-bg:#081008;--play-bg:rgba(93,220,126,0.9);}
         html{scroll-behavior:smooth}
         body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .35s,color .35s}
-
         .nav{position:fixed;top:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .35s,border-color .35s}
         .nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
         .nav-logo{font-family:var(--mono);font-size:.8rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:.04em}
@@ -75,17 +47,14 @@
         .nav-cta:hover{background:var(--accent-dim);border-color:var(--accent)}
         .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
         .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text);margin:4px 0}
-
         .hero{padding:140px 24px 60px;text-align:center}
         .hero h1{font-weight:200;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
         .hero h1 strong{font-weight:500;color:var(--accent)}
         .hero p{font-size:.95rem;color:var(--text-dim);max-width:520px;margin:0 auto;line-height:1.7}
-
         .filters{padding:20px 24px 32px;text-align:center;position:sticky;top:60px;z-index:100;background:var(--filter-bg);backdrop-filter:blur(12px);transition:background .35s}
         .filter-btn{font-family:var(--mono);font-size:.7rem;font-weight:400;padding:7px 18px;border-radius:50px;cursor:pointer;background:transparent;color:var(--text-dim);border:1px solid var(--border);margin:0 4px 8px;transition:all .2s;letter-spacing:.04em;text-transform:uppercase}
         .filter-btn:hover{border-color:color-mix(in srgb,var(--text) 20%,transparent);color:var(--text)}
         .filter-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}
-
         .mosaic{max-width:1400px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
         .tile{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--surface);border-radius:4px;transition:background .35s}
         .tile-thumb{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .5s ease;filter:brightness(0.7)}
@@ -115,7 +84,6 @@
         .player-info .tile-desc{font-size:.85rem;color:var(--text-dim);line-height:1.7}
         .player-info .tile-tags{margin-top:16px}
         .player-info .tile-tag{font-size:.62rem;padding:3px 10px}
-
         .about{padding:80px 24px;border-top:1px solid var(--border)}
         .about-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:48px;align-items:start}
         .about-photo{width:120px;flex-shrink:0}
@@ -131,12 +99,23 @@
         .about-socials a{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--text-dim);transition:all .2s}
         .about-socials a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
 
+        /* ── CONTACT FORM ── */
+        .contact-form{display:flex;flex-direction:column;gap:7px;margin-bottom:4px}
+        .contact-form input,.contact-form textarea{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:5px;padding:8px 10px;color:var(--text);font-family:var(--sans);font-size:.8rem;outline:none;transition:border-color .2s,background .35s;resize:none}
+        .contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--text-muted)}
+        .contact-form input:focus,.contact-form textarea:focus{border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+        .contact-form textarea{height:70px;line-height:1.5}
+        .contact-form button{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:5px;border:none;background:var(--accent);color:var(--bg);cursor:pointer;transition:opacity .2s;align-self:flex-start;margin-top:2px}
+        .contact-form button:hover{opacity:.8}
+        .contact-form button:disabled{opacity:.45;cursor:not-allowed}
+        .contact-msg{font-family:var(--mono);font-size:.6rem;margin-top:2px;display:none;line-height:1.5}
+        .contact-msg.ok{color:var(--accent)}
+        .contact-msg.err{color:#f87171}
+
         footer{border-top:1px solid var(--border);padding:24px;text-align:center}
         footer p{font-size:.68rem;color:var(--text-muted)}
         footer a{color:var(--text-muted);text-decoration:none}
         footer a:hover{color:var(--text-dim)}
-
-        /* ── ADMIN ── */
         .admin-trigger{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:900;transition:all .25s}
         .admin-trigger:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
         .admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:1100;align-items:center;justify-content:center}
@@ -186,7 +165,6 @@
         .vitem-title{font-size:.8rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
         .vitem-meta{font-family:var(--mono);font-size:.58rem;color:var(--text-muted);margin-top:2px}
         .vitem-tag{font-family:var(--mono);font-size:.52rem;padding:1px 6px;border-radius:50px;background:var(--accent-dim);color:var(--accent);text-transform:uppercase}
-        .theme-swatches{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
         .swatch{width:36px;height:36px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s,border-color .2s;position:relative}
         .swatch:hover{transform:scale(1.12)}
         .swatch.active{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
@@ -196,25 +174,8 @@
         .github-setup code{font-family:var(--mono);font-size:.7rem;background:rgba(128,128,128,0.15);padding:1px 5px;border-radius:3px;color:var(--text)}
         .spinner{display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px}
         @keyframes spin{to{transform:rotate(360deg)}}
-        .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle}
-        .status-dot.ok{background:#4ade80}
-        .status-dot.err{background:#f87171}
-        .status-dot.pending{background:#fbbf24}
-
-        @media(max-width:1024px){
-            .mosaic{grid-template-columns:repeat(3,1fr)}
-            .player-wrapper{grid-template-columns:1fr}
-            .player-info{border-left:none;border-top:1px solid var(--border)}
-            .about-inner{grid-template-columns:auto 1fr 1fr;gap:32px}
-        }
-        @media(max-width:768px){
-            .nav-links{display:none}
-            .nav-links.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--bg);padding:20px 24px;gap:14px;border-bottom:1px solid var(--border)}
-            .nav-toggle{display:block}
-            .mosaic{grid-template-columns:repeat(2,1fr);gap:4px}
-            .about-inner{grid-template-columns:1fr;gap:32px}
-            .about-photo{display:flex;justify-content:center}
-        }
+        @media(max-width:1024px){.mosaic{grid-template-columns:repeat(3,1fr)}.player-wrapper{grid-template-columns:1fr}.player-info{border-left:none;border-top:1px solid var(--border)}.about-inner{grid-template-columns:auto 1fr 1fr;gap:32px}}
+        @media(max-width:768px){.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--bg);padding:20px 24px;gap:14px;border-bottom:1px solid var(--border)}.nav-toggle{display:block}.mosaic{grid-template-columns:repeat(2,1fr);gap:4px}.about-inner{grid-template-columns:1fr;gap:32px}.about-photo{display:flex;justify-content:center}}
         @media(max-width:480px){.mosaic{grid-template-columns:1fr}}
         .tile.hidden{display:none}
     </style>
@@ -224,7 +185,7 @@
 <nav class="nav"><div class="nav-inner">
     <a href="https://nicolarivo.co.uk/sound" class="nav-logo">NICOLA<span>_</span>RIVOSECCHI</a>
     <ul class="nav-links" id="navLinks">
-        <li><a href="https://nicolarivo.co.uk" style="opacity:0.4">← Home</a></li>
+        <li><a href="https://nicolarivo.co.uk" style="opacity:0.4">&#8592; Home</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#about" class="nav-cta">Contact</a></li>
@@ -245,7 +206,6 @@
     <button class="filter-btn" data-filter="software">Software</button>
 </div>
 
-<!-- Grid is populated from videos.json on load -->
 <div class="mosaic" id="work"></div>
 
 <section class="about" id="about"><div class="about-inner">
@@ -268,33 +228,34 @@
     </div>
     <div class="about-contact">
         <h3>Get In Touch</h3>
-        <a href="mailto:nicola.rivosecchi@gmail.com">nicola.rivosecchi@gmail.com</a>        
         <a href="tel:+447438779924">+44 7438 779924</a>
-        <span style="font-size:.85rem;color:var(--text-dim)">London, UK</span>
+        <span style="font-size:.85rem;color:var(--text-dim);display:block;margin-bottom:12px">London, UK</span>
+        <form class="contact-form" id="contactForm" novalidate>
+            <input type="text" name="name" placeholder="Your name" required autocomplete="name">
+            <input type="email" name="email" placeholder="Your email" required autocomplete="email">
+            <textarea name="message" placeholder="Your message&#8230;" required></textarea>
+            <button type="submit">Send Message</button>
+            <div class="contact-msg" id="contactMsg"></div>
+        </form>
         <div class="about-socials">
             <a href="https://www.instagram.com/9inefm" target="_blank" rel="noopener">IG</a>
             <a href="https://www.linkedin.com/in/nicola-rivosecchi-649240112/" target="_blank" rel="noopener">IN</a>
-            <!---<a href="https://www.youtube.com/@nicolarivo" target="_blank" rel="noopener">YT</a>--!>
         </div>
     </div>
 </div></section>
 
 <footer>
-    <p>&copy; 2025 Nicola Rivosecchi · <a href="https://nicolarivo.co.uk">Home</a> · <a href="https://nicolarivo.co.uk/teacher">Teaching</a> · <a href="https://nicolarivo.co.uk/creative-coding/">Creative Coding</a></p>
+    <p>&copy; 2025 Nicola Rivosecchi &middot; <a href="https://nicolarivo.co.uk">Home</a> &middot; <a href="https://nicolarivo.co.uk/teacher">Teaching</a> &middot; <a href="https://nicolarivo.co.uk/creative-coding/">Creative Coding</a></p>
     <p style="margin-top:6px">Portfolio features media used to showcase professional skills and abilities.</p>
 </footer>
 
-<!-- Admin gear -->
 <button class="admin-trigger" id="adminTrigger" aria-label="Admin panel">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 </button>
 
-<!-- Admin modal -->
 <div class="admin-overlay" id="adminOverlay">
   <div class="admin-modal">
     <button class="admin-close" id="adminClose">&times;</button>
-
-    <!-- LOGIN -->
     <div class="admin-login" id="adminLogin">
       <h2>// Admin Access</h2>
       <div>
@@ -304,26 +265,19 @@
       <div id="adminLoginErr" class="admin-err" style="display:none">Incorrect password.</div>
       <button class="admin-btn" id="adminLoginBtn">Unlock</button>
     </div>
-
-    <!-- UNLOCKED -->
     <div class="admin-unlocked hidden" id="adminUnlocked">
-
-      <!-- GitHub not configured warning -->
       <div id="ghWarning" style="display:none;margin-bottom:16px">
         <div class="github-setup">
-          <strong style="color:var(--text)">⚠ GitHub not configured</strong><br>
+          <strong style="color:var(--text)">&#9888; GitHub not configured</strong><br>
           Go to the <strong>Settings</strong> tab and enter your GitHub repo details + Personal Access Token to enable persistent saves.
         </div>
       </div>
-
       <div class="admin-tabs">
         <button class="admin-tab active" data-tab="add">Add</button>
         <button class="admin-tab" data-tab="manage">Manage</button>
         <button class="admin-tab" data-tab="theme">Theme</button>
         <button class="admin-tab" data-tab="settings">Settings</button>
       </div>
-
-      <!-- ── ADD ── -->
       <div class="admin-panel visible" id="tabAdd">
         <h2>// Add Video</h2>
         <div>
@@ -352,8 +306,6 @@
           <button class="admin-btn ghost" id="adminLogoutBtn">Lock</button>
         </div>
       </div>
-
-      <!-- ── MANAGE ── -->
       <div class="admin-panel" id="tabManage">
         <h2>// Manage Videos</h2>
         <div id="videoList" class="video-list"></div>
@@ -382,8 +334,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ── THEME ── -->
       <div class="admin-panel" id="tabTheme">
         <h2>// Colour Theme</h2>
         <p style="font-size:.8rem;color:var(--text-dim);margin-bottom:8px">Choose a theme — saved to your repo so all visitors see it.</p>
@@ -397,14 +347,12 @@
         <div id="themeErr" class="admin-err" style="display:none;margin-top:10px"></div>
         <div id="themeOk"  class="admin-ok"  style="display:none;margin-top:10px"></div>
       </div>
-
-      <!-- ── SETTINGS ── -->
       <div class="admin-panel" id="tabSettings">
         <h2>// GitHub Settings</h2>
         <div class="github-setup" style="margin-bottom:16px">
           Enter your GitHub repo details and a Personal Access Token.<br>
           The token only needs <code>Contents: Read &amp; Write</code> permission.<br>
-          <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener" style="color:var(--accent)">Create a fine-grained token →</a>
+          <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener" style="color:var(--accent)">Create a fine-grained token &#8594;</a>
         </div>
         <div><label class="a-label" for="ghOwner">GitHub Username</label><input class="admin-input" type="text" id="ghOwner" placeholder="e.g. nicolarivo"></div>
         <div><label class="a-label" for="ghRepo">Repository Name</label><input class="admin-input" type="text" id="ghRepo" placeholder="e.g. nicolarivo.github.io"></div>
@@ -418,17 +366,12 @@
           <button class="admin-btn ghost" id="ghTestBtn">Test Connection</button>
         </div>
       </div>
-
-    </div><!-- /adminUnlocked -->
+    </div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ─────────────────────────────────────────────
-// CONFIG — change password here
+<script>
 var ADMIN_PASSWORD = 'nicola2025';
-
-// Default video list (used if videos.json doesn't exist yet in the repo)
 var DEFAULT_VIDEOS = [
   {youtube:"h_u0grD7bVQ",  category:"film-sound",   year:"2024", title:"Le Parole Sono Pietre",         desc:"Documentary film sound. Intimate sonic landscape blending ambient textures with musical cues."},
   {youtube:"HMU5f3hDvT8",  category:"film-sound",   year:"2024", title:"Gestare",                       desc:"Horror short by Stella Segar. Visceral bodily sounds create psychological horror exploring bodily autonomy."},
@@ -436,7 +379,7 @@ var DEFAULT_VIDEOS = [
   {youtube:"qm9u6u_VTUs",  category:"film-sound",   year:"2021", title:"In The Cards",                  desc:"Suspenseful short exploring fate and choice. Tension built through environmental sounds and crafted silence."},
   {youtube:"SMic-oK7lgk",  category:"film-sound",   year:"2020", title:"Mary La Bone",                  desc:"Gothic-inspired short. Audio evolves from grounded reality to ethereal otherworldliness."},
   {youtube:"nCkD6japtt4",  category:"film-sound",   year:"2020", title:"The Hand of the Wind",          desc:"Atmospheric short set in Mustang Valley, Nepal. The wind becomes a character through blended organic and processed sound."},
-  {youtube:"QdXr3KM_TQ8",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Vemödalen",   desc:"Sonic narrative from John Koenig's Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions."},
+  {youtube:"QdXr3KM_TQ8",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Vem\u00f6dalen",   desc:"Sonic narrative from John Koenig's Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions."},
   {youtube:"zbzwmKkAHS8",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Rubatosis",   desc:"An unsettling awareness of your own heartbeat rendered through carefully crafted soundscapes."},
   {youtube:"Vlk5w65sN6U",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Trumspringa", desc:"The ache of a life unlived rendered through layered field recordings."},
   {youtube:"UzIs8wy50-M",  category:"composition",  year:"2022", title:"Ondine's Theme",                desc:"Delicate composition inspired by the water nymph. Shimmering textures create an immersive underwater atmosphere."},
@@ -452,446 +395,96 @@ var DEFAULT_VIDEOS = [
   {youtube:"kf7i229dozE",  category:"software",     year:"2023", title:"VOX POPULI",                    desc:"Voice-driven generative system. Spoken input transformed into evolving harmonic and rhythmic structures."},
   {youtube:"plQkoRI_qXQ",  category:"software",     year:"2022", title:"BioSounds",                     desc:"Generative system transforming biological data into evolving soundscapes through custom algorithms."}
 ];
-// ─────────────────────────────────────────────
+
+// ── Contact form (Formspree) ──
+// Replace YOUR_FORM_ID below with your Formspree form ID after signing up at https://formspree.io
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn  = form.querySelector('button[type="submit"]');
+    var msg  = document.getElementById('contactMsg');
+    var name    = form.name.value.trim();
+    var email   = form.email.value.trim();
+    var message = form.message.value.trim();
+    msg.className = 'contact-msg';
+    msg.style.display = 'none';
+    if (!name || !email || !message) {
+        msg.textContent = 'Please fill in all fields.';
+        msg.className = 'contact-msg err';
+        msg.style.display = 'block';
+        return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    try {
+        var res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name, email: email, message: message })
+        });
+        if (res.ok) {
+            msg.textContent = '\u2713 Message sent \u2014 I\'ll be in touch soon.';
+            msg.className = 'contact-msg ok';
+            form.reset();
+        } else {
+            throw new Error('server');
+        }
+    } catch(err) {
+        msg.textContent = '\u2717 Something went wrong. Please try again.';
+        msg.className = 'contact-msg err';
+    }
+    msg.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send Message';
+});
 
 // ── GitHub helpers ──
-function ghConfig() {
-    return {
-        owner:  localStorage.getItem('gh-owner')  || '',
-        repo:   localStorage.getItem('gh-repo')   || '',
-        branch: localStorage.getItem('gh-branch') || 'main',
-        token:  localStorage.getItem('gh-token')  || ''
-    };
-}
-function ghReady() { var c = ghConfig(); return c.owner && c.repo && c.token; }
+function ghConfig(){return{owner:localStorage.getItem('gh-owner')||'',repo:localStorage.getItem('gh-repo')||'',branch:localStorage.getItem('gh-branch')||'main',token:localStorage.getItem('gh-token')||''};}
+function ghReady(){var c=ghConfig();return c.owner&&c.repo&&c.token;}
+async function ghGet(path){var c=ghConfig();var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo+'/contents/'+path+'?ref='+c.branch,{headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github+json'}});if(!r.ok){if(r.status===404)return null;throw new Error('GitHub '+r.status);}return r.json();}
+async function ghPut(path,content,message,sha){var c=ghConfig();var body={message:message,content:btoa(unescape(encodeURIComponent(content))),branch:c.branch};if(sha)body.sha=sha;var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo+'/contents/'+path,{method:'PUT',headers:{'Authorization':'Bearer '+c.token,'Content-Type':'application/json','Accept':'application/vnd.github+json'},body:JSON.stringify(body)});if(!r.ok){var e=await r.json();throw new Error(e.message||'GitHub '+r.status);}return r.json();}
+async function getLatestSha(path){var c=ghConfig();var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo+'/contents/'+path+'?ref='+c.branch,{headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github+json'}});if(!r.ok){if(r.status===404)return null;throw new Error('GitHub '+r.status);}var d=await r.json();return d.sha;}
+async function saveVideos(videos,msg){var sha=await getLatestSha('videos.json');await ghPut('videos.json',JSON.stringify(videos,null,2),msg||'Update videos.json',sha);}
+async function saveConfig(cfg,msg){var sha=await getLatestSha('config.json');await ghPut('config.json',JSON.stringify(cfg,null,2),msg||'Update config.json',sha);}
 
-async function ghGet(path) {
-    var c = ghConfig();
-    var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + path + '?ref=' + c.branch;
-    var r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github+json' } });
-    if (!r.ok) { if (r.status === 404) return null; throw new Error('GitHub ' + r.status); }
-    return r.json();
-}
+var VIDEOS=[];var SITE_CONFIG={theme:''};
+async function loadData(){var c=ghConfig();var base='https://raw.githubusercontent.com/'+(c.owner||'nicolarivo')+'/'+(c.repo||'nicolarivo.github.io')+'/'+(c.branch||'main')+'/';try{var vr=await fetch(base+'videos.json?_='+Date.now());VIDEOS=vr.ok?await vr.json():DEFAULT_VIDEOS.slice();}catch(e){VIDEOS=DEFAULT_VIDEOS.slice();}try{var cr=await fetch(base+'config.json?_='+Date.now());SITE_CONFIG=cr.ok?await cr.json():{theme:''};}catch(e){SITE_CONFIG={theme:''};}applyTheme(SITE_CONFIG.theme||'');updateSwatchUI(SITE_CONFIG.theme||'');renderGrid(VIDEOS);}
 
-async function ghPut(path, content, message, sha) {
-    var c = ghConfig();
-    var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + path;
-    var body = { message: message, content: btoa(unescape(encodeURIComponent(content))), branch: c.branch };
-    if (sha) body.sha = sha;
-    var r = await fetch(url, { method: 'PUT', headers: { 'Authorization': 'Bearer ' + c.token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' }, body: JSON.stringify(body) });
-    if (!r.ok) { var e = await r.json(); throw new Error(e.message || 'GitHub ' + r.status); }
-    return r.json();
-}
+function buildTileHTML(v){var label=v.category.replace('-',' ');return'<img class="tile-thumb" src="https://img.youtube.com/vi/'+v.youtube+'/hqdefault.jpg" alt="'+v.title+' \u2014 Nicola Rivosecchi" loading="lazy"><div class="tile-play"></div><div class="tile-overlay"><div class="tile-year">'+v.year+'</div><div class="tile-title">'+v.title+'</div><div class="tile-tags"><span class="tile-tag">'+label+'</span></div></div><div class="tile-player"><div class="player-wrapper"><div class="player-video"></div><div class="player-info"><div class="tile-year">'+v.year+'</div><div class="tile-title">'+v.title+'</div><div class="tile-desc">'+v.desc+'</div><div class="tile-tags" style="margin-top:16px"><span class="tile-tag" style="font-size:.62rem;padding:3px 10px">'+label+'</span></div></div></div></div><button class="player-close" aria-label="Close">&times;</button>';}
+function initTile(tile,v){tile.dataset.youtube=v.youtube;tile.dataset.category=v.category;tile.dataset.year=v.year;tile.dataset.title=v.title;tile.dataset.desc=v.desc;tile.innerHTML=buildTileHTML(v);tile.addEventListener('click',function(e){if(e.target.closest('.player-close'))return;if(tile.classList.contains('expanded'))return;document.querySelectorAll('.tile.expanded').forEach(closeTile);tile.classList.add('expanded');tile.querySelector('.player-video').innerHTML='<iframe src="https://www.youtube.com/embed/'+v.youtube+'?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';setTimeout(function(){tile.scrollIntoView({behavior:'smooth',block:'center'});},100);});var cb=tile.querySelector('.player-close');if(cb)cb.addEventListener('click',function(e){e.stopPropagation();closeTile(tile);});var af=document.querySelector('.filter-btn.active');if(af&&af.dataset.filter!=='all'&&v.category!==af.dataset.filter)tile.classList.add('hidden');}
+function closeTile(tile){tile.classList.remove('expanded');var pv=tile.querySelector('.player-video');if(pv)pv.innerHTML='';}
+function renderGrid(videos){var mosaic=document.getElementById('work');mosaic.innerHTML='';videos.forEach(function(v){var tile=document.createElement('div');tile.className='tile';initTile(tile,v);mosaic.appendChild(tile);});}
 
-async function getLatestSha(path) {
-    // Always fetch a fresh SHA immediately before writing to avoid stale-SHA conflicts
-    var c = ghConfig();
-    var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo + '/contents/' + path + '?ref=' + c.branch;
-    var r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github+json' } });
-    if (!r.ok) { if (r.status === 404) return null; throw new Error('GitHub ' + r.status); }
-    var d = await r.json();
-    return d.sha;
-}
+document.querySelectorAll('.filter-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.tile.expanded').forEach(closeTile);document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');var f=btn.dataset.filter;document.querySelectorAll('.tile').forEach(function(t){t.classList.toggle('hidden',f!=='all'&&t.dataset.category!==f);});});});
+document.getElementById('navToggle').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
+document.querySelectorAll('#navLinks a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');});});
 
-async function saveVideos(videos, msg) {
-    var sha = await getLatestSha('videos.json');
-    await ghPut('videos.json', JSON.stringify(videos, null, 2), msg || 'Update videos.json', sha);
-}
+var unlocked=false;var selectedIdx=null;
+var adminOverlay=document.getElementById('adminOverlay');var adminLogin=document.getElementById('adminLogin');var adminUnlocked=document.getElementById('adminUnlocked');var adminPassword=document.getElementById('adminPassword');
+function setBtn(id,loading,label){var b=document.getElementById(id);b.disabled=loading;b.innerHTML=loading?'<span class="spinner"></span>'+label:label;}
+function openAdmin(){adminOverlay.classList.add('open');if(!unlocked){adminPassword.value='';document.getElementById('adminLoginErr').style.display='none';setTimeout(function(){adminPassword.focus();},80);}else checkGhWarning();}
+function closeAdmin(){adminOverlay.classList.remove('open');}
+function checkGhWarning(){document.getElementById('ghWarning').style.display=ghReady()?'none':'block';}
+document.getElementById('adminTrigger').addEventListener('click',openAdmin);
+document.getElementById('adminClose').addEventListener('click',closeAdmin);
+adminOverlay.addEventListener('click',function(e){if(e.target===adminOverlay)closeAdmin();});
+document.getElementById('adminLoginBtn').addEventListener('click',function(){if(adminPassword.value===ADMIN_PASSWORD){unlocked=true;adminLogin.classList.add('hidden');adminUnlocked.classList.remove('hidden');var c=ghConfig();if(c.owner)document.getElementById('ghOwner').value=c.owner;if(c.repo)document.getElementById('ghRepo').value=c.repo;if(c.branch)document.getElementById('ghBranch').value=c.branch;checkGhWarning();if(ghReady())loadData();}else{document.getElementById('adminLoginErr').style.display='block';adminPassword.value='';adminPassword.focus();}});
+adminPassword.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('adminLoginBtn').click();});
+document.getElementById('adminLogoutBtn').addEventListener('click',function(){unlocked=false;adminUnlocked.classList.add('hidden');adminLogin.classList.remove('hidden');closeAdmin();});
+document.querySelectorAll('.admin-tab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.admin-panel').forEach(function(p){p.classList.remove('visible');});tab.classList.add('active');var name=tab.dataset.tab;document.getElementById('tab'+name.charAt(0).toUpperCase()+name.slice(1)).classList.add('visible');if(name==='manage')refreshVideoList();});});
+document.getElementById('newYtId').addEventListener('input',function(){var id=this.value.trim();var p=document.getElementById('adminPreview');p.innerHTML=id.length>5?'<img src="https://img.youtube.com/vi/'+id+'/hqdefault.jpg" onerror="this.parentElement.innerHTML=\'<span>Invalid ID</span>\'">':'<span>Thumbnail preview</span>';});
+document.getElementById('adminAddBtn').addEventListener('click',async function(){var yt=document.getElementById('newYtId').value.trim();var ttl=document.getElementById('newTitle').value.trim();var yr=document.getElementById('newYear').value.trim();var cat=document.getElementById('newCategory').value;var dsc=document.getElementById('newDesc').value.trim();var err=document.getElementById('addErr');var ok=document.getElementById('addOk');err.style.display='none';ok.style.display='none';if(!yt||!ttl||!yr||!dsc){err.textContent='Please fill in all fields.';err.style.display='block';return;}if(VIDEOS.find(function(v){return v.youtube===yt;})){err.textContent='This video ID already exists.';err.style.display='block';return;}var entry={youtube:yt,category:cat,year:yr,title:ttl,desc:dsc};VIDEOS.unshift(entry);renderGrid(VIDEOS);if(ghReady()){setBtn('adminAddBtn',true,'Saving\u2026');try{await saveVideos(VIDEOS,'Add video: '+ttl);ok.textContent='\u2713 Saved to GitHub \u2014 live for all visitors.';}catch(e){ok.textContent='\u26a0 Added locally. GitHub save failed: '+e.message;}setBtn('adminAddBtn',false,'Add & Save');}else{ok.textContent='\u2713 Added (configure GitHub in Settings to make it permanent)';}ok.style.display='block';document.getElementById('newYtId').value='';document.getElementById('newTitle').value='';document.getElementById('newYear').value='';document.getElementById('newDesc').value='';document.getElementById('adminPreview').innerHTML='<span>Thumbnail preview</span>';setTimeout(function(){ok.style.display='none';},4000);});
+function refreshVideoList(){var list=document.getElementById('videoList');list.innerHTML='';selectedIdx=null;document.getElementById('editForm').style.display='none';VIDEOS.forEach(function(v,i){var item=document.createElement('div');item.className='vitem';item.innerHTML='<img class="vitem-thumb" src="https://img.youtube.com/vi/'+v.youtube+'/default.jpg" alt=""><div class="vitem-info"><div class="vitem-title">'+v.title+'</div><div class="vitem-meta">'+v.year+' &nbsp;<span class="vitem-tag">'+v.category.replace('-',' ')+'</span></div></div>';item.addEventListener('click',function(){document.querySelectorAll('.vitem').forEach(function(x){x.classList.remove('selected');});item.classList.add('selected');selectedIdx=i;openEditForm(v);});list.appendChild(item);});}
+function openEditForm(v){document.getElementById('editingLabel').textContent=v.title;document.getElementById('editTitle').value=v.title;document.getElementById('editYear').value=v.year;document.getElementById('editCategory').value=v.category;document.getElementById('editDesc').value=v.desc;document.getElementById('manageErr').style.display='none';document.getElementById('manageOk').style.display='none';var ef=document.getElementById('editForm');ef.style.display='flex';setTimeout(function(){ef.scrollIntoView({behavior:'smooth',block:'nearest'});},50);}
+document.getElementById('editSaveBtn').addEventListener('click',async function(){if(selectedIdx===null)return;var err=document.getElementById('manageErr');var ok=document.getElementById('manageOk');var ttl=document.getElementById('editTitle').value.trim();var yr=document.getElementById('editYear').value.trim();var cat=document.getElementById('editCategory').value;var dsc=document.getElementById('editDesc').value.trim();err.style.display='none';ok.style.display='none';if(!ttl||!yr||!dsc){err.textContent='Please fill in all fields.';err.style.display='block';return;}VIDEOS[selectedIdx]={youtube:VIDEOS[selectedIdx].youtube,category:cat,year:yr,title:ttl,desc:dsc};renderGrid(VIDEOS);document.getElementById('editingLabel').textContent=ttl;if(ghReady()){setBtn('editSaveBtn',true,'Saving\u2026');try{await saveVideos(VIDEOS,'Edit video: '+ttl);ok.textContent='\u2713 Saved to GitHub.';}catch(e){ok.textContent='\u26a0 Updated locally. GitHub save failed: '+e.message;}setBtn('editSaveBtn',false,'Save & Publish');}else{ok.textContent='\u2713 Updated (configure GitHub to make it permanent)';}ok.style.display='block';setTimeout(function(){ok.style.display='none';refreshVideoList();},2500);});
+document.getElementById('editDeleteBtn').addEventListener('click',async function(){if(selectedIdx===null)return;var ttl=VIDEOS[selectedIdx].title;if(!confirm('Remove "'+ttl+'" from the portfolio?'))return;VIDEOS.splice(selectedIdx,1);renderGrid(VIDEOS);if(ghReady()){setBtn('editDeleteBtn',true,'Removing\u2026');try{await saveVideos(VIDEOS,'Remove video: '+ttl);}catch(e){}setBtn('editDeleteBtn',false,'Remove');}refreshVideoList();});
+document.getElementById('editCancelBtn').addEventListener('click',function(){document.getElementById('editForm').style.display='none';document.querySelectorAll('.vitem').forEach(function(x){x.classList.remove('selected');});selectedIdx=null;});
+function applyTheme(t){if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.removeAttribute('data-theme');}
+function updateSwatchUI(t){document.querySelectorAll('.swatch').forEach(function(s){s.classList.toggle('active',s.dataset.theme===t);});}
+document.querySelectorAll('.swatch').forEach(function(sw){sw.addEventListener('click',async function(){var t=sw.dataset.theme;applyTheme(t);updateSwatchUI(t);SITE_CONFIG.theme=t;var err=document.getElementById('themeErr');var ok=document.getElementById('themeOk');err.style.display='none';ok.style.display='none';if(ghReady()){try{await saveConfig(SITE_CONFIG,'Update theme: '+(t||'void'));ok.textContent='\u2713 Theme saved \u2014 all visitors will see this.';}catch(e){err.textContent='\u26a0 Theme applied locally. GitHub save failed: '+e.message;err.style.display='block';}ok.style.display='block';setTimeout(function(){ok.style.display='none';},3000);}else{ok.textContent='Theme applied locally. Configure GitHub in Settings to make it permanent.';ok.style.display='block';setTimeout(function(){ok.style.display='none';},3000);}});});
+document.getElementById('ghSaveBtn').addEventListener('click',function(){var owner=document.getElementById('ghOwner').value.trim();var repo=document.getElementById('ghRepo').value.trim();var branch=document.getElementById('ghBranch').value.trim()||'main';var token=document.getElementById('ghToken').value.trim();var err=document.getElementById('settingsErr');var ok=document.getElementById('settingsOk');err.style.display='none';ok.style.display='none';if(!owner||!repo||!token){err.textContent='Please fill in all fields.';err.style.display='block';return;}localStorage.setItem('gh-owner',owner);localStorage.setItem('gh-repo',repo);localStorage.setItem('gh-branch',branch);localStorage.setItem('gh-token',token);ok.textContent='\u2713 Settings saved for this session. Reloading data\u2026';ok.style.display='block';checkGhWarning();loadData();setTimeout(function(){ok.style.display='none';},4000);});
+document.getElementById('ghTestBtn').addEventListener('click',async function(){var err=document.getElementById('settingsErr');var ok=document.getElementById('settingsOk');err.style.display='none';ok.style.display='none';if(!ghReady()){err.textContent='Save your settings first.';err.style.display='block';return;}setBtn('ghTestBtn',true,'Testing\u2026');try{var c=ghConfig();var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo,{headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github+json'}});if(!r.ok)throw new Error('HTTP '+r.status);ok.textContent='\u2713 Connected successfully to '+c.owner+'/'+c.repo;ok.style.display='block';}catch(e){err.textContent='\u2717 Connection failed: '+e.message+'. Check your username, repo, and token.';err.style.display='block';}setBtn('ghTestBtn',false,'Test Connection');});
 
-async function saveConfig(cfg, msg) {
-    var sha = await getLatestSha('config.json');
-    await ghPut('config.json', JSON.stringify(cfg, null, 2), msg || 'Update config.json', sha);
-}
-
-// ── Load data from GitHub (or fallback to defaults) ──
-var VIDEOS = [];
-var SITE_CONFIG = { theme: '' };
-
-async function loadData() {
-    var c = ghConfig();
-    var base = 'https://raw.githubusercontent.com/' + (c.owner || 'nicolarivo') + '/' + (c.repo || 'nicolarivo.github.io') + '/' + (c.branch || 'main') + '/';
-
-    // Always load videos from the public raw URL — no token needed, works for all visitors
-    try {
-        var vr = await fetch(base + 'videos.json?_=' + Date.now());
-        VIDEOS = vr.ok ? await vr.json() : DEFAULT_VIDEOS.slice();
-    } catch(e) { VIDEOS = DEFAULT_VIDEOS.slice(); }
-
-    // Load config (theme) the same way
-    try {
-        var cr = await fetch(base + 'config.json?_=' + Date.now());
-        SITE_CONFIG = cr.ok ? await cr.json() : { theme: '' };
-    } catch(e) { SITE_CONFIG = { theme: '' }; }
-
-    applyTheme(SITE_CONFIG.theme || '');
-    updateSwatchUI(SITE_CONFIG.theme || '');
-    renderGrid(VIDEOS);
-}
-
-// ── Tile rendering ──
-function buildTileHTML(v) {
-    var label = v.category.replace('-', ' ');
-    return (
-        '<img class="tile-thumb" src="https://img.youtube.com/vi/' + v.youtube + '/hqdefault.jpg" alt="' + v.title + ' — Nicola Rivosecchi" loading="lazy">' +
-        '<div class="tile-play"></div>' +
-        '<div class="tile-overlay">' +
-            '<div class="tile-year">' + v.year + '</div>' +
-            '<div class="tile-title">' + v.title + '</div>' +
-            '<div class="tile-tags"><span class="tile-tag">' + label + '</span></div>' +
-        '</div>' +
-        '<div class="tile-player"><div class="player-wrapper">' +
-            '<div class="player-video"></div>' +
-            '<div class="player-info">' +
-                '<div class="tile-year">' + v.year + '</div>' +
-                '<div class="tile-title">' + v.title + '</div>' +
-                '<div class="tile-desc">' + v.desc + '</div>' +
-                '<div class="tile-tags" style="margin-top:16px"><span class="tile-tag" style="font-size:.62rem;padding:3px 10px">' + label + '</span></div>' +
-            '</div>' +
-        '</div></div>' +
-        '<button class="player-close" aria-label="Close">&times;</button>'
-    );
-}
-
-function initTile(tile, v) {
-    tile.dataset.youtube  = v.youtube;
-    tile.dataset.category = v.category;
-    tile.dataset.year     = v.year;
-    tile.dataset.title    = v.title;
-    tile.dataset.desc     = v.desc;
-    tile.innerHTML = buildTileHTML(v);
-    tile.addEventListener('click', function(e) {
-        if (e.target.closest('.player-close')) return;
-        if (tile.classList.contains('expanded')) return;
-        document.querySelectorAll('.tile.expanded').forEach(closeTile);
-        tile.classList.add('expanded');
-        tile.querySelector('.player-video').innerHTML =
-            '<iframe src="https://www.youtube.com/embed/' + v.youtube + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-        setTimeout(function() { tile.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
-    });
-    var cb = tile.querySelector('.player-close');
-    if (cb) cb.addEventListener('click', function(e) { e.stopPropagation(); closeTile(tile); });
-    var af = document.querySelector('.filter-btn.active');
-    if (af && af.dataset.filter !== 'all' && v.category !== af.dataset.filter) tile.classList.add('hidden');
-}
-
-function closeTile(tile) {
-    tile.classList.remove('expanded');
-    var pv = tile.querySelector('.player-video');
-    if (pv) pv.innerHTML = '';
-}
-
-function renderGrid(videos) {
-    var mosaic = document.getElementById('work');
-    mosaic.innerHTML = '';
-    videos.forEach(function(v) {
-        var tile = document.createElement('div');
-        tile.className = 'tile';
-        initTile(tile, v);
-        mosaic.appendChild(tile);
-    });
-}
-
-// ── Filters ──
-document.querySelectorAll('.filter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        document.querySelectorAll('.tile.expanded').forEach(closeTile);
-        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        var f = btn.dataset.filter;
-        document.querySelectorAll('.tile').forEach(function(t) {
-            t.classList.toggle('hidden', f !== 'all' && t.dataset.category !== f);
-        });
-    });
-});
-
-// ── Mobile nav ──
-document.getElementById('navToggle').addEventListener('click', function() { document.getElementById('navLinks').classList.toggle('open'); });
-document.querySelectorAll('#navLinks a').forEach(function(a) { a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); }); });
-
-// ═══════════════════════════════════════════
-//  ADMIN
-// ═══════════════════════════════════════════
-var unlocked = false;
-var selectedIdx = null;
-
-var adminOverlay  = document.getElementById('adminOverlay');
-var adminLogin    = document.getElementById('adminLogin');
-var adminUnlocked = document.getElementById('adminUnlocked');
-var adminPassword = document.getElementById('adminPassword');
-
-function setBtn(id, loading, label) {
-    var b = document.getElementById(id);
-    b.disabled = loading;
-    b.innerHTML = loading ? '<span class="spinner"></span>' + label : label;
-}
-
-function openAdmin() {
-    adminOverlay.classList.add('open');
-    if (!unlocked) { adminPassword.value = ''; document.getElementById('adminLoginErr').style.display = 'none'; setTimeout(function(){adminPassword.focus();},80); }
-    else checkGhWarning();
-}
-function closeAdmin() { adminOverlay.classList.remove('open'); }
-
-document.getElementById('adminTrigger').addEventListener('click', openAdmin);
-document.getElementById('adminClose').addEventListener('click', closeAdmin);
-adminOverlay.addEventListener('click', function(e) { if (e.target === adminOverlay) closeAdmin(); });
-
-function checkGhWarning() {
-    document.getElementById('ghWarning').style.display = ghReady() ? 'none' : 'block';
-}
-
-// Login
-document.getElementById('adminLoginBtn').addEventListener('click', function() {
-    if (adminPassword.value === ADMIN_PASSWORD) {
-        unlocked = true;
-        adminLogin.classList.add('hidden');
-        adminUnlocked.classList.remove('hidden');
-        // pre-fill settings if saved
-        var c = ghConfig();
-        if (c.owner)  document.getElementById('ghOwner').value  = c.owner;
-        if (c.repo)   document.getElementById('ghRepo').value   = c.repo;
-        if (c.branch) document.getElementById('ghBranch').value = c.branch;
-        checkGhWarning();
-        // re-load with github if credentials exist
-        if (ghReady()) loadData();
-    } else {
-        document.getElementById('adminLoginErr').style.display = 'block';
-        adminPassword.value = ''; adminPassword.focus();
-    }
-});
-adminPassword.addEventListener('keydown', function(e) { if (e.key === 'Enter') document.getElementById('adminLoginBtn').click(); });
-
-document.getElementById('adminLogoutBtn').addEventListener('click', function() {
-    unlocked = false;
-    adminUnlocked.classList.add('hidden');
-    adminLogin.classList.remove('hidden');
-    closeAdmin();
-});
-
-// Tabs
-document.querySelectorAll('.admin-tab').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-        document.querySelectorAll('.admin-tab').forEach(function(t){ t.classList.remove('active'); });
-        document.querySelectorAll('.admin-panel').forEach(function(p){ p.classList.remove('visible'); });
-        tab.classList.add('active');
-        var name = tab.dataset.tab;
-        document.getElementById('tab' + name.charAt(0).toUpperCase() + name.slice(1)).classList.add('visible');
-        if (name === 'manage') refreshVideoList();
-    });
-});
-
-// ── ADD ──
-document.getElementById('newYtId').addEventListener('input', function() {
-    var id = this.value.trim();
-    var p = document.getElementById('adminPreview');
-    p.innerHTML = id.length > 5 ? '<img src="https://img.youtube.com/vi/'+id+'/hqdefault.jpg" onerror="this.parentElement.innerHTML=\'<span>Invalid ID</span>\'">' : '<span>Thumbnail preview</span>';
-});
-
-document.getElementById('adminAddBtn').addEventListener('click', async function() {
-    var yt  = document.getElementById('newYtId').value.trim();
-    var ttl = document.getElementById('newTitle').value.trim();
-    var yr  = document.getElementById('newYear').value.trim();
-    var cat = document.getElementById('newCategory').value;
-    var dsc = document.getElementById('newDesc').value.trim();
-    var err = document.getElementById('addErr');
-    var ok  = document.getElementById('addOk');
-    err.style.display='none'; ok.style.display='none';
-    if (!yt||!ttl||!yr||!dsc) { err.textContent='Please fill in all fields.'; err.style.display='block'; return; }
-    if (VIDEOS.find(function(v){return v.youtube===yt;})) { err.textContent='This video ID already exists.'; err.style.display='block'; return; }
-
-    var entry = {youtube:yt, category:cat, year:yr, title:ttl, desc:dsc};
-    VIDEOS.unshift(entry);
-    renderGrid(VIDEOS);
-
-    if (ghReady()) {
-        setBtn('adminAddBtn', true, 'Saving…');
-        try {
-            await saveVideos(VIDEOS, 'Add video: ' + ttl);
-            ok.textContent = '✓ Saved to GitHub — live for all visitors.';
-        } catch(e) {
-            ok.textContent = '⚠ Added locally. GitHub save failed: ' + e.message;
-        }
-        setBtn('adminAddBtn', false, 'Add & Save');
-    } else {
-        ok.textContent = '✓ Added (configure GitHub in Settings to make it permanent).';
-    }
-    ok.style.display='block';
-    document.getElementById('newYtId').value='';
-    document.getElementById('newTitle').value='';
-    document.getElementById('newYear').value='';
-    document.getElementById('newDesc').value='';
-    document.getElementById('adminPreview').innerHTML='<span>Thumbnail preview</span>';
-    setTimeout(function(){ok.style.display='none';},4000);
-});
-
-// ── MANAGE ──
-function refreshVideoList() {
-    var list = document.getElementById('videoList');
-    list.innerHTML = '';
-    selectedIdx = null;
-    document.getElementById('editForm').style.display = 'none';
-    VIDEOS.forEach(function(v, i) {
-        var item = document.createElement('div');
-        item.className = 'vitem';
-        item.innerHTML =
-            '<img class="vitem-thumb" src="https://img.youtube.com/vi/'+v.youtube+'/default.jpg" alt="">' +
-            '<div class="vitem-info"><div class="vitem-title">'+v.title+'</div>' +
-            '<div class="vitem-meta">'+v.year+' &nbsp;<span class="vitem-tag">'+v.category.replace('-',' ')+'</span></div></div>';
-        item.addEventListener('click', function() {
-            document.querySelectorAll('.vitem').forEach(function(x){x.classList.remove('selected');});
-            item.classList.add('selected');
-            selectedIdx = i;
-            openEditForm(v);
-        });
-        list.appendChild(item);
-    });
-}
-
-function openEditForm(v) {
-    document.getElementById('editingLabel').textContent = v.title;
-    document.getElementById('editTitle').value    = v.title;
-    document.getElementById('editYear').value     = v.year;
-    document.getElementById('editCategory').value = v.category;
-    document.getElementById('editDesc').value     = v.desc;
-    document.getElementById('manageErr').style.display='none';
-    document.getElementById('manageOk').style.display='none';
-    var ef = document.getElementById('editForm');
-    ef.style.display='flex';
-    setTimeout(function(){ ef.scrollIntoView({behavior:'smooth',block:'nearest'}); },50);
-}
-
-document.getElementById('editSaveBtn').addEventListener('click', async function() {
-    if (selectedIdx === null) return;
-    var err = document.getElementById('manageErr');
-    var ok  = document.getElementById('manageOk');
-    var ttl = document.getElementById('editTitle').value.trim();
-    var yr  = document.getElementById('editYear').value.trim();
-    var cat = document.getElementById('editCategory').value;
-    var dsc = document.getElementById('editDesc').value.trim();
-    err.style.display='none'; ok.style.display='none';
-    if (!ttl||!yr||!dsc) { err.textContent='Please fill in all fields.'; err.style.display='block'; return; }
-
-    VIDEOS[selectedIdx] = { youtube: VIDEOS[selectedIdx].youtube, category:cat, year:yr, title:ttl, desc:dsc };
-    renderGrid(VIDEOS);
-    document.getElementById('editingLabel').textContent = ttl;
-
-    if (ghReady()) {
-        setBtn('editSaveBtn', true, 'Saving…');
-        try {
-            await saveVideos(VIDEOS, 'Edit video: ' + ttl);
-            ok.textContent = '✓ Saved to GitHub.';
-        } catch(e) {
-            ok.textContent = '⚠ Updated locally. GitHub save failed: ' + e.message;
-        }
-        setBtn('editSaveBtn', false, 'Save & Publish');
-    } else {
-        ok.textContent = '✓ Updated (configure GitHub to make it permanent).';
-    }
-    ok.style.display='block';
-    setTimeout(function(){ ok.style.display='none'; refreshVideoList(); },2500);
-});
-
-document.getElementById('editDeleteBtn').addEventListener('click', async function() {
-    if (selectedIdx === null) return;
-    var ttl = VIDEOS[selectedIdx].title;
-    if (!confirm('Remove "' + ttl + '" from the portfolio?')) return;
-    VIDEOS.splice(selectedIdx, 1);
-    renderGrid(VIDEOS);
-
-    if (ghReady()) {
-        setBtn('editDeleteBtn', true, 'Removing…');
-        try { await saveVideos(VIDEOS, 'Remove video: ' + ttl); } catch(e) {}
-        setBtn('editDeleteBtn', false, 'Remove');
-    }
-    refreshVideoList();
-});
-
-document.getElementById('editCancelBtn').addEventListener('click', function() {
-    document.getElementById('editForm').style.display='none';
-    document.querySelectorAll('.vitem').forEach(function(x){x.classList.remove('selected');});
-    selectedIdx=null;
-});
-
-// ── THEME ──
-function applyTheme(t) {
-    if (t) document.documentElement.setAttribute('data-theme', t);
-    else   document.documentElement.removeAttribute('data-theme');
-}
-function updateSwatchUI(t) {
-    document.querySelectorAll('.swatch').forEach(function(s) {
-        s.classList.toggle('active', s.dataset.theme === t);
-    });
-}
-
-document.querySelectorAll('.swatch').forEach(function(sw) {
-    sw.addEventListener('click', async function() {
-        var t = sw.dataset.theme;
-        applyTheme(t);
-        updateSwatchUI(t);
-        SITE_CONFIG.theme = t;
-        var err = document.getElementById('themeErr');
-        var ok  = document.getElementById('themeOk');
-        err.style.display='none'; ok.style.display='none';
-        if (ghReady()) {
-            try {
-                await saveConfig(SITE_CONFIG, 'Update theme: ' + (t||'void'));
-                ok.textContent = '✓ Theme saved — all visitors will see this.';
-            } catch(e) {
-                err.textContent = '⚠ Theme applied locally. GitHub save failed: ' + e.message;
-                err.style.display='block';
-            }
-            ok.style.display='block';
-            setTimeout(function(){ ok.style.display='none'; },3000);
-        } else {
-            ok.textContent = 'Theme applied locally. Configure GitHub in Settings to make it permanent.';
-            ok.style.display='block';
-            setTimeout(function(){ ok.style.display='none'; },3000);
-        }
-    });
-});
-
-// ── SETTINGS ──
-document.getElementById('ghSaveBtn').addEventListener('click', function() {
-    var owner  = document.getElementById('ghOwner').value.trim();
-    var repo   = document.getElementById('ghRepo').value.trim();
-    var branch = document.getElementById('ghBranch').value.trim() || 'main';
-    var token  = document.getElementById('ghToken').value.trim();
-    var err = document.getElementById('settingsErr');
-    var ok  = document.getElementById('settingsOk');
-    err.style.display='none'; ok.style.display='none';
-    if (!owner||!repo||!token) { err.textContent='Please fill in all fields.'; err.style.display='block'; return; }
-    localStorage.setItem('gh-owner', owner);
-    localStorage.setItem('gh-repo', repo);
-    localStorage.setItem('gh-branch', branch);
-    localStorage.setItem('gh-token', token);
-    ok.textContent = '✓ Settings saved for this session. Reloading data…';
-    ok.style.display='block';
-    checkGhWarning();
-    loadData();
-    setTimeout(function(){ ok.style.display='none'; },4000);
-});
-
-document.getElementById('ghTestBtn').addEventListener('click', async function() {
-    var err = document.getElementById('settingsErr');
-    var ok  = document.getElementById('settingsOk');
-    err.style.display='none'; ok.style.display='none';
-    if (!ghReady()) { err.textContent='Save your settings first.'; err.style.display='block'; return; }
-    setBtn('ghTestBtn', true, 'Testing…');
-    try {
-        var c = ghConfig();
-        var url = 'https://api.github.com/repos/' + c.owner + '/' + c.repo;
-        var r = await fetch(url, { headers:{ 'Authorization':'Bearer '+c.token, 'Accept':'application/vnd.github+json' }});
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        ok.textContent = '✓ Connected successfully to ' + c.owner + '/' + c.repo;
-        ok.style.display='block';
-    } catch(e) {
-               err.textContent = '✗ Connection failed: ' + e.message + '. Check your username, repo, and token.';
-        err.style.display='block';
-    }
-    setBtn('ghTestBtn', false, 'Test Connection');
-});
-
-// ── Boot ──
 loadData();
 </script>
 </body>
