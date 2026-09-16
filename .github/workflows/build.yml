@@ -1,0 +1,115 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Eleventy
+        run: npm run build
+
+      # ── Invariant checks ──────────────────────────────────────────────
+      # These protect the guarantees the eventual cutover depends on.
+      # Each one fails the job with a specific message when violated.
+
+      - name: "Invariant: _site/CNAME exists and is exactly nicolarivo.co.uk"
+        run: |
+          if [ ! -f _site/CNAME ]; then
+            echo "::error::_site/CNAME is missing. Without it the custom domain nicolarivo.co.uk breaks at cutover."
+            exit 1
+          fi
+          actual="$(cat _site/CNAME)"
+          if [ "$actual" != "nicolarivo.co.uk" ]; then
+            echo "::error::_site/CNAME contains '$actual', expected exactly 'nicolarivo.co.uk'."
+            exit 1
+          fi
+          echo "OK: _site/CNAME is exactly 'nicolarivo.co.uk'"
+
+      - name: "Invariant: _site/.nojekyll exists"
+        run: |
+          if [ ! -f _site/.nojekyll ]; then
+            echo "::error::_site/.nojekyll is missing. GitHub Pages would run its Jekyll build over the Eleventy output."
+            exit 1
+          fi
+          echo "OK: _site/.nojekyll is present"
+
+      - name: "Invariant: /teacher and /creative-coding are unmodified in the build"
+        run: |
+          if ! diff -rq teacher _site/teacher; then
+            echo "::error::_site/teacher differs from the repo's teacher/. This section must never be modified by the rebuild."
+            exit 1
+          fi
+          if ! diff -rq creative-coding _site/creative-coding; then
+            echo "::error::_site/creative-coding differs from the repo's creative-coding/. This section must never be modified by the rebuild."
+            exit 1
+          fi
+          echo "OK: _site/teacher and _site/creative-coding are byte-identical to the repo"
+
+      - name: "Invariant: entry pages exist and are non-empty"
+        run: |
+          missing=0
+          for f in index.html sound/index.html teacher/index.html creative-coding/index.html; do
+            path="_site/$f"
+            if [ ! -s "$path" ]; then
+              echo "::error::$path is missing or empty."
+              missing=1
+            fi
+          done
+          if [ "$missing" -eq 1 ]; then
+            exit 1
+          fi
+          echo "OK: index.html, sound/index.html, teacher/index.html and creative-coding/index.html all exist and are non-empty"
+
+      - name: "Invariant: _site/videos.json is present and well-formed"
+        run: |
+          if [ ! -f _site/videos.json ]; then
+            echo "::error::_site/videos.json is missing. The live /sound page fetches this file directly from the published branch."
+            exit 1
+          fi
+          node -e "
+            const fs = require('fs');
+            let data;
+            try {
+              data = JSON.parse(fs.readFileSync('_site/videos.json', 'utf8'));
+            } catch (e) {
+              console.error('::error::_site/videos.json is not valid JSON: ' + e.message);
+              process.exit(1);
+            }
+            if (!Array.isArray(data) || data.length < 1) {
+              console.error('::error::_site/videos.json must be a JSON array with at least one entry (found ' + (Array.isArray(data) ? data.length + ' entries' : typeof data) + ').');
+              process.exit(1);
+            }
+            console.log('OK: _site/videos.json is valid JSON with ' + data.length + ' entries');
+          "
+
+      - name: Upload build output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build-${{ github.run_id }}
+          path: _site
+          retention-days: 3
+          if-no-files-found: warn
