@@ -139,3 +139,8 @@ dist
 assets/.DS_Store
 sound copy/.DS_Store
 assets/.DS_Store
+
+# Pre-rebuild baseline additions (Task 1, 2026-09-16)
+**/.DS_Store
+_site/
+.cache/
