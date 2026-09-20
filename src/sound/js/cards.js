@@ -15,7 +15,7 @@
     var media = card.querySelector('.card-media');
     var frame = document.createElement('iframe');
     frame.src = 'https://www.youtube-nocookie.com/embed/' +
-      encodeURIComponent(card.getAttribute('data-youtube-id')) + '?autoplay=1&rel=0';
+      encodeURIComponent(card.getAttribute('data-video-id')) + '?autoplay=1&rel=0';
     frame.title = card.getAttribute('data-title') + ' — video';
     frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     frame.setAttribute('allowfullscreen', '');

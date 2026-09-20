@@ -12,7 +12,9 @@
 {%- set creditLine = (credit.data.credit_line or "") | trim %}
 {%- set showYear = year and year != "TODO" %}
 {%- set showCreditLine = creditLine and creditLine != "TODO" %}
-<article class="card" data-youtube-id="{{ videoId }}" data-title="{{ title }}">
+{#- The id attribute is deliberately not named after the video host: the built
+    page must contain no third-party host name. cards.js reads data-video-id. -#}
+<article class="card" data-video-id="{{ videoId }}" data-title="{{ title }}">
   <div class="card-media">
     {%- if posters[videoId] %}
     <img class="card-thumb" src="/sound/img/posters/{{ videoId }}.webp" alt="Thumbnail of the video “{{ title }}”" width="640" height="360" loading="lazy" decoding="async">
