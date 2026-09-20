@@ -19,6 +19,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/sound/css/*.css");
   eleventyConfig.addPassthroughCopy("src/sound/js/*.js");
   eleventyConfig.addPassthroughCopy("src/sound/fonts/*.woff2");
+  eleventyConfig.addPassthroughCopy("src/sound/img/posters/*.webp");
 
   // GitHub Pages must not run its own Jekyll build over Eleventy's output.
   eleventyConfig.addPassthroughCopy(".nojekyll");

@@ -7,6 +7,7 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const WORK_DIR = path.join(ROOT, "src", "work");
 const VIDEOS = path.join(ROOT, "videos.json");
+const POSTERS = path.join(ROOT, "src", "sound", "img", "posters");
 
 const REQUIRED_KEYS = [
   "title", "slug", "year", "type", "legacy_category", "client", "roles",
@@ -52,6 +53,9 @@ for (const file of files) {
     if (!(key in fm)) problem(`${file}: missing front-matter key '${key}'`);
   }
   if (!fm.youtube_id) problem(`${file}: youtube_id is empty`);
+  else if (!fs.existsSync(path.join(POSTERS, `${fm.youtube_id}.webp`))) {
+    problem(`${file}: no local poster (run: npm run posters)`);
+  }
   if (fm.slug !== path.basename(file, ".md")) {
     problem(`${file}: slug '${fm.slug}' does not match the filename`);
   }

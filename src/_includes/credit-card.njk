@@ -1,8 +1,9 @@
 {#-
   One credit from the `work` collection. Expects `credit` in scope.
   Editorial fields that are still "TODO" (or empty) render as nothing.
-  No iframe and nothing from youtube.com is loaded here: the poster comes from
-  YouTube's image CDN (i.ytimg.com) and cards.js injects the iframe on click.
+  The poster is a local WebP (npm run posters); no third-party host is contacted
+  on load. cards.js injects the iframe on click. Without JS the play control is
+  a plain outbound link inside <noscript>.
 -#}
 {%- set videoId = credit.data.youtube_id %}
 {%- set title = credit.data.title %}
@@ -13,9 +14,11 @@
 {%- set showCreditLine = creditLine and creditLine != "TODO" %}
 <article class="card" data-youtube-id="{{ videoId }}" data-title="{{ title }}">
   <div class="card-media">
-    <img class="card-thumb" src="https://i.ytimg.com/vi/{{ videoId }}/hqdefault.jpg" data-hires="https://i.ytimg.com/vi/{{ videoId }}/maxresdefault.jpg" alt="Thumbnail of the video “{{ title }}”" width="480" height="360" loading="lazy" decoding="async">
+    {%- if posters[videoId] %}
+    <img class="card-thumb" src="/sound/img/posters/{{ videoId }}.webp" alt="Thumbnail of the video “{{ title }}”" width="640" height="360" loading="lazy" decoding="async">
+    {%- endif %}
     <button class="card-play" type="button" hidden aria-label="Play video: {{ title }}"><span class="card-play-icon" aria-hidden="true"></span></button>
-    <noscript><a class="card-play" href="https://www.youtube.com/watch?v={{ videoId }}" aria-label="Watch on YouTube: {{ title }}"><span class="card-play-icon" aria-hidden="true"></span></a></noscript>
+    <noscript><a class="card-play" href="https://youtu.be/{{ videoId }}" aria-label="Watch on YouTube: {{ title }}"><span class="card-play-icon" aria-hidden="true"></span></a></noscript>
   </div>
   <div class="card-body">
     <h2 class="card-title">{{ title }}</h2>
