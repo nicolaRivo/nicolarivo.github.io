@@ -1,0 +1,48 @@
+---
+layout: base.njk
+title: Component test
+description: Internal page for reviewing components in a browser.
+permalink: /sound/component-test/index.html
+stylesheets:
+  - /sound/css/cards.css
+  - /sound/css/ab-player.css
+scripts:
+  - /sound/js/cards.js
+  - /sound/js/ab-player.js
+players:
+  - id: ab-1
+    label: "PLACEHOLDER: dialogue cleanup demo"
+    before: /sound/audio/placeholder/PLACEHOLDER-tone-a-before.mp3
+    after: /sound/audio/placeholder/PLACEHOLDER-tone-a-after.mp3
+  - id: ab-2
+    label: "PLACEHOLDER: hum removal demo"
+    before: /sound/audio/placeholder/PLACEHOLDER-tone-b-before.mp3
+    after: /sound/audio/placeholder/PLACEHOLDER-tone-b-after.mp3
+  - id: ab-3
+    label: "PLACEHOLDER: third instance, same audio as the first"
+    before: /sound/audio/placeholder/PLACEHOLDER-tone-a-before.mp3
+    after: /sound/audio/placeholder/PLACEHOLDER-tone-a-after.mp3
+---
+<h1>Component test</h1>
+<p class="test-note">Internal review page. Not linked from anywhere. All audio here is <strong>PLACEHOLDER</strong>: a generated tone and a deliberately degraded copy, not real work. This page and its audio are removed in the cleanup task.</p>
+
+<h2 class="test-heading">A/B player</h2>
+<div class="test-stack">
+{%- for player in players %}
+{% include "ab-player.njk" %}
+{%- endfor %}
+</div>
+
+<h2 class="test-heading">Credit card</h2>
+{%- set credits = collections.work | sort(false, false, "data.order") %}
+{%- set credit = credits | first %}
+<div class="test-card">
+{% include "credit-card.njk" %}
+</div>
+
+<style>
+  .test-note { max-width: 60ch; margin-bottom: var(--space-6); color: var(--color-text-dim); line-height: var(--leading-relaxed); }
+  .test-heading { font-size: var(--font-size-lg); font-weight: var(--font-weight-light); margin: var(--space-6) 0 var(--space-4); }
+  .test-stack { display: flex; flex-direction: column; gap: var(--space-5); max-width: 40rem; }
+  .test-card { max-width: 24rem; }
+</style>
