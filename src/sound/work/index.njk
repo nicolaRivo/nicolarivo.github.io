@@ -3,13 +3,17 @@ layout: base.njk
 title: Work
 description: Credits from Nicola Rivosecchi's sound work.
 permalink: /sound/work/index.html
+stylesheets:
+  - /sound/css/cards.css
+scripts:
+  - /sound/js/cards.js
 ---
 <h1>Work</h1>
 {%- set credits = collections.work | sort(false, false, "data.order") %}
-<ol class="work-list">
+<ol class="work-grid" role="list">
 {%- for credit in credits %}
-  {#- Only a known type gets a label. "TODO", empty or missing types print nothing. #}
-  {%- set typeLabel = workTypes[credit.data.type] %}
-  <li>{{ credit.data.title }} <span class="work-year">{{ credit.data.year }}</span>{% if typeLabel %} <span class="work-type">{{ typeLabel }}</span>{% endif %}</li>
+  <li>
+{% include "credit-card.njk" %}
+  </li>
 {%- endfor %}
 </ol>
