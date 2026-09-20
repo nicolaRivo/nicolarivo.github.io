@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
+    "validate:work": "node scripts/validate-work.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
