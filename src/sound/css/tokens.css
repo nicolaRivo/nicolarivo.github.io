@@ -1,0 +1,92 @@
+/*
+ * Design tokens for the rebuilt /sound section.
+ *
+ * EXTRACTED, not designed: every value below is copied from
+ * sound/css/portfolio.css (line references in comments). Nothing was
+ * normalised or merged; near-duplicates in the source are kept as they are
+ * and are listed in the Task 6 report. Dark only, by design: the theme is a
+ * build-time constant, there is no light mode and no runtime switcher.
+ */
+
+:root {
+  /* ── Palette ── portfolio.css :root, lines 15-24 ─────────────────── */
+  --color-bg: #111111;
+  --color-text: #f0f0f0;
+  --color-primary: #ff3e82;
+  --color-secondary: #3effb8;
+  --color-accent: #00ccff;
+  --color-dark: #1a1a1a;
+  --text-color-secondary: rgba(240, 240, 240, 0.7);
+  --card-bg: rgba(26, 26, 26, 0.8);
+  --input-bg: rgba(255, 255, 255, 0.1);
+
+  /* ── Font families ── lines 27-28 (identical in the source) ──────── */
+  --font-mono: 'Lato', sans-serif;
+  --font-display: 'Lato', sans-serif;
+
+  /* ── Font weights ── lines 31-33 (only the three that are used) ──── */
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+
+  /* ── Type scale ── sizes as set per selector in portfolio.css ─────── */
+  --font-size-body: 16px;        /* body, line 52 */
+  --font-size-paragraph: 1.05rem; /* p, line 115 */
+  --font-size-h5: 1.4rem;        /* h5, line 105 */
+  --font-size-h4: 1.8rem;        /* h4, line 98 */
+  --font-size-h3: 2.2rem;        /* h3.category-title, line 89 */
+  --font-size-h2: 3rem;          /* h2.section-title, line 69 */
+  --font-size-logo: 2rem;        /* .logo, line 234 */
+  --font-size-hero: 3.5rem;      /* .glitch-title, line 318 */
+  --line-height-body: 1.8;       /* body */
+  --line-height-heading: 1.3;    /* h1-h5 */
+  --letter-spacing-heading: 2px; /* h1-h5 */
+  --letter-spacing-logo: 3px;    /* .logo, line 236 */
+
+  /* ── Spacing ── lines 9-12 ──────────────────────────────────────── */
+  --max-content-width: 1200px;
+  --section-spacing: 6rem;
+  --card-spacing: 4rem;
+  --text-spacing: 1.5rem;
+
+  /* Spacing values the stylesheet actually uses in padding, margin and gap.
+     Named by rem x 10. Occurrence counts in portfolio.css are in brackets. */
+  --space-05: 0.5rem; /* [2]  */
+  --space-10: 1rem;   /* [11] */
+  --space-15: 1.5rem; /* [10] */
+  --space-20: 2rem;   /* [14] */
+  --space-25: 2.5rem; /* [7]  */
+  --space-30: 3rem;   /* [7]  */
+  --space-40: 4rem;   /* [2]  */
+  --space-50: 5rem;   /* [1]  */
+  --space-60: 6rem;   /* [1]  */
+}
+
+/* Responsive overrides, copied from the source media queries.
+   (Custom properties cannot be used inside @media conditions, so the
+   breakpoints 992 / 768 / 576 are literal here, as in the source.) */
+@media (max-width: 992px) {
+  :root {
+    --section-spacing: 5rem;
+    --card-spacing: 3rem;
+    --font-size-h2: 2.5rem;
+    --font-size-h3: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-spacing: 4rem;
+    --card-spacing: 2.5rem;
+    --font-size-h2: 2.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.8rem;
+    --font-size-h4: 1.5rem;
+    --font-size-hero: 2rem;
+  }
+}
