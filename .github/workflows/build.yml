@@ -105,6 +105,24 @@ jobs:
             console.log('OK: _site/videos.json is valid JSON with ' + data.length + ' entries');
           "
 
+      - name: "Invariant: every path in baseline-manifest.txt is unchanged in the build"
+        # baseline-manifest.txt freezes the public surface as of Task 6
+        # (sha256 + path, one per line). Every listed path must still exist in
+        # _site/ with the same hash. Paths NOT listed are allowed: that is how
+        # the new site grows. Never edit the manifest to make this pass.
+        run: |
+          if [ ! -s baseline-manifest.txt ]; then
+            echo "::error::baseline-manifest.txt is missing or empty."
+            exit 1
+          fi
+          total="$(wc -l < baseline-manifest.txt | tr -d ' ')"
+          cd _site
+          if ! sha256sum --check --strict --quiet ../baseline-manifest.txt; then
+            echo "::error::A path frozen in baseline-manifest.txt is missing or changed in the build (see the FAILED lines above). The existing public surface must not change."
+            exit 1
+          fi
+          echo "OK: all $total paths in baseline-manifest.txt exist in _site with unchanged hashes"
+
       - name: Upload build output
         if: always()
         uses: actions/upload-artifact@v7
