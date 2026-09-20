@@ -6,6 +6,7 @@ permalink: /sound/component-test/index.html
 stylesheets:
   - /sound/css/cards.css
   - /sound/css/ab-player.css
+  - /sound/css/service-card.css
 scripts:
   - /sound/js/cards.js
   - /sound/js/ab-player.js
@@ -40,9 +41,18 @@ players:
 {% include "credit-card.njk" %}
 </div>
 
+<h2 class="test-heading">Service card</h2>
+<p class="test-note">The service pages do not exist yet, so all three cards are in their disabled state: the name is plain text and the card says "Page coming soon".</p>
+<div class="test-stack test-services">
+{%- for service in services %}
+{% include "service-card.njk" %}
+{%- endfor %}
+</div>
+
 <style>
   .test-note { max-width: 60ch; margin-bottom: var(--space-6); color: var(--color-text-dim); line-height: var(--leading-relaxed); }
   .test-heading { font-size: var(--font-size-lg); font-weight: var(--font-weight-light); margin: var(--space-6) 0 var(--space-4); }
   .test-stack { display: flex; flex-direction: column; gap: var(--space-5); max-width: 40rem; }
   .test-card { max-width: 24rem; }
+  .test-services { max-width: 24rem; }
 </style>
