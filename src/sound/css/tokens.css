@@ -1,92 +1,106 @@
 /*
  * Design tokens for the rebuilt /sound section.
  *
- * EXTRACTED, not designed: every value below is copied from
- * sound/css/portfolio.css (line references in comments). Nothing was
- * normalised or merged; near-duplicates in the source are kept as they are
- * and are listed in the Task 6 report. Dark only, by design: the theme is a
- * build-time constant, there is no light mode and no runtime switcher.
+ * SOURCE: the inline <style> of sound/index.html (lines 23-181, public rules only; the admin-panel styles are not a source) plus the
+ * `dusk` theme (line 34), which is what config.json selects and what visitors
+ * see today. sound/css/portfolio.css is a dead orphan and is NOT a source.
+ *
+ * Where the live styles had near-duplicates, they are collapsed to one token
+ * and the original values are noted as "live:" below. Every collapse is listed
+ * in the Task 7 report. Dark only: the theme is a build-time constant, there is
+ * no light mode, no switcher, and slate / fog / forest are dropped.
  */
 
+/* Fonts are self-hosted (latin subset, OFL) so that no third-party request is
+   made on page load. Outfit is one variable file covering 200-500. */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 200 500;
+  font-display: swap;
+  src: url('../fonts/outfit-latin-200-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/space-mono-400-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/space-mono-700-latin.woff2') format('woff2');
+}
+
 :root {
-  /* ── Palette ── portfolio.css :root, lines 15-24 ─────────────────── */
-  --color-bg: #111111;
-  --color-text: #f0f0f0;
-  --color-primary: #ff3e82;
-  --color-secondary: #3effb8;
-  --color-accent: #00ccff;
-  --color-dark: #1a1a1a;
-  --text-color-secondary: rgba(240, 240, 240, 0.7);
-  --card-bg: rgba(26, 26, 26, 0.8);
-  --input-bg: rgba(255, 255, 255, 0.1);
+  /* ── Colour: `dusk` ─────────────────────────────────────────────── */
+  --color-bg: #100c0a;                       /* live --bg */
+  --color-surface: #1a1512;                  /* live --surface; also --modal-bg */
+  --color-border: rgba(255, 220, 180, 0.07); /* live --border */
+  --color-accent: #F0A05A;                   /* live --accent */
+  --color-accent-dim: color-mix(in srgb, var(--color-accent) 8%, transparent);    /* live --accent-dim rgba(240,160,90,.08) */
+  --color-accent-strong: color-mix(in srgb, var(--color-accent) 90%, transparent); /* live --play-bg rgba(240,160,90,.9) */
+  --color-text: rgba(255, 240, 225, 0.9);    /* live --text */
+  --color-text-dim: rgba(255, 240, 225, 0.42);   /* live --text-dim */
+  --color-text-muted: rgba(255, 240, 225, 0.18); /* live --text-muted */
+  --color-overlay: color-mix(in srgb, var(--color-bg) 92%, transparent); /* live --nav-bg .92 and --filter-bg .94 */
+  --color-input-bg: #120e0b;                 /* live --input-bg */
+  --color-error: #f87171;                    /* live .contact-msg.err */
 
-  /* ── Font families ── lines 27-28 (identical in the source) ──────── */
-  --font-mono: 'Lato', sans-serif;
-  --font-display: 'Lato', sans-serif;
+  /* ── Font families ── with a real fallback stack behind each webfont ── */
+  --font-body: 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  --font-display: var(--font-mono);          /* live logo, labels, years, tags */
 
-  /* ── Font weights ── lines 31-33 (only the three that are used) ──── */
-  --font-weight-thin: 100;
-  --font-weight-light: 300;
+  /* ── Font weights ── as used live ───────────────────────────────── */
+  --font-weight-extralight: 200; /* hero h1 */
+  --font-weight-light: 300;      /* about h2 */
   --font-weight-regular: 400;
+  --font-weight-medium: 500;     /* tile title, strong */
+  --font-weight-bold: 700;       /* logo, buttons, small headings */
 
-  /* ── Type scale ── sizes as set per selector in portfolio.css ─────── */
-  --font-size-body: 16px;        /* body, line 52 */
-  --font-size-paragraph: 1.05rem; /* p, line 115 */
-  --font-size-h5: 1.4rem;        /* h5, line 105 */
-  --font-size-h4: 1.8rem;        /* h4, line 98 */
-  --font-size-h3: 2.2rem;        /* h3.category-title, line 89 */
-  --font-size-h2: 3rem;          /* h2.section-title, line 69 */
-  --font-size-logo: 2rem;        /* .logo, line 234 */
-  --font-size-hero: 3.5rem;      /* .glitch-title, line 318 */
-  --line-height-body: 1.8;       /* body */
-  --line-height-heading: 1.3;    /* h1-h5 */
-  --letter-spacing-heading: 2px; /* h1-h5 */
-  --letter-spacing-logo: 3px;    /* .logo, line 236 */
+  /* ── Type scale ── live sizes collapsed onto 6 steps ────────────── */
+  --font-size-2xs: 0.6rem;  /* live .55 .6 .62 */
+  --font-size-xs: 0.7rem;   /* live .68 .7 .72 */
+  --font-size-sm: 0.8rem;   /* live .8 .82 */
+  --font-size-md: 0.9rem;   /* live .85 .88 .92 .95 */
+  --font-size-base: 1rem;   /* live 1 */
+  --font-size-lg: 1.3rem;   /* live 1.3 */
+  --font-size-hero: clamp(2rem, 5vw, 3.4rem); /* live hero h1, unchanged */
 
-  /* ── Spacing ── lines 9-12 ──────────────────────────────────────── */
-  --max-content-width: 1200px;
-  --section-spacing: 6rem;
-  --card-spacing: 4rem;
-  --text-spacing: 1.5rem;
+  /* ── Line height ─────────────────────────────────────────────────── */
+  --leading-tight: 1.2;     /* live 1.15 1.25 */
+  --leading-snug: 1.5;      /* live 1.5 */
+  --leading-relaxed: 1.7;   /* live 1.7 1.75 */
+  --leading-loose: 2;       /* live 2 */
 
-  /* Spacing values the stylesheet actually uses in padding, margin and gap.
-     Named by rem x 10. Occurrence counts in portfolio.css are in brackets. */
-  --space-05: 0.5rem; /* [2]  */
-  --space-10: 1rem;   /* [11] */
-  --space-15: 1.5rem; /* [10] */
-  --space-20: 2rem;   /* [14] */
-  --space-25: 2.5rem; /* [7]  */
-  --space-30: 3rem;   /* [7]  */
-  --space-40: 4rem;   /* [2]  */
-  --space-50: 5rem;   /* [1]  */
-  --space-60: 6rem;   /* [1]  */
-}
+  /* ── Letter spacing ─────────────────────────────────────────────── */
+  --tracking-tight: -0.03em; /* live -.03em -.01em */
+  --tracking-normal: 0.04em; /* live .02em .04em */
+  --tracking-wide: 0.08em;   /* live .06em .08em .1em */
 
-/* Responsive overrides, copied from the source media queries.
-   (Custom properties cannot be used inside @media conditions, so the
-   breakpoints 992 / 768 / 576 are literal here, as in the source.) */
-@media (max-width: 992px) {
-  :root {
-    --section-spacing: 5rem;
-    --card-spacing: 3rem;
-    --font-size-h2: 2.5rem;
-    --font-size-h3: 2rem;
-  }
-}
+  /* ── Spacing ── 4px scale; live px mapped to the nearest step, ties up ── */
+  --space-1: 4px;   /* live 4 */
+  --space-2: 8px;   /* live 6 7 8 */
+  --space-3: 12px;  /* live 10 12 */
+  --space-4: 16px;  /* live 14 16 18 */
+  --space-5: 24px;  /* live 20 24 */
+  --space-6: 32px;  /* live 28 32 */
+  --space-7: 48px;  /* live 48 60 */
+  --space-8: 80px;  /* live 80 */
 
-@media (max-width: 768px) {
-  :root {
-    --section-spacing: 4rem;
-    --card-spacing: 2.5rem;
-    --font-size-h2: 2.2rem;
-  }
-}
+  --max-content-width: 1400px; /* live .nav-inner, .mosaic, .about-inner */
+  --gutter: var(--space-5);    /* live 24px side padding everywhere */
 
-@media (max-width: 576px) {
-  :root {
-    --font-size-h2: 2rem;
-    --font-size-h3: 1.8rem;
-    --font-size-h4: 1.5rem;
-    --font-size-hero: 2rem;
-  }
+  /* ── Radius ───────────────────────────────────────────────────────── */
+  --radius-sm: 4px;    /* live 4 5 */
+  --radius-md: 8px;    /* live 8 */
+  --radius-pill: 50px; /* live 50px */
+
+  /* ── Motion ───────────────────────────────────────────────────────── */
+  --duration-fast: 0.2s;  /* live .2s */
+  --duration-base: 0.35s; /* live .35s .5s */
 }

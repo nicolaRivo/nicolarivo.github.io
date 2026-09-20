@@ -8,58 +8,63 @@
   {#- Every page rendered by this layout is noindex until cutover. Remove in the cutover task, not before. #}
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="/sound/css/tokens.css">
+{%- for href in stylesheets %}
+  <link rel="stylesheet" href="{{ href }}">
+{%- endfor %}
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body {
-      margin: 0;
-      font-family: var(--font-mono);
-      font-size: var(--font-size-body);
-      line-height: var(--line-height-body);
-      background-color: var(--color-bg);
+      font-family: var(--font-body);
+      background: var(--color-bg);
       color: var(--color-text);
+      overflow-x: hidden;
     }
     .container {
-      width: 90%;
       max-width: var(--max-content-width);
       margin: 0 auto;
-      padding: 0 var(--space-10);
+      padding: 0 var(--gutter);
     }
     .skip-link {
       position: absolute;
-      left: var(--space-10);
+      left: var(--space-4);
       top: -4rem;
-      padding: var(--space-05) var(--space-10);
-      background-color: var(--color-text);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-accent);
       color: var(--color-bg);
+      font-family: var(--font-mono);
+      font-size: var(--font-size-sm);
+      z-index: 10;
     }
-    .skip-link:focus { top: var(--space-10); }
-    .site-header { padding: var(--space-20) 0 var(--space-10); }
+    .skip-link:focus { top: var(--space-4); }
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-4) 0;
+    }
     .site-name {
       font-family: var(--font-display);
-      font-size: var(--font-size-logo);
-      font-weight: var(--font-weight-thin);
-      letter-spacing: var(--letter-spacing-logo);
-      text-transform: uppercase;
-      margin: 0;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: var(--tracking-normal);
+      color: var(--color-text);
     }
-    main { padding: var(--section-spacing) 0 0; }
-    h1, h2, h3, h4, h5 {
-      margin: 0 0 var(--text-spacing);
-      line-height: var(--line-height-heading);
-      font-weight: var(--font-weight-thin);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-heading);
-      overflow-wrap: anywhere;
+    main { padding: var(--space-8) 0 var(--space-7); }
+    h1 {
+      font-weight: var(--font-weight-extralight);
+      font-size: var(--font-size-hero);
+      letter-spacing: var(--tracking-tight);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-6);
     }
-    h1 { font-size: var(--font-size-h2); }
-    a { color: var(--color-primary); }
-    a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    a { color: var(--color-accent); }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
     .site-footer {
-      background-color: var(--color-dark);
-      margin-top: var(--section-spacing);
-      padding: var(--space-40) 0 var(--space-20);
-      color: var(--text-color-secondary);
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-5) 0;
+      text-align: center;
     }
-    .site-footer p { margin: 0; }
+    .site-footer p { font-size: var(--font-size-xs); color: var(--color-text-muted); }
   </style>
 </head>
 <body>
@@ -79,5 +84,8 @@
       <p>Nicola Rivosecchi</p>
     </div>
   </footer>
+{%- for src in scripts %}
+  <script src="{{ src }}" defer></script>
+{%- endfor %}
 </body>
 </html>

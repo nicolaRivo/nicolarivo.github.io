@@ -16,3 +16,5 @@ This is a guardrails file, not documentation.
 - Do not change the Pages deploy source. Do not add a deploy job to CI.
 - `~/Developer/node-l-soup` is a different project in a different repo. Never touch it from here.
 - No secrets in the repo, ever.
+- Never edit or regenerate `baseline-manifest.txt` to make CI pass. If the manifest check fails, a published file changed: fix that file, not the manifest.
+- The live palette source is the inline `<style>` of `sound/index.html` plus the `dusk` theme. `sound/css/portfolio.css` is a dead orphan that no page loads. Never derive design tokens from it.

@@ -16,7 +16,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("README.md");
 
   // New-site assets that live under src/ (published at the same relative path).
-  eleventyConfig.addPassthroughCopy("src/sound/css/tokens.css");
+  eleventyConfig.addPassthroughCopy("src/sound/css/*.css");
+  eleventyConfig.addPassthroughCopy("src/sound/js/*.js");
+  eleventyConfig.addPassthroughCopy("src/sound/fonts/*.woff2");
 
   // GitHub Pages must not run its own Jekyll build over Eleventy's output.
   eleventyConfig.addPassthroughCopy(".nojekyll");
