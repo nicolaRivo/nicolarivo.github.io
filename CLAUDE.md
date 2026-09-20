@@ -18,3 +18,4 @@ This is a guardrails file, not documentation.
 - No secrets in the repo, ever.
 - Never edit or regenerate `baseline-manifest.txt` to make CI pass. If the manifest check fails, a published file changed: fix that file, not the manifest.
 - The live palette source is the inline `<style>` of `sound/index.html` plus the `dusk` theme. `sound/css/portfolio.css` is a dead orphan that no page loads. Never derive design tokens from it.
+- Requirement for the credit pages (not built yet): a `redesign-demo` credit's page must state in full that it is a sound redesign exercise on existing footage, not a commissioned credit. The card badge says only "Sound redesign (demo)".
