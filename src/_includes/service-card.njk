@@ -1,0 +1,17 @@
+{#-
+  One service from the `services` data file. Expects `service` in scope.
+  The card links to /sound/<slug>/, which does not exist yet, so it renders as
+  plain text plus a "Page coming soon" note. It becomes a real link by itself
+  once that page is in the build: the pageExists filter checks the URL against
+  collections.all. No href="#", no tabindex, nothing focusable and nothing that
+  can land on a 404 while the page is absent. No JavaScript is involved.
+-#}
+{%- set serviceUrl = "/sound/" + service.slug + "/" %}
+{%- set hasPage = collections.all | pageExists(serviceUrl) %}
+<article class="service-card">
+  <h2 class="service-card-name">{% if hasPage %}<a href="{{ serviceUrl }}">{{ service.name }}</a>{% else %}{{ service.name }}{% endif %}</h2>
+  <p class="service-card-pitch">{{ service.pitch }}</p>
+{%- if not hasPage %}
+  <p class="service-card-status">Page coming soon</p>
+{%- endif %}
+</article>

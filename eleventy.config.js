@@ -25,6 +25,11 @@ module.exports = function (eleventyConfig) {
   // GitHub Pages must not run its own Jekyll build over Eleventy's output.
   eleventyConfig.addPassthroughCopy(".nojekyll");
 
+  // True when the build contains a page with exactly this URL. A page with
+  // `permalink: false` has url === false, so it never matches. service-card.njk
+  // uses this to switch a card's link on as soon as its page exists.
+  eleventyConfig.addFilter("pageExists", (allPages, url) => allPages.some((p) => p.url === url));
+
   return {
     dir: {
       input: "src",
