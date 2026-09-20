@@ -1,0 +1,31 @@
+{#-
+  Before/after A/B audio player. Expects `player` in scope:
+    player.id      unique on the page
+    player.label   what the sample is
+    player.before  URL of the "before" audio
+    player.after   URL of the "after" audio
+  Without JS: two plain labelled <audio controls>. ab-player.js swaps that for a
+  single play/pause control plus a Before/After toggle that keeps the position.
+-#}
+<div class="ab" data-ab data-label="{{ player.label }}" data-side="before" id="{{ player.id }}">
+  <p class="ab-label">{{ player.label }}</p>
+  <div class="ab-fallback">
+    <figure class="ab-track">
+      <figcaption>Before</figcaption>
+      <audio controls preload="metadata" src="{{ player.before }}" data-side="before"></audio>
+    </figure>
+    <figure class="ab-track">
+      <figcaption>After</figcaption>
+      <audio controls preload="metadata" src="{{ player.after }}" data-side="after"></audio>
+    </figure>
+  </div>
+  <div class="ab-ui" hidden>
+    <div class="ab-row">
+      <button class="ab-play" type="button" data-state="paused" aria-label="Play {{ player.label }}, Before version"><span class="ab-play-icon" aria-hidden="true"></span></button>
+      <button class="ab-toggle" type="button" aria-label="{{ player.label }}: Before selected. Switch to After"><span class="ab-side ab-side--before" aria-hidden="true">Before</span><span class="ab-side ab-side--after" aria-hidden="true">After</span></button>
+      <span class="ab-time" aria-hidden="true">0:00 / 0:00</span>
+    </div>
+    <div class="ab-bar" aria-hidden="true"><span class="ab-bar-fill"></span></div>
+    <p class="visually-hidden ab-status" role="status" aria-live="polite"></p>
+  </div>
+</div>
