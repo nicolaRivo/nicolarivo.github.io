@@ -1,0 +1,120 @@
+[
+  {
+    "slug": "dialogue-editing",
+    "name": "Dialogue editing and audio restoration",
+    "pitch": "Dialogue that's easy to hear: hiss, hum, clicks and rumble gone, and every line sitting at an even level.",
+    "pain_points": [
+      "There's a constant hum under every line.",
+      "You can hear the air conditioning between sentences.",
+      "Some words click or thump, and the quiet lines get lost next to the loud ones.",
+      "The dialogue sounds thin and far away, even with the volume up."
+    ],
+    "includes": [
+      "Hiss, hum, rumble and background noise removed",
+      "Clicks, pops and mouth noises cleaned up",
+      "Harsh S sounds and thumps on P and B softened",
+      "Levels evened out so no line jumps out or disappears",
+      "Dialogue edited so it flows, with no bumps or gaps",
+      "The cleaned dialogue as a track you can drop straight into your edit"
+    ],
+    "turnaround": "TODO",
+    "price_from": "TODO",
+    "faqs": [
+      {
+        "q": "What if only part of the recording is noisy?",
+        "a": "Recordings usually have a few bad moments rather than one constant problem: a passing car, a fridge kicking in, someone shifting in a chair. Those parts get cleaned, and the rest is left alone so it doesn't sound worked over. Send the worst part with the free test and you'll hear what happens to it."
+      },
+      {
+        "q": "Can dialogue recorded in a bad room be fixed?",
+        "a": "A lot can be done: the noise pulled down, echo reduced, the tone evened out. How far it goes depends on how the recording was made — a very live room leaves less to work with than a dry one. The free test is the honest way to find out, and if it can't get there you'll hear that too."
+      },
+      {
+        "q": "The picture is already cut. Will the cleaned dialogue still line up?",
+        "a": "Yes. The dialogue is cut to match the picture you send, so the timing you have now doesn't move."
+      },
+      {
+        "q": "Do I need to send the whole project?",
+        "a": "No. The dialogue track is enough to start. If there's a picture to match against, send that too, and anything else that helps: the original recordings, or a note about the parts that worry you most."
+      }
+    ],
+    "related_roles": ["dialogue-edit", "cleanup", "adr", "mix"]
+  },
+  {
+    "slug": "podcast-editing",
+    "name": "Podcast editing",
+    "pitch": "Your episode turned into one clean conversation: ums, clicks, coughs and level jumps gone, both voices sitting together.",
+    "pain_points": [
+      "Two people sound like they're in different rooms.",
+      "One host is much louder than the other.",
+      "There's a click or a thump every time someone starts talking.",
+      "The episode sounds flat and quiet next to the shows your listeners already hear."
+    ],
+    "includes": [
+      "Ums, false starts and long pauses taken out",
+      "Clicks, coughs, chair squeaks and loud breaths cleaned up",
+      "Voices levelled so nobody disappears or jumps out",
+      "The episode assembled in the order you want it",
+      "The finished episode set to a steady listening level"
+    ],
+    "turnaround": "TODO",
+    "price_from": "TODO",
+    "faqs": [
+      {
+        "q": "Can you take out the ums and the long pauses?",
+        "a": "Yes, and it's often the biggest difference. False starts and dead air get cut and the gaps tightened, while the conversation still sounds like a conversation."
+      },
+      {
+        "q": "We recorded remotely and the two voices don't match.",
+        "a": "That's a common problem with remote recordings: different rooms, different microphones, different noise underneath. The tracks can be cleaned and matched so the two voices sit together. How close they get depends on how the recording was made, so the free test is the real answer — send a section with both voices and you'll hear it."
+      },
+      {
+        "q": "Should we send separate tracks or one mixed file?",
+        "a": "Separate tracks are better, because each voice can be treated on its own. A single mixed track still works, with less room to move."
+      },
+      {
+        "q": "What about intro music and jingles?",
+        "a": "Music, intros and outros can be placed where you want them and set at the right level under the voices."
+      }
+    ],
+    "related_roles": ["dialogue-edit", "cleanup", "mix"]
+  },
+  {
+    "slug": "sound-design",
+    "name": "Sound design for film and indie projects",
+    "pitch": "The sound your film needs to be believed: effects, atmosphere and the space between the lines.",
+    "pain_points": [
+      "The picture feels flat — nothing in it sounds like it's really there.",
+      "The music is doing all the work and the scene still feels empty.",
+      "Doors, footsteps and hands never sound like they touch anything.",
+      "Every scene sits in the same silence, so the cuts show."
+    ],
+    "includes": [
+      "Effects built and placed to match the picture",
+      "Foley: footsteps, doors, cloth, hands and other contact detail",
+      "Atmospheres and backgrounds for each scene",
+      "Sound carried across cuts so neighbouring scenes sit in the same world",
+      "Everything mixed under the dialogue and the music"
+    ],
+    "turnaround": "TODO",
+    "price_from": "TODO",
+    "faqs": [
+      {
+        "q": "When should sound design start?",
+        "a": "The earlier the better. It works best against a cut that's close to final, but a rough cut is fine too — some sounds will need redoing if the picture changes."
+      },
+      {
+        "q": "What do you need from me?",
+        "a": "The picture, with the dialogue or guide audio in place, and any music that's already chosen. References for the tone you want are welcome, and if you don't have any, the film itself is enough to start from."
+      },
+      {
+        "q": "We already have some sound on the timeline.",
+        "a": "Good — it's useful as a reference for what you like. New sound can be built around it or replace it, whichever works better for the scene."
+      },
+      {
+        "q": "Can you work with music we've already chosen?",
+        "a": "Yes. If the music is in place first, the effects and atmospheres can be built and set around it."
+      }
+    ],
+    "related_roles": ["sound-design", "foley", "field-recording", "mix"]
+  }
+]

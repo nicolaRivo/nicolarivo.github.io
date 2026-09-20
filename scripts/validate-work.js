@@ -1,4 +1,4 @@
-// Validates src/work/*.md and checks they stay in sync with videos.json.
+// Validates src/work/*.md (in sync with videos.json) and src/_data/services.json.
 // Node built-ins only. Reports and exits 0: it must not fail the build while
 // TODOs are unresolved. It becomes a CI gate once the TODOs are filled in.
 const fs = require("fs");
@@ -108,12 +108,145 @@ for (const [id, matches] of filesById) {
 
 const syncProblems = problems.filter((p) => p.startsWith("sync:") || p.startsWith("videos.json")).length;
 
+// ── Services (src/_data/services.json) ──────────────────────────────────────
+// Same rules as above: report only, never a non-zero exit. `turnaround` and
+// `price_from` are Nico's to set; while they are "TODO" they are counted as
+// TODO fields, not reported as problems.
+
+const SERVICES = path.join(ROOT, "src", "_data", "services.json");
+const SERVICE_SLUGS = ["dialogue-editing", "podcast-editing", "sound-design"];
+const SERVICE_KEYS = [
+  "slug", "name", "pitch", "pain_points", "includes", "turnaround",
+  "price_from", "faqs", "related_roles",
+];
+const ROLE_VOCAB = [
+  "dialogue-edit", "cleanup", "adr", "foley", "sound-design", "mix",
+  "composition", "field-recording",
+];
+// Agency language and the live page's claims, which the copy must not use.
+const BANNED_COPY = [
+  "immersive", "sonic experience", "crafting", "elevate", "seamless",
+  "world-class", "bespoke", "passionate", "cutting-edge", "unlock",
+];
+
+const serviceProblems = [];
+const serviceProblem = (msg) => serviceProblems.push(msg);
+
+// Every path (dot/bracket notation) whose string value still contains "TODO".
+function todoPaths(value, prefix) {
+  if (typeof value === "string") return value.includes("TODO") ? [prefix || "(value)"] : [];
+  if (Array.isArray(value)) return value.flatMap((v, i) => todoPaths(v, `${prefix}[${i}]`));
+  if (value && typeof value === "object") {
+    return Object.entries(value).flatMap(([k, v]) => todoPaths(v, prefix ? `${prefix}.${k}` : k));
+  }
+  return [];
+}
+
+// All string values in an entry, for the copy scan.
+function allStrings(value) {
+  if (typeof value === "string") return [value];
+  if (Array.isArray(value)) return value.flatMap(allStrings);
+  if (value && typeof value === "object") return Object.values(value).flatMap(allStrings);
+  return [];
+}
+
+function isSentenceList(value, min) {
+  return Array.isArray(value) && value.length >= min
+    && value.every((v) => typeof v === "string" && v.trim() !== "");
+}
+
+let services = [];
+try {
+  services = JSON.parse(fs.readFileSync(SERVICES, "utf8"));
+  if (!Array.isArray(services)) throw new Error("not an array");
+} catch (e) {
+  serviceProblem(`services.json could not be read as an array: ${e.message}`);
+  services = [];
+}
+
+if (services.length !== SERVICE_SLUGS.length) {
+  serviceProblem(`services.json has ${services.length} entries, expected ${SERVICE_SLUGS.length}`);
+}
+const slugs = services.map((s) => s.slug);
+if (services.length === SERVICE_SLUGS.length && slugs.join(",") !== SERVICE_SLUGS.join(",")) {
+  serviceProblem(`services.json entries are ${slugs.join(", ")}; expected ${SERVICE_SLUGS.join(", ")}`);
+}
+
+for (const [i, service] of services.entries()) {
+  const where = service.slug || `entry ${i + 1}`;
+
+  const missing = SERVICE_KEYS.filter((k) => !(k in service));
+  for (const key of missing) serviceProblem(`${where}: missing key '${key}'`);
+  if (missing.length === 0) {
+    const order = Object.keys(service).filter((k) => SERVICE_KEYS.includes(k));
+    if (order.join(",") !== SERVICE_KEYS.join(",")) {
+      serviceProblem(`${where}: keys out of order: ${order.join(", ")}`);
+    }
+  }
+
+  for (const key of ["name", "pitch"]) {
+    if (typeof service[key] !== "string" || service[key].trim() === "") {
+      serviceProblem(`${where}: '${key}' is missing or empty`);
+    }
+  }
+  if (!isSentenceList(service.pain_points, 2)) {
+    serviceProblem(`${where}: 'pain_points' must be at least two non-empty strings`);
+  }
+  if (!isSentenceList(service.includes, 1)) {
+    serviceProblem(`${where}: 'includes' must be at least one non-empty string`);
+  }
+  for (const key of ["turnaround", "price_from"]) {
+    if (typeof service[key] !== "string" || service[key].trim() === "") {
+      serviceProblem(`${where}: '${key}' is missing or empty (use the literal "TODO")`);
+    }
+  }
+
+  if (!Array.isArray(service.faqs) || service.faqs.length < 3 || service.faqs.length > 4) {
+    serviceProblem(`${where}: 'faqs' must be an array of 3 or 4 entries`);
+  } else {
+    service.faqs.forEach((faq, j) => {
+      for (const key of ["q", "a"]) {
+        if (!faq || typeof faq[key] !== "string" || faq[key].trim() === "") {
+          serviceProblem(`${where}: faq ${j + 1} is missing a non-empty '${key}'`);
+        }
+      }
+    });
+  }
+
+  if (!Array.isArray(service.related_roles) || service.related_roles.length === 0) {
+    serviceProblem(`${where}: 'related_roles' must be a non-empty array`);
+  } else {
+    for (const role of service.related_roles) {
+      if (!ROLE_VOCAB.includes(role)) serviceProblem(`${where}: related_roles has '${role}', not in the credit roles vocabulary`);
+    }
+  }
+
+  const banned = BANNED_COPY.filter((phrase) =>
+    allStrings(service).some((s) => s.toLowerCase().includes(phrase)));
+  if (banned.length) serviceProblem(`${where}: copy uses banned wording: ${banned.join(", ")}`);
+}
+
+const serviceTodo = services
+  .map((service) => ({ where: service.slug || "(no slug)", fields: todoPaths(service, "") }))
+  .filter((e) => e.fields.length > 0);
+const serviceTodoCount = serviceTodo.reduce((n, e) => n + e.fields.length, 0);
+
 console.log(`work files:        ${files.length}`);
 console.log(`videos.json:       ${videos.length} entries`);
 console.log(`files with TODO:   ${todoFiles} of ${files.length} (${todoFields} TODO fields)`);
 console.log(`sync with videos.json: ${syncProblems === 0 ? "OK" : `${syncProblems} problem(s)`}`);
 console.log(`validation problems:   ${problems.length - syncProblems}`);
 for (const p of problems) console.log(`  - ${p}`);
+
+console.log(`services.json:     ${services.length} entries${slugs.length ? ` (${slugs.join(", ")})` : ""}`);
+if (serviceTodo.length) {
+  console.log(`services TODO:     ${serviceTodoCount} fields in ${serviceTodo.length} of ${services.length} entries`);
+  for (const entry of serviceTodo) console.log(`  ${entry.where}: ${entry.fields.join(", ")}`);
+} else if (services.length) {
+  console.log(`services TODO:     none`);
+}
+console.log(`services problems: ${serviceProblems.length}`);
+for (const p of serviceProblems) console.log(`  - ${p}`);
 
 // Deliberately exit 0 for now; see header comment.
 process.exit(0);
