@@ -1,491 +1,582 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicola Rivosecchi — Sound Designer & Audio Engineer in London | Film, Games & Media</title>
-    <meta name="description" content="Nicola Rivosecchi is a London-based sound designer, composer, and audio engineer. Portfolio of sound design for film, documentaries, short films, orchestral compositions, and creative audio software.">
-    <meta name="keywords" content="Nicola Rivosecchi, Nicola Rivosecchi sound designer, sound designer London, audio engineer London, film sound design, game audio, composer London, foley artist, sound design portfolio, mixing engineer London">
-    <meta name="author" content="Nicola Rivosecchi">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://nicolarivo.co.uk/sound">
-    <meta property="og:title" content="Nicola Rivosecchi — Sound Designer & Audio Engineer, London">
-    <meta property="og:description" content="Sound design, composition & audio engineering for film, games, and interactive media.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nicolarivo.co.uk/sound">
-    <meta property="og:locale" content="en_GB">
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Person","name":"Nicola Rivosecchi","alternateName":"Nico Rivosecchi","jobTitle":"Sound Designer & Audio Engineer","url":"https://nicolarivo.co.uk/sound","telephone":"+447438779924","address":{"@type":"PostalAddress","addressLocality":"London","addressCountry":"GB"},"sameAs":["https://nicolarivo.co.uk","https://www.instagram.com/9inefm","https://www.linkedin.com/in/nicola-rivosecchi-649240112/","https://soundcloud.com/nicolarivo","https://www.youtube.com/@nicolarivo"]}
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg:#080808;--surface:#101010;--border:rgba(255,255,255,0.06);
-            --accent:#00E5CC;--accent-dim:rgba(0,229,204,0.08);
-            --text:rgba(255,255,255,0.9);--text-dim:rgba(255,255,255,0.45);--text-muted:rgba(255,255,255,0.2);
-            --nav-bg:rgba(8,8,8,0.9);--filter-bg:rgba(8,8,8,0.92);--modal-bg:#111;--input-bg:#0c0c0c;
-            --mono:'Space Mono',monospace;--sans:'Outfit',sans-serif;
-            --play-bg:rgba(0,229,204,0.9);
-        }
-        [data-theme="slate"]{--bg:#0a0e14;--surface:#121820;--border:rgba(255,255,255,0.07);--accent:#7EB8F7;--accent-dim:rgba(126,184,247,0.08);--text:rgba(255,255,255,0.88);--text-dim:rgba(255,255,255,0.42);--text-muted:rgba(255,255,255,0.18);--nav-bg:rgba(10,14,20,0.92);--filter-bg:rgba(10,14,20,0.94);--modal-bg:#131a23;--input-bg:#0c1018;--play-bg:rgba(126,184,247,0.9);}
-        [data-theme="dusk"]{--bg:#100c0a;--surface:#1a1512;--border:rgba(255,220,180,0.07);--accent:#F0A05A;--accent-dim:rgba(240,160,90,0.08);--text:rgba(255,240,225,0.9);--text-dim:rgba(255,240,225,0.42);--text-muted:rgba(255,240,225,0.18);--nav-bg:rgba(16,12,10,0.92);--filter-bg:rgba(16,12,10,0.94);--modal-bg:#1a1512;--input-bg:#120e0b;--play-bg:rgba(240,160,90,0.9);}
-        [data-theme="fog"]{--bg:#F4F2EF;--surface:#ECEAE6;--border:rgba(0,0,0,0.08);--accent:#2563EB;--accent-dim:rgba(37,99,235,0.08);--text:rgba(0,0,0,0.85);--text-dim:rgba(0,0,0,0.45);--text-muted:rgba(0,0,0,0.25);--nav-bg:rgba(244,242,239,0.92);--filter-bg:rgba(244,242,239,0.95);--modal-bg:#ECEAE6;--input-bg:#E4E2DE;--play-bg:rgba(37,99,235,0.9);}
-        [data-theme="forest"]{--bg:#060e08;--surface:#0c1a0f;--border:rgba(120,220,140,0.07);--accent:#5DDC7E;--accent-dim:rgba(93,220,126,0.08);--text:rgba(220,255,230,0.88);--text-dim:rgba(220,255,230,0.42);--text-muted:rgba(220,255,230,0.18);--nav-bg:rgba(6,14,8,0.92);--filter-bg:rgba(6,14,8,0.94);--modal-bg:#0c1a0f;--input-bg:#081008;--play-bg:rgba(93,220,126,0.9);}
-        html{scroll-behavior:smooth}
-        body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .35s,color .35s}
-        .nav{position:fixed;top:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .35s,border-color .35s}
-        .nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px}
-        .nav-logo{font-family:var(--mono);font-size:.8rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:.04em}
-        .nav-logo span{color:var(--accent)}
-        .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
-        .nav-links a{text-decoration:none;color:var(--text-dim);font-size:.8rem;font-weight:400;transition:color .2s;letter-spacing:.02em}
-        .nav-links a:hover{color:var(--accent)}
-        .nav-cta{color:var(--accent)!important;border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);padding:7px 18px;border-radius:50px;font-weight:500!important}
-        .nav-cta:hover{background:var(--accent-dim);border-color:var(--accent)}
-        .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
-        .nav-toggle span{display:block;width:20px;height:1.5px;background:var(--text);margin:4px 0}
-        .hero{padding:140px 24px 60px;text-align:center}
-        .hero h1{font-weight:200;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
-        .hero h1 strong{font-weight:500;color:var(--accent)}
-        .hero p{font-size:.95rem;color:var(--text-dim);max-width:520px;margin:0 auto;line-height:1.7}
-        .filters{padding:20px 24px 32px;text-align:center;position:sticky;top:60px;z-index:100;background:var(--filter-bg);backdrop-filter:blur(12px);transition:background .35s}
-        .filter-btn{font-family:var(--mono);font-size:.7rem;font-weight:400;padding:7px 18px;border-radius:50px;cursor:pointer;background:transparent;color:var(--text-dim);border:1px solid var(--border);margin:0 4px 8px;transition:all .2s;letter-spacing:.04em;text-transform:uppercase}
-        .filter-btn:hover{border-color:color-mix(in srgb,var(--text) 20%,transparent);color:var(--text)}
-        .filter-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}
-        .mosaic{max-width:1400px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-        .tile{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--surface);border-radius:4px;transition:background .35s}
-        .tile-thumb{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .5s ease;filter:brightness(0.7)}
-        .tile:hover .tile-thumb{transform:scale(1.05);filter:brightness(0.3)}
-        .tile-overlay{position:absolute;inset:0;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;transition:opacity .35s ease}
-        .tile:hover .tile-overlay{opacity:1}
-        .tile-year{font-family:var(--mono);font-size:.62rem;color:var(--accent);letter-spacing:.08em;margin-bottom:4px}
-        .tile-title{font-weight:500;font-size:.92rem;line-height:1.25;margin-bottom:6px}
-        .tile-tags{display:flex;gap:4px;flex-wrap:wrap}
-        .tile-tag{font-family:var(--mono);font-size:.55rem;padding:2px 8px;border-radius:50px;background:var(--accent-dim);color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
-        .tile-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);width:48px;height:48px;border-radius:50%;background:var(--play-bg);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .35s ease}
-        .tile-play::after{content:'';width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid var(--bg);margin-left:3px}
-        .tile:hover .tile-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
-        .tile.expanded{grid-column:1/-1;aspect-ratio:auto}
-        .tile.expanded .tile-thumb,.tile.expanded .tile-overlay,.tile.expanded .tile-play{display:none}
-        .tile-player{display:none;width:100%}
-        .tile.expanded .tile-player{display:block}
-        .player-wrapper{display:grid;grid-template-columns:2fr 1fr;background:var(--surface);border-radius:4px;overflow:hidden;transition:background .35s}
-        .player-video{aspect-ratio:16/9;width:100%}
-        .player-video iframe{width:100%;height:100%;border:none}
-        .player-info{padding:32px 28px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--border)}
-        .player-close{position:absolute;top:12px;right:16px;background:rgba(128,128,128,0.15);border:none;color:var(--text-dim);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center;transition:all .2s;z-index:5}
-        .tile.expanded .player-close{display:flex}
-        .player-close:hover{background:rgba(128,128,128,0.25);color:var(--text)}
-        .player-info .tile-year{margin-bottom:6px}
-        .player-info .tile-title{font-size:1.3rem;margin-bottom:12px}
-        .player-info .tile-desc{font-size:.85rem;color:var(--text-dim);line-height:1.7}
-        .player-info .tile-tags{margin-top:16px}
-        .player-info .tile-tag{font-size:.62rem;padding:3px 10px}
-        .about{padding:80px 24px;border-top:1px solid var(--border)}
-        .about-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:48px;align-items:start}
-        .about-photo{width:120px;flex-shrink:0}
-        .about-photo img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--border);display:block}
-        .about-bio h2{font-weight:300;font-size:1.3rem;margin-bottom:14px;letter-spacing:-.01em}
-        .about-bio h2 strong{font-weight:500}
-        .about-bio p{font-size:.88rem;color:var(--text-dim);line-height:1.75}
-        .about-skills h3,.about-contact h3{font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
-        .about-skills-list{font-size:.82rem;color:var(--text-dim);line-height:2}
-        .about-contact a{display:block;color:var(--text-dim);text-decoration:none;font-size:.85rem;margin-bottom:8px;transition:color .2s}
-        .about-contact a:hover{color:var(--accent)}
-        .about-socials{display:flex;gap:10px;margin-top:16px}
-        .about-socials a{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--text-dim);transition:all .2s}
-        .about-socials a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nico Rivo | Sound design, composition, audio post. London</title>
+<meta name="description" content="Nico Rivo is a sound designer, composer and audio post engineer in London. Selected work, services and contact.">
+<link rel="canonical" href="https://nicolarivo.co.uk/sound/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nico Rivo | Sound design, composition, audio post. London">
+<meta property="og:description" content="Nico Rivo is a sound designer, composer and audio post engineer in London. Selected work, services and contact.">
+<meta property="og:url" content="https://nicolarivo.co.uk/sound/">
+<meta property="og:image" content="https://nicolarivo.co.uk/assets/images/og-home.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111'/%3E%3Cpath d='M4 16h4l3-9 5 18 4-14 2 5h6' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:'Instrument Serif';src:url('fonts/instrument-serif-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Instrument Serif';src:url('fonts/instrument-serif-latin-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Inter';src:url('fonts/inter-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url('fonts/inter-latin-600-normal.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url('fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--text);color:var(--bg);padding:.6rem 1rem;z-index:100}
+.skip:focus{top:1rem}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.small{font-size:.9rem;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:.6rem 1.3rem;border:1px solid var(--text);background:transparent;color:var(--text);border-radius:var(--r-btn);text-decoration:none;transition:background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),transform var(--dur-fast) var(--ease)}
+.btn:hover{background:var(--text);color:var(--bg)}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn-main{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn-main:hover{background:var(--text);border-color:var(--text);color:var(--bg)}
+/* form */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem 1.25rem}
+.f{display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.f-wide{grid-column:1/-1}
+.f label{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.f input,.f select,.f textarea{width:100%;min-height:48px;padding:.7rem .85rem;background:var(--field);border:1px solid var(--line-strong);border-radius:var(--r-field);transition:border-color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease)}
+.f textarea{resize:vertical;min-height:9rem}
+.f input:hover,.f select:hover,.f textarea:hover{border-color:var(--text)}
+.f input:focus-visible,.f select:focus-visible,.f textarea:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--text)}
+.f input:disabled{opacity:.5}
+.f-act{display:flex;flex-wrap:wrap;align-items:center;gap:1rem}
+.status{min-height:1.5em}
+.status.ok{color:var(--ok)}
+.status.err{color:var(--err)}
+.status a{color:inherit;font-weight:600}
+@media (max-width:640px){.form{grid-template-columns:1fr}}
+/* video facade */
+.vid{display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.yt,.vid iframe{display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line-strong);border-radius:var(--r-card);background:var(--surface-2)}
+.yt{color:var(--text);padding:0;transition:border-color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease)}
+.yt:hover{border-color:var(--accent);background:var(--surface)}
+.yt:hover svg{color:var(--accent)}
+.yt:active{transform:scale(.995)}
+.yt-plate{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;height:100%;padding:1rem;text-align:center}
+.yt svg{transition:color var(--dur-fast) var(--ease)}
+.yt-t{font-family:var(--font-display);font-weight:700;font-size:1.1rem}
+.yt-s{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);max-width:28ch}
+.ext{font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.ext:hover{color:var(--text)}
+.w-text{max-width:60ch;color:var(--text)}
+.w-empty{color:var(--muted)}
+/* demo */
+.demo{display:flex;flex-direction:column;gap:.9rem;padding:1rem;border:1px dashed var(--line-strong);border-radius:var(--r-card);grid-column:1/-1;min-width:0}
+.demo-tag{font-size:.85rem;color:var(--muted);max-width:70ch}
+.demo-tag strong{color:var(--text)}
+.scope{width:100%;height:110px;background:var(--scope-bg);border:1px solid var(--line);border-radius:var(--r-field);color:var(--scope)}
+.demo-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+.seg{display:flex;flex-wrap:wrap;gap:.4rem}
+.seg button,.stems button{min-height:44px;padding:.4rem .9rem;border:1px solid var(--line-strong);background:transparent;border-radius:var(--r-btn);font-size:.9rem;transition:background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease)}
+.seg b{font-family:var(--font-mono);margin-right:.25rem}
+.seg button:hover,.stems button:hover{border-color:var(--text)}
+.seg button[aria-pressed=true],.stems button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.stems{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.stems-l{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:.4rem}
+.demo-status{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);min-height:1.4em}
+.btn-play .ico{width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent currentColor}
+.btn-play[aria-pressed=true] .ico{width:10px;height:12px;border:0;border-left:3px solid currentColor;border-right:3px solid currentColor}
+/* photo placeholder */
+.photo{aspect-ratio:4/5;width:100%;max-width:26rem;border:1px solid var(--line-strong);background:var(--surface);color:var(--muted);display:flex;flex-direction:column;justify-content:flex-end;position:relative;border-radius:var(--r-card);overflow:hidden}
+.photo svg{position:absolute;inset:0;width:100%;height:100%}
+.photo figcaption{position:relative;font-family:var(--font-mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.9rem 1rem}
+/* reveal */
+.js [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity var(--dur-slow) var(--ease),transform var(--dur-slow) var(--ease)}
+.js [data-reveal].in{opacity:1;transform:none}
+.foot{border-top:1px solid var(--line);padding:2rem 0 5rem;color:var(--muted);font-size:.9rem}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between}
+.tc-b{font-weight:700}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important}
+  .js [data-reveal]{opacity:1;transform:none}
+}
+.dlg-ti{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.4rem);line-height:1;letter-spacing:-.03em;font-weight:700}
+.dlg-meta{font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:-.8rem}
 
-        /* ── CONTACT FORM ── */
-        .contact-form{display:flex;flex-direction:column;gap:7px;margin-bottom:4px}
-        .contact-form input,.contact-form textarea{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:5px;padding:8px 10px;color:var(--text);font-family:var(--sans);font-size:.8rem;outline:none;transition:border-color .2s,background .35s;resize:none}
-        .contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--text-muted)}
-        .contact-form input:focus,.contact-form textarea:focus{border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
-        .contact-form textarea{height:70px;line-height:1.5}
-        .contact-form button{font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:8px 16px;border-radius:5px;border:none;background:var(--accent);color:var(--bg);cursor:pointer;transition:opacity .2s;align-self:flex-start;margin-top:2px}
-        .contact-form button:hover{opacity:.8}
-        .contact-form button:disabled{opacity:.45;cursor:not-allowed}
-        .contact-msg{font-family:var(--mono);font-size:.6rem;margin-top:2px;display:none;line-height:1.5}
-        .contact-msg.ok{color:var(--accent)}
-        .contact-msg.err{color:#f87171}
 
-        footer{border-top:1px solid var(--border);padding:24px;text-align:center}
-        footer p{font-size:.68rem;color:var(--text-muted)}
-        footer a{color:var(--text-muted);text-decoration:none}
-        footer a:hover{color:var(--text-dim)}
-        .admin-trigger{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:900;transition:all .25s}
-        .admin-trigger:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
-        .admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);z-index:1100;align-items:center;justify-content:center}
-        .admin-overlay.open{display:flex}
-        .admin-modal{background:var(--modal-bg);border:1px solid var(--border);border-radius:12px;width:min(580px,94vw);max-height:90vh;overflow-y:auto;padding:32px;position:relative;transition:background .35s,border-color .35s}
-        .admin-modal::-webkit-scrollbar{width:4px}
-        .admin-modal::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-        .admin-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:1.2rem;line-height:1;transition:color .2s}
-        .admin-close:hover{color:var(--text)}
-        .admin-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px}
-        .admin-tab{font-family:var(--mono);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer;background:none;border:none;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
-        .admin-tab:hover{color:var(--text-dim)}
-        .admin-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
-        .admin-panel{display:none;flex-direction:column;gap:14px}
-        .admin-panel.visible{display:flex}
-        .admin-login{display:flex;flex-direction:column;gap:14px}
-        .admin-login.hidden{display:none}
-        .admin-unlocked{display:flex;flex-direction:column}
-        .admin-unlocked.hidden{display:none}
-        .admin-modal h2{font-family:var(--mono);font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
-        .a-label{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:5px}
-        .admin-input{width:100%;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-family:var(--sans);font-size:.88rem;outline:none;transition:border-color .2s,background .35s}
-        .admin-input:focus{border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
-        .admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-        .admin-btn{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 20px;border-radius:6px;cursor:pointer;border:none;background:var(--accent);color:var(--bg);transition:opacity .2s,filter .2s}
-        .admin-btn:hover{opacity:.82}
-        .admin-btn:disabled{opacity:.4;cursor:not-allowed}
-        .admin-btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-dim)}
-        .admin-btn.ghost:hover{border-color:var(--accent);color:var(--accent);opacity:1}
-        .admin-btn.danger{background:rgba(220,60,60,0.12);border:1px solid rgba(220,60,60,0.3);color:#f87171}
-        .admin-btn.danger:hover{background:rgba(220,60,60,0.22);opacity:1}
-        .admin-btn-row{display:flex;gap:8px;flex-wrap:wrap}
-        .admin-err{font-size:.72rem;color:#f87171;font-family:var(--mono)}
-        .admin-ok{font-size:.72rem;color:var(--accent);font-family:var(--mono)}
-        .admin-preview{width:100%;aspect-ratio:16/9;background:var(--input-bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-        .admin-preview img{width:100%;height:100%;object-fit:cover}
-        .admin-preview span{font-size:.62rem;font-family:var(--mono);color:var(--text-muted)}
-        select.admin-input{appearance:none;cursor:pointer}
-        .video-list{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto}
-        .video-list::-webkit-scrollbar{width:4px}
-        .video-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-        .vitem{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:6px;background:var(--input-bg);border:1px solid var(--border);cursor:pointer;transition:border-color .2s}
-        .vitem:hover{border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
-        .vitem.selected{border-color:var(--accent)}
-        .vitem-thumb{width:64px;height:36px;object-fit:cover;border-radius:3px;flex-shrink:0;background:var(--surface)}
-        .vitem-info{flex:1;min-width:0}
-        .vitem-title{font-size:.8rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-        .vitem-meta{font-family:var(--mono);font-size:.58rem;color:var(--text-muted);margin-top:2px}
-        .vitem-tag{font-family:var(--mono);font-size:.52rem;padding:1px 6px;border-radius:50px;background:var(--accent-dim);color:var(--accent);text-transform:uppercase}
-        .swatch{width:36px;height:36px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s,border-color .2s;position:relative}
-        .swatch:hover{transform:scale(1.12)}
-        .swatch.active{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
-        .swatch-name{font-family:var(--mono);font-size:.58rem;color:var(--text-muted);text-align:center;margin-top:4px}
-        .swatch-wrap{display:flex;flex-direction:column;align-items:center;gap:0}
-        .github-setup{background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:.78rem;color:var(--text-dim);line-height:1.7}
-        .github-setup code{font-family:var(--mono);font-size:.7rem;background:rgba(128,128,128,0.15);padding:1px 5px;border-radius:3px;color:var(--text)}
-        .spinner{display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px}
-        @keyframes spin{to{transform:rotate(360deg)}}
-        @media(max-width:1024px){.mosaic{grid-template-columns:repeat(3,1fr)}.player-wrapper{grid-template-columns:1fr}.player-info{border-left:none;border-top:1px solid var(--border)}.about-inner{grid-template-columns:auto 1fr 1fr;gap:32px}}
-        @media(max-width:768px){.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--bg);padding:20px 24px;gap:14px;border-bottom:1px solid var(--border)}.nav-toggle{display:block}.mosaic{grid-template-columns:repeat(2,1fr);gap:4px}.about-inner{grid-template-columns:1fr;gap:32px}.about-photo{display:flex;justify-content:center}}
-        @media(max-width:480px){.mosaic{grid-template-columns:1fr}}
-        .tile.hidden{display:none}
-    </style>
+:root{--bg:#0a0b0d;--surface:#121418;--surface-2:#171a1f;--line:#23272d;--line-strong:#6a727c;--text:#ece9e4;--muted:#a09c95;--accent:#b8dcff;--accent-ink:#0a0b0d;--focus:#b8dcff;--scope:#b8dcff;--scope-bg:#08090b;--field:#101216;--ok:#9be3b0;--err:#ffaa9c;
+--font-display:'Instrument Serif','Iowan Old Style','Times New Roman',serif;--font-body:'Inter','Helvetica Neue',Arial,sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+--r-btn:0;--r-card:0;--r-field:0;--dur-fast:160ms;--dur:320ms;--dur-slow:640ms;--ease:cubic-bezier(.22,.7,.2,1);--max:1280px;--gutter:clamp(1.1rem,4.5vw,3rem)}
+.btn{font-family:var(--font-mono);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase}
+.yt-t{font-family:var(--font-display);font-weight:400;font-size:1.6rem}
+.hd{position:fixed;top:0;left:0;right:0;z-index:40;background:#000;border-bottom:1px solid var(--line-strong)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px}
+.brand{font-family:var(--font-display);font-size:1.6rem;text-decoration:none;letter-spacing:.01em}
+.hd nav{display:flex;gap:1.6rem;font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.09em}
+.hd nav a{text-decoration:none;color:var(--muted);padding:.5rem 0;transition:color var(--dur-fast)}
+.hd nav a:hover{color:var(--text)}
+.hd .btn{min-height:44px;padding:.3rem 1.1rem;background:var(--bg);border-color:var(--line-strong)}
+.hd .btn:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+@media (max-width:860px){.hd nav{display:none}}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before,.hero::after{content:"";position:absolute;left:0;right:0;height:clamp(2.6rem,8vh,5rem);background:#000;z-index:2;transform-origin:top;animation:bar 1100ms var(--ease) 200ms both}
+.hero::before{top:0;border-bottom:1px solid var(--line-strong)}
+.hero::after{bottom:0;border-top:1px solid var(--line-strong);transform-origin:bottom}
+@keyframes bar{from{transform:scaleY(2.4)}to{transform:scaleY(1)}}
+.hero .wrap{position:relative;z-index:3;padding-block:9rem 7rem}
+.hero .small-cap{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem}
+.hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(3.8rem,12.5vw,11rem);line-height:.84;letter-spacing:-.02em;animation:title var(--dur-slow) var(--ease) 500ms both}
+.hero h1 em{display:block;font-size:.4em;line-height:1;margin-top:.15em;color:var(--text)}
+@keyframes title{from{opacity:0;letter-spacing:.04em}to{opacity:1;letter-spacing:-.02em}}
+.hero p.lede{margin-top:2rem;max-width:44ch;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.4;animation:title var(--dur-slow) var(--ease) 800ms both}
+.hero .ctas{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.8rem;animation:title var(--dur-slow) var(--ease) 950ms both}
+.hero .btn{min-height:52px;padding:.6rem 1.5rem}
+@media (max-width:640px){.hero .wrap{padding-block:6.5rem 5.5rem}.hero::before,.hero::after{height:3rem}}
+.sec{padding:clamp(4rem,9vw,8rem) 0 0}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:2rem}
+.sec-h h2{font-family:var(--font-display);font-weight:400;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1;letter-spacing:-.01em}
+.sec-h h2 em{color:var(--accent)}
+.sec-h span{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-align:right}
+.frames{display:grid;gap:1.2rem}
+.work.feat{position:relative}
+.work.feat .work-toggle{all:unset;box-sizing:border-box;display:block;width:100%;aspect-ratio:2.39/1;min-height:15rem;position:relative;cursor:pointer;background:var(--surface);border:1px solid var(--line-strong);overflow:hidden;transition:border-color var(--dur) var(--ease)}
+.work.feat .work-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.work.feat .work-toggle::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;transform:scaleX(0);transform-origin:left;background:var(--accent);transition:transform var(--dur-slow) var(--ease)}
+.work.feat .work-toggle:hover{border-color:var(--accent)}
+.work.feat .work-toggle:hover::before{transform:scaleX(1)}
+.feat .w-num{position:absolute;left:clamp(1rem,3vw,2rem);top:clamp(.8rem,2vw,1.4rem);font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;color:var(--accent)}
+.feat .w-main{position:absolute;left:clamp(1rem,3vw,2rem);right:clamp(1rem,3vw,2rem);bottom:clamp(.9rem,2.5vw,1.8rem)}
+.feat .w-title{display:block;font-family:var(--font-display);font-size:clamp(2.4rem,7.5vw,6.6rem);line-height:.92;letter-spacing:-.02em;transition:transform var(--dur) var(--ease)}
+.feat .w-title{font-weight:400}
+.feat .work-toggle:hover .w-title{transform:translateX(.6rem)}
+.feat .w-meta{display:block;margin-top:.7rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.feat .w-year,.feat .w-cat{display:none}
+.feat .w-ico{position:absolute;right:clamp(1rem,3vw,2rem);top:clamp(.8rem,2vw,1.4rem);width:44px;height:44px;border:1px solid var(--line-strong)}
+.feat .w-ico::before{content:"";position:absolute;left:15px;top:13px;border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent var(--text)}
+.feat .work-toggle:hover .w-ico{background:var(--accent);border-color:var(--accent)}
+.feat .work-toggle:hover .w-ico::before{border-left-color:var(--accent-ink)}
+.corner{position:absolute;width:14px;height:14px;border:solid var(--line-strong);border-width:0}
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.work.arc{background:var(--bg)}
+.work.arc .work-toggle{all:unset;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;width:100%;aspect-ratio:16/9;min-height:9.5rem;padding:1rem 1.1rem;cursor:pointer;background:var(--bg);transition:background var(--dur) var(--ease)}
+.work.arc .work-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.work.arc .work-toggle:hover{background:var(--surface-2)}
+.arc .w-year{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.1em;color:var(--accent)}
+.arc .w-title{display:block;font-family:var(--font-display);font-size:clamp(1.6rem,2.4vw,2.1rem);line-height:1;letter-spacing:-.005em;font-weight:400}
+.arc .w-meta{display:none}
+.arc .w-cat{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+.arc .w-main{order:2}.arc .w-year{order:1}.arc .w-cat{order:3}
+.arc .w-ico{display:none}
+.work .panel{display:none}
+@media (max-width:1000px){.strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.strip{grid-template-columns:1fr}.work.feat .work-toggle{aspect-ratio:auto;min-height:18rem}}
+.dlg{position:fixed;inset:0;margin:auto;width:min(1000px,96vw);max-height:92dvh;border:1px solid var(--line-strong);background:var(--bg);color:var(--text);padding:0}
+.dlg:not([open]){display:none}
+.dlg::backdrop{background:rgba(0,0,0,.88)}
+.dlg[open]{animation:dlg-in var(--dur-slow) var(--ease) both}
+.dlg[open]::backdrop{animation:fade var(--dur) ease-out both}
+.dlg.is-closing{animation:dlg-out 180ms ease-in both}
+@keyframes dlg-in{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+@keyframes dlg-out{to{opacity:0;transform:scale(.985)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.dlg .bar{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.2rem;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.dlg .bar .btn{min-height:44px}
+.dlg .dlg-body{padding:1.4rem 1.4rem 2rem;max-height:calc(92dvh - 64px);overflow:auto;display:grid;gap:1.4rem}
+.dlg-ti{font-weight:400!important;font-size:clamp(2.4rem,6vw,4.4rem)!important}
+.dlg .w-text{font-size:1.2rem;line-height:1.45}
+.svcs{border-top:1px solid var(--line-strong)}
+.svc{display:grid;grid-template-columns:4rem minmax(0,1.1fr) minmax(0,1fr) auto;gap:1rem 2rem;align-items:baseline;padding:1.6rem 0;border-bottom:1px solid var(--line-strong)}
+.svc-n{font-family:var(--font-display);font-style:italic;font-size:2.2rem;color:var(--accent);line-height:1}
+.svc h3{font-family:var(--font-display);font-weight:400;font-size:clamp(1.8rem,3.6vw,2.9rem);line-height:1;letter-spacing:-.01em}
+.svc p{color:var(--muted)}
+.svc-a{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line-strong);padding:.7rem 0;white-space:nowrap;transition:color var(--dur-fast),border-color var(--dur-fast)}
+.svc-a:hover{color:var(--accent);border-color:var(--accent)}
+@media (max-width:860px){.svc{grid-template-columns:3rem 1fr;gap:.6rem 1rem}.svc p,.svc-a{grid-column:2}}
+.about{display:grid;grid-template-columns:minmax(0,24rem) minmax(0,1fr);gap:clamp(1.5rem,6vw,5rem);align-items:start}
+.about .txt{display:flex;flex-direction:column;gap:1.2rem;font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.45;max-width:46ch}
+.about .txt a{color:var(--accent)}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(1.5rem,6vw,5rem)}
+.contact .big{font-family:var(--font-display);font-size:clamp(2.2rem,5.4vw,4.4rem);line-height:.98;word-break:break-word;font-weight:400}
+.contact .big a{text-decoration:none;border-bottom:2px solid var(--accent)}
+.contact .lead{margin-top:1.2rem;color:var(--muted);max-width:34ch}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+
+
+/* --- aggiunte rispetto a Proiettore: nav, indice degli aspetti, sezioni, restauro --- */
+.hd nav{gap:1.15rem}
+@media (max-width:860px){.hd nav{display:none}}
+@media (max-width:1180px){.hd nav{display:none}}
+.aspects{border-bottom:1px solid var(--line)}
+.aspects ul{display:grid;grid-template-columns:repeat(var(--n,5),minmax(0,1fr));gap:1px;background:var(--line);border-inline:1px solid var(--line)}
+.aspects a{display:flex;flex-direction:column;justify-content:space-between;gap:1.6rem;min-height:9rem;padding:1.1rem 1.1rem 1rem;background:var(--bg);text-decoration:none;transition:background var(--dur) var(--ease)}
+.aspects a:hover{background:var(--surface-2)}
+.aspects a:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.a-n{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;color:var(--accent)}
+.a-t{font-family:var(--font-display);font-size:clamp(1.5rem,2.3vw,2.1rem);line-height:1}
+.a-s{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block}
+@media (max-width:1000px){.aspects ul{grid-template-columns:repeat(2,minmax(0,1fr))}.aspects li:last-child:nth-child(odd){grid-column:1/-1}.aspects a{min-height:7rem}}
+.sec-d{max-width:56ch;color:var(--muted);margin:-.8rem 0 2rem;font-size:1.1rem}
+.w-sel{position:absolute;right:1.1rem;top:1rem;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:.15rem .45rem}
+.work.arc{position:relative}
+.work.arc .work-toggle{position:relative}
+/* restauro */
+.rest{display:grid;gap:1.2rem;padding:clamp(1rem,2.5vw,1.6rem);border:1px solid var(--line-strong);background:var(--surface)}
+.rest .demo-tag{margin:0}
+.rest-ctl{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.rest-ctl .btn{min-width:8.5rem}
+.rest-seg button{min-width:7rem;min-height:48px;font-family:var(--font-mono);font-size:.82rem;letter-spacing:.07em;text-transform:uppercase}
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.spec{margin:0;border:1px solid var(--line);background:var(--scope-bg);transition:border-color var(--dur-fast) var(--ease)}
+.spec.is-active{border-color:var(--accent)}
+.spec figcaption{display:flex;justify-content:space-between;gap:1rem;padding:.55rem .8rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+.spec figcaption span{color:var(--muted)}
+.spec.is-active figcaption b{color:var(--accent)}
+.spec-box{position:relative;border-top:1px solid var(--line)}
+.spec-box canvas{width:100%;height:180px;display:block}
+.spec-box .ph{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--text);opacity:.85;pointer-events:none}
+.ax{position:absolute;left:.4rem;font-family:var(--font-mono);font-size:.62rem;color:var(--muted);letter-spacing:.06em;text-shadow:0 0 4px #000}
+.ax-t{top:.25rem}.ax-b{bottom:.25rem}
+.rest .demo-status{margin:0}
+@media (max-width:700px){.spec-grid{grid-template-columns:1fr}.spec-box canvas{height:130px}.rest-ctl .btn,.rest-seg{width:100%}.rest-seg{display:grid;grid-template-columns:1fr 1fr}.rest-seg button{min-width:0}}
+/* evidenza dentro le sezioni */
+.frames-sec{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:1.2rem}
+.frames-sec.odd .sec-feat:first-child{grid-column:1/-1}
+.frames-sec .work.feat .work-toggle{aspect-ratio:16/9;min-height:13rem}
+.frames-sec .feat .w-title{font-size:clamp(1.9rem,3.8vw,3.4rem)}
+.frames-sec.odd .sec-feat:first-child .work-toggle{aspect-ratio:2.39/1}
+.frames-sec.odd .sec-feat:first-child .w-title{font-size:clamp(2.4rem,5.6vw,5rem)}
+.frames-sec .feat .w-meta{margin-top:.5rem}
+@media (max-width:760px){.frames-sec{grid-template-columns:1fr}.frames-sec .work.feat .work-toggle,.frames-sec.odd .sec-feat:first-child .work-toggle{aspect-ratio:auto;min-height:15rem}}
+/* foto, video, più restauri */
+.photo-real{aspect-ratio:626/705;max-width:26rem}
+.photo-real img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rest-list{display:grid;gap:1.6rem}
+.rest-h{font-family:var(--font-display);font-weight:400;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.05}
+.rest-video{width:100%;max-width:760px;border:1px solid var(--line-strong);background:#000}
+.rest-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.rest-ask{margin-top:1.4rem}
+
+</style>
 </head>
-<body>
-
-<nav class="nav"><div class="nav-inner">
-    <a href="https://nicolarivo.co.uk/sound" class="nav-logo">NICOLA<span>_</span>RIVOSECCHI</a>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="https://nicolarivo.co.uk" style="opacity:0.4">&#8592; Home</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#about" class="nav-cta">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-</div></nav>
-
-<section class="hero">
-    <h1>Sound design for <strong>film &amp; media</strong></h1>
-    <p>Nicola Rivosecchi — sound designer, composer, and audio engineer based in London. Crafting immersive sonic experiences for film, games, and interactive media.</p>
-</section>
-
-<div class="filters" id="filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="film-sound">Film Sound</button>
-    <button class="filter-btn" data-filter="sound-design">Sound Design</button>
-    <button class="filter-btn" data-filter="composition">Composition</button>
-    <button class="filter-btn" data-filter="software">Software</button>
-</div>
-
-<div class="mosaic" id="work"></div>
-
-<section class="about" id="about"><div class="about-inner">
-    <div class="about-photo">
-        <img src="assets/images/profile_crop.jpeg" alt="Nicola Rivosecchi">
-    </div>
-    <div class="about-bio">
-        <h2>About <strong>Nicola</strong></h2>
-        <p>Sound designer, composer, mixer, and audio engineer with a degree from LCCM London and an MSc in Sound Design from Edinburgh. I handle all areas of film sound — from recording and composition to dialogue editing, foley, and final mixing. Based in London, available worldwide.</p>
-    </div>
-    <div class="about-skills">
-        <h3>Tools &amp; Skills</h3>
-        <div class="about-skills-list">
-            Pro Tools · Ableton · Logic · Reaper<br>
-            Max/MSP · Pure Data · SuperCollider<br>
-            Field Recording · Foley · Ambisonics<br>
-            Orchestral Arrangement · Film Scoring<br>
-            Web Audio API · Sound Art
-        </div>
-    </div>
-    <div class="about-contact">
-        <h3>Get In Touch</h3>
-        <a href="tel:+447438779924">+44 7438 779924</a>
-        <span style="font-size:.85rem;color:var(--text-dim);display:block;margin-bottom:12px">London, UK</span>
-        <form class="contact-form" id="contactForm" novalidate>
-            <input type="text" name="name" placeholder="Your name" required autocomplete="name">
-            <input type="email" name="email" placeholder="Your email" required autocomplete="email">
-            <textarea name="message" placeholder="Your message&#8230;" required></textarea>
-            <button type="submit">Send Message</button>
-            <div class="contact-msg" id="contactMsg"></div>
-        </form>
-        <div class="about-socials">
-            <a href="https://www.instagram.com/9inefm" target="_blank" rel="noopener">IG</a>
-            <a href="https://www.linkedin.com/in/nicola-rivosecchi-649240112/" target="_blank" rel="noopener">IN</a>
-        </div>
-    </div>
+<body data-open="dialog">
+<a class="skip" href="#main">Skip to content</a>
+<header class="hd" id="top"><div class="wrap"><a class="brand" href="#top">Nico Rivo</a><nav aria-label="Sections"><a href="#work">Selected</a><a href="#soundtrack">Soundtrack</a><a href="#sound-design">Sound design</a><a href="#software">Software</a><a href="#composition">Composition</a><a href="#services">Services</a><a href="#about">About</a></nav><a class="btn" href="#contact">Contact</a></div></header>
+<main id="main">
+<section class="hero" aria-label="Introduction"><div class="wrap">
+  <p class="small-cap">Sound designer / Composer / Audio post</p>
+  <h1>Nico Rivo<em>Sound for the picture, and for what comes after.</em></h1>
+  <p class="lede">I design sound for film and indie projects, edit and restore dialogue, and compose. Based in London, MSc Sound Design from Edinburgh.</p>
+  <div class="ctas"><a class="btn btn-main" href="#contact">Get in touch</a><a class="btn" href="#work">See the work</a></div>
+</div></section>
+<nav class="aspects" aria-label="Browse by aspect"><div class="wrap"><ul style="--n:4"><li><a href="#soundtrack"><span class="a-n">01</span><span><span class="a-t">Soundtrack</span><span class="a-s">7 works</span></span></a></li><li><a href="#sound-design"><span class="a-n">02</span><span><span class="a-t">Sound design</span><span class="a-s">4 works</span></span></a></li><li><a href="#software"><span class="a-n">03</span><span><span class="a-t">Software</span><span class="a-s">5 works</span></span></a></li><li><a href="#composition"><span class="a-n">04</span><span><span class="a-t">Composition</span><span class="a-s">9 works</span></span></a></li></ul></div></nav>
+<section class="sec" id="work" aria-labelledby="h-work"><div class="wrap">
+  <div class="sec-h"><h2 id="h-work">Selected <em>work</em></h2><span>3 projects</span></div>
+  <ol class="frames">
+<li class="work feat" id="w-badalamedley" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-badalamedley" aria-haspopup="dialog">
+    <span class="w-num" aria-hidden="true">No. 1</span><span class="w-main"><span class="w-title">BadalaMedley</span><span class="w-meta">2023 · Composition</span></span><span class="w-year">2023</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-badalamedley" hidden>
+<p class="w-text">Orchestral Medley of three Angelo Badalamenti&#x27;s compositions for the tv show Twin Peaks</p>
+<div class="vid"><button type="button" class="yt" data-yt="sWRF-giH0xA" data-title="BadalaMedley" aria-label="Play video: BadalaMedley"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=sWRF-giH0xA" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work feat" id="w-re-creations" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-re-creations" aria-haspopup="dialog">
+    <span class="w-num" aria-hidden="true">No. 2</span><span class="w-main"><span class="w-title">Re-Creations</span><span class="w-meta">2024 · Soundtrack</span></span><span class="w-year">2024</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-re-creations" hidden>
+<p class="w-text">A documentary about a Ukrainian film student&#x27;s experience of war and longing for home.</p>
+<div class="vid"><button type="button" class="yt" data-yt="fl7CV_QEHws" data-title="Re-Creations" aria-label="Play video: Re-Creations"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=fl7CV_QEHws" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work feat" id="w-duncan-x" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-duncan-x" aria-haspopup="dialog">
+    <span class="w-num" aria-hidden="true">No. 3</span><span class="w-main"><span class="w-title">Duncan X</span><span class="w-meta">Soundtrack</span></span><span class="w-year w-year-none">&nbsp;</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-duncan-x" hidden>
+<p class="w-text w-empty">Details to follow.</p>
+  </div>
+</li>
+  </ol>
+</div></section>
+<section class="sec" id="soundtrack" aria-labelledby="h-soundtrack"><div class="wrap">
+  <div class="sec-h"><h2 id="h-soundtrack">Soundtrack</h2><span>7 works</span></div>
+  <p class="sec-d">Sound for film and documentary.</p>
+  <ol class="frames frames-sec">
+<li class="work feat sec-feat ref">
+  <button type="button" class="work-toggle" data-ref="w-re-creations" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Re-Creations</span><span class="w-meta">2024 · Soundtrack</span></span><span class="w-year">2024</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+</li>
+<li class="work feat sec-feat ref">
+  <button type="button" class="work-toggle" data-ref="w-duncan-x" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Duncan X</span><span class="w-meta">Soundtrack</span></span><span class="w-year w-year-none">&nbsp;</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+</li>
+  </ol>
+  <ul class="strip">
+<li class="work arc" id="w-le-parole-sono-pietre" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-le-parole-sono-pietre" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Le Parole Sono Pietre</span><span class="w-meta">2024 · Soundtrack</span></span><span class="w-year">2024</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-le-parole-sono-pietre" hidden>
+<p class="w-text">A short educational film about the renowned Italian artist and writer Carlo Levi, featuring a never-before-seen painting from the director&#x27;s private collection.</p>
+<div class="vid"><button type="button" class="yt" data-yt="h_u0grD7bVQ" data-title="Le Parole Sono Pietre" aria-label="Play video: Le Parole Sono Pietre"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=h_u0grD7bVQ" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-in-the-cards" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-in-the-cards" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">In The Cards</span><span class="w-meta">2021 · Soundtrack</span></span><span class="w-year">2021</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-in-the-cards" hidden>
+<p class="w-text">Suspenseful short exploring fate and choice. Tension built through environmental sounds and crafted silence.</p>
+<div class="vid"><button type="button" class="yt" data-yt="qm9u6u_VTUs" data-title="In The Cards" aria-label="Play video: In The Cards"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=qm9u6u_VTUs" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-mary-la-bone" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-mary-la-bone" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Mary La Bone</span><span class="w-meta">2020 · Soundtrack</span></span><span class="w-year">2020</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-mary-la-bone" hidden>
+<p class="w-text">Gothic-inspired short. Audio evolves from grounded reality to ethereal otherworldliness.</p>
+<div class="vid"><button type="button" class="yt" data-yt="SMic-oK7lgk" data-title="Mary La Bone" aria-label="Play video: Mary La Bone"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=SMic-oK7lgk" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-the-hand-of-the-wind" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-the-hand-of-the-wind" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">The Hand of the Wind</span><span class="w-meta">2020 · Soundtrack</span></span><span class="w-year">2020</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-the-hand-of-the-wind" hidden>
+<p class="w-text">Atmospheric short set in Mustang Valley, Nepal. The wind becomes a character through blended organic and processed sound.</p>
+<div class="vid"><button type="button" class="yt" data-yt="nCkD6japtt4" data-title="The Hand of the Wind" aria-label="Play video: The Hand of the Wind"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=nCkD6japtt4" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-stella-segar-rot" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-stella-segar-rot" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">ROT</span><span class="w-meta">Soundtrack</span></span><span class="w-year w-year-none">&nbsp;</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-stella-segar-rot" hidden>
+<p class="w-text w-empty">Details to follow.</p>
+  </div>
+</li>
+  </ul>
+</div></section>
+<section class="sec" id="sound-design" aria-labelledby="h-sound-design"><div class="wrap">
+  <div class="sec-h"><h2 id="h-sound-design">Sound design</h2><span>4 works</span></div>
+  <p class="sec-d">Designed and recorded sound.</p>
+  <ol class="frames frames-sec">
+<li class="work feat sec-feat" id="w-obscure-sorrows-rubatosis" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-obscure-sorrows-rubatosis" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Obscure Sorrows — Rubatosis</span><span class="w-meta">2022 · Sound design</span></span><span class="w-year">2022</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-obscure-sorrows-rubatosis" hidden>
+<p class="w-text">An unsettling awareness of your own heartbeat rendered through carefully crafted soundscapes.</p>
+<div class="vid"><button type="button" class="yt" data-yt="zbzwmKkAHS8" data-title="Obscure Sorrows — Rubatosis" aria-label="Play video: Obscure Sorrows — Rubatosis"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=zbzwmKkAHS8" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work feat sec-feat" id="w-obscure-sorrows-vemodalen" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-obscure-sorrows-vemodalen" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Obscure Sorrows — Vemödalen</span><span class="w-meta">2022 · Sound design</span></span><span class="w-year">2022</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-obscure-sorrows-vemodalen" hidden>
+<p class="w-text">Sonic narrative from John Koenig&#x27;s Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions.</p>
+<div class="vid"><button type="button" class="yt" data-yt="QdXr3KM_TQ8" data-title="Obscure Sorrows — Vemödalen" aria-label="Play video: Obscure Sorrows — Vemödalen"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=QdXr3KM_TQ8" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+  </ol>
+  <ul class="strip">
+<li class="work arc" id="w-inhabitants" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-inhabitants" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Inhabitants</span><span class="w-meta">2022 · Sound design</span></span><span class="w-year">2022</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-inhabitants" hidden>
+<p class="w-text">Graphic score creation from film soundtrack and rescoring</p>
+<div class="vid"><button type="button" class="yt" data-yt="BLYFNFdfc9U" data-title="Inhabitants" aria-label="Play video: Inhabitants"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=BLYFNFdfc9U" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-obscure-sorrows-trumspringa" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-obscure-sorrows-trumspringa" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Obscure Sorrows — Trumspringa</span><span class="w-meta">2022 · Sound design</span></span><span class="w-year">2022</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-obscure-sorrows-trumspringa" hidden>
+<p class="w-text">The ache of a life unlived rendered through layered field recordings.</p>
+<div class="vid"><button type="button" class="yt" data-yt="Vlk5w65sN6U" data-title="Obscure Sorrows — Trumspringa" aria-label="Play video: Obscure Sorrows — Trumspringa"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=Vlk5w65sN6U" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+  </ul>
+</div></section>
+<section class="sec" id="software" aria-labelledby="h-software"><div class="wrap">
+  <div class="sec-h"><h2 id="h-software">Software</h2><span>5 works</span></div>
+  <p class="sec-d">Audio tools and generative systems I have built.</p>
+  <ol class="frames frames-sec">
+<li class="work feat sec-feat" id="w-evolvingdrone" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-evolvingdrone" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">evolvingDrone</span><span class="w-meta">2023 · Software</span></span><span class="w-year">2023</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-evolvingdrone" hidden>
+<p class="w-text">Evolving drone synthesis engine. Layered harmonics and subtle modulation produce detailed ambient environments.</p>
+<div class="vid"><button type="button" class="yt" data-yt="_Awxf5QOLC8" data-title="evolvingDrone" aria-label="Play video: evolvingDrone"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=_Awxf5QOLC8" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work feat sec-feat" id="w-hummingbot" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-hummingbot" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">hummingBot</span><span class="w-meta">2023 · Software</span></span><span class="w-year">2023</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-hummingbot" hidden>
+<p class="w-text">Algorithmic composition tool. Melodic patterns inspired by hummingbird flight translated from movement data.</p>
+<div class="vid"><button type="button" class="yt" data-yt="Y_xNDgRDc2E" data-title="hummingBot" aria-label="Play video: hummingBot"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=Y_xNDgRDc2E" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+  </ol>
+  <ul class="strip">
+<li class="work arc" id="w-swamp" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-swamp" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">SWAMP</span><span class="w-meta">2023 · Software</span></span><span class="w-year">2023</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-swamp" hidden>
+<p class="w-text">Generative audio environment inspired by wetland ecosystems.</p>
+<div class="vid"><button type="button" class="yt" data-yt="9fJ-gJ6vCk0" data-title="SWAMP" aria-label="Play video: SWAMP"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=9fJ-gJ6vCk0" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-vox-populi" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-vox-populi" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">VOX POPULI</span><span class="w-meta">2023 · Software</span></span><span class="w-year">2023</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-vox-populi" hidden>
+<p class="w-text">Voice-driven generative system. Spoken input transformed into evolving harmonic and rhythmic structures.</p>
+<div class="vid"><button type="button" class="yt" data-yt="kf7i229dozE" data-title="VOX POPULI" aria-label="Play video: VOX POPULI"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=kf7i229dozE" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-biosounds" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-biosounds" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">BioSounds</span><span class="w-meta">2022 · Software</span></span><span class="w-year">2022</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-biosounds" hidden>
+<p class="w-text">Generative system transforming biological data into evolving soundscapes through custom algorithms.</p>
+<div class="vid"><button type="button" class="yt" data-yt="plQkoRI_qXQ" data-title="BioSounds" aria-label="Play video: BioSounds"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=plQkoRI_qXQ" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+  </ul>
+</div></section>
+<section class="sec" id="composition" aria-labelledby="h-composition"><div class="wrap">
+  <div class="sec-h"><h2 id="h-composition">Composition</h2><span>9 works</span></div>
+  <p class="sec-d">Original music and arrangements.</p>
+  <ol class="frames frames-sec">
+<li class="work feat sec-feat ref">
+  <button type="button" class="work-toggle" data-ref="w-badalamedley" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">BadalaMedley</span><span class="w-meta">2023 · Composition</span></span><span class="w-year">2023</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+</li>
+<li class="work feat sec-feat" id="w-ondines-theme" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-ondines-theme" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Ondine&#x27;s Theme</span><span class="w-meta">2022 · Composition</span></span><span class="w-year">2022</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-ondines-theme" hidden>
+<p class="w-text">Delicate composition inspired by the water nymph. Shimmering textures create an immersive underwater atmosphere.</p>
+<div class="vid"><button type="button" class="yt" data-yt="UzIs8wy50-M" data-title="Ondine&#x27;s Theme" aria-label="Play video: Ondine&#x27;s Theme"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=UzIs8wy50-M" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+  </ol>
+  <ul class="strip">
+<li class="work arc" id="w-debussy-images-oubliees" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-debussy-images-oubliees" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Images (Oublièes) score expansion</span><span class="w-meta">2022 · Composition</span></span><span class="w-year">2022</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-debussy-images-oubliees" hidden>
+<p class="w-text">Score expansion for string quartet and harp of Debussy&#x27;s piano composition</p>
+<div class="vid"><button type="button" class="yt" data-yt="p9Jevsbs9l0" data-title="Images (Oublièes) score expansion" aria-label="Play video: Images (Oublièes) score expansion"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=p9Jevsbs9l0" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-action" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-action" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Action!</span><span class="w-meta">2020 · Composition</span></span><span class="w-year">2020</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-action" hidden>
+<p class="w-text">Cinematic composition exploring tension and release. Rhythmic intensity meets orchestral breadth.</p>
+<div class="vid"><button type="button" class="yt" data-yt="IELbdpEHDks" data-title="Action!" aria-label="Play video: Action!"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=IELbdpEHDks" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-amex" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-amex" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">AmEx</span><span class="w-meta">2019 · Composition</span></span><span class="w-year">2019</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-amex" hidden>
+<p class="w-text">Advertising composition with a sophisticated harmonic palette and polished production aesthetic.</p>
+<div class="vid"><button type="button" class="yt" data-yt="O6e4vxhFwJo" data-title="AmEx" aria-label="Play video: AmEx"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=O6e4vxhFwJo" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-o2" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-o2" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">O2</span><span class="w-meta">2019 · Composition</span></span><span class="w-year">2019</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-o2" hidden>
+<p class="w-text">Minimalist composition exploring breath and space. Sparse harmonic textures evolve slowly over time.</p>
+<div class="vid"><button type="button" class="yt" data-yt="PUuq5YRfbPw" data-title="O2" aria-label="Play video: O2"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=PUuq5YRfbPw" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-sobhraj" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-sobhraj" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Sobhraj</span><span class="w-meta">2019 · Composition</span></span><span class="w-year">2019</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-sobhraj" hidden>
+<p class="w-text">Tense composition using textural elements and rhythmic intensity — a psychological portrait.</p>
+<div class="vid"><button type="button" class="yt" data-yt="d6PftRQaXNE" data-title="Sobhraj" aria-label="Play video: Sobhraj"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=d6PftRQaXNE" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-tom-and-jerry" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-tom-and-jerry" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Tom &amp; Jerry</span><span class="w-meta">2019 · Composition</span></span><span class="w-year">2019</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-tom-and-jerry" hidden>
+<p class="w-text">Playful reinterpretation of cartoon aesthetics. Detailed foley meets contemporary musical techniques.</p>
+<div class="vid"><button type="button" class="yt" data-yt="kxqiVSSbUh8" data-title="Tom &amp; Jerry" aria-label="Play video: Tom &amp; Jerry"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=kxqiVSSbUh8" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+<li class="work arc" id="w-what-a-dream" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-what-a-dream" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">What a Dream</span><span class="w-meta">2019 · Composition</span></span><span class="w-year">2019</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+  </button>
+  <div class="panel" id="p-what-a-dream" hidden>
+<p class="w-text">Dreamy impressionistic composition drawing from surrealist imagery and film score traditions.</p>
+<div class="vid"><button type="button" class="yt" data-yt="1m9ioSIsD24" data-title="What a Dream" aria-label="Play video: What a Dream"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=1m9ioSIsD24" rel="noopener" target="_blank">Watch on YouTube</a></div>
+  </div>
+</li>
+  </ul>
 </div></section>
 
-<footer>
-    <p>&copy; 2025 Nicola Rivosecchi &middot; <a href="https://nicolarivo.co.uk">Home</a> &middot; <a href="https://nicolarivo.co.uk/teacher">Teaching</a> &middot; <a href="https://nicolarivo.co.uk/creative-coding/">Creative Coding</a></p>
-    <p style="margin-top:6px">Portfolio features media used to showcase professional skills and abilities.</p>
-</footer>
-
-<button class="admin-trigger" id="adminTrigger" aria-label="Admin panel">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-</button>
-
-<div class="admin-overlay" id="adminOverlay">
-  <div class="admin-modal">
-    <button class="admin-close" id="adminClose">&times;</button>
-    <div class="admin-login" id="adminLogin">
-      <h2>// Admin Access</h2>
-      <div>
-        <label class="a-label" for="adminPassword">Password</label>
-        <input class="admin-input" type="password" id="adminPassword" placeholder="Enter password" autocomplete="current-password">
-      </div>
-      <div id="adminLoginErr" class="admin-err" style="display:none">Incorrect password.</div>
-      <button class="admin-btn" id="adminLoginBtn">Unlock</button>
-    </div>
-    <div class="admin-unlocked hidden" id="adminUnlocked">
-      <div id="ghWarning" style="display:none;margin-bottom:16px">
-        <div class="github-setup">
-          <strong style="color:var(--text)">&#9888; GitHub not configured</strong><br>
-          Go to the <strong>Settings</strong> tab and enter your GitHub repo details + Personal Access Token to enable persistent saves.
-        </div>
-      </div>
-      <div class="admin-tabs">
-        <button class="admin-tab active" data-tab="add">Add</button>
-        <button class="admin-tab" data-tab="manage">Manage</button>
-        <button class="admin-tab" data-tab="theme">Theme</button>
-        <button class="admin-tab" data-tab="settings">Settings</button>
-      </div>
-      <div class="admin-panel visible" id="tabAdd">
-        <h2>// Add Video</h2>
-        <div>
-          <label class="a-label" for="newYtId">YouTube Video ID</label>
-          <input class="admin-input" type="text" id="newYtId" placeholder="e.g. dQw4w9WgXcQ">
-        </div>
-        <div class="admin-preview" id="adminPreview"><span>Thumbnail preview</span></div>
-        <div class="admin-row">
-          <div><label class="a-label" for="newTitle">Title</label><input class="admin-input" type="text" id="newTitle" placeholder="Project name"></div>
-          <div><label class="a-label" for="newYear">Year</label><input class="admin-input" type="text" id="newYear" placeholder="2025"></div>
-        </div>
-        <div>
-          <label class="a-label" for="newCategory">Category</label>
-          <select class="admin-input" id="newCategory">
-            <option value="film-sound">Film Sound</option>
-            <option value="sound-design">Sound Design</option>
-            <option value="composition">Composition</option>
-            <option value="software">Software</option>
-          </select>
-        </div>
-        <div><label class="a-label" for="newDesc">Description</label><input class="admin-input" type="text" id="newDesc" placeholder="One or two sentence description."></div>
-        <div id="addErr" class="admin-err" style="display:none"></div>
-        <div id="addOk"  class="admin-ok"  style="display:none"></div>
-        <div class="admin-btn-row">
-          <button class="admin-btn" id="adminAddBtn">Add &amp; Save</button>
-          <button class="admin-btn ghost" id="adminLogoutBtn">Lock</button>
-        </div>
-      </div>
-      <div class="admin-panel" id="tabManage">
-        <h2>// Manage Videos</h2>
-        <div id="videoList" class="video-list"></div>
-        <div id="editForm" style="display:none;flex-direction:column;gap:12px;border-top:1px solid var(--border);padding-top:16px;margin-top:4px">
-          <div style="font-family:var(--mono);font-size:.62rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase">Editing: <span id="editingLabel"></span></div>
-          <div class="admin-row">
-            <div><label class="a-label" for="editTitle">Title</label><input class="admin-input" type="text" id="editTitle"></div>
-            <div><label class="a-label" for="editYear">Year</label><input class="admin-input" type="text" id="editYear"></div>
-          </div>
-          <div>
-            <label class="a-label" for="editCategory">Category</label>
-            <select class="admin-input" id="editCategory">
-              <option value="film-sound">Film Sound</option>
-              <option value="sound-design">Sound Design</option>
-              <option value="composition">Composition</option>
-              <option value="software">Software</option>
-            </select>
-          </div>
-          <div><label class="a-label" for="editDesc">Description</label><input class="admin-input" type="text" id="editDesc"></div>
-          <div id="manageErr" class="admin-err" style="display:none"></div>
-          <div id="manageOk"  class="admin-ok"  style="display:none"></div>
-          <div class="admin-btn-row">
-            <button class="admin-btn" id="editSaveBtn">Save &amp; Publish</button>
-            <button class="admin-btn danger" id="editDeleteBtn">Remove</button>
-            <button class="admin-btn ghost" id="editCancelBtn">Cancel</button>
-          </div>
-        </div>
-      </div>
-      <div class="admin-panel" id="tabTheme">
-        <h2>// Colour Theme</h2>
-        <p style="font-size:.8rem;color:var(--text-dim);margin-bottom:8px">Choose a theme — saved to your repo so all visitors see it.</p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap">
-          <div class="swatch-wrap"><div class="swatch active" data-theme=""       style="background:linear-gradient(135deg,#080808,#00E5CC)"></div><div class="swatch-name">Void</div></div>
-          <div class="swatch-wrap"><div class="swatch"        data-theme="slate"  style="background:linear-gradient(135deg,#0a0e14,#7EB8F7)"></div><div class="swatch-name">Slate</div></div>
-          <div class="swatch-wrap"><div class="swatch"        data-theme="dusk"   style="background:linear-gradient(135deg,#100c0a,#F0A05A)"></div><div class="swatch-name">Dusk</div></div>
-          <div class="swatch-wrap"><div class="swatch"        data-theme="fog"    style="background:linear-gradient(135deg,#F4F2EF,#2563EB)"></div><div class="swatch-name">Fog</div></div>
-          <div class="swatch-wrap"><div class="swatch"        data-theme="forest" style="background:linear-gradient(135deg,#060e08,#5DDC7E)"></div><div class="swatch-name">Forest</div></div>
-        </div>
-        <div id="themeErr" class="admin-err" style="display:none;margin-top:10px"></div>
-        <div id="themeOk"  class="admin-ok"  style="display:none;margin-top:10px"></div>
-      </div>
-      <div class="admin-panel" id="tabSettings">
-        <h2>// GitHub Settings</h2>
-        <div class="github-setup" style="margin-bottom:16px">
-          Enter your GitHub repo details and a Personal Access Token.<br>
-          The token only needs <code>Contents: Read &amp; Write</code> permission.<br>
-          <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener" style="color:var(--accent)">Create a fine-grained token &#8594;</a>
-        </div>
-        <div><label class="a-label" for="ghOwner">GitHub Username</label><input class="admin-input" type="text" id="ghOwner" placeholder="e.g. nicolarivo"></div>
-        <div><label class="a-label" for="ghRepo">Repository Name</label><input class="admin-input" type="text" id="ghRepo" placeholder="e.g. nicolarivo.github.io"></div>
-        <div><label class="a-label" for="ghBranch">Branch</label><input class="admin-input" type="text" id="ghBranch" placeholder="main" value="main"></div>
-        <div><label class="a-label" for="ghToken">Personal Access Token</label><input class="admin-input" type="password" id="ghToken" placeholder="github_pat_..."></div>
-        <p style="font-size:.7rem;color:var(--text-muted);margin-top:-6px">Stored only in your browser session — never sent anywhere except GitHub's API.</p>
-        <div id="settingsErr" class="admin-err" style="display:none"></div>
-        <div id="settingsOk"  class="admin-ok"  style="display:none"></div>
-        <div class="admin-btn-row">
-          <button class="admin-btn" id="ghSaveBtn">Save Settings</button>
-          <button class="admin-btn ghost" id="ghTestBtn">Test Connection</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-var ADMIN_PASSWORD = 'nicola2025';
-var DEFAULT_VIDEOS = [
-  {youtube:"h_u0grD7bVQ",  category:"film-sound",   year:"2024", title:"Le Parole Sono Pietre",         desc:"Documentary film sound. Intimate sonic landscape blending ambient textures with musical cues."},
-  {youtube:"HMU5f3hDvT8",  category:"film-sound",   year:"2024", title:"Gestare",                       desc:"Horror short by Stella Segar. Visceral bodily sounds create psychological horror exploring bodily autonomy."},
-  {youtube:"fl7CV_QEHws",  category:"film-sound",   year:"2024", title:"Re-Creations",                  desc:"Short film sound design. Layered sonic environments crafted to evoke memory and transformation."},
-  {youtube:"qm9u6u_VTUs",  category:"film-sound",   year:"2021", title:"In The Cards",                  desc:"Suspenseful short exploring fate and choice. Tension built through environmental sounds and crafted silence."},
-  {youtube:"SMic-oK7lgk",  category:"film-sound",   year:"2020", title:"Mary La Bone",                  desc:"Gothic-inspired short. Audio evolves from grounded reality to ethereal otherworldliness."},
-  {youtube:"nCkD6japtt4",  category:"film-sound",   year:"2020", title:"The Hand of the Wind",          desc:"Atmospheric short set in Mustang Valley, Nepal. The wind becomes a character through blended organic and processed sound."},
-  {youtube:"QdXr3KM_TQ8",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Vem\u00f6dalen",   desc:"Sonic narrative from John Koenig's Dictionary of Obscure Sorrows. Field recordings give voice to unnamed emotions."},
-  {youtube:"zbzwmKkAHS8",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Rubatosis",   desc:"An unsettling awareness of your own heartbeat rendered through carefully crafted soundscapes."},
-  {youtube:"Vlk5w65sN6U",  category:"sound-design", year:"2022", title:"Obscure Sorrows — Trumspringa", desc:"The ache of a life unlived rendered through layered field recordings."},
-  {youtube:"UzIs8wy50-M",  category:"composition",  year:"2022", title:"Ondine's Theme",                desc:"Delicate composition inspired by the water nymph. Shimmering textures create an immersive underwater atmosphere."},
-  {youtube:"IELbdpEHDks",  category:"composition",  year:"2020", title:"Action!",                       desc:"Cinematic composition exploring tension and release. Rhythmic intensity meets orchestral breadth."},
-  {youtube:"d6PftRQaXNE",  category:"composition",  year:"2019", title:"Sobhraj",                       desc:"Tense composition using textural elements and rhythmic intensity — a psychological portrait."},
-  {youtube:"kxqiVSSbUh8",  category:"composition",  year:"2019", title:"Tom & Jerry",                   desc:"Playful reinterpretation of cartoon aesthetics. Detailed foley meets contemporary musical techniques."},
-  {youtube:"PUuq5YRfbPw",  category:"composition",  year:"2019", title:"O2",                            desc:"Minimalist composition exploring breath and space. Sparse harmonic textures evolve slowly over time."},
-  {youtube:"1m9ioSIsD24",  category:"composition",  year:"2019", title:"What a Dream",                  desc:"Dreamy impressionistic composition drawing from surrealist imagery and film score traditions."},
-  {youtube:"O6e4vxhFwJo",  category:"composition",  year:"2019", title:"AmEx",                          desc:"Advertising composition with a sophisticated harmonic palette and polished production aesthetic."},
-  {youtube:"_Awxf5QOLC8",  category:"software",     year:"2023", title:"evolvingDrone",                 desc:"Evolving drone synthesis engine. Layered harmonics and subtle modulation produce detailed ambient environments."},
-  {youtube:"Y_xNDgRDc2E",  category:"software",     year:"2023", title:"hummingBot",                    desc:"Algorithmic composition tool. Melodic patterns inspired by hummingbird flight translated from movement data."},
-  {youtube:"9fJ-gJ6vCk0",  category:"software",     year:"2023", title:"SWAMP",                         desc:"Generative audio environment inspired by wetland ecosystems."},
-  {youtube:"kf7i229dozE",  category:"software",     year:"2023", title:"VOX POPULI",                    desc:"Voice-driven generative system. Spoken input transformed into evolving harmonic and rhythmic structures."},
-  {youtube:"plQkoRI_qXQ",  category:"software",     year:"2022", title:"BioSounds",                     desc:"Generative system transforming biological data into evolving soundscapes through custom algorithms."}
-];
-
-// ── Contact form (Formspree) ──
-// Replace YOUR_FORM_ID below with your Formspree form ID after signing up at https://formspree.io
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var form = e.target;
-    var btn  = form.querySelector('button[type="submit"]');
-    var msg  = document.getElementById('contactMsg');
-    var name    = form.name.value.trim();
-    var email   = form.email.value.trim();
-    var message = form.message.value.trim();
-    msg.className = 'contact-msg';
-    msg.style.display = 'none';
-    if (!name || !email || !message) {
-        msg.textContent = 'Please fill in all fields.';
-        msg.className = 'contact-msg err';
-        msg.style.display = 'block';
-        return;
-    }
-    btn.disabled = true;
-    btn.textContent = 'Sending\u2026';
-    try {
-        var res = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({ access_key: 'ec97455f-23e8-4a32-81a7-4ae7335407df', name: name, email: email, message: message })
-        });
-        if (res.ok) {
-            msg.textContent = '\u2713 Message sent \u2014 I\'ll be in touch soon.';
-            msg.className = 'contact-msg ok';
-            form.reset();
-        } else {
-            throw new Error('server');
-        }
-    } catch(err) {
-        msg.textContent = '\u2717 Something went wrong. Please try again.';
-        msg.className = 'contact-msg err';
-    }
-    msg.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Send Message';
-});
-
-// ── GitHub helpers ──
-function ghConfig(){return{owner:localStorage.getItem('gh-owner')||'',repo:localStorage.getItem('gh-repo')||'',branch:localStorage.getItem('gh-branch')||'main',token:localStorage.getItem('gh-token')||''};}
-function ghReady(){var c=ghConfig();return c.owner&&c.repo&&c.token;}
-async function ghGet(path){var c=ghConfig();var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo+'/contents/'+path+'?ref='+c.branch,{headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github+json'}});if(!r.ok){if(r.status===404)return null;throw new Error('GitHub '+r.status);}return r.json();}
-async function ghPut(path,content,message,sha){var c=ghConfig();var body={message:message,content:btoa(unescape(encodeURIComponent(content))),branch:c.branch};if(sha)body.sha=sha;var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo+'/contents/'+path,{method:'PUT',headers:{'Authorization':'Bearer '+c.token,'Content-Type':'application/json','Accept':'application/vnd.github+json'},body:JSON.stringify(body)});if(!r.ok){var e=await r.json();throw new Error(e.message||'GitHub '+r.status);}return r.json();}
-async function getLatestSha(path){var c=ghConfig();var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo+'/contents/'+path+'?ref='+c.branch,{headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github+json'}});if(!r.ok){if(r.status===404)return null;throw new Error('GitHub '+r.status);}var d=await r.json();return d.sha;}
-async function saveVideos(videos,msg){var sha=await getLatestSha('videos.json');await ghPut('videos.json',JSON.stringify(videos,null,2),msg||'Update videos.json',sha);}
-async function saveConfig(cfg,msg){var sha=await getLatestSha('config.json');await ghPut('config.json',JSON.stringify(cfg,null,2),msg||'Update config.json',sha);}
-
-var VIDEOS=[];var SITE_CONFIG={theme:''};
-async function loadData(){var c=ghConfig();var base='https://raw.githubusercontent.com/'+(c.owner||'nicolarivo')+'/'+(c.repo||'nicolarivo.github.io')+'/'+(c.branch||'main')+'/';try{var vr=await fetch(base+'videos.json?_='+Date.now());VIDEOS=vr.ok?await vr.json():DEFAULT_VIDEOS.slice();}catch(e){VIDEOS=DEFAULT_VIDEOS.slice();}try{var cr=await fetch(base+'config.json?_='+Date.now());SITE_CONFIG=cr.ok?await cr.json():{theme:''};}catch(e){SITE_CONFIG={theme:''};}applyTheme(SITE_CONFIG.theme||'');updateSwatchUI(SITE_CONFIG.theme||'');renderGrid(VIDEOS);}
-
-function buildTileHTML(v){var label=v.category.replace('-',' ');return'<img class="tile-thumb" src="https://img.youtube.com/vi/'+v.youtube+'/hqdefault.jpg" alt="'+v.title+' \u2014 Nicola Rivosecchi" loading="lazy"><div class="tile-play"></div><div class="tile-overlay"><div class="tile-year">'+v.year+'</div><div class="tile-title">'+v.title+'</div><div class="tile-tags"><span class="tile-tag">'+label+'</span></div></div><div class="tile-player"><div class="player-wrapper"><div class="player-video"></div><div class="player-info"><div class="tile-year">'+v.year+'</div><div class="tile-title">'+v.title+'</div><div class="tile-desc">'+v.desc+'</div><div class="tile-tags" style="margin-top:16px"><span class="tile-tag" style="font-size:.62rem;padding:3px 10px">'+label+'</span></div></div></div></div><button class="player-close" aria-label="Close">&times;</button>';}
-function initTile(tile,v){tile.dataset.youtube=v.youtube;tile.dataset.category=v.category;tile.dataset.year=v.year;tile.dataset.title=v.title;tile.dataset.desc=v.desc;tile.innerHTML=buildTileHTML(v);tile.addEventListener('click',function(e){if(e.target.closest('.player-close'))return;if(tile.classList.contains('expanded'))return;document.querySelectorAll('.tile.expanded').forEach(closeTile);tile.classList.add('expanded');tile.querySelector('.player-video').innerHTML='<iframe src="https://www.youtube.com/embed/'+v.youtube+'?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';setTimeout(function(){tile.scrollIntoView({behavior:'smooth',block:'center'});},100);});var cb=tile.querySelector('.player-close');if(cb)cb.addEventListener('click',function(e){e.stopPropagation();closeTile(tile);});var af=document.querySelector('.filter-btn.active');if(af&&af.dataset.filter!=='all'&&v.category!==af.dataset.filter)tile.classList.add('hidden');}
-function closeTile(tile){tile.classList.remove('expanded');var pv=tile.querySelector('.player-video');if(pv)pv.innerHTML='';}
-function renderGrid(videos){var mosaic=document.getElementById('work');mosaic.innerHTML='';videos.forEach(function(v){var tile=document.createElement('div');tile.className='tile';initTile(tile,v);mosaic.appendChild(tile);});}
-
-document.querySelectorAll('.filter-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.tile.expanded').forEach(closeTile);document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');var f=btn.dataset.filter;document.querySelectorAll('.tile').forEach(function(t){t.classList.toggle('hidden',f!=='all'&&t.dataset.category!==f);});});});
-document.getElementById('navToggle').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
-document.querySelectorAll('#navLinks a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');});});
-
-var unlocked=false;var selectedIdx=null;
-var adminOverlay=document.getElementById('adminOverlay');var adminLogin=document.getElementById('adminLogin');var adminUnlocked=document.getElementById('adminUnlocked');var adminPassword=document.getElementById('adminPassword');
-function setBtn(id,loading,label){var b=document.getElementById(id);b.disabled=loading;b.innerHTML=loading?'<span class="spinner"></span>'+label:label;}
-function openAdmin(){adminOverlay.classList.add('open');if(!unlocked){adminPassword.value='';document.getElementById('adminLoginErr').style.display='none';setTimeout(function(){adminPassword.focus();},80);}else checkGhWarning();}
-function closeAdmin(){adminOverlay.classList.remove('open');}
-function checkGhWarning(){document.getElementById('ghWarning').style.display=ghReady()?'none':'block';}
-document.getElementById('adminTrigger').addEventListener('click',openAdmin);
-document.getElementById('adminClose').addEventListener('click',closeAdmin);
-adminOverlay.addEventListener('click',function(e){if(e.target===adminOverlay)closeAdmin();});
-document.getElementById('adminLoginBtn').addEventListener('click',function(){if(adminPassword.value===ADMIN_PASSWORD){unlocked=true;adminLogin.classList.add('hidden');adminUnlocked.classList.remove('hidden');var c=ghConfig();if(c.owner)document.getElementById('ghOwner').value=c.owner;if(c.repo)document.getElementById('ghRepo').value=c.repo;if(c.branch)document.getElementById('ghBranch').value=c.branch;checkGhWarning();if(ghReady())loadData();}else{document.getElementById('adminLoginErr').style.display='block';adminPassword.value='';adminPassword.focus();}});
-adminPassword.addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('adminLoginBtn').click();});
-document.getElementById('adminLogoutBtn').addEventListener('click',function(){unlocked=false;adminUnlocked.classList.add('hidden');adminLogin.classList.remove('hidden');closeAdmin();});
-document.querySelectorAll('.admin-tab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.admin-panel').forEach(function(p){p.classList.remove('visible');});tab.classList.add('active');var name=tab.dataset.tab;document.getElementById('tab'+name.charAt(0).toUpperCase()+name.slice(1)).classList.add('visible');if(name==='manage')refreshVideoList();});});
-document.getElementById('newYtId').addEventListener('input',function(){var id=this.value.trim();var p=document.getElementById('adminPreview');p.innerHTML=id.length>5?'<img src="https://img.youtube.com/vi/'+id+'/hqdefault.jpg" onerror="this.parentElement.innerHTML=\'<span>Invalid ID</span>\'">':'<span>Thumbnail preview</span>';});
-document.getElementById('adminAddBtn').addEventListener('click',async function(){var yt=document.getElementById('newYtId').value.trim();var ttl=document.getElementById('newTitle').value.trim();var yr=document.getElementById('newYear').value.trim();var cat=document.getElementById('newCategory').value;var dsc=document.getElementById('newDesc').value.trim();var err=document.getElementById('addErr');var ok=document.getElementById('addOk');err.style.display='none';ok.style.display='none';if(!yt||!ttl||!yr||!dsc){err.textContent='Please fill in all fields.';err.style.display='block';return;}if(VIDEOS.find(function(v){return v.youtube===yt;})){err.textContent='This video ID already exists.';err.style.display='block';return;}var entry={youtube:yt,category:cat,year:yr,title:ttl,desc:dsc};VIDEOS.unshift(entry);renderGrid(VIDEOS);if(ghReady()){setBtn('adminAddBtn',true,'Saving\u2026');try{await saveVideos(VIDEOS,'Add video: '+ttl);ok.textContent='\u2713 Saved to GitHub \u2014 live for all visitors.';}catch(e){ok.textContent='\u26a0 Added locally. GitHub save failed: '+e.message;}setBtn('adminAddBtn',false,'Add & Save');}else{ok.textContent='\u2713 Added (configure GitHub in Settings to make it permanent)';}ok.style.display='block';document.getElementById('newYtId').value='';document.getElementById('newTitle').value='';document.getElementById('newYear').value='';document.getElementById('newDesc').value='';document.getElementById('adminPreview').innerHTML='<span>Thumbnail preview</span>';setTimeout(function(){ok.style.display='none';},4000);});
-function refreshVideoList(){var list=document.getElementById('videoList');list.innerHTML='';selectedIdx=null;document.getElementById('editForm').style.display='none';VIDEOS.forEach(function(v,i){var item=document.createElement('div');item.className='vitem';item.innerHTML='<img class="vitem-thumb" src="https://img.youtube.com/vi/'+v.youtube+'/default.jpg" alt=""><div class="vitem-info"><div class="vitem-title">'+v.title+'</div><div class="vitem-meta">'+v.year+' &nbsp;<span class="vitem-tag">'+v.category.replace('-',' ')+'</span></div></div>';item.addEventListener('click',function(){document.querySelectorAll('.vitem').forEach(function(x){x.classList.remove('selected');});item.classList.add('selected');selectedIdx=i;openEditForm(v);});list.appendChild(item);});}
-function openEditForm(v){document.getElementById('editingLabel').textContent=v.title;document.getElementById('editTitle').value=v.title;document.getElementById('editYear').value=v.year;document.getElementById('editCategory').value=v.category;document.getElementById('editDesc').value=v.desc;document.getElementById('manageErr').style.display='none';document.getElementById('manageOk').style.display='none';var ef=document.getElementById('editForm');ef.style.display='flex';setTimeout(function(){ef.scrollIntoView({behavior:'smooth',block:'nearest'});},50);}
-document.getElementById('editSaveBtn').addEventListener('click',async function(){if(selectedIdx===null)return;var err=document.getElementById('manageErr');var ok=document.getElementById('manageOk');var ttl=document.getElementById('editTitle').value.trim();var yr=document.getElementById('editYear').value.trim();var cat=document.getElementById('editCategory').value;var dsc=document.getElementById('editDesc').value.trim();err.style.display='none';ok.style.display='none';if(!ttl||!yr||!dsc){err.textContent='Please fill in all fields.';err.style.display='block';return;}VIDEOS[selectedIdx]={youtube:VIDEOS[selectedIdx].youtube,category:cat,year:yr,title:ttl,desc:dsc};renderGrid(VIDEOS);document.getElementById('editingLabel').textContent=ttl;if(ghReady()){setBtn('editSaveBtn',true,'Saving\u2026');try{await saveVideos(VIDEOS,'Edit video: '+ttl);ok.textContent='\u2713 Saved to GitHub.';}catch(e){ok.textContent='\u26a0 Updated locally. GitHub save failed: '+e.message;}setBtn('editSaveBtn',false,'Save & Publish');}else{ok.textContent='\u2713 Updated (configure GitHub to make it permanent)';}ok.style.display='block';setTimeout(function(){ok.style.display='none';refreshVideoList();},2500);});
-document.getElementById('editDeleteBtn').addEventListener('click',async function(){if(selectedIdx===null)return;var ttl=VIDEOS[selectedIdx].title;if(!confirm('Remove "'+ttl+'" from the portfolio?'))return;VIDEOS.splice(selectedIdx,1);renderGrid(VIDEOS);if(ghReady()){setBtn('editDeleteBtn',true,'Removing\u2026');try{await saveVideos(VIDEOS,'Remove video: '+ttl);}catch(e){}setBtn('editDeleteBtn',false,'Remove');}refreshVideoList();});
-document.getElementById('editCancelBtn').addEventListener('click',function(){document.getElementById('editForm').style.display='none';document.querySelectorAll('.vitem').forEach(function(x){x.classList.remove('selected');});selectedIdx=null;});
-function applyTheme(t){if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.removeAttribute('data-theme');}
-function updateSwatchUI(t){document.querySelectorAll('.swatch').forEach(function(s){s.classList.toggle('active',s.dataset.theme===t);});}
-document.querySelectorAll('.swatch').forEach(function(sw){sw.addEventListener('click',async function(){var t=sw.dataset.theme;applyTheme(t);updateSwatchUI(t);SITE_CONFIG.theme=t;var err=document.getElementById('themeErr');var ok=document.getElementById('themeOk');err.style.display='none';ok.style.display='none';if(ghReady()){try{await saveConfig(SITE_CONFIG,'Update theme: '+(t||'void'));ok.textContent='\u2713 Theme saved \u2014 all visitors will see this.';}catch(e){err.textContent='\u26a0 Theme applied locally. GitHub save failed: '+e.message;err.style.display='block';}ok.style.display='block';setTimeout(function(){ok.style.display='none';},3000);}else{ok.textContent='Theme applied locally. Configure GitHub in Settings to make it permanent.';ok.style.display='block';setTimeout(function(){ok.style.display='none';},3000);}});});
-document.getElementById('ghSaveBtn').addEventListener('click',function(){var owner=document.getElementById('ghOwner').value.trim();var repo=document.getElementById('ghRepo').value.trim();var branch=document.getElementById('ghBranch').value.trim()||'main';var token=document.getElementById('ghToken').value.trim();var err=document.getElementById('settingsErr');var ok=document.getElementById('settingsOk');err.style.display='none';ok.style.display='none';if(!owner||!repo||!token){err.textContent='Please fill in all fields.';err.style.display='block';return;}localStorage.setItem('gh-owner',owner);localStorage.setItem('gh-repo',repo);localStorage.setItem('gh-branch',branch);localStorage.setItem('gh-token',token);ok.textContent='\u2713 Settings saved for this session. Reloading data\u2026';ok.style.display='block';checkGhWarning();loadData();setTimeout(function(){ok.style.display='none';},4000);});
-document.getElementById('ghTestBtn').addEventListener('click',async function(){var err=document.getElementById('settingsErr');var ok=document.getElementById('settingsOk');err.style.display='none';ok.style.display='none';if(!ghReady()){err.textContent='Save your settings first.';err.style.display='block';return;}setBtn('ghTestBtn',true,'Testing\u2026');try{var c=ghConfig();var r=await fetch('https://api.github.com/repos/'+c.owner+'/'+c.repo,{headers:{'Authorization':'Bearer '+c.token,'Accept':'application/vnd.github+json'}});if(!r.ok)throw new Error('HTTP '+r.status);ok.textContent='\u2713 Connected successfully to '+c.owner+'/'+c.repo;ok.style.display='block';}catch(e){err.textContent='\u2717 Connection failed: '+e.message+'. Check your username, repo, and token.';err.style.display='block';}setBtn('ghTestBtn',false,'Test Connection');});
-
-loadData();
-</script>
-</body>
-</html>
+<section class="sec" id="services" aria-labelledby="h-svc"><div class="wrap">
+  <div class="sec-h"><h2 id="h-svc">Services</h2><span>Ask for a quote</span></div>
+  <ul class="svcs"><li class="svc " data-reveal><span class="svc-n" aria-hidden="true">01</span><h3>Dialogue editing &amp; audio restoration</h3><p>I clean, edit and balance dialogue so every line sits properly in the mix, and I restore noisy or damaged recordings.</p><a class="svc-a" href="#contact" data-service="Dialogue editing and audio restoration">Ask about this <span aria-hidden="true">&rarr;</span></a></li>
+<li class="svc " data-reveal><span class="svc-n" aria-hidden="true">02</span><h3>Podcast editing</h3><p>I edit, clean and level episodes so they are ready to publish.</p><a class="svc-a" href="#contact" data-service="Podcast editing">Ask about this <span aria-hidden="true">&rarr;</span></a></li>
+<li class="svc " data-reveal><span class="svc-n" aria-hidden="true">03</span><h3>Sound design for film &amp; indie projects</h3><p>I build the sound of a short, a documentary or an indie game: recordings, foley, design and mix.</p><a class="svc-a" href="#contact" data-service="Sound design for film and indie projects">Ask about this <span aria-hidden="true">&rarr;</span></a></li>
+<li class="svc " data-reveal><span class="svc-n" aria-hidden="true">04</span><h3>Composition &amp; music</h3><p>I write and produce original music, from sparse textures to full orchestral scores.</p><a class="svc-a" href="#contact" data-service="Composition and music">Ask about this <span aria-hidden="true">&rarr;</span></a></li></ul>
+</div></section>
+<section class="sec" id="about" aria-labelledby="h-about"><div class="wrap">
+  <div class="sec-h"><h2 id="h-about">About</h2><span>London</span></div>
+  <div class="about"><figure class="photo photo-real"><img src="assets/nico.jpg" alt="Nico Rivo on a tidal causeway, recording with a boom microphone in a windshield" width="626" height="705" loading="lazy" decoding="async"></figure><div class="txt"><p>I am Nico Rivo (Nicola Rivosecchi), a sound designer, composer and audio post engineer based in London. I have an MSc in Sound Design from the University of Edinburgh.</p><p>I work on short films, documentaries, music projects and generative audio systems. The same ear runs through all of it: listening first, then deciding what the picture needs to hear.</p><p>I also write code. node•L•soup is where that side lives: creative coding and digital art. <a href="/creative-coding/">Visit node•L•soup →</a></p></div></div>
+</div></section>
+<section class="sec" id="contact" aria-labelledby="h-contact"><div class="wrap">
+  <div class="sec-h"><h2 id="h-contact">Contact</h2><span>Reply within a few days</span></div>
+  <div class="contact"><div><p class="big"><a href="mailto:info@nicolarivo.co.uk">info@<wbr>nicolarivo.co.uk</a></p><p class="lead">The quickest way is a short message with what you are making and when it needs to be finished.</p></div><form id="contact-form" class="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+  <input type="hidden" name="access_key" value="39085a5d-a84a-45ab-90dc-8f846734ca47">
+  <input type="hidden" name="subject" value="New enquiry from nicolarivo.co.uk/sound">
+  <input type="hidden" name="from_name" value="nicolarivo.co.uk/sound">
+  <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="f"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+  <div class="f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+  <div class="f f-wide"><label for="f-topic">What is it about?</label><select id="f-topic" name="topic"><option>Dialogue editing and audio restoration</option><option>Podcast editing</option><option>Sound design for film and indie projects</option><option>Composition and music</option><option>Something else</option></select></div>
+  <div class="f f-wide"><label for="f-msg">Message</label><textarea id="f-msg" name="message" rows="5" required placeholder="A line about the project, the format and the timing is plenty."></textarea></div>
+  <div class="f-wide f-act"><button type="submit" class="btn btn-main">Send message</button><p id="form-status" class="status" role="status" aria-live="polite"></p></div>
+  <p class="f-wide small">Or write directly to <a href="mailto:info@nicolarivo.co.uk">info@nicolarivo.co.uk</a>. The form is sent through Web3Forms.</p>
+</form></div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap"><p>© 2026 Nico Rivo. London.</p><p><a href="mailto:info@nicolarivo.co.uk">info@nicolarivo.co.uk</a></p></div></footer>
+<dialog id="work-dialog" class="dlg" aria-label="Work details"><div class="bar"><span>Project</span><button type="button" class="btn" data-close>Close</button></div><div class="dlg-body"></div></dialog>
+<script src="app.js" defer></script>
+</body></html>
