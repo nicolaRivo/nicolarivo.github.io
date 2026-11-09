@@ -97,7 +97,7 @@
     }).then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.success) throw new Error("send"); }); })
       .then(function () {
         try { localStorage.removeItem(DRAFT); } catch (e) {}
-        if (window.gtag) gtag("event", "generate_lead", { method: "form" });
+        if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "generate-lead", title: "Contact form sent", event: true });
         form.hidden = true; status.textContent = "";
         showAfter("Thanks, " + f.name.value.trim() + ". Your message is with me and I’ll reply with a day and time for your free trial. Want a faster reply? Send it on WhatsApp too.", "Also message me on WhatsApp");
       })
