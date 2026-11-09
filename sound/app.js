@@ -268,11 +268,11 @@
      changes which one is audible, so the position never jumps. Nothing sounds before a click. */
   var pausers = [];
   $$('[data-restore]').forEach(function (rest) {
-    var vid = $('[data-r-video]', rest);
+    var vid = $('[data-r-video]', rest), timeEl = $('[data-r-time]', rest);
     var SR = 22050, DUR = 6, N = 512, HOP = 256;
     var playBtn = $('[data-r-play]', rest), sideBtns = $$('[data-r-side]', rest), status = $('[data-r-status]', rest);
     var figs = { before: $('[data-r-fig=before]', rest), after: $('[data-r-fig=after]', rest) };
-    var side = 'before', data = null, pending = null, ctx = null, master = null, gains = null, t0 = 0, playing = false, busy = false, raf2 = 0, lastTick = 0;
+    var side = 'before', data = null, pending = null, ctx = null, master = null, gains = null, srcs = null, bufs = null, startFrac = 0, t0 = 0, playing = false, busy = false, raf2 = 0, lastTick = 0;
     var MSG = { before: 'Before: the excerpt as received.', after: 'After: the same excerpt after editing.' };
     var MSG_SYN = { before: 'Before: the voice sits under hiss, 50 Hz hum and clicks.', after: 'After: the same voice with the noise taken out.' };
 
@@ -374,7 +374,7 @@
           $('.demo-tag', rest).innerHTML = '<strong>Demonstration.</strong> A generated voice with hiss, mains hum and clicks added. It shows how the comparison works.';
           $('figcaption span', figs.before).textContent = 'hiss · hum · clicks'; $('figcaption span', figs.after).textContent = 'voice only';
         }
-        data = d; drawSpec(d.before, $('canvas', figs.before)); drawSpec(d.after, $('canvas', figs.after)); return d;
+        data = d; drawSpec(d.before, $('canvas', figs.before)); drawSpec(d.after, $('canvas', figs.after)); paintPos(startFrac); return d;
       });
       return pending;
     }
@@ -399,17 +399,65 @@
       ctx = new AC(); master = ctx.createGain(); master.gain.value = 0.7; master.connect(ctx.destination);
       return true;
     }
-    function ensureSources() { // needs the data; both versions start together and stay in sync
-      if (gains) return;
-      gains = {};
-      var srcs = ['before', 'after'].map(function (k) {
-        var buf = ctx.createBuffer(1, data[k].length, SR); buf.getChannelData(0).set(data[k]);
-        var s = ctx.createBufferSource(); s.buffer = buf; s.loop = true;
-        var g = ctx.createGain(); g.gain.value = k === side ? 1 : 0; s.connect(g); g.connect(master); gains[k] = g; return s;
+    function startSources(frac) { // (re)start both versions together at a fraction of the recording; they always run in sync
+      var off = frac * DUR, when = ctx.currentTime + (playing ? 0.03 : 0.02);
+      if (srcs) srcs.forEach(function (x) { try { x.stop(); x.disconnect(); } catch (e) {} });
+      srcs = ['before', 'after'].map(function (k) {
+        var x = ctx.createBufferSource(); x.buffer = bufs[k]; x.loop = true; x.connect(gains[k]); x.start(when, off); return x;
       });
-      t0 = ctx.currentTime + 0.05; srcs.forEach(function (s) { s.start(t0); });
+      t0 = when - off;
+    }
+    function ensureSources() { // needs the data
+      if (gains) return;
+      gains = {}; bufs = {};
+      ['before', 'after'].forEach(function (k) {
+        var buf = ctx.createBuffer(1, data[k].length, SR); buf.getChannelData(0).set(data[k]); bufs[k] = buf;
+        var g = ctx.createGain(); g.gain.value = k === side ? 1 : 0; g.connect(master); gains[k] = g;
+      });
+      startSources(startFrac);
     }
     function position() { var el = ctx.currentTime - t0; if (el < 0) el = 0; return (el % DUR) / DUR; }
+    function fmt(sec) { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ':' + ('0' + (sec % 60)).slice(-2); }
+    function paintPos(frac) {
+      ['before', 'after'].forEach(function (k) { $('.ph', figs[k]).style.left = (frac * 100) + '%'; });
+      if (timeEl) timeEl.textContent = fmt(frac * DUR) + ' / ' + fmt(DUR);
+    }
+    function curFrac() { return (ctx && gains) ? position() : startFrac; }
+    /* click or drag on a spectrogram: jump there. A short fade hides the splice. */
+    function seekTo(frac) {
+      frac = Math.max(0, Math.min(0.9995, frac)); startFrac = frac;
+      if (ctx && gains) {
+        if (playing) {
+          var n = ctx.currentTime, lvl = 0.7;
+          master.gain.cancelScheduledValues(n); master.gain.setValueAtTime(lvl, n); master.gain.linearRampToValueAtTime(0, n + 0.01);
+          master.gain.setValueAtTime(0, n + 0.03); master.gain.linearRampToValueAtTime(lvl, n + 0.045);
+        }
+        startSources(frac);
+      }
+      paintPos(frac);
+      if (vid && vid.duration) { try { vid.currentTime = frac * DUR; } catch (e) {} }
+      $$('.spec-box', rest).forEach(function (bx) { bx.setAttribute('aria-valuenow', String(Math.round(frac * 100))); bx.setAttribute('aria-valuetext', fmt(frac * DUR) + ' of ' + fmt(DUR)); });
+    }
+    ['before', 'after'].forEach(function (k) {
+      var box = $('.spec-box', figs[k]), down = false, lastAt = 0;
+      function frac(ev) { var r = box.getBoundingClientRect(); return Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width)); }
+      box.addEventListener('pointerdown', function (ev) {
+        if (!data || (ev.pointerType === 'mouse' && ev.button !== 0)) return;
+        down = true; try { box.setPointerCapture(ev.pointerId); } catch (e) {} lastAt = performance.now(); seekTo(frac(ev));
+      });
+      box.addEventListener('pointermove', function (ev) {
+        if (!down) return; var f = frac(ev), now = performance.now();
+        if (now - lastAt > 90) { lastAt = now; seekTo(f); } else paintPos(f);
+      });
+      function end(ev) { if (!down) return; down = false; seekTo(frac(ev)); }
+      box.addEventListener('pointerup', end); box.addEventListener('pointercancel', function () { down = false; });
+      box.addEventListener('keydown', function (ev) {
+        if (!data) return; var f = curFrac(), step = 5 / DUR, t = null;
+        if (ev.key === 'ArrowRight') t = f + step; else if (ev.key === 'ArrowLeft') t = f - step;
+        else if (ev.key === 'Home') t = 0; else if (ev.key === 'End') t = 0.9995;
+        if (t === null) return; ev.preventDefault(); seekTo(t);
+      });
+    });
     /* the picture is muted and follows the audio clock: it is re-aligned only if it drifts by more than 0.15 s */
     function vidStart() {
       if (!vid) return; try { vid.currentTime = position() * DUR; } catch (e) {}
@@ -424,7 +472,7 @@
       raf2 = requestAnimationFrame(tick);
       if (reduce.matches && t - lastTick < 120) return; lastTick = t;
       var pos = position();
-      ['before', 'after'].forEach(function (k) { $('.ph', figs[k]).style.left = (pos * 100) + '%'; });
+      paintPos(pos);
       vidSync(pos);
     }
     function paintPlay() { playBtn.setAttribute('aria-pressed', playing ? 'true' : 'false'); $('.lbl', playBtn).textContent = playing ? 'Pause' : 'Play'; }

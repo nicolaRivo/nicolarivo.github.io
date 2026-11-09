@@ -260,6 +260,11 @@ button{cursor:pointer}
 .rest-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
 .rest-ask{margin-top:1.4rem}
 
+/* move around the audio from the spectrograms */
+.spec-box{cursor:pointer;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.spec-box:focus-visible{outline:2px solid var(--focus,#b8dcff);outline-offset:-2px}
+.rest-time{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:.82rem;letter-spacing:.06em;color:var(--muted,#a09c95);min-width:7.5ch}
+
 </style>
 </head>
 <body data-open="dialog">
@@ -560,12 +565,13 @@ button{cursor:pointer}
         <button type="button" data-r-side="before" aria-pressed="true">Before</button>
         <button type="button" data-r-side="after" aria-pressed="false">After</button>
       </div>
+      <span class="rest-time" data-r-time aria-hidden="true">0:00</span>
     </div>
     <div class="spec-grid">
-      <figure class="spec is-active" data-r-fig="before"><figcaption><b>Before</b><span>as received</span></figcaption><div class="spec-box"><canvas aria-hidden="true"></canvas><i class="ph" aria-hidden="true"></i><span class="ax ax-t" aria-hidden="true">10 kHz</span><span class="ax ax-b" aria-hidden="true">60 Hz</span></div></figure>
-      <figure class="spec" data-r-fig="after"><figcaption><b>After</b><span>after editing</span></figcaption><div class="spec-box"><canvas aria-hidden="true"></canvas><i class="ph" aria-hidden="true"></i><span class="ax ax-t" aria-hidden="true">10 kHz</span><span class="ax ax-b" aria-hidden="true">60 Hz</span></div></figure>
+      <figure class="spec is-active" data-r-fig="before"><figcaption><b>Before</b><span>as received</span></figcaption><div class="spec-box" role="slider" tabindex="0" aria-label="Position in the recording. Click or drag to jump, or use the arrow keys." aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><canvas aria-hidden="true"></canvas><i class="ph" aria-hidden="true"></i><span class="ax ax-t" aria-hidden="true">10 kHz</span><span class="ax ax-b" aria-hidden="true">60 Hz</span></div></figure>
+      <figure class="spec" data-r-fig="after"><figcaption><b>After</b><span>after editing</span></figcaption><div class="spec-box" role="slider" tabindex="0" aria-label="Position in the recording. Click or drag to jump, or use the arrow keys." aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><canvas aria-hidden="true"></canvas><i class="ph" aria-hidden="true"></i><span class="ax ax-t" aria-hidden="true">10 kHz</span><span class="ax ax-b" aria-hidden="true">60 Hz</span></div></figure>
     </div>
-    <p class="demo-status" data-r-status role="status" aria-live="polite">Press play. Nothing sounds until you do.</p>
+    <p class="demo-status" data-r-status role="status" aria-live="polite">Press play. Nothing sounds until you do. Click or drag a spectrogram to jump.</p>
   </div>
   </div>
   <p class="rest-ask"><a class="svc-a" href="#contact" data-service="Dialogue editing and audio restoration">Ask about restoration <span aria-hidden="true">&rarr;</span></a></p>
