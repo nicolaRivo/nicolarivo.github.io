@@ -46,6 +46,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        @font-face { font-family: 'Instrument Serif'; src: url('assets/fonts/instrument-serif-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Instrument Serif'; src: url('assets/fonts/instrument-serif-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+        @font-face { font-family: 'IBM Plex Mono'; src: url('assets/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --butter: #F7D046;
@@ -83,8 +87,8 @@
         .panel-teach { background: var(--butter); font-family: 'Figtree', sans-serif; }
         .panel-teach::before { background: radial-gradient(circle at 50% 60%, rgba(255,251,234,0.55) 0%, transparent 70%); }
         .panel-teach:hover::before { opacity: 1; }
-        .panel-sound { background: var(--dark); }
-        .panel-sound::before { background: radial-gradient(circle at 50% 60%, var(--cyan-dim) 0%, transparent 70%); }
+        .panel-sound { background: #0a0b0d; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; }
+        .panel-sound::before { background: radial-gradient(circle at 50% 60%, rgba(184,220,255,0.09) 0%, transparent 70%); }
         .panel-sound:hover::before { opacity: 1; }
 
         .panel-content { position: relative; z-index: 1; max-width: 420px; }
@@ -93,7 +97,7 @@
 
         .panel-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 14px; }
         .panel-teach .panel-label { color: var(--ink); }
-        .panel-sound .panel-label { color: var(--cyan); }
+        .panel-sound .panel-label { color: #b8dcff; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; letter-spacing: 0.14em; }
 
         .panel h2 {
             font-family: 'DM Serif Display', serif; font-weight: 400;
@@ -101,18 +105,18 @@
             margin-bottom: 16px; letter-spacing: -0.01em;
         }
         .panel-teach h2 { color: var(--ink); font-family: 'Bricolage Grotesque', 'Arial Narrow', Arial, sans-serif; font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-size: clamp(2.2rem, 3.8vw, 3.4rem); }
-        .panel-sound h2 { color: white; }
+        .panel-sound h2 { color: #ece9e4; font-family: 'Instrument Serif', 'Iowan Old Style', 'Times New Roman', serif; font-weight: 400; letter-spacing: -0.02em; line-height: 1; font-size: clamp(2.4rem, 4.2vw, 3.8rem); }
         .panel-teach h2 em { color: var(--tomato); font-style: normal; }
-        .panel-sound h2 em { color: var(--cyan); font-style: italic; }
+        .panel-sound h2 em { color: #b8dcff; font-style: italic; }
 
         .panel-desc { font-size: 0.95rem; line-height: 1.75; margin-bottom: 28px; }
         .panel-teach .panel-desc { color: var(--ink); }
-        .panel-sound .panel-desc { color: var(--text-cool); }
+        .panel-sound .panel-desc { color: #a09c95; }
 
         .panel-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 32px; }
         .panel-tag { font-size: 0.74rem; font-weight: 600; padding: 5px 14px; border-radius: 50px; letter-spacing: 0.02em; }
         .panel-teach .panel-tag { background: transparent; color: var(--ink); border: 2px solid var(--ink); font-weight: 700; }
-        .panel-sound .panel-tag { background: var(--cyan-dim); color: var(--cyan); }
+        .panel-sound .panel-tag { background: transparent; color: #ece9e4; border: 1px solid #6a727c; border-radius: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; }
 
         .panel-cta {
             display: inline-flex; align-items: center; gap: 10px;
@@ -122,8 +126,8 @@
         }
         .panel-teach .panel-cta { background: var(--ink); color: var(--butter); font-family: 'Bricolage Grotesque', Arial, sans-serif; font-weight: 800; font-size: 1.05rem; box-shadow: none; }
         .panel-teach .panel-cta:hover { background: var(--tomato); color: #fff; transform: translateY(-2px); box-shadow: none; }
-        .panel-sound .panel-cta { background: transparent; color: var(--cyan); border: 2px solid rgba(0,229,204,0.4); box-shadow: 0 0 20px rgba(0,229,204,0.08); }
-        .panel-sound .panel-cta:hover { background: rgba(0,229,204,0.08); border-color: var(--cyan); transform: translateY(-2px); box-shadow: 0 0 32px rgba(0,229,204,0.15); }
+        .panel-sound .panel-cta { background: transparent; color: #ece9e4; border: 1px solid #ece9e4; border-radius: 0; box-shadow: none; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; font-size: 0.82rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 16px 28px; }
+        .panel-sound .panel-cta:hover { background: #b8dcff; border-color: #b8dcff; color: #0a0b0d; transform: none; box-shadow: none; }
 
         /* ===== CENTRE NAME (two overlapping layers) ===== */
         .centre-name {
@@ -143,19 +147,15 @@
         .name-light { color: rgba(255,255,255,0.92); clip-path: inset(0 0 0 50%); }
 
         /* ===== DECORATIONS ===== */
-        .panel-sound .grid-bg {
-            position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(0,229,204,0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(0,229,204,0.03) 1px, transparent 1px);
-            background-size: 60px 60px; pointer-events: none;
+        .panel-sound .grid-bg, .panel-sound .glow-orb {
+            position: absolute; left: 0; right: 0; height: clamp(2.6rem, 8vh, 5rem);
+            background: #000; pointer-events: none; z-index: 2;
+            animation: bar 1100ms cubic-bezier(.22,.7,.2,1) 200ms both;
         }
-        .panel-sound .glow-orb {
-            position: absolute; width: 300px; height: 300px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,229,204,0.06) 0%, transparent 70%);
-            bottom: -10%; left: -10%; pointer-events: none;
-            animation: pulse 6s ease-in-out infinite;
-        }
-        @keyframes pulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
+        .panel-sound .grid-bg { top: 0; border-bottom: 1px solid #6a727c; transform-origin: top; }
+        .panel-sound .glow-orb { bottom: 0; border-top: 1px solid #6a727c; transform-origin: bottom; }
+        @keyframes bar { from { transform: scaleY(2.4); } to { transform: scaleY(1); } }
+        @media (prefers-reduced-motion: reduce) { .panel-sound .grid-bg, .panel-sound .glow-orb { animation: none; } }
 
         /* ===== FOOTER ===== */
         .landing-footer {
@@ -205,7 +205,7 @@
         <div class="grid-bg"></div>
         <div class="glow-orb"></div>
         <div class="panel-content">
-            <span class="panel-icon">🎧</span>
+            <span class="panel-icon" aria-hidden="true" style="display:block;height:29px"></span>
             <div class="panel-label">Sound Designer</div>
             <h2>Crafting sonic worlds for <em>film & media</em></h2>
             <p class="panel-desc">Sound design, composition, audio engineering and creative audio technology for film, games, and interactive media. London-based, working worldwide.</p>
@@ -250,5 +250,7 @@
     requestAnimationFrame(updateClip);
 </script>
 
+<script data-goatcounter="https://nicolarivo.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
