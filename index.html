@@ -114,10 +114,11 @@
         .panel-sound h2 em { color: #b8dcff; font-style: italic; }
 
         .panel-desc { font-size: 0.95rem; line-height: 1.75; margin-bottom: 28px; }
-        .panel-teach .panel-desc { color: var(--ink); }
-        .panel-sound .panel-desc { color: #a09c95; }
+        .panel-teach .panel-desc { color: var(--ink); font-family: 'Figtree', sans-serif; font-weight: 500; font-size: clamp(1.1rem, 1.5vw, 1.3rem); letter-spacing: -0.01em; line-height: 1.4; max-width: 30ch; margin-left: auto; margin-right: auto; text-wrap: balance; }
+        .panel-sound .panel-desc { color: #d6d2cb; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: clamp(1.1rem, 1.5vw, 1.3rem); letter-spacing: -0.01em; line-height: 1.4; }
 
         .panel-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 32px; }
+        @media (min-width: 1100px) { .panel-tags { flex-wrap: nowrap; width: max-content; position: relative; left: 50%; transform: translateX(-50%); } .panel-tag { white-space: nowrap; } .panel-sound .panel-tag { padding: 6px 10px; letter-spacing: 0.06em; } }
         .panel-tag { font-size: 0.74rem; font-weight: 600; padding: 5px 14px; border-radius: 50px; letter-spacing: 0.02em; }
         .panel-teach .panel-tag { background: transparent; color: var(--ink); border: 2px solid var(--ink); font-weight: 700; }
         .panel-sound .panel-tag { background: transparent; color: #ece9e4; border: 1px solid #6a727c; border-radius: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 400; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; }
@@ -150,16 +151,6 @@
         .name-dark { color: var(--ink); }
         .name-light { color: rgba(255,255,255,0.92); clip-path: inset(0 0 0 50%); }
 
-        /* ===== DECORATIONS ===== */
-        .panel-sound .grid-bg, .panel-sound .glow-orb {
-            position: absolute; left: 0; right: 0; height: clamp(2.6rem, 8vh, 5rem);
-            background: #000; pointer-events: none; z-index: 2;
-            animation: bar 1100ms cubic-bezier(.22,.7,.2,1) 200ms both;
-        }
-        .panel-sound .grid-bg { top: 0; border-bottom: 1px solid #6a727c; transform-origin: top; }
-        .panel-sound .glow-orb { bottom: 0; border-top: 1px solid #6a727c; transform-origin: bottom; }
-        @keyframes bar { from { transform: scaleY(2.4); } to { transform: scaleY(1); } }
-        @media (prefers-reduced-motion: reduce) { .panel-sound .grid-bg, .panel-sound .glow-orb { animation: none; } }
 
         /* ===== FOOTER ===== */
         .landing-footer {
@@ -206,8 +197,6 @@
         </div>
     </a>
     <a href="https://nicolarivo.co.uk/sound" class="panel panel-sound">
-        <div class="grid-bg"></div>
-        <div class="glow-orb"></div>
         <div class="panel-content">
             <span class="panel-icon" aria-hidden="true" style="display:block;height:29px"></span>
             <div class="panel-label">Sound Designer</div>
