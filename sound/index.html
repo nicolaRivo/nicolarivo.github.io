@@ -10,7 +10,11 @@
 <meta property="og:title" content="Nicola Rivosecchi | Sound design, composition, audio post. London">
 <meta property="og:description" content="Nicola Rivosecchi is a sound designer, composer and audio post engineer in London. Selected work, services and contact.">
 <meta property="og:url" content="https://nicolarivo.co.uk/sound/">
-<meta property="og:image" content="https://nicolarivo.co.uk/assets/images/og-home.jpg">
+<meta property="og:image" content="https://nicolarivo.co.uk/assets/images/og-sound.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nicola Rivosecchi, sound designer, recording on a tidal causeway with a boom microphone">
+<meta name="twitter:image" content="https://nicolarivo.co.uk/assets/images/og-sound.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111'/%3E%3Cpath d='M4 16h4l3-9 5 18 4-14 2 5h6' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
@@ -276,6 +280,20 @@ button{cursor:pointer}
 .vid-l{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:400;margin:0 0 -.6rem}
 .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:.6rem}
 .gal img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+/* Griglia dei lavori in archivio: l'ultima riga non resta mai con celle vuote (L22) */
+.strip>li:last-child:nth-child(3n+1){grid-column:1/-1}
+.strip>li:last-child:nth-child(3n+2){grid-column:span 2}
+.strip>li:last-child:nth-child(3n+1) .work-toggle,.strip>li:last-child:nth-child(3n+2) .work-toggle{aspect-ratio:auto;min-height:11rem}
+@media (max-width:1000px){
+.strip>li:last-child:nth-child(3n+1),.strip>li:last-child:nth-child(3n+2){grid-column:auto}
+.strip>li:last-child:nth-child(odd){grid-column:1/-1}
+.strip>li:last-child:nth-child(odd) .work-toggle{aspect-ratio:auto;min-height:11rem}
+.strip>li:last-child:nth-child(even) .work-toggle{aspect-ratio:16/9;min-height:9.5rem}
+}
+@media (max-width:560px){
+.strip>li:last-child,.strip>li:last-child:nth-child(odd){grid-column:auto}
+.strip>li:last-child .work-toggle{aspect-ratio:16/9!important;min-height:9.5rem!important}
+}
 
 </style>
 </head>
@@ -304,7 +322,7 @@ button{cursor:pointer}
 </li>
 <li class="work feat has-img" id="w-mary-la-bone" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-mary-la-bone" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-SMic-oK7lgk.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-num" aria-hidden="true">No. 2</span><span class="w-main"><span class="w-title">Mary La Bone</span><span class="w-meta">2020 · Sound design</span></span><span class="w-year">2020</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-SMic-oK7lgk.jpg" alt="" width="1280" height="542" loading="lazy" decoding="async"><span class="w-num" aria-hidden="true">No. 2</span><span class="w-main"><span class="w-title">Mary La Bone</span><span class="w-meta">2020 · Sound design</span></span><span class="w-year">2020</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-mary-la-bone" hidden>
 <p class="w-text">Sound design for the short film Marylebone. The aim: narrative sound design that tells the story as much as the picture does.</p>
@@ -313,7 +331,7 @@ button{cursor:pointer}
 </li>
 <li class="work feat has-img" id="w-the-hand-of-the-wind" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-the-hand-of-the-wind" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-nCkD6japtt4.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-num" aria-hidden="true">No. 3</span><span class="w-main"><span class="w-title">The Hand of the Wind</span><span class="w-meta">2020 · Soundtrack</span></span><span class="w-year">2020</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-nCkD6japtt4.jpg" alt="" width="1280" height="542" loading="lazy" decoding="async"><span class="w-num" aria-hidden="true">No. 3</span><span class="w-main"><span class="w-title">The Hand of the Wind</span><span class="w-meta">2020 · Soundtrack</span></span><span class="w-year">2020</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-the-hand-of-the-wind" hidden>
 <p class="w-text">Original score for The Hand of the Wind, a fantasy drama short film written, directed and produced by Pietro F. Pingitore and shot in Mustang, Nepal. The film follows an old man living in poetic contemplation of nature in the Himalayan highlands.</p>
@@ -323,7 +341,7 @@ button{cursor:pointer}
 </li>
 <li class="work feat has-img" id="w-badalamedley" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-badalamedley" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-sWRF-giH0xA.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-num" aria-hidden="true">No. 4</span><span class="w-main"><span class="w-title">BadalaMedley</span><span class="w-meta">2023 · Composition</span></span><span class="w-year">2023</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-sWRF-giH0xA.jpg" alt="" width="1280" height="564" loading="lazy" decoding="async"><span class="w-num" aria-hidden="true">No. 4</span><span class="w-main"><span class="w-title">BadalaMedley</span><span class="w-meta">2023 · Composition</span></span><span class="w-year">2023</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-badalamedley" hidden>
 <p class="w-text">Orchestral Medley of three Angelo Badalamenti&#x27;s compositions for the tv show Twin Peaks</p>
@@ -332,7 +350,7 @@ button{cursor:pointer}
 </li>
 <li class="work feat has-img" id="w-biosounds" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-biosounds" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-plQkoRI_qXQ.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-num" aria-hidden="true">No. 5</span><span class="w-main"><span class="w-title">BioSounds</span><span class="w-meta">2022 · Software</span></span><span class="w-year">2022</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-plQkoRI_qXQ.jpg" alt="" width="1206" height="720" loading="lazy" decoding="async"><span class="w-num" aria-hidden="true">No. 5</span><span class="w-main"><span class="w-title">BioSounds</span><span class="w-meta">2022 · Software</span></span><span class="w-year">2022</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-biosounds" hidden>
 <p class="w-text">**Protein Based Music Generator** is a generative music system developed in Max/MSP that transforms protein sequences into unique musical compositions. Using amino acid data extracted from FASTA files, the system maps mathematical properties of each protein onto melody, harmony, rhythm and timbre. Its deterministic approach ensures that each protein consistently generates the same musical material. The resulting MIDI data controls multiple synthesisers in Ableton Live, creating a distinctive musical identity for each protein.</p>
@@ -352,12 +370,12 @@ button{cursor:pointer}
 </li>
 <li class="work feat sec-feat ref has-img">
   <button type="button" class="work-toggle" data-ref="w-the-hand-of-the-wind" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-nCkD6japtt4.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">The Hand of the Wind</span><span class="w-meta">2020 · Soundtrack</span></span><span class="w-year">2020</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-nCkD6japtt4.jpg" alt="" width="1280" height="542" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">The Hand of the Wind</span><span class="w-meta">2020 · Soundtrack</span></span><span class="w-year">2020</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
   </button>
 </li>
 <li class="work feat sec-feat has-img" id="w-in-the-cards" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-in-the-cards" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-qm9u6u_VTUs.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">In The Cards</span><span class="w-meta">2021 · Soundtrack</span></span><span class="w-year">2021</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-qm9u6u_VTUs.jpg" alt="" width="956" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">In The Cards</span><span class="w-meta">2021 · Soundtrack</span></span><span class="w-year">2021</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-in-the-cards" hidden>
 <p class="w-text">**In the Cards** is an original soundtrack exploring four tarot cards through distinct musical modes, harmonic palettes and rhythmic structures, connected by a recurring musical motif. Originally conceived for a live performance featuring musicians and a Foley artist, this version is my personal studio reconstruction based on the original scores. All music was composed, performed and recorded by me, alongside original Foley and sound effects captured using both traditional and experimental recording techniques.</p>
@@ -395,7 +413,7 @@ button{cursor:pointer}
 </li>
 <li class="work arc has-img" id="w-sobhraj" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-sobhraj" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-d6PftRQaXNE.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Sobhraj</span><span class="w-meta">2019 · Soundtrack</span></span><span class="w-year">2019</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-d6PftRQaXNE.jpg" alt="" width="480" height="265" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Sobhraj</span><span class="w-meta">2019 · Soundtrack</span></span><span class="w-year">2019</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-sobhraj" hidden>
 <p class="w-text">A rescore of the opening titles of a British TV series about Charles Sobhraj. The goal of this rescoring series: perfect sync between music and picture, with every cut and movement written into the score.</p>
@@ -404,7 +422,7 @@ button{cursor:pointer}
 </li>
 <li class="work arc has-img" id="w-action" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-action" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-IELbdpEHDks.jpg" alt="" width="640" height="480" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Action!</span><span class="w-meta">2020 · Soundtrack</span></span><span class="w-year">2020</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-IELbdpEHDks.jpg" alt="" width="614" height="480" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Action!</span><span class="w-meta">2020 · Soundtrack</span></span><span class="w-year">2020</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-action" hidden>
 <p class="w-text">Rescoring of action clip</p>
@@ -422,7 +440,7 @@ button{cursor:pointer}
 </li>
 <li class="work arc has-img" id="w-o2" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-o2" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-PUuq5YRfbPw.jpg" alt="" width="480" height="360" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">O2</span><span class="w-meta">2019 · Soundtrack</span></span><span class="w-year">2019</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-PUuq5YRfbPw.jpg" alt="" width="480" height="249" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">O2</span><span class="w-meta">2019 · Soundtrack</span></span><span class="w-year">2019</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-o2" hidden>
 <p class="w-text">Advertising rescoring for O2 commercial</p>
@@ -446,12 +464,12 @@ button{cursor:pointer}
   <ol class="frames frames-sec">
 <li class="work feat sec-feat ref has-img">
   <button type="button" class="work-toggle" data-ref="w-mary-la-bone" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-SMic-oK7lgk.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Mary La Bone</span><span class="w-meta">2020 · Sound design</span></span><span class="w-year">2020</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-SMic-oK7lgk.jpg" alt="" width="1280" height="542" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Mary La Bone</span><span class="w-meta">2020 · Sound design</span></span><span class="w-year">2020</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
   </button>
 </li>
 <li class="work feat sec-feat has-img" id="w-inhabitants" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-inhabitants" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-BLYFNFdfc9U.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Inhabitants</span><span class="w-meta">2022 · Sound design</span></span><span class="w-year">2022</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-BLYFNFdfc9U.jpg" alt="" width="1280" height="342" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Inhabitants</span><span class="w-meta">2022 · Sound design</span></span><span class="w-year">2022</span><span class="w-cat">Sound design</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-inhabitants" hidden>
 <p class="w-text">**Who Is Inhabiting and Who Is Inhabited?** is an experimental sound composition exploring the relationship between humans and urban environments, inspired by the opening sequence of *Neighbouring Sounds* (2012). Starting from a spectrogram-based graphic score, the project reinterprets the film&#x27;s sonic landscape by reversing the roles of human and mechanical sounds. Industrial recordings represent human activity, while vocal recordings bring the city itself to life, challenging the boundaries between living beings and their environments.</p>
@@ -495,7 +513,7 @@ button{cursor:pointer}
   <ol class="frames frames-sec">
 <li class="work feat sec-feat ref has-img">
   <button type="button" class="work-toggle" data-ref="w-biosounds" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-plQkoRI_qXQ.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">BioSounds</span><span class="w-meta">2022 · Software</span></span><span class="w-year">2022</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-plQkoRI_qXQ.jpg" alt="" width="1206" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">BioSounds</span><span class="w-meta">2022 · Software</span></span><span class="w-year">2022</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
   </button>
 </li>
 <li class="work feat sec-feat has-img" id="w-evolvingdrone" data-work>
@@ -520,7 +538,7 @@ button{cursor:pointer}
 </li>
 <li class="work arc has-img" id="w-swamp" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-swamp" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-9fJ-gJ6vCk0.jpg" alt="" width="640" height="480" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">SWAMP</span><span class="w-meta">2023 · Software</span></span><span class="w-year">2023</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-9fJ-gJ6vCk0.jpg" alt="" width="640" height="396" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">SWAMP</span><span class="w-meta">2023 · Software</span></span><span class="w-year">2023</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-swamp" hidden>
 <p class="w-text">**SWAMP** is an experimental walking simulator set in an extraterrestrial landscape, featuring an adaptive musical environment. As players explore and collect piano fragments, the soundtrack gradually develops from simple harmonic intervals into increasingly complex, layered textures. Spatial audio, environmental interactions and dynamically changing musical modes shape the listening experience. The interactive audio system was designed using Wwise, combining generative composition with responsive game sound design.</p>
@@ -529,7 +547,7 @@ button{cursor:pointer}
 </li>
 <li class="work arc has-img" id="w-vox-populi" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-vox-populi" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-kf7i229dozE.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">VOX POPULI</span><span class="w-meta">2023 · Software</span></span><span class="w-year">2023</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-kf7i229dozE.jpg" alt="" width="1148" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">VOX POPULI</span><span class="w-meta">2023 · Software</span></span><span class="w-year">2023</span><span class="w-cat">Software</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-vox-populi" hidden>
 <p class="w-text">**Vox Populi** is an experimental walking simulator exploring how censorship, editing and manipulation can radically alter the meaning of spoken narratives. Built around real interviews about the outbreak of the war in Ukraine, the game features an interactive podcast that gradually becomes more intelligible as players collect objects and progress through the environment. Each stage of the process reveals a different interpretation of the same source material, exposing how selective editing can distort complex opinions into seemingly straightforward statements. Only at the end can players hear the complete interviews, revealing the nuance and ambiguity of the original perspectives.</p>
@@ -544,7 +562,7 @@ button{cursor:pointer}
   <ol class="frames frames-sec">
 <li class="work feat sec-feat ref has-img">
   <button type="button" class="work-toggle" data-ref="w-badalamedley" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-sWRF-giH0xA.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">BadalaMedley</span><span class="w-meta">2023 · Composition</span></span><span class="w-year">2023</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-sWRF-giH0xA.jpg" alt="" width="1280" height="564" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">BadalaMedley</span><span class="w-meta">2023 · Composition</span></span><span class="w-year">2023</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
   </button>
 </li>
 <li class="work feat sec-feat has-img" id="w-ondines-theme" data-work>
@@ -560,7 +578,7 @@ button{cursor:pointer}
   <ul class="strip">
 <li class="work arc has-img" id="w-debussy-images-oubliees" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-debussy-images-oubliees" aria-haspopup="dialog">
-    <img class="w-img" src="assets/yt-p9Jevsbs9l0.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Images (Oublièes) score expansion</span><span class="w-meta">2022 · Composition</span></span><span class="w-year">2022</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
+    <img class="w-img" src="assets/yt-p9Jevsbs9l0.jpg" alt="" width="930" height="720" loading="lazy" decoding="async"><span class="w-main"><span class="w-title">Images (Oublièes) score expansion</span><span class="w-meta">2022 · Composition</span></span><span class="w-year">2022</span><span class="w-cat">Composition</span><span class="w-ico" aria-hidden="true"></span>
   </button>
   <div class="panel" id="p-debussy-images-oubliees" hidden>
 <p class="w-text">**Images (Oubliées) — Score Expansion** is an orchestration project based on Claude Debussy&#x27;s piano work *Images oubliées*. Originally written for solo piano, the piece was expanded for harp and string quartet, exploring new instrumental colours, textures and timbral combinations while preserving the character of the original composition. The project investigates how orchestration can reinterpret existing musical material through the expressive possibilities of a different instrumental ensemble.</p>
