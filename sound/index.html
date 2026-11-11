@@ -264,6 +264,18 @@ button{cursor:pointer}
 .spec-box{cursor:pointer;touch-action:pan-y;-webkit-user-select:none;user-select:none}
 .spec-box:focus-visible{outline:2px solid var(--focus,#b8dcff);outline-offset:-2px}
 .rest-time{font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:.82rem;letter-spacing:.06em;color:var(--muted,#a09c95);min-width:7.5ch}
+/* --- foto dei lavori (L22): anteprima nella scheda, galleria nel pannello --- */
+.w-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.has-img .work-toggle::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(10,11,13,.55),rgba(10,11,13,.15) 38%,rgba(10,11,13,.9))}
+.has-img .work-toggle::before{z-index:3}
+.has-img .w-main,.has-img .w-num,.has-img .w-ico,.has-img .w-year,.has-img .w-cat{z-index:2}
+.work.arc.has-img .w-main,.work.arc.has-img .w-year,.work.arc.has-img .w-cat{position:relative}
+.work.arc.has-img .work-toggle{overflow:hidden}
+.work.arc.has-img .work-toggle:hover{background:var(--bg)}
+@media (prefers-reduced-motion:no-preference){.w-img{transition:transform var(--dur-slow) var(--ease)}.has-img .work-toggle:hover .w-img{transform:scale(1.03)}}
+.vid-l{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:400;margin:0 0 -.6rem}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:.6rem}
+.gal img{display:block;width:100%;height:auto;border:1px solid var(--line)}
 
 </style>
 </head>
@@ -279,7 +291,7 @@ button{cursor:pointer}
 </div></section>
 <nav class="aspects" aria-label="Browse by aspect"><div class="wrap"><ul style="--n:5"><li><a href="#soundtrack"><span class="a-n">01</span><span><span class="a-t">Soundtrack</span><span class="a-s">7 works</span></span></a></li><li><a href="#sound-design"><span class="a-n">02</span><span><span class="a-t">Sound design</span><span class="a-s">4 works</span></span></a></li><li><a href="#software"><span class="a-n">03</span><span><span class="a-t">Software</span><span class="a-s">5 works</span></span></a></li><li><a href="#composition"><span class="a-n">04</span><span><span class="a-t">Composition</span><span class="a-s">9 works</span></span></a></li><li><a href="#restoration"><span class="a-n">05</span><span><span class="a-t">Audio restoration</span><span class="a-s">Before / after</span></span></a></li></ul></div></nav>
 <section class="sec" id="work" aria-labelledby="h-work"><div class="wrap">
-  <div class="sec-h"><h2 id="h-work">Selected <em>work</em></h2><span>3 projects</span></div>
+  <div class="sec-h"><h2 id="h-work">Selected work</h2><span>3 projects</span></div>
   <ol class="frames">
 <li class="work feat" id="w-badalamedley" data-work>
   <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-badalamedley" aria-haspopup="dialog">
@@ -299,12 +311,13 @@ button{cursor:pointer}
 <div class="vid"><button type="button" class="yt" data-yt="fl7CV_QEHws" data-title="Re-Creations" aria-label="Play video: Re-Creations"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=fl7CV_QEHws" rel="noopener" target="_blank">Watch on YouTube</a></div>
   </div>
 </li>
-<li class="work feat" id="w-duncan-x" data-work>
-  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-duncan-x" aria-haspopup="dialog">
-    <span class="w-num" aria-hidden="true">No. 3</span><span class="w-main"><span class="w-title">Duncan X</span><span class="w-meta">Soundtrack</span></span><span class="w-year w-year-none">&nbsp;</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+<li class="work feat" id="w-duncan-x-earth-house" data-work>
+  <button type="button" class="work-toggle" aria-expanded="false" aria-controls="p-duncan-x-earth-house" aria-haspopup="dialog">
+    <span class="w-num" aria-hidden="true">No. 3</span><span class="w-main"><span class="w-title">Earth House</span><span class="w-meta">2025 · Soundtrack</span></span><span class="w-year">2025</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
   </button>
-  <div class="panel" id="p-duncan-x" hidden>
-<p class="w-text w-empty">Details to follow.</p>
+  <div class="panel" id="p-duncan-x-earth-house" hidden>
+<p class="w-text">This extended interview with pioneering multi-disciplinary artist Duncan X delves deep into his life, career, and artworks.</p>
+<div class="vid"><button type="button" class="yt" data-yt="QhBDyUbIr-U" data-title="Earth House" aria-label="Play video: Earth House"><span class="yt-plate"><svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M10 8l6 4-6 4z" fill="currentColor"/></svg><span class="yt-t">Play video</span><span class="yt-s">Loads from youtube-nocookie.com only when you press play</span></span></button><a class="ext" href="https://www.youtube.com/watch?v=QhBDyUbIr-U" rel="noopener" target="_blank">Watch on YouTube</a></div>
   </div>
 </li>
   </ol>
@@ -319,8 +332,8 @@ button{cursor:pointer}
   </button>
 </li>
 <li class="work feat sec-feat ref">
-  <button type="button" class="work-toggle" data-ref="w-duncan-x" aria-haspopup="dialog">
-    <span class="w-main"><span class="w-title">Duncan X</span><span class="w-meta">Soundtrack</span></span><span class="w-year w-year-none">&nbsp;</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
+  <button type="button" class="work-toggle" data-ref="w-duncan-x-earth-house" aria-haspopup="dialog">
+    <span class="w-main"><span class="w-title">Earth House</span><span class="w-meta">2025 · Soundtrack</span></span><span class="w-year">2025</span><span class="w-cat">Soundtrack</span><span class="w-ico" aria-hidden="true"></span>
   </button>
 </li>
   </ol>
