@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""controlla-audio-demo: nella cartella della demo dello Student Hub entra solo audio con licenza dichiarata.
+
+    python3 tools/controlla-audio-demo            controlla i file della cartella
+    python3 tools/controlla-audio-demo --staged   controlla solo quelli in staging (lo usa .githooks/pre-commit)
+
+Ogni file audio (.bin delle tracce cifrate, .mp3 e simili) sotto teacher/student-hub/ deve comparire in
+teacher/student-hub/licenses.json con lo stesso sha256. Se manca o l'hash è diverso, esce con errore.
+Il manifest lo scrive tools/pubblica-demo della repo student-hub. Per attivare l'hook: git config core.hooksPath .githooks
+"""
+import hashlib
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+BASE = "teacher/student-hub/"
+MANIFEST = ROOT / BASE / "licenses.json"
+AUDIO = (".bin", ".mp3", ".m4a", ".wav", ".ogg", ".opus", ".flac", ".aac", ".aif", ".aiff")
+
+
+def main():
+    staged = "--staged" in sys.argv
+    if staged:
+        out = subprocess.run(["git", "-C", str(ROOT), "diff", "--cached", "--name-only", "--diff-filter=ACMR"], capture_output=True, text=True, check=True)
+        files = [f for f in out.stdout.split() if f.startswith(BASE) and f.lower().endswith(AUDIO)]
+    else:
+        files = [p.relative_to(ROOT).as_posix() for p in (ROOT / BASE).rglob("*") if p.is_file() and p.suffix.lower() in AUDIO]
+    if not files:
+        return 0
+    try:
+        voci = {v["file"]: v for v in json.loads(MANIFEST.read_text())["file"]}
+    except (OSError, ValueError, KeyError):
+        print(f"✗ {MANIFEST.relative_to(ROOT)} manca o non si legge: nessun audio può entrare nella demo.", file=sys.stderr)
+        return 1
+    errori = []
+    for f in files:
+        v = voci.get(f)
+        if not v:
+            errori.append(f"{f}: non è in licenses.json")
+        elif not v.get("licenza") or not v.get("attribuzione"):
+            errori.append(f"{f}: licenza o attribuzione mancanti")
+        elif hashlib.sha256((ROOT / f).read_bytes()).hexdigest() != v.get("sha256"):
+            errori.append(f"{f}: sha256 diverso da quello in licenses.json")
+    for e in errori:
+        print("✗ " + e, file=sys.stderr)
+    if errori:
+        print(f"{len(errori)} file audio senza licenza verificata: rifai tools/pubblica-demo dalla repo student-hub.", file=sys.stderr)
+        return 1
+    print(f"✓ {len(files)} file audio della demo, tutti in licenses.json con l'hash giusto.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blocca audio della demo dello Student Hub senza licenza in teacher/student-hub/licenses.json (tools/controlla-audio-demo).
+exec python3 "$(git rev-parse --show-toplevel)/tools/controlla-audio-demo" --staged
