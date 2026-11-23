@@ -5,6 +5,7 @@ Sito statico, senza build. GitHub Pages serve `main` di questo repo (pubblico); 
 ## Mappa
 - `index.html` — landing (metà Teacher, metà Sound). Font in `assets/fonts/`.
 - `teacher/` — lezioni di musica. Il front end non si cambia nell'aspetto.
+- `teacher/student-hub/` — presentazione dello Student Hub e demo pubblica. `demo/`, `licenses.json` e `credits.html` sono l'uscita di `tools/costruisci-demo` + `tools/pubblica-demo` della repo `student-hub` (dati in `demo/` lì): si rifanno da lì, non a mano. Dentro entra solo audio elencato in `licenses.json` con l'hash giusto: `python3 tools/controlla-audio-demo` (hook: `git config core.hooksPath .githooks`).
 - `sound/` — portfolio sound. È l'uscita di `~/Developer/Web/sound-proiettore/build.py --public`: si modifica lì e si ricopia qui, non a mano. I lavori vengono dalle schede di `~/lavoro` (vetrina), non da `lavori.json`.
 - `creative-coding/` — sezione vecchia, da ritirare: non si tocca.
 - `videos.json`, `config.json`, `robots.txt`, `sitemap.xml`, `css/`, `js/` — file di supporto.
