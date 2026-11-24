@@ -2,61 +2,6 @@
  "descrizione": "Ogni file audio della demo dello Student Hub, con licenza e attribuzione. Lo controlla tools/controlla-audio-demo.",
  "file": [
   {
-   "file": "teacher/student-hub/demo/already-there-c09a0b/s0.bin",
-   "sha256": "5b9086b8d6ac97dc09eb5c29a65ef2ebe8db236da9eb4d9061b0088e84f024a3",
-   "brano": "Already There",
-   "autore": "Josh Woodward",
-   "fonte": "https://www.joshwoodward.com/song/AlreadyThere",
-   "licenza": "CC BY 4.0",
-   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
-   "attribuzione": "Music – \"Already There\" by Josh Woodward. Free download: https://www.joshwoodward.com/ · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
-   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
-  },
-  {
-   "file": "teacher/student-hub/demo/already-there-c09a0b/s1.bin",
-   "sha256": "89f98f61679825eaa332f8ff55308ed54eaa51ccafc485270eec382c2cab005b",
-   "brano": "Already There",
-   "autore": "Josh Woodward",
-   "fonte": "https://www.joshwoodward.com/song/AlreadyThere",
-   "licenza": "CC BY 4.0",
-   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
-   "attribuzione": "Music – \"Already There\" by Josh Woodward. Free download: https://www.joshwoodward.com/ · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
-   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
-  },
-  {
-   "file": "teacher/student-hub/demo/already-there-c09a0b/s2.bin",
-   "sha256": "4992a0cb7bb88f32561b9e6250f8ce9bc260708feb60f7fcb2d923257ad3aad7",
-   "brano": "Already There",
-   "autore": "Josh Woodward",
-   "fonte": "https://www.joshwoodward.com/song/AlreadyThere",
-   "licenza": "CC BY 4.0",
-   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
-   "attribuzione": "Music – \"Already There\" by Josh Woodward. Free download: https://www.joshwoodward.com/ · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
-   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
-  },
-  {
-   "file": "teacher/student-hub/demo/already-there-c09a0b/s3.bin",
-   "sha256": "ab61abf05c4aff20167f5f6bb1796370e52763dffe15d7f26e6e0f424428f38b",
-   "brano": "Already There",
-   "autore": "Josh Woodward",
-   "fonte": "https://www.joshwoodward.com/song/AlreadyThere",
-   "licenza": "CC BY 4.0",
-   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
-   "attribuzione": "Music – \"Already There\" by Josh Woodward. Free download: https://www.joshwoodward.com/ · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
-   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
-  },
-  {
-   "file": "teacher/student-hub/demo/already-there-c09a0b/s4.bin",
-   "sha256": "1631aed31ff2e66b71853b20f0393f87b7f9d161b96e0953566235f71c430f9d",
-   "brano": "Already There",
-   "autore": "Josh Woodward",
-   "fonte": "https://www.joshwoodward.com/song/AlreadyThere",
-   "licenza": "CC BY 4.0",
-   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
-   "attribuzione": "Music – \"Already There\" by Josh Woodward. Free download: https://www.joshwoodward.com/ · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
-   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
-  },
-  {
    "file": "teacher/student-hub/demo/i-just-wanted-to-dance-ec9c85/s0.bin",
    "sha256": "eac34c33db2d4a52fe59c1e8d964635a05424fe3de1ffc35bd7683f69f2d6971",
    "brano": "I Just Wanted to Dance",
@@ -109,6 +54,50 @@
    "licenza": "CC BY 4.0",
    "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
    "attribuzione": "Music – \"I Just Wanted to Dance\" by Josh Woodward. Free download: https://www.joshwoodward.com/ · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
+   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
+  },
+  {
+   "file": "teacher/student-hub/demo/later-alligator-c74e93/s0.bin",
+   "sha256": "a5bb8d1a700e3dc16dfaa3bba0941dc7e050053797e6ad36c445e7aec1167ca2",
+   "brano": "Later Alligator",
+   "autore": "Shane Ivers",
+   "fonte": "https://www.silvermansound.com/free-music/later-alligator",
+   "licenza": "CC BY 4.0",
+   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
+   "attribuzione": "Music: Later Alligator by Shane Ivers – https://www.silvermansound.com · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
+   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
+  },
+  {
+   "file": "teacher/student-hub/demo/later-alligator-c74e93/s1.bin",
+   "sha256": "93096c8cdb771196b480a9b41dc0f6a64b7710bb1ca8b84c86ae088a5e165fbe",
+   "brano": "Later Alligator",
+   "autore": "Shane Ivers",
+   "fonte": "https://www.silvermansound.com/free-music/later-alligator",
+   "licenza": "CC BY 4.0",
+   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
+   "attribuzione": "Music: Later Alligator by Shane Ivers – https://www.silvermansound.com · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
+   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
+  },
+  {
+   "file": "teacher/student-hub/demo/later-alligator-c74e93/s2.bin",
+   "sha256": "35c5ca569c0d6534f852d2f676c196433e45723750a9aedb5b2ef847db972d09",
+   "brano": "Later Alligator",
+   "autore": "Shane Ivers",
+   "fonte": "https://www.silvermansound.com/free-music/later-alligator",
+   "licenza": "CC BY 4.0",
+   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
+   "attribuzione": "Music: Later Alligator by Shane Ivers – https://www.silvermansound.com · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
+   "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
+  },
+  {
+   "file": "teacher/student-hub/demo/later-alligator-c74e93/s3.bin",
+   "sha256": "5b4b3da52db13cc2da42fa56be29de795ec24230b9d4863f00aa1d0032c8c82f",
+   "brano": "Later Alligator",
+   "autore": "Shane Ivers",
+   "fonte": "https://www.silvermansound.com/free-music/later-alligator",
+   "licenza": "CC BY 4.0",
+   "url_licenza": "https://creativecommons.org/licenses/by/4.0/",
+   "attribuzione": "Music: Later Alligator by Shane Ivers – https://www.silvermansound.com · Licence: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Separated into stems for teaching purposes by Nicola Rivosecchi.",
    "modifiche": "separated into stems (track), MP3-encoded and encrypted for the Student Hub player by Nicola Rivosecchi"
   },
   {

@@ -457,8 +457,15 @@ select.pick, .card select, .srow select { font: 500 0.9rem var(--body); backgrou
 .rb-and { position: absolute; left: calc(50% + 4px); font: 700 0.8rem/1.7 var(--mono); font-style: normal; color: var(--accent); opacity: 1; }
 .rs-guida { margin: 0 0 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
 .rs-guida > summary { cursor: pointer; padding: 12px 16px; min-height: 44px; box-sizing: border-box; font: 500 0.85rem var(--mono); color: var(--accent); }
-.rs-guida-b { padding: 0 16px 8px; columns: 2 320px; column-gap: 28px; }
-.rs-g { break-inside: avoid-column; margin: 0 0 14px; }
+.rs-guida-b { padding: 0 16px 8px; }
+.rs-g-search { width: 100%; box-sizing: border-box; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--fg); font: 1rem var(--body); }
+.rs-g-tabs { display: flex; gap: 6px; margin: 10px 0 4px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+.rs-g-tab { flex: none; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--fg); font: 500 0.82rem var(--body); cursor: pointer; white-space: nowrap; transition: background-color 0.12s, transform 0.12s; }
+.rs-g-tab:active { transform: scale(0.97); } .rs-g-tab.on { background: var(--fg); color: var(--panel); border-color: var(--fg); }
+.rs-g-status { margin: 6px 0 0; min-height: 1em; font: 0.75rem var(--mono); color: var(--muted); }
+.rs-g dl { columns: 2 300px; column-gap: 28px; margin: 0; } .rs-g dl > div { break-inside: avoid; }
+.rs-g-out mark { background: color-mix(in srgb, var(--accent) 22%, transparent); color: inherit; border-radius: 3px; padding: 0 1px; }
+.rs-g { margin: 10px 0 14px; }
 .rs-g h4 { margin: 4px 0 8px; font: 500 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 4px; }
 .rs-g dt { margin-top: 8px; font: 700 0.9rem var(--mono); } .rs-g dd { margin: 2px 0 0; font-size: 0.85rem; line-height: 1.45; color: var(--fg); }
 .cs { font-size: 0.62em; font-weight: 600; vertical-align: super; line-height: 0; letter-spacing: -0.03em; margin-left: 1px; }
@@ -469,6 +476,15 @@ select.pick, .card select, .srow select { font: 500 0.9rem var(--body); backgrou
 .rb-c.ghost.last { left: auto; right: 0; }
 .rb-pl { font: 500 0.52rem/2.7 var(--mono); color: var(--muted); } .rb-pl.last { left: auto; right: -6px; }
 .rb-sl i:first-child { border-left: 0; padding-left: 0; }
+.rs-shift { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 12px; font: 500 0.85rem var(--body); }
+.rs-sh-l { color: var(--muted); } .rs-sh-v { font-family: var(--mono); font-variant-numeric: tabular-nums; min-width: 8ch; } .rs-shift.on .rs-sh-v { color: var(--accent); font-weight: 600; } .rs-sh-h { color: var(--muted); font-size: 0.78rem; }
+/* {real}…{/real} dentro il testo: un real book più piccolo, della misura del testo */
+.rb.rb-sm { margin: 4px 0 12px; max-width: 44rem; font-size: 0.92rem; grid-template-columns: repeat(auto-fill, minmax(3.6rem, 1fr)); }   /* una colonna per battito: ogni battuta occupa tante colonne quanti sono i suoi accordi, così gli accordi sono equidistanti anche tra battute diverse */
+.rb-sm .rb-bar { grid-column: span var(--bw, 1); min-width: 0; }
+.rb-sm .rb-bar { min-height: 0; padding: 20px 6px 3px 9px; } .rb-sm .rb-bar.rs { padding-left: 16px; } .rb-sm .rb-bar.re { padding-right: 14px; }
+.rb-sm .rb-n { display: none; } .rb-sm .rb-ts { top: 2px; left: 6px; font-size: 0.7rem; } .rb-sm .rb-mod { font-size: 0.62rem; } .rb-sm .rb-end { height: 16px; font-size: 0.68rem; }
+.rb-sm .rb-cs { min-height: 1.7rem; padding-bottom: 0.1rem; } .rb-sm .rb-cs.rb-x { height: 2.9rem; } .rb-sm .rb-x .rb-c { bottom: 1.1rem; }
+.rb-sm .rb-c b { font-size: 0.95rem; } .rb-sm .rb-c small { font-size: 0.6rem; } .rb-sm .rb-sl i { font-size: 0.8rem; }
 .rb-c b { display: block; font: 500 1rem/1.15 var(--mono); letter-spacing: -0.03em; }      /* una sola misura per tutti gli accordi del real book */
 .rb-c small { display: block; margin-top: 1px; font: 0.66rem var(--mono); color: var(--muted); opacity: 0.7; }
 .rb-c.nd { background: rgba(163, 36, 59, 0.12); border-radius: 6px; padding: 2px 6px; margin: -2px -6px; }
@@ -529,6 +545,33 @@ select.pick, .card select, .srow select { font: 500 0.9rem var(--body); backgrou
 .rs-edit input[type=text], .rs-edit textarea { font: 0.9rem var(--mono); width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); box-sizing: border-box; }
 .rs-edit textarea { resize: vertical; min-height: 80px; }
 .rs-help { margin: 0 0 12px; font-size: 0.78rem; color: var(--muted); line-height: 1.5; } .rs-help code { font-family: var(--mono); }
+/* strumming (ritmo.js) */
+.rt-box { overflow-x: auto; margin: 8px 0; color: var(--fg); }
+.rt-svg { display: block; width: 100%; height: auto; }
+.rt-st { stroke: var(--fg); stroke-width: 1; opacity: 0.75; }
+.rt-fill { fill: var(--fg); }
+.rt-ts { font: 700 15px var(--mono); fill: var(--fg); }
+.rt-nh, .rt-stem, .rt-beam { stroke: var(--fg); } .rt-nh { stroke-linecap: round; } .rt-stem { stroke-width: 1.4; }
+.rt-restx { stroke: var(--fg); opacity: .5; stroke-linecap: round; }
+.rt-rest { fill: none; stroke: var(--fg); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.rt-arrow, .rt-acc, .rt-rest, .rt-flag, .rt-tie { fill: none; stroke: var(--fg); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; } .rt-tie { stroke-width: 1.2; }
+.rt-lab { font: 400 10px var(--mono); fill: var(--muted); } .rt-num { font-weight: 700; font-size: 11px; fill: var(--fg); }
+.rt-hl { fill: transparent; } .rt-hl.on { fill: var(--accent); opacity: 0.2; }
+.rt-ctl { align-items: center; margin: 6px 0; } .rt-ctl input[type="range"] { flex: 1; min-width: 120px; } .rt-bpm { font: 0.8rem var(--mono); color: var(--muted); }
+.rb-bar.rb-now { outline: 2px solid var(--accent); outline-offset: -2px; }
+.rt-tools { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.rt-bar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px 12px; margin-bottom: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; }
+.rt-bn { font: 0.7rem var(--mono); color: var(--muted); align-self: flex-start; }
+.rt-pulse { display: flex; gap: 2px; } .rt-cellw { display: grid; justify-items: center; gap: 1px; }
+.rt-cell { width: 34px; height: 40px; padding: 0; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--fg); font: 600 1.1rem var(--mono); cursor: pointer; }
+.rt-cell.l, .rt-cell.r, .rt-cell.t { color: var(--muted); } .rt-cell.r { opacity: 0.6; } .rt-cell.s { color: var(--muted); font-size: 0.8rem; } .rt-cell.stac { position: relative; } .rt-cell.stac::after { content: ""; position: absolute; left: 50%; bottom: 4px; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: currentColor; }
+.rt-more { margin-left: 4px; } .rt-more > summary { display: inline-flex; align-items: center; list-style: none; cursor: pointer; } .rt-more > summary::-webkit-details-marker { display: none; } .rt-more[open] > .rt-tools { margin-top: 8px; }
+.rs-strum-sw { margin: 0 0 10px; } .rs-nostrum .rb-rt, .rs-nostrum .rt-book { display: none; }
+.rb-rt { margin-top: 2px; opacity: 0.9; } .rb-rt svg { display: block; width: 100%; max-height: 52px; margin: 0 auto; }
+.rs-strum-all { margin-top: 16px; }
+.rt-cell.psh { position: relative; } .rt-cell.psh::before { content: "‹"; position: absolute; left: 3px; top: 0; font-weight: 700; color: var(--accent); }
+.rt-cell.acc { font-weight: 900; box-shadow: inset 0 0 0 2px var(--accent); } .rt-cell.man { text-decoration: underline; }
+.rt-cell.on { background: var(--accent); color: var(--accent-fg); } .rt-cl { font: 0.65rem var(--mono); color: var(--muted); }
 .rs-row { display: flex; gap: 8px; flex-wrap: wrap; } .rs-up { display: inline-flex; align-items: center; cursor: pointer; }
 .rs-out { min-height: 1.4em; margin: 8px 0 0; font-size: 0.82rem; color: var(--muted); }
 .rs-frow { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 0.85rem; }
@@ -774,7 +817,7 @@ select.pick, .card select, .srow select { font: 500 0.9rem var(--body); backgrou
 
 <script>
 let STEMS = [], DURATION = 1;
-const ENC_META = "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", SALT = "DGvV8SZlTZSoqmMpotwPIw==", ITER = 600000;
+const ENC_META = "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", SALT = "DGvV8SZlTZSoqmMpotwPIw==", ITER = 600000;
 const PASSPARTOUT = null;
 async function openWithPassword(password, openRegular, owner, pageSalt, decodeBase64) {
   if (!password) return null;
@@ -846,6 +889,13 @@ const I18N = {
     "risTipHint": "Tap a chord to see what it is.", "risNdDef": "non-diatonic", "risFromMin": "borrowed from the parallel minor", "risFromMaj": "borrowed from the parallel major",
     "risPrev": "Student preview", "risPrevNote": "Preview: this is what the student sees.", "risPrevBack": "← Back to editing",
     "risSub_book": "Real book", "risSub_lyrics": "Lyrics & chords", "risSub_notes": "Notes & files",
+    "risSub_ritmo": "Strumming", "rtPlay": "▶ Play", "rtStop": "■ Stop", "rtTempo": "Tempo", "rtClick": "Click", "rtNoSound": "The guitar sounds could not be loaded.", "rtUntitled": "Pattern",
+    "rtBarsL": "Bars", "rt8": "Eighths", "rt16": "Sixteenths", "rtSwingL": "Swing", "rtWhole": "whole song", "rtApplied": "Used in: {0}", "rtNoApplied": "Not applied to the chart",
+    "rtBookPlay": "▶ Play the chart with the strumming", "rtMismatch": "Bars {0} have a different time signature from the pattern: only a down-strum on beat 1 is played.",
+    "rtEdit": "Strumming patterns", "rtAdd": "Add pattern", "rtDup": "Duplicate", "rtDel": "Remove", "rtConfirmDel": "Remove “{0}”?", "rtName": "Name", "rtMeterL": "Time signature", "rtGridL": "Grid",
+    "rtSwingPct": "Swing amount", "rtApplyL": "Applies to", "rtNone": "No patterns yet.", "rtLossy": "Changing to eighths removes the strums on the e and the a. Continue?", "rtToolsL": "Tool",
+    "rtT_x": "Strum (tap to switch on or off)", "rtT_r": "Empty (no strum)", "rtT_l": "Empty (no strum)", "rtT_s": "Stop (dampen the strings here)", "rtT_t": "Tie", "rtT_stac": "Staccato", "rtMore": "Articulations…", "rtT_m": "Muted", "rtT_acc": "Accent", "rtT_psh": "Push (plays the next chord already)", "rtShowStrum": "Strumming", "rtT_d": "↓ Down", "rtT_u": "↑ Up", "rtT_auto": "Auto direction",
+    "rtHelp": "<b>How to use it</b><ul><li>Tap a cell to switch a strum on or off: each cell is a place where the hand can hit the strings (1 e &amp; a). An empty cell does nothing, the strings keep ringing. You never need Rest or Tie.</li><li>The notation shows only the strums, like percussion notation: a strum on the beat with an empty &amp; is a quarter note, an empty beat before a strum on the &amp; is an eighth rest and an eighth note, two strums are two beamed eighths. The arrow shows the direction: down on the beat, up on the &amp; (with sixteenths: down on the beat and the &amp;, up on the e and the a).</li><li>Under <b>Articulations</b>: <b>Muted</b> is a percussive strum (x), <b>Accent</b> plays louder, <b>Staccato</b> cuts that strum short (half of its written length), <b>Stop</b> dampens the strings on an empty cell, <b>Tie</b> only draws a tie to the previous note; <b>↓</b> and <b>↑</b> force the direction of one cell, <b>Auto direction</b> brings it back.</li><li>Swing delays the &amp; (with sixteenths: the e and the a). It does not apply to 6/8 and 12/8.</li><li><b>Applies to</b>: tick the sections of the real book where the pattern is played, or the whole song. With the real book filled in, press ▶ in the Real book tab to hear the chords with the strumming.</li></ul>",
     "risSub_teoria": "Theory", "risDegHint": "Hover over or tap a degree to see what it is.", "risLegMaj": "Major tonic · relative major", "risLegMin": "Minor tonic · relative minor", "risLegFifth": "Fifth", "risFmt": "Text style", "risFmt_b": "Bold", "risFmt_i": "Italic", "risFmt_u": "Underline", "risFmt_m": "Monospace", "risCol_red": "Red", "risCol_green": "Green", "risCol_blue": "Blue", "risCol_orange": "Orange", "risCol_purple": "Purple", "risCol_black": "Black", "risTheoryNote": "Notes for you", "risScales": "Scales", "risTeoEmpty": "Nothing here yet.", "risGuitarSoon": "Guitar diagrams are not available yet.",
     "risStud": "Student", "risStudLoading": "Loading students…", "risStudNone": "No student has this song yet: add it to a student from the Students section.", "risStudFail": "Could not load the students.",
     "risTeoText": "Theory notes for one student (only that student sees them)", "risTeoPh": "What to keep in mind with this song…", "risScEdit": "Scales (the same for everyone; pianists see a keyboard)",
@@ -853,9 +903,10 @@ const I18N = {
     "risHelpTeoText": "<b>Writing</b><ul><li>Blank line = new paragraph · <code>- </code> at the start of a line = list · <code>**bold**</code></li><li><code>**bold**</code> · <code>*italic*</code> · <code>__underline__</code> · <code>`monospace`</code> · <code>{red|coloured}</code> (red, green, blue, orange, purple, black). Or select the text and use the buttons above (⌘B, ⌘I, ⌘U).</li><li>Pick a student above: each one sees only their own text. The text is written for the student, so write it in English.</li></ul>",
     "risHelpTeoScale": "<ul><li>They appear for every student at the piano (or whose instrument is not set), under their text. Guitar students do not see them yet.</li><li>«Coloured keys» colours the keys of the scale; «Red dots» keeps the keyboard plain and puts a red dot on each note.</li></ul>",
     
-    "risGuida": "Guide: terms and symbols explained", "risEmptyBook": "No real book chords yet.", "risEmptyLy": "No lyrics with chords yet.",
+    "risShift": "Transpose", "risShiftHint": "It changes the pitch of the audio too.",
+    "risGuida": "Guide: terms and symbols explained", "risGuideSearch": "Search the guide…", "risGuideNone": "Nothing found. Try another word.", "risGuideCount": "{0} found", "risEmptyBook": "No real book chords yet.", "risEmptyLy": "No lyrics with chords yet.",
     "risHelpBook": "<b>How to write it</b><ul><li>Start with the time signature, then separate bars with <code>|</code>: <code>4/4 | Fmaj7 | C7 | Dm7 | Bb |</code></li><li>Two chords in a bar: <code>| Am7 D7 |</code> (one chord per beat when the beats divide evenly: 4 chords in 4/4, 3 in 3/4, 2 in 6/4; otherwise, or for an unusual rhythm, <code>@</code> gives the beat, <code>| Dm7 A7@4 |</code> (A7 on beat 4), <code>| Dm7 G7@3.5 |</code> (half a beat: the &amp; of 3); a bar with <code>@</code> shows rhythm slashes · a different time signature: write it before the bar, <code>6/4 | C Dm@4 |</code>, and write <code>4/4</code> again when it ends · repeat the previous bar: <code>%</code></li><li>Repeat: <code>||: … :||</code></li><li>First and second ending: <code>1. Am7 :||</code> then <code>2. Fmaj7 |</code></li><li>Section name on its own line: <code>[A]</code> · note on a bar: <code>{nota: text}</code></li><li>Key change: <code>{key: Ab maj}</code> before the first bar in the new key, and <code>{key: F maj}</code> to come back</li><li>Push (played an eighth early, written in the bar where it belongs): <code>| &lt;F7 |</code> or <code>&lt;A7@3</code>. The chord stays in its bar, and a grey copy tied to it by an arc appears on the &amp; before it, marked «push»</li><li>Colours: tonic, dominant and secondary dominant are coloured by themselves from the key. For the Modal interchange view mark a chord <code>Bbm6~min</code> (from the parallel minor) or <code>Ab~maj</code> (from the parallel major). A note on hover: <code>Bbm6~\"borrowed iv\"</code></li></ul>",
-    "risHelpLy": "<b>How to write it</b><ul><li>Paste your chord sheet (chords on a line above the words), press <b>Detect chords and sections</b>, check the preview and save.</li><li>A chord is written <code>[Fmaj7]</code>, inside the words if you like: <code>[Fmaj7]Walking home a[C7]long</code></li><li>A section is <code>[$Verse]</code>, <code>[$Chorus]</code> on its own line</li><li>A chord that must stay inside the text line (instrumental parts): <code>{F} {F} {Fmaj7}</code></li><li>If the song changes key: <code>{key: Ab maj}</code> on a line of its own, and <code>{key: F maj}</code> to come back</li><li>Colours come from the key by themselves. For the Modal interchange view: <code>[Bbm6~min]</code> or <code>[Ab~maj]</code>. Note on hover: <code>[Bbm6~\"borrowed iv\"]</code></li></ul>",
+    "risHelpLy": "<b>How to write it</b><ul><li>Paste your chord sheet (chords on a line above the words), press <b>Detect chords and sections</b>, check the preview and save.</li><li>A chord is written <code>[Fmaj7]</code>, inside the words if you like: <code>[Fmaj7]Walking home a[C7]long</code></li><li>A section is <code>[$Verse]</code>, <code>[$Chorus]</code> on its own line</li><li>A chord that must stay inside the text line (instrumental parts): <code>{F} {F} {Fmaj7}</code></li><li>A piece of real book inside the text (a riff, an intro, a turnaround): <code>{real} |{Bb} {F/A} | {Eb/G} {Bb/F} | {/real}</code>. Bars with <code>|</code>, chords with or without braces, <code>@</code> for the beat and <code>3/4</code> for another time signature work as in the Real book tab</li><li>If the song changes key: <code>{key: Ab maj}</code> on a line of its own, and <code>{key: F maj}</code> to come back</li><li>Colours come from the key by themselves. For the Modal interchange view: <code>[Bbm6~min]</code> or <code>[Ab~maj]</code>. Note on hover: <code>[Bbm6~\"borrowed iv\"]</code></li></ul>",
     "risBars": "bars {0}–{1}", "risHarm": "Natural minor, plus the raised seventh of the harmonic minor (V, vii°).", "risClose": "Close", "risImage": "Image",
     "risFail": "Couldn't open it", "risChords": "Chords", "risBook": "Real book", "risText": "Lyrics", "risNd": "non-diatonic chord",
     "risKeyTint": "the background shows the key centre", "risLine": "Line {0}: ", "risDia": "Diatonic chords", "risComments": "Teacher's comments",
@@ -946,6 +997,13 @@ const I18N = {
     "risTipHint": "Tocca un accordo per vedere cos'è.", "risNdDef": "non diatonico", "risFromMin": "preso dal minore parallelo", "risFromMaj": "preso dal maggiore parallelo",
     "risPrev": "Anteprima studente", "risPrevNote": "Anteprima: così la vede lo studente.", "risPrevBack": "← Torna a modificare",
     "risSub_book": "Real book", "risSub_lyrics": "Testo e accordi", "risSub_notes": "Note e file",
+    "risSub_ritmo": "Ritmo", "rtPlay": "▶ Suona", "rtStop": "■ Ferma", "rtTempo": "Tempo", "rtClick": "Click", "rtNoSound": "Non riesco a caricare i suoni della chitarra.", "rtUntitled": "Pattern",
+    "rtBarsL": "Battute", "rt8": "Crome", "rt16": "Semicrome", "rtSwingL": "Swing", "rtWhole": "tutto il brano", "rtApplied": "Usato in: {0}", "rtNoApplied": "Non applicato al giro",
+    "rtBookPlay": "▶ Suona il giro con lo strumming", "rtMismatch": "Le battute {0} hanno un tempo diverso dal pattern: suona solo un colpo in giù sul primo battito.",
+    "rtEdit": "Strumming pattern", "rtAdd": "Aggiungi pattern", "rtDup": "Duplica", "rtDel": "Togli", "rtConfirmDel": "Tolgo «{0}»?", "rtName": "Nome", "rtMeterL": "Tempo in chiave", "rtGridL": "Griglia",
+    "rtSwingPct": "Quantità di swing", "rtApplyL": "Si applica a", "rtNone": "Nessun pattern.", "rtLossy": "Passando alle crome si perdono i colpi sulla «e» e sulla «a». Continuo?", "rtToolsL": "Strumento",
+    "rtT_x": "Colpo (tocca per accendere o spegnere)", "rtT_r": "Vuota (nessun colpo)", "rtT_l": "Vuota (nessun colpo)", "rtT_s": "Stop (smorza le corde qui)", "rtT_t": "Legatura", "rtT_stac": "Staccato", "rtMore": "Articolazioni…", "rtT_m": "Stoppato", "rtT_acc": "Accento", "rtT_psh": "Push (suona già l'accordo dopo)", "rtShowStrum": "Strumming", "rtT_d": "↓ In giù", "rtT_u": "↑ In su", "rtT_auto": "Direzione automatica",
+    "rtHelp": "<b>Come si usa</b><ul><li>Tocca una cella per accendere o spegnere un colpo: ogni cella è un posto in cui la mano può colpire le corde (1 e &amp; a). Una cella vuota non fa niente, le corde continuano a risuonare. Non serve mai Pausa o Legato.</li><li>La notazione mostra solo i colpi, come una notazione per percussioni: colpo sul battito con la &amp; vuota è una semiminima, battito vuoto e colpo sulla &amp; è una pausa di croma e una croma, due colpi sono due crome unite. La freccia dà la direzione: in giù sul battito, in su sulla &amp; (con le semicrome: in giù sul battito e sulla &amp;, in su sulla e e sulla a).</li><li>In <b>Articolazioni</b>: <b>Stoppato</b> è un colpo percussivo (x), <b>Accento</b> suona più forte, <b>Staccato</b> interrompe quel colpo (metà del valore scritto), <b>Stop</b> smorza le corde su una cella vuota, <b>Legatura</b> disegna solo una legatura con la nota prima; <b>↓</b> e <b>↑</b> forzano la direzione di una cella, <b>Direzione automatica</b> la rimette.</li><li>Lo swing ritarda la &amp; (con le semicrome: la e e la a). Non si applica al 6/8 e al 12/8.</li><li><b>Si applica a</b>: spunta le sezioni del real book in cui suona il pattern, oppure tutto il brano. Con il real book compilato, premi ▶ nella scheda Real book per sentire gli accordi con lo strumming.</li></ul>",
     "risSub_teoria": "Teoria", "risDegHint": "Passa sopra un grado o toccalo per vedere cos'è.", "risLegMaj": "Tonica maggiore · relativa maggiore", "risLegMin": "Tonica minore · relativa minore", "risLegFifth": "Quinta", "risFmt": "Stile del testo", "risFmt_b": "Grassetto", "risFmt_i": "Corsivo", "risFmt_u": "Sottolineato", "risFmt_m": "Monospazio", "risCol_red": "Rosso", "risCol_green": "Verde", "risCol_blue": "Blu", "risCol_orange": "Arancione", "risCol_purple": "Viola", "risCol_black": "Nero", "risTheoryNote": "Appunti per te", "risScales": "Scale", "risTeoEmpty": "Qui non c'è ancora niente.", "risGuitarSoon": "I diagrammi per la chitarra non ci sono ancora.",
     "risStud": "Studente", "risStudLoading": "Carico gli studenti…", "risStudNone": "Nessuno studente ha questo brano: aggiungilo a uno studente dalla sezione Studenti.", "risStudFail": "Non riesco a caricare gli studenti.",
     "risTeoText": "Appunti di teoria per uno studente (solo lui li vede)", "risTeoPh": "Cosa tenere a mente con questa canzone…", "risScEdit": "Scale (uguali per tutti; chi suona il piano vede una tastiera)",
@@ -953,9 +1011,10 @@ const I18N = {
     "risHelpTeoText": "<b>Come si scrive</b><ul><li>Riga vuota = nuovo paragrafo · <code>- </code> a inizio riga = elenco · <code>**grassetto**</code></li><li><code>**grassetto**</code> · <code>*corsivo*</code> · <code>__sottolineato__</code> · <code>`monospazio`</code> · <code>{red|colore}</code> (red, green, blue, orange, purple, black). Oppure seleziona il testo e usa i bottoni qui sopra (⌘B, ⌘I, ⌘U).</li><li>Scegli lo studente qui sopra: ognuno vede solo il suo testo. Il testo è per lo studente: scrivilo in inglese.</li></ul>",
     "risHelpTeoScale": "<ul><li>Compaiono a ogni studente di piano (o senza strumento impostato), sotto il suo testo. Gli studenti di chitarra non le vedono ancora.</li><li>«Tasti colorati» colora i tasti della scala; «Puntini rossi» lascia la tastiera neutra e mette un puntino rosso su ogni nota.</li></ul>",
     
-    "risGuida": "Guida: termini e simboli spiegati", "risEmptyBook": "Ancora nessun accordo real book.", "risEmptyLy": "Ancora nessun testo con accordi.",
+    "risShift": "Trasponi", "risShiftHint": "Cambia anche l'intonazione dell'audio.",
+    "risGuida": "Guida: termini e simboli spiegati", "risGuideSearch": "Cerca nella guida…", "risGuideNone": "Non ho trovato niente. Prova un'altra parola.", "risGuideCount": "{0} trovati", "risEmptyBook": "Ancora nessun accordo real book.", "risEmptyLy": "Ancora nessun testo con accordi.",
     "risHelpBook": "<b>Come si scrive</b><ul><li>Prima il tempo, poi le battute separate da <code>|</code>: <code>4/4 | Fmaj7 | C7 | Dm7 | Bb |</code></li><li>Due accordi in una battuta: <code>| Am7 D7 |</code> (un accordo per parte quando i battiti si dividono: 4 accordi in 4/4, 3 in 3/4, 2 in 6/4; altrimenti, o per un ritmo insolito, <code>@</code> dà il battito, <code>| Dm7 A7@4 |</code> (A7 sul quarto), <code>| Dm7 G7@3.5 |</code> (a metà battito: il «e» del 3); la battuta con <code>@</code> mostra le barre ritmiche · altro tempo: scrivilo prima della battuta, <code>6/4 | C Dm@4 |</code>, e riscrivi <code>4/4</code> quando finisce · ripeti la battuta prima: <code>%</code></li><li>Ritornello: <code>||: … :||</code></li><li>Primo e secondo finale: <code>1. Am7 :||</code> poi <code>2. Fmaj7 |</code></li><li>Nome della sezione su una riga a sé: <code>[A]</code> · nota su una battuta: <code>{nota: testo}</code></li><li>Cambio di tonalità: <code>{key: Ab maj}</code> prima della prima battuta nella nuova tonalità, e <code>{key: F maj}</code> per tornare</li><li>Push (suonato un ottavo prima, scritto nella battuta a cui appartiene): <code>| &lt;F7 |</code> oppure <code>&lt;A7@3</code>. L'accordo resta nella sua battuta e una copia grigia, legata a lui da un arco, compare sulla «&» prima, con scritto «push»</li><li>Colori: tonica, dominante e dominante secondaria si colorano da soli in base alla tonalità. Per la vista Prestiti modali segna l'accordo <code>Bbm6~min</code> (dal minore parallelo) o <code>Ab~maj</code> (dal maggiore parallelo). Una frase al passaggio del mouse: <code>Bbm6~\"iv preso in prestito\"</code></li></ul>",
-    "risHelpLy": "<b>Come si scrive</b><ul><li>Incolla il foglio di accordi (accordi su una riga sopra le parole), premi <b>Riconosci accordi e sezioni</b>, controlla l'anteprima e salva.</li><li>Un accordo si scrive <code>[Fmaj7]</code>, anche dentro le parole: <code>[Fmaj7]Walking home a[C7]long</code></li><li>Una sezione è <code>[$Verse]</code>, <code>[$Chorus]</code> su una riga a sé</li><li>Un accordo che deve restare dentro la riga di testo (parti strumentali): <code>{F} {F} {Fmaj7}</code></li><li>Se il brano cambia tonalità: <code>{key: Ab maj}</code> su una riga a sé, e <code>{key: F maj}</code> per tornare</li><li>I colori vengono dalla tonalità. Per la vista Prestiti modali: <code>[Bbm6~min]</code> oppure <code>[Ab~maj]</code>. Frase al passaggio del mouse: <code>[Bbm6~\"iv preso in prestito\"]</code></li></ul>",
+    "risHelpLy": "<b>Come si scrive</b><ul><li>Incolla il foglio di accordi (accordi su una riga sopra le parole), premi <b>Riconosci accordi e sezioni</b>, controlla l'anteprima e salva.</li><li>Un accordo si scrive <code>[Fmaj7]</code>, anche dentro le parole: <code>[Fmaj7]Walking home a[C7]long</code></li><li>Una sezione è <code>[$Verse]</code>, <code>[$Chorus]</code> su una riga a sé</li><li>Un accordo che deve restare dentro la riga di testo (parti strumentali): <code>{F} {F} {Fmaj7}</code></li><li>Una porzione di real book dentro il testo (un riff, un'intro, un giro): <code>{real} |{Bb} {F/A} | {Eb/G} {Bb/F} | {/real}</code>. Battute con <code>|</code>, accordi con o senza graffe, <code>@</code> per il battito e <code>3/4</code> per un altro tempo funzionano come nella scheda Real book</li><li>Se il brano cambia tonalità: <code>{key: Ab maj}</code> su una riga a sé, e <code>{key: F maj}</code> per tornare</li><li>I colori vengono dalla tonalità. Per la vista Prestiti modali: <code>[Bbm6~min]</code> oppure <code>[Ab~maj]</code>. Frase al passaggio del mouse: <code>[Bbm6~\"iv preso in prestito\"]</code></li></ul>",
     "risBars": "battute {0}–{1}", "risHarm": "Minore naturale, più la sensibile del minore armonico (V, vii°).", "risClose": "Chiudi", "risImage": "Immagine",
     "risFail": "Non riesco ad aprirlo", "risChords": "Accordi", "risBook": "Real book", "risText": "Testo", "risNd": "accordo non diatonico",
     "risKeyTint": "lo sfondo mostra il centro tonale", "risLine": "Riga {0}: ", "risDia": "Accordi diatonici", "risComments": "Commenti dell'insegnante",
@@ -1953,6 +2012,7 @@ function setPitch(c) {
     if (playing) engineStart(p); else offset = p;
   }
   refreshSongUi();
+  if (typeof risOnPitch === "function") risOnPitch();
 }
 const stOf = (c) => Math.round(c / 100);
 function refreshSongUi() {
@@ -2837,6 +2897,7 @@ function startPlayer(meta, key, pw) {
 /* accordi.js — motore degli accordi: testo sorgente → modello → analisi (numeri romani, diatonico o no).
    Nessun DOM. Un solo modulo: lo usano la pagina dello studente, l'anteprima dell'Hub e i test (node).
    Sorgente real book:   4/4 ||: Fmaj7 | C7 | Dm7 | Bb :||     1. Am7 D7 :||  2. Fmaj7 ||
+   Nel testo: {real} |{Bb} {F/A} | Eb/G Bb/F | {/real} = una porzione di real book in mezzo alle parole.
    Direttive tra graffe: {key: Ab maj "Modulazione a La♭"}  {key: F maj}  {nota: testo}.   Sezioni: [A]  ·  commenti: # riga
    Sorgente testo:       [Fmaj7]Walking home a[C7]long the river      */
 
@@ -2924,6 +2985,43 @@ function acParseChord(raw) {
            label: acSym(String(raw).trim()) };
 }
 
+/* ---------- trasposizione ----------
+   Si traspone il testo dell'accordo (e le tonalità) prima di analizzarlo: così numeri romani, colori e tonalità restano coerenti.
+   Grafia: un grado della tonalità prende il nome della scala; fuori scala, bemolle per ♭II ♭III ♭VI ♭VII e diesis per il resto;
+   senza tonalità, bemolli (tranne Fa♯). Niente doppie alterazioni né Cb Fb E♯ B♯. */
+const AC_SIMPLE_FLAT = ["C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"], AC_SIMPLE_SHARP = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+const AC_KEYN_MAJ = ["C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"], AC_KEYN_MIN = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#", "A", "Bb", "B"];
+function acSpell(pc, key) {
+  pc = acMod12(pc);
+  if (!key) return AC_SIMPLE_FLAT[pc];
+  const hit = key.scale.find((x) => x.pc === pc);
+  if (hit) return hit.name;
+  const flat = [1, 3, 8, 10].includes(acMod12(pc - key.tonic)), nb = key.scale.find((x) => x.pc === acMod12(pc + (flat ? 1 : -1)));
+  const flats = key.scale.filter((x) => x.name.includes("b")).length > key.scale.filter((x) => x.name.includes("#")).length;
+  if (nb) {
+    const d = ((acMod12(nb.pc) - AC_PC[nb.name[0]] + 18) % 12) - 6, name = nb.name[0] + acAcc(d + (flat ? -1 : 1));
+    if (!/^[A-G](#|b)?$/.test(name) || ["Cb", "Fb", "E#", "B#"].includes(name)) return (flats ? AC_SIMPLE_FLAT : AC_SIMPLE_SHARP)[pc];
+    return name;
+  }
+  return (flats ? AC_SIMPLE_FLAT : AC_SIMPLE_SHARP)[pc];
+}
+/* "Bb/D" +2 → "C/E" (key: tonalità in cui cade l'accordo, oggetto di acParseKey, o null). Ciò che non è un accordo resta com'è. */
+function acTransposeRaw(raw, n, key) {
+  const m = /^\s*([A-G])([#b♯♭]?)([^\/]*?)(?:\/([A-G])([#b♯♭]?))?\s*$/.exec(String(raw));
+  if (!m || !n) return raw;
+  const al = (s) => (s === "#" || s === "♯" ? 1 : s === "b" || s === "♭" ? -1 : 0);
+  let out = acSpell(AC_PC[m[1]] + al(m[2]) + n, key) + m[3];
+  if (m[4]) out += "/" + acSpell(AC_PC[m[4]] + al(m[5]) + n, key);
+  return out;
+}
+/* "Ab maj" +2 → "Bb maj"; "Am" +3 → "Cm" */
+function acTransposeKey(str, n) {
+  const m = /^\s*([A-G])([#b♯♭]?)\s*([A-Za-zàèéìòù]*)\s*$/.exec(String(str || "")), k = acParseKey(str);
+  if (!m || !k || !n) return str;
+  const minorish = ["min", "dor", "phr", "loc"].includes(k.mode), root = (minorish ? AC_KEYN_MIN : AC_KEYN_MAJ)[acMod12(k.tonic + n)];
+  return root + (m[3] ? " " + m[3] : "");
+}
+
 function acNumeral(rel, mode) {
   const sc = AC_MODES[mode];
   let i = sc.indexOf(rel), acc = "";
@@ -3007,10 +3105,10 @@ function acNote(key, semis) {          // nome della nota a `semis` semitoni dal
 
 /* ---------- contesto: l'elenco dei centri tonali, condiviso dal real book e dal testo ---------- */
 const acT = (it, en) => (typeof LANG !== "undefined" && LANG === "it" ? it : en);      // LANG è del player; nei test vale l'inglese
-function acContext(mainKey) {
-  const ctx = { keys: [], errors: [], cur: -1 };
+function acContext(mainKey, shift) {
+  const ctx = { keys: [], errors: [], cur: -1, shift: shift || 0 };
   ctx.addKey = (str, line) => {
-    const k = acParseKey(str);
+    const k = acParseKey(ctx.shift ? acTransposeKey(str, ctx.shift) : str);
     if (!k) { ctx.errors.push({ line, msg: acT("Tonalità non valida: ", "Invalid key: ") + str }); return -1; }
     let i = ctx.keys.findIndex((x) => x.id === k.id);
     if (i < 0) { ctx.keys.push(k); i = ctx.keys.length - 1; }
@@ -3037,11 +3135,13 @@ function acDirective(text, ctx, seen, line) {
   return null;
 }
 
-function acBindChord(word, ctx, line) {
+function acBindChord(word, ctx, line, keyIdx) {
   if (AC_NC.test(String(word).trim())) return { raw: "N.C.", label: "N.C.", nc: true };
   const parts = String(word).split("~");               // Bbm6~min~"prestito dal minore"  (i testi tra virgolette sono già segnaposto ~#N)
-  const ch = acParseChord(parts[0]);
+  const at = keyIdx === undefined ? ctx.cur : keyIdx;
+  const ch = acParseChord(ctx.shift ? acTransposeRaw(parts[0], ctx.shift, at >= 0 ? ctx.keys[at] : null) : parts[0]);
   if (!ch) { ctx.errors.push({ line, msg: acT("Accordo non riconosciuto: ", "Chord not recognised: ") + parts[0] }); return { raw: parts[0], label: parts[0], bad: true }; }
+  ch.orig = parts[0].trim();                           // com'è scritto nel sorgente (le spiegazioni dell'insegnante sono legate a questo)
   parts.slice(1).forEach((t) => {
     if (/^(min|maj|dom)$/.test(t)) ch.tag = t;
     else if (/^#\d+$/.test(t) && ctx.notes[+t.slice(1)] !== undefined) ch.hint = ctx.notes[+t.slice(1)];
@@ -3065,7 +3165,7 @@ function acPlace(chords, beats, ctx) {
   return explicit;
 }
 
-function acParseChart(src, ctx) {
+function acParseChart(src, ctx, base) {
   const bars = [], seen = new Set();
   let buf = [], ending = 0, ts = "", curTs = "", rsNext = false, nextKey = null, nextMod = "", nextNote = "", section = "", breakRow = true;
   const closeBar = (re) => {
@@ -3097,7 +3197,7 @@ function acParseChart(src, ctx) {
   };
   const lines = String(src || "").split(/\r?\n/);
   lines.forEach((raw, li) => {
-    const line = li + 1, t = raw.trim();
+    const line = (base || 0) + li + 1, t = raw.trim();
     if (!t) { breakRow = true; return; }
     if (/^(#|\/\/)/.test(t)) return;
     const sec = /^\[(.+)\]$/.exec(t);
@@ -3124,7 +3224,7 @@ function acParseChart(src, ctx) {
         const put = (c) => { c.line = line; if (bt !== undefined) c.beat = bt; if (push) c.push = true; buf.push(c); };
         if (w === "%") { const p = bars[bars.length - 1]; buf.push(...(p ? p.chords.map((c) => ({ ...c })) : [])); return; }
         if (/^(N\.?C\.?|tacet|-|\.)$/i.test(w)) { put({ raw: w, label: "N.C.", nc: true }); return; }
-        put(acBindChord(w, ctx, line));
+        put(acBindChord(w, ctx, line, nextKey !== null ? nextKey : ctx.cur));
       });
     });
     closeBar();
@@ -3215,12 +3315,22 @@ function acAutoTag(src) {
   return { testo: out.join("\n"), righeAccordi: chords, sezioni: sections };
 }
 
+/* contenuto di un blocco {real}…{/real}: gli accordi possono stare tra graffe ({Bb} {F/A}) come nel testo */
+const acRealSrc = (x) => String(x).replace(/\{([^{}\[\]:]+)\}/g, (m, c) => (acParseChord(c.split("~")[0]) || AC_NC.test(c.trim()) ? c : m));
 function acParseLyrics(src, ctx) {
   const seen = new Set(), out = [];
   acMerge(src).split(/\r?\n/).forEach((raw, li) => {
     const line = li + 1, t = raw.trimEnd();
     if (!t.trim()) { out.push({ gap: true }); return; }
     if (/^\s*(#|\/\/)/.test(t)) return;
+    const rb = /^\s*\{real#(\d+)\}\s*$/.exec(t);                                  // blocco {real}: una porzione di real book dentro il testo
+    if (rb && ctx.reals && ctx.reals[+rb[1]] !== undefined) {
+      const bars = acParseChart(acRealSrc(ctx.reals[+rb[1]]), ctx, line - 1);
+      if (bars.length) bars[bars.length - 1].fin = false;
+      bars.forEach((b) => { b.section = ""; });
+      out.push({ real: true, bars });
+      return;
+    }
     const sec = /^\s*\[([^\]]+)\]\s*$/.exec(t);
     if (sec && (sec[1][0] === "$" || (!acParseChord(sec[1]) && !AC_NC.test(sec[1])))) { out.push({ section: sec[1].replace(/^\$\s*/, "") }); return; }
     const segs = [];
@@ -3256,20 +3366,20 @@ function acParseLyrics(src, ctx) {
 
 /* Tutto insieme: { keys, strip[], bars[], lyrics[], diatonic[], errors[] } */
 function acBuild(o) {
-  const ctx = acContext(o.tonalita);
-  ctx.notes = [];
+  const ctx = acContext(o.tonalita, o.trasponi | 0);
+  ctx.notes = []; ctx.reals = [];
   const pre = (t) => String(t || "").replace(/~"([^"]*)"/g, (m, x) => { ctx.notes.push(x.trim()); return "~#" + (ctx.notes.length - 1); });
   const bars = acParseChart(pre(o.chart), ctx);
-  const lyrics = acParseLyrics(pre(o.lyrics), ctx);
+  const lyrics = acParseLyrics(pre(o.lyrics).replace(/\{real\}([\s\S]*?)\{\/real\}/gi, (m, x, at, all) => { ctx.reals.push(x); return (at === 0 || all[at - 1] === "\n" ? "" : "\n") + "{real#" + (ctx.reals.length - 1) + "}" + (at + m.length >= all.length || all[at + m.length] === "\n" ? "" : "\n"); }), ctx);
   const sp = o.spiegazioni || {}, ndm = new Map();
   const apply = (c) => {
     if (!c || c.fn !== "nd") return;
-    const s = sp[c.raw];
+    const k0 = c.orig || c.raw, s = sp[k0];
     if (s) { if (!c.hint && s.testo) c.hint = s.testo; if (!c.tag && s.tag) c.tag = s.tag; }
-    const e = ndm.get(c.raw); if (e) e.n++; else ndm.set(c.raw, { raw: c.raw, roman: c.roman, n: 1 });
+    const e = ndm.get(k0); if (e) e.n++; else ndm.set(k0, { raw: k0, roman: c.roman, n: 1 });
   };
   bars.forEach((b) => b.chords.forEach(apply));
-  lyrics.forEach((l) => (l.segs || []).forEach((s) => apply(s.chord)));
+  lyrics.forEach((l) => { (l.segs || []).forEach((s) => apply(s.chord)); (l.bars || []).forEach((b) => b.chords.forEach(apply)); });
   const strip = [];
   bars.forEach((b) => {
     const last = strip[strip.length - 1];
@@ -3322,7 +3432,7 @@ function acDisplay(label) {
   return { base: m[1] + q.replace(/\(\)/g, ""), sup, bass: m[3] ? "/" + m[3] : "" };
 }
 
-if (typeof module !== "undefined") module.exports = { acDisplay, acUnbracket, acBracket, acFill, acAutoTag, acParseKey, acParseChord, acAnalyze, acDiatonic, acBuild, acSym, acScala, acNoteSym, AC_SCALES, AC_SCALE_LABEL, AC_ROOTS };
+if (typeof module !== "undefined") module.exports = { acSpell, acTransposeRaw, acTransposeKey, acDisplay, acUnbracket, acBracket, acFill, acAutoTag, acParseKey, acParseChord, acAnalyze, acDiatonic, acBuild, acSym, acScala, acNoteSym, AC_SCALES, AC_SCALE_LABEL, AC_ROOTS };
 
 /* Chitarra: le cinque forme CAGED di una scala.
    Dipende da acScala (accordi.js, già nel player). Accordatura standard, corda 0 = la più acuta (mi cantino).
@@ -3504,6 +3614,19 @@ const RIS_GUIDA = {
       ["%", "Repeat the previous bar."],
       ["N.C.", "No chord: the band stops playing the harmony (often just drums or voice)."],
       ["[A]  [Verse]", "Section name: A, B, Verse, Chorus, Bridge… tells you where you are in the form of the song."],
+      ["Transpose", "Moves all the chords up or down by semitones so they match the audio. It is the same control as Pitch on Home: changing it here changes the audio too, and the other way round. The roman numerals stay the same, because the key moves with the chords."],
+    ]],
+    ["Strumming", [
+      ["Strumming pattern", "The rhythm of your strumming hand, repeated bar after bar. In the Strumming tab each cell is a place where the hand can hit the strings."],
+      ["↓ and ↑", "The direction of the pick or the hand: ↓ down-strum (towards the floor), ↑ up-strum. The arrow above each note shows it. The hand keeps moving down on the beat and up on the “&” even when it misses the strings."],
+      ["Eighths / sixteenths", "How finely the beat is cut: eighths = two cells per beat (1 &), sixteenths = four (1 e & a)."],
+      ["Tie", "The previous chord keeps ringing: the hand moves, or does not, but there is no new attack."],
+      ["Muted strum (x)", "A percussive “chuck”: the strings are damped with the hand, so you hear a click, not a chord."],
+      ["Dot under a note (staccato)", "Strings keep ringing on their own: the notation only shows when you strum, not how long the sound lasts. A dot under a strum means you cut it short (half of its written length). It appears only when you ask for it."],
+      ["Rests", "An empty place in the pattern is written with the usual rest symbols (quarter, eighth, sixteenth rest). The hand does not strum there; it does not stop the strings, they keep ringing."],
+      ["Accent (>)", "Play that strum louder."],
+      ["Push (‹)", "The last strum before a new chord already plays the next chord, a little early. Switch it on with the Push tool; it is drawn with a small ‹ before the note."],
+      ["Swing", "The “&” is played late, like in jazz: two eighths sound long–short instead of even."],
     ]],
     ["Roman numerals and Arabic numbers", [
       ["Roman numerals (I, ii, V7…)", "They name a CHORD by its place in the key. In C major the chords are built on C D E F G A B, so C = I, Dm = ii, Em = iii, F = IV, G = V, Am = vi. They let you see the same pattern in any key: ii – V – I is Dm – G – C in C, but Gm – C – F in F."],
@@ -3542,6 +3665,8 @@ const RIS_GUIDA = {
       ["Mode", "A scale that starts from another note of the same notes: Dorian, Mixolydian… Each fits a different chord colour."],
       ["Pentatonic", "A five-note scale. Easy to play, hard to sound wrong: the favourite scale for solos."],
       ["Root, tonic", "The note a scale or chord is named after and counted from."],
+      ["Relative major and minor", "Two scales with the same notes and different starting points: C major and A minor. The minor starts on the 6th degree of the major."],
+      ["Fingering", "The number of the finger for each note: 1 is the thumb, 5 the little finger. The thumb passes under the hand after the 3rd or 4th finger so the scale runs on smoothly. One octave and two octaves are fingered a little differently."],
       ["CAGED (guitar)", "Five shapes of the same scale that tile the whole fretboard, named after the open chords C, A, G, E, D. Learn one box, then see how they connect."],
       ["Lick", "A short musical phrase you can play, steal and make yours."],
       ["Voicing", "A particular way of arranging the notes of a chord: which notes, in which order, on which strings or keys."],
@@ -3564,6 +3689,19 @@ const RIS_GUIDA = {
       ["%", "Ripeti la battuta precedente."],
       ["N.C.", "No chord, nessun accordo: la band smette di suonare l'armonia (spesso restano solo la batteria o la voce)."],
       ["[A]  [Strofa]", "Nome della sezione: A, B, Strofa, Ritornello, Ponte… ti dice a che punto sei della forma del brano."],
+      ["Trasponi", "Sposta tutti gli accordi su o giù di semitoni, in modo che corrispondano all'audio. È lo stesso comando di Intonazione in Home: cambiarlo qui cambia anche l'audio, e viceversa. I numeri romani restano uguali, perché la tonalità si sposta con gli accordi."],
+    ]],
+    ["Strumming", [
+      ["Strumming pattern", "Il ritmo della mano che suona, ripetuto battuta dopo battuta. Nella scheda Ritmo ogni cella è un posto in cui la mano può colpire le corde."],
+      ["↓ e ↑", "La direzione del plettro o della mano: ↓ colpo in giù (verso il pavimento), ↑ colpo in su. La freccia sopra ogni nota la mostra. La mano continua a scendere sul battito e a salire sulla «&» anche quando non tocca le corde."],
+      ["Crome / semicrome", "Quanto è fine la divisione del battito: crome = due celle per battito (1 &), semicrome = quattro (1 e & a)."],
+      ["Legato", "L'accordo del colpo prima continua a suonare: non c'è un attacco nuovo."],
+      ["Colpo stoppato (x)", "Un «ciak» percussivo: le corde sono smorzate con la mano, si sente un rumore e non un accordo."],
+      ["Puntino sotto la nota (staccato)", "Le corde continuano a risuonare da sole: la notazione mostra solo quando colpisci, non quanto dura il suono. Un puntino sotto un colpo vuol dire che lo interrompi subito (metà della sua durata scritta). Compare solo se lo chiedi."],
+      ["Pause", "Un posto vuoto nel pattern si scrive con i simboli di pausa consueti (semiminima, croma, semicroma). In quel punto la mano non colpisce; non ferma le corde, che continuano a risuonare."],
+      ["Accento (>)", "Suona quel colpo più forte."],
+      ["Push (‹)", "L'ultimo colpo prima di un nuovo accordo suona già l'accordo successivo, un po' in anticipo. Si accende con lo strumento Push; si scrive con un piccolo ‹ davanti alla nota."],
+      ["Swing", "La «&» viene suonata in ritardo, come nel jazz: due crome suonano lunga–breve invece che uguali."],
     ]],
     ["Numeri romani e numeri arabi", [
       ["Numeri romani (I, ii, V7…)", "Danno il nome a un ACCORDO secondo il suo posto nella tonalità. In Do maggiore gli accordi si costruiscono su Do Re Mi Fa Sol La Si, quindi C = I, Dm = ii, Em = iii, F = IV, G = V, Am = vi. Servono a vedere lo stesso schema in ogni tonalità: ii – V – I è Dm – G – C in Do, ma Gm – C – F in Fa."],
@@ -3602,6 +3740,8 @@ const RIS_GUIDA = {
       ["Modo", "Una scala che parte da un'altra nota delle stesse note: dorico, misolidio… Ognuno si adatta a un colore di accordo diverso."],
       ["Pentatonica", "Una scala di cinque note. Facile da suonare, difficile suonare male: la scala preferita per gli assoli."],
       ["Radice, tonica", "La nota da cui una scala o un accordo prende il nome e da cui si contano i gradi."],
+      ["Relativa maggiore e minore", "Due scale con le stesse note e punti di partenza diversi: Do maggiore e La minore. La minore parte dal sesto grado della maggiore."],
+      ["Diteggiatura", "Il numero del dito per ogni nota: 1 è il pollice, 5 il mignolo. Il pollice passa sotto la mano dopo il 3 o il 4 così la scala scorre senza interruzioni. Una ottava e due ottave si diteggiano in modo un po' diverso."],
       ["CAGED (chitarra)", "Cinque forme della stessa scala che coprono tutto il manico, dal nome degli accordi aperti C, A, G, E, D. Impara un box, poi guarda come si collegano."],
       ["Lick", "Una breve frase musicale da suonare, rubare e fare tua."],
       ["Voicing", "Un modo particolare di disporre le note di un accordo: quali note, in che ordine, su quali corde o tasti."],
@@ -3612,21 +3752,535 @@ const RIS_GUIDA = {
   ],
 };
 
+/* senza accenti e in minuscolo, carattere per carattere (la lunghezza non cambia: serve per evidenziare ciò che si cerca) */
+const risGuidaNorm = (s) => Array.from(String(s)).map((c) => { const b = c.normalize("NFD").replace(/[̀-ͯ]/g, ""); return (b ? b[0] : c).toLowerCase(); }).join("");
+
+/* Guida: una pagina per tema (schede) e una barra di ricerca che cerca in tutti i temi */
 function risGuida() {
-  let open = false; try { open = localStorage.getItem("stems-ris-guida") === "1"; } catch (e) {}
+  let open = false, page = 0; try { open = localStorage.getItem("stems-ris-guida") === "1"; page = +localStorage.getItem("stems-ris-guida-tema") || 0; } catch (e) {}
+  const themes = RIS_GUIDA[LANG === "it" ? "it" : "en"];
+  if (page < 0 || page >= themes.length) page = 0;
   const d = risEl("details", "rs-guida"); d.open = open;
-  const sm = risEl("summary", "", tr("risGuida")); d.appendChild(sm);
+  d.appendChild(risEl("summary", "", tr("risGuida")));
   const body = risEl("div", "rs-guida-b");
-  (RIS_GUIDA[LANG === "it" ? "it" : "en"]).forEach(([title, items]) => {
-    const sec = risEl("section", "rs-g"); sec.appendChild(risEl("h4", "", title));
+  const search = Object.assign(risEl("input", "rs-g-search"), { type: "search", placeholder: tr("risGuideSearch"), autocomplete: "off", spellcheck: false }); search.setAttribute("aria-label", tr("risGuideSearch"));
+  const tabs = risEl("div", "rs-g-tabs"); tabs.setAttribute("role", "tablist");
+  const status = risEl("p", "rs-g-status"); status.setAttribute("role", "status"); status.setAttribute("aria-live", "polite");
+  const out = risEl("div", "rs-g-out");
+  const tabEls = themes.map(([title], i) => { const b = risEl("button", "rs-g-tab", title); b.type = "button"; b.setAttribute("role", "tab"); b.onclick = () => { search.value = ""; go(i); }; tabs.appendChild(b); return b; });
+  const mark = (text, toks) => {                                            // il testo con le parole cercate evidenziate (senza innerHTML)
+    const f = document.createDocumentFragment(), n = risGuidaNorm(text), hit = new Array(text.length).fill(false);
+    toks.forEach((t) => { for (let p = n.indexOf(t); p >= 0; p = n.indexOf(t, p + 1)) for (let k = p; k < p + t.length; k++) hit[k] = true; });
+    let i = 0;
+    while (i < text.length) { let j = i; while (j < text.length && hit[j] === hit[i]) j++; const s = text.slice(i, j); f.appendChild(hit[i] ? risEl("mark", "", s) : document.createTextNode(s)); i = j; }
+    return f;
+  };
+  const section = (title, items, toks) => {
+    const sec = risEl("section", "rs-g"); if (title) sec.appendChild(risEl("h4", "", title));
     const dl = risEl("dl");
-    items.forEach(([t, x]) => { dl.appendChild(risEl("dt", "", t)); dl.appendChild(risEl("dd", "", x)); });
-    sec.appendChild(dl); body.appendChild(sec);
-  });
-  d.appendChild(body);
+    items.forEach(([t, x]) => { const w = risEl("div"), dt = risEl("dt"), dd = risEl("dd"); dt.appendChild(toks ? mark(t, toks) : document.createTextNode(t)); dd.appendChild(toks ? mark(x, toks) : document.createTextNode(x)); w.append(dt, dd); dl.appendChild(w); });
+    sec.appendChild(dl); return sec;
+  };
+  function go(i) {
+    page = i; try { localStorage.setItem("stems-ris-guida-tema", String(i)); } catch (e) {}
+    status.textContent = ""; out.replaceChildren(section("", themes[i][1]));
+    tabEls.forEach((b, k) => { b.setAttribute("aria-selected", String(k === i)); b.classList.toggle("on", k === i); });
+  }
+  function find() {
+    const toks = risGuidaNorm(search.value).split(/\s+/).filter(Boolean);
+    if (!toks.length) { go(page); return; }
+    tabEls.forEach((b) => { b.setAttribute("aria-selected", "false"); b.classList.remove("on"); });
+    out.replaceChildren(); let n = 0;
+    themes.forEach(([title, items]) => {
+      const hits = items.filter(([t, x]) => { const h = risGuidaNorm(title + " " + t + " " + x); return toks.every((k) => h.includes(k)); });      // cerca anche nel nome del tema
+      if (hits.length) { n += hits.length; out.appendChild(section(title, hits, toks)); }
+    });
+    status.textContent = n ? tr("risGuideCount", n) : tr("risGuideNone");
+  }
+  search.addEventListener("input", find);
+  search.addEventListener("keydown", (e) => { if (e.key === "Escape" && search.value) { search.value = ""; find(); e.stopPropagation(); } });
+  body.append(search, tabs, status, out); d.appendChild(body); go(page);
   d.addEventListener("toggle", () => { try { localStorage.setItem("stems-ris-guida", d.open ? "1" : "0"); } catch (e) {} });
   return d;
 }
+
+/* Strumming pattern (scheda «Ritmo» di Risorse).
+   Parte pura (modello, direzioni, tempi, note da scrivere, voicing, applicazione al real book): provata con node (ritmo.test.js).
+   Parte del browser (rtSvg: notazione ritmica a mano; rtRun: suono con i campioni di chitarra, click, swing).
+   Dati: meta.risorse.ritmi = [{ id, nome, ts, sub:8|16, battute, swing, swingPct, sezioni:["*"|"A"…],
+                                 celle:[{ t:"x"|"r"|"m"|"s"|"t", acc?:true, dir?:"d"|"u", stac?:true }] }]
+   t: x attacco · r cella vuota (non fa niente: le corde continuano a risuonare) · m attacco stoppato · s stop esplicito (smorza) · t legatura (solo grafica) · (l = r, vecchi dati).
+   Notazione = attacchi, come una notazione percussiva: ogni pulsazione per conto suo. Il suono non dipende dai valori scritti. */
+
+const RT_TS = ["2/4", "3/4", "4/4", "6/8", "12/8"];
+const RT_MAX = { pattern: 12, battute: 8 };
+
+/* ---------- metro e griglia ---------- */
+function rtMeter(ts) {
+  const m = /^(\d+)\/(\d+)$/.exec(ts || "4/4") || [0, 4, 4];
+  const num = +m[1], den = +m[2], comp = den === 8 && num >= 6 && num % 3 === 0;
+  return { num, den, comp, pulses: comp ? num / 3 : num };
+}
+const rtCpb = (p) => (rtMeter(p.ts).comp ? 3 * (p.sub / 8) : p.sub / 4);       // celle per pulsazione
+const rtPerBar = (p) => rtMeter(p.ts).pulses * rtCpb(p);
+const rtTotal = (p) => rtPerBar(p) * p.battute;
+
+/* posizione di una cella in battiti della battuta (come «at» degli accordi: 1-based, nell'unità del numeratore) */
+function rtPos(p, k) {
+  const M = rtMeter(p.ts), cpb = rtCpb(p), q = Math.floor(k / cpb), j = k % cpb;
+  return 1 + (M.comp ? q * 3 + (j * 3) / cpb : q + j / cpb);
+}
+
+/* pattern nuovo: sui 4/4 a crome il classico ↓ ↓↑ ↑↓↑, altrimenti tutte le pulsazioni e le crome */
+function rtNew(ts, sub, battute, nome) {
+  const p = { id: "p" + Date.now().toString(36) + Math.floor(Math.random() * 1e3).toString(36), nome: nome || "", ts: ts || "4/4", sub: sub || 8, battute: battute || 1, swing: false, swingPct: 67, sezioni: ["*"], celle: [] };
+  const n = rtTotal(p), cpb = rtCpb(p);
+  const classic = p.ts === "4/4" && p.sub === 8;
+  const pat = [1, 0, 1, 1, 0, 1, 1, 1];
+  for (let i = 0; i < n; i++) p.celle.push({ t: classic ? (pat[i % 8] ? "x" : "r") : (i % cpb === 0 || cpb === 2 || cpb === 3) ? "x" : "r" });
+  return p;
+}
+
+/* cambia ts / sub / battute riportando le celle al loro posto (battuta, pulsazione, suddivisione) */
+function rtRegrid(p, patch) {
+  const q = { ...p, ...patch }, oc = rtCpb(p), nc = rtCpb(q), op = rtMeter(p.ts).pulses, np = rtMeter(q.ts).pulses;
+  q.celle = [];
+  if (rtMeter(p.ts).comp !== rtMeter(q.ts).comp) { q.celle = rtNew(q.ts, q.sub, q.battute).celle; return q; }    // semplice ↔ composto: le celle non si corrispondono, si riparte dal pattern di base
+  for (let b = 0; b < q.battute; b++) {
+    const ob = b % p.battute;
+    for (let k = 0; k < np; k++) for (let j = 0; j < nc; j++) {
+      const oj = (j * oc) / nc;
+      const src = k < op && Number.isInteger(oj) ? p.celle[ob * op * oc + k * oc + oj] : null;
+      q.celle.push(src ? { ...src } : { t: "r" });                                  // cella nuova: vuota
+    }
+  }
+  return q;
+}
+
+/* ---------- direzione della plettrata ---------- */
+function rtAutoDir(p, i) {
+  const M = rtMeter(p.ts), cpb = rtCpb(p), j = i % cpb;
+  if (M.comp && cpb === 3) return j === 1 ? "u" : "d";          // 6/8, 12/8 a crome: ↓ ↑ ↓
+  return j % 2 === 0 ? "d" : "u";                                // battito ↓; crome: and ↑; semicrome: e ↑, and ↓, a ↑
+}
+const rtDir = (p, i) => (p.celle[i] && p.celle[i].dir) || rtAutoDir(p, i);
+
+/* ---------- tempi (swing sulle coppie di celle) ---------- */
+function rtTimes(p, bpm) {
+  const M = rtMeter(p.ts), cpb = rtCpb(p), pulse = 60 / bpm, c = pulse / cpb, n = M.pulses * cpb;
+  const sw = p.swing && !M.comp ? Math.min(0.75, Math.max(0.5, (p.swingPct || 67) / 100)) : 0.5;
+  const off = [];
+  for (let i = 0; i < n; i++) off.push((i >> 1) * 2 * c + (i & 1 ? 2 * c * sw : 0));
+  return { off, bar: n * c, pulse };
+}
+
+/* ---------- note da scrivere ---------- */
+/* un pezzo di n sedicesimi che comincia a o dentro una pulsazione lunga pul: valori ammessi 6 4 3 2 1 */
+function rtSplit(o, n, pul) {
+  const out = [];
+  while (n > 0) {
+    let v = 1;
+    for (const c of [6, 4, 3, 2, 1]) {
+      if (c > n) continue;
+      if (c === 6 && !(pul === 6 && o === 0)) continue;
+      if (c === 4 && !((pul === 4 && o === 0) || (pul === 6 && (o === 0 || o === 2)))) continue;
+      if (c === 3 && !(o === 0 || o + 3 === pul)) continue;
+      v = c; break;
+    }
+    out.push(v); o += v; n -= v;
+  }
+  return out;
+}
+
+/* Tipi di cella: x attacco · m attacco stoppato · r vuota (niente accade: non è una pausa che smorza né una legatura) · s stop (smorza, solo se lo chiedi)
+   · t legatura di valore (solo grafica: il sustain è sempre implicito). «l» dei vecchi pattern si legge come r. Flag di un attacco: acc, dir, stac (staccato esplicito). */
+const rtKind = (c) => (!c ? "r" : c.t === "l" ? "r" : c.t);
+const rtAtk = (c) => !!c && (c.t === "x" || c.t === "m");
+/* porta un pattern letto dai dati alla forma attuale (l → r; flag solo dove hanno senso) */
+function rtPulisci(p) {
+  (p.celle || []).forEach((c) => {
+    if (c.t === "l") c.t = "r";
+    if (!rtAtk(c)) { delete c.acc; delete c.dir; delete c.stac; delete c.psh; }
+    else if (c.t !== "x") delete c.stac;
+  });
+  return p;
+}
+/* celle del valore scritto di un attacco: fino al prossimo attacco, a uno stop o a fine pulsazione (mai oltre: niente valori allungati per il sustain) */
+function rtSpan(p, i) {
+  const cpb = rtCpb(p), end = i - (i % cpb) + cpb;
+  let j = i + 1;
+  while (j < end && !rtAtk(p.celle[j]) && rtKind(p.celle[j]) !== "s") j++;
+  return j - i;
+}
+
+/* dalle celle ai valori da scrivere (in unità di sedicesimo), una pulsazione alla volta: un attacco vale fino al prossimo attacco o a fine pulsazione, le celle vuote prima sono pause.
+   Elemento: {bar, unit (dall'inizio della battuta), v, kind:"x"|"m"|"r", stac, stop (pausa con stop esplicito), acc, dir, tie (legata alla successiva), cont (continua la precedente), cells:[prima..ultima assolute], beam} */
+function rtNotes(p) {
+  const M = rtMeter(p.ts), cpb = rtCpb(p), u = 16 / p.sub, pul = M.comp ? 6 : 4, perBar = M.pulses * cpb, out = [];
+  for (let b = 0; b < p.battute; b++) {
+    const base = b * perBar, items = [];
+    for (let q = 0; q < M.pulses; q++) {
+      const q0 = base + q * cpb;
+      let i = 0;
+      while (i < cpb) {
+        const idx = q0 + i, c = p.celle[idx], k = rtKind(c), last = items[items.length - 1];
+        let j = i + 1, mode = "r";
+        if (rtAtk(c)) { j = i + rtSpan(p, idx); mode = "n"; }
+        else if (k === "t" && last && last.kind !== "r") { mode = "c"; while (j < cpb && !rtAtk(p.celle[q0 + j]) && rtKind(p.celle[q0 + j]) !== "s") j++; }
+        else while (j < cpb && !rtAtk(p.celle[q0 + j]) && rtKind(p.celle[q0 + j]) !== "s") j++;
+        let at = (q * cpb + i) * u;
+        rtSplit(i * u, (j - i) * u, pul).forEach((v, kk) => {
+          items.push({ bar: b, unit: at, v, kind: mode === "n" ? c.t : mode === "c" ? last.kind : "r", stac: mode === "n" && !!c.stac && kk === 0, stop: mode === "r" && k === "s" && kk === 0,
+            acc: mode === "n" && !!c.acc && kk === 0, psh: mode === "n" && !!c.psh && kk === 0, dir: mode === "n" ? rtDir(p, idx) : null, cont: mode === "c" || (mode === "n" && kk > 0), tie: false,
+            cells: [base + Math.round(at / u), base + Math.round((at + v) / u) - 1] });
+          at += v;
+        });
+        i = j;
+      }
+    }
+    items.forEach((it, k) => { const nx = items[k + 1]; it.tie = it.kind !== "r" && !!nx && nx.cont && nx.kind !== "r"; });
+    // travature: note vicine nella stessa pulsazione, valore < 4, senza pause in mezzo
+    let g = null;
+    items.forEach((it) => {
+      const ok = it.kind !== "r" && it.v < 4, pl = Math.floor(it.unit / pul);
+      if (ok && g && g.pl === pl && g.last.unit + g.last.v === it.unit) { g.list.push(it); g.last = it; }
+      else { g = ok ? { pl, list: [it], last: it } : null; }
+      it.beam = g;
+    });
+    out.push(...items);
+  }
+  return out;
+}
+
+/* ---------- accordi: voicing ---------- */
+const RT_OPEN = [40, 45, 50, 55, 59, 64];              // E A D G B e (grave → acuta)
+const rtVoiceCache = new Map();
+/* Accordo (da acParseChord) → note MIDI dalla più grave: basso sulle tre corde gravi (tasto ≤ 3, altrimenti ≤ 5), poi per ogni corda la prima nota
+   dell'accordo sopra la precedente entro quattro tasti dal basso. Dà le forme aperte e di barré consuete (C x32010, G 320003, F 103211). */
+function rtVoicing(ch) {
+  if (!ch || ch.nc || !ch.pcs) return [];
+  const key = ch.raw + "|" + ch.pcs.join(",") + "|" + ch.bass;
+  if (rtVoiceCache.has(key)) return rtVoiceCache.get(key);
+  const bpc = ch.bass != null ? ch.bass : ch.root, pcs = new Set(ch.pcs);
+  let bs = -1, bf = 99;
+  for (const lim0 of [3, 5]) {                          // la corda grave più bassa dove il basso sta entro il terzo tasto, altrimenti il quinto
+    for (let s = 0; s < 3 && bs < 0; s++) {
+      const f = (((bpc - RT_OPEN[s]) % 12) + 12) % 12;
+      if (f <= lim0) { bs = s; bf = f; }
+    }
+  }
+  if (bs < 0) for (let s = 0; s < 3; s++) { const f = (((bpc - RT_OPEN[s]) % 12) + 12) % 12; if (f < bf) { bs = s; bf = f; } }
+  const notes = [RT_OPEN[bs] + bf], lim = bf + 4;
+  let prev = notes[0];
+  for (let s = bs + 1; s < 6; s++) {
+    let pick = null;
+    for (let f = 0; f <= Math.max(lim, 4); f++) {
+      const m = RT_OPEN[s] + f;
+      if (m > prev && pcs.has(((m % 12) + 12) % 12)) { pick = m; break; }
+    }
+    if (pick !== null) { notes.push(pick); prev = pick; }
+  }
+  rtVoiceCache.set(key, notes);
+  return notes;
+}
+
+/* ---------- dal real book alla sequenza ---------- */
+/* forma lineare: ritornelli ||: :|| e finali 1. 2. */
+function rtLinear(bars) {
+  const out = [];
+  let i = 0, start = 0, pass = 1, guard = 0;
+  while (i < bars.length && guard++ < 5000) {
+    const b = bars[i];
+    if (b.rs && !(i === start && pass === 2)) { start = i; pass = 1; }
+    if (b.end && b.end !== pass) { i++; continue; }
+    out.push(i);
+    if (b.re && pass === 1) { pass = 2; i = start; continue; }
+    i++;
+  }
+  return out;
+}
+
+const rtNorm = (s) => String(s || "").trim().toLowerCase();
+function rtPick(ritmi, sec) {
+  const list = ritmi || [];
+  return list.find((p) => (p.sezioni || []).some((s) => s !== "*" && rtNorm(s) === rtNorm(sec))) || list.find((p) => (p.sezioni || []).includes("*")) || null;
+}
+
+/* sequenza di battute da suonare: [{p, pb (battuta del pattern), n (numero di battuta nel chart), beats, chords:[{at,chord}], mismatch, sec}] */
+function rtSeq(bars, ritmi) {
+  const seq = [], secs = [];
+  let cur = "";
+  bars.forEach((b, i) => { if (b.section) cur = b.section; secs[i] = cur; });
+  let lastP = null, k = 0, lastChord = null;
+  rtLinear(bars).forEach((i) => {
+    const b = bars[i], p = rtPick(ritmi, secs[i]);
+    if (!p || p !== lastP || b.section) k = 0;
+    lastP = p;
+    const list = [];
+    (b.chords || []).forEach((c) => list.push({ at: c.at, chord: c }));
+    (b.ghosts || []).forEach((g) => list.push({ at: g.at, chord: g.chord }));
+    list.sort((x, y) => x.at - y.at);
+    if (!list.length || list[0].at > 1) list.unshift({ at: 1, chord: lastChord });
+    if (b.chords && b.chords.length) lastChord = b.chords[b.chords.length - 1];
+    const M = p ? rtMeter(p.ts) : null;
+    seq.push({ p, pb: p ? k % p.battute : 0, n: b.n, beats: b.beats, chords: list, sec: secs[i], mismatch: !!p && M.num !== b.beats });
+    if (p) k++;
+  });
+  return seq;
+}
+
+/* un pattern da solo (anteprima nell'editor): tutte le sue battute su un accordo (o su una successione) */
+function rtPatSeq(p, chords) {
+  const list = chords && chords.length ? chords : [null];
+  return Array.from({ length: p.battute }, (_, b) => ({ p, pb: b, n: b + 1, beats: rtMeter(p.ts).num, chords: [{ at: 1, chord: list[b % list.length] }], mismatch: false, sec: "" }));
+}
+
+/* sequenza → eventi con il tempo in secondi: {t, type, acc, dir, chord, cell, pat, n} + pulsazioni per il click */
+function rtBuild(seq, bpm) {
+  const events = [], pulses = [], pulse = 60 / bpm;
+  let T = 0;
+  seq.forEach((s, si) => {
+    const dur = s.p && !s.mismatch ? rtTimes(s.p, bpm).bar : s.beats * pulse;
+    const nP = s.p && !s.mismatch ? rtMeter(s.p.ts).pulses : s.beats;
+    for (let q = 0; q < nP; q++) pulses.push({ t: T + q * (dur / nP), strong: q === 0, n: s.n });
+    const at = (pos) => { let c = null; s.chords.forEach((x) => { if (x.at <= pos + 1e-6) c = x.chord; }); return c; };
+    if (s.p && s.mismatch) events.push({ t: T, type: "x", dir: "d", acc: false, chord: at(1), cell: null, pat: s.p.id, n: s.n });
+    else if (s.p) {
+      const tm = rtTimes(s.p, bpm), perBar = rtPerBar(s.p);
+      for (let k = 0; k < perBar; k++) {
+        const idx = s.pb * perBar + k, c = s.p.celle[idx];
+        let chord = at(rtPos(s.p, k));
+        if (c.psh && rtAtk(c)) {                                   // push: l'attacco suona già l'accordo successivo (della cella dopo, o della battuta dopo)
+          if (k + 1 < perBar) chord = at(rtPos(s.p, k + 1));
+          else { const nx = seq[si + 1], nc = nx && nx.chords && nx.chords[0] && nx.chords[0].chord; if (nc) chord = nc; }
+        }
+        const ev = { t: T + tm.off[k], type: rtKind(c), acc: !!c.acc, dir: rtDir(s.p, idx), chord, push: !!c.psh && rtAtk(c), cell: idx, pat: s.p.id, n: s.n };
+        const sp = c.stac && c.t === "x" ? rtSpan(s.p, idx) : 0;
+        if (sp) ev.cut = ((k + sp < perBar ? tm.off[k + sp] : tm.bar) - tm.off[k]) / 2;        // staccato esplicito: suona metà del valore scritto, poi silenzio fino alla nota successiva
+        events.push(ev);
+      }
+    }
+    T += dur;
+  });
+  return { events, pulses, total: T };
+}
+
+/* ---------- notazione (SVG a mano) ---------- */
+const RT_LAB = { 2: ["n", "&"], 4: ["n", "e", "&", "a"], 3: ["n", "&", "a"], 6: ["n", "", "&", "", "a", ""] };
+
+function rtSvg(p, o) {
+  o = o || {};
+  const M = rtMeter(p.ts), cpb = rtCpb(p), u = 16 / p.sub, pul = M.comp ? 6 : 4, barUnits = M.pulses * pul, perBar = M.pulses * cpb;
+  const U = 13, padL = 14, barW = padL + barUnits * U + 8, clefW = o.bare ? 0 : 24, tsW = o.bare ? 0 : 20, RH = 100;          // bare: una battuta senza chiave né tempo (la miniatura sotto gli accordi)
+  const perRow = Math.max(1, Math.min(o.perRow || 4, Math.floor(680 / barW), p.battute)), rows = Math.ceil(p.battute / perRow);
+  const W = 4 + clefW + tsW + perRow * barW + 2, H = rows * RH + 2;
+  const f1 = (x) => Math.round(x * 10) / 10;
+  const notes = rtNotes(p), s = [];
+  const line = (x1, y1, x2, y2, c, w) => s.push(`<line x1="${f1(x1)}" y1="${f1(y1)}" x2="${f1(x2)}" y2="${f1(y2)}" class="${c}"${w ? ` stroke-width="${w}"` : ""}/>`);
+  const geo = (b) => { const r = Math.floor(b / perRow), c = b % perRow; return { r, top: r * RH, x0: 4 + clefW + tsW + c * barW }; };
+  const cx = (g, unit) => g.x0 + padL + unit * U + (u * U) / 2 - (u * U) / 2;     // le note stanno sull'inizio della cella
+  for (let r = 0; r < rows; r++) {
+    const top = r * RH, mid = top + 60, nb = Math.min(perRow, p.battute - r * perRow), xEnd = 4 + clefW + tsW + nb * barW;
+    for (let l = -2; l <= 2; l++) line(4, mid + l * 6, xEnd, mid + l * 6, "rt-st");
+    if (!o.bare) s.push(`<rect x="8" y="${mid - 12}" width="3.5" height="24" class="rt-fill"/><rect x="15" y="${mid - 12}" width="3.5" height="24" class="rt-fill"/>`);
+    if (r === 0 && !o.bare) {
+      const t = M.comp ? [String(M.num), "8"] : [String(M.num), String(M.den)];
+      s.push(`<text x="${4 + clefW + 10}" y="${mid - 2}" class="rt-ts" text-anchor="middle">${t[0]}</text><text x="${4 + clefW + 10}" y="${mid + 14}" class="rt-ts" text-anchor="middle">${t[1]}</text>`);
+    }
+  }
+  for (let b = 0; b < p.battute; b++) {
+    const g = geo(b), mid = g.top + 60, xr = g.x0 + barW;
+    const last = b === p.battute - 1;
+    line(xr, mid - 12, xr, mid + 12, "rt-st", last ? 1.2 : 1);
+    if (last) line(xr - 4, mid - 12, xr - 4, mid + 12, "rt-st", 3);
+    for (let k = 0; k < perBar; k++) {
+      const x = g.x0 + padL + k * u * U, i = b * perBar + k + (o.cellBase || 0), j = k % cpb;
+      s.push(`<rect x="${f1(x - (u * U) / 2)}" y="${g.top + 2}" width="${u * U}" height="${RH - 6}" class="rt-hl" data-c="${i}"/>`);
+      const lab = RT_LAB[cpb][j];
+      if (lab !== "") s.push(`<text x="${f1(x)}" y="${g.top + 92}" class="rt-lab${j === 0 ? " rt-num" : ""}" text-anchor="middle">${j === 0 ? Math.floor(k / cpb) + 1 : lab}</text>`);
+    }
+  }
+  const arrow = (x, y, dir, c) => {
+    if (dir === "d") s.push(`<path d="M${f1(x)} ${y - 6}V${y + 6}M${f1(x - 3.2)} ${y + 2.5}L${f1(x)} ${y + 6}L${f1(x + 3.2)} ${y + 2.5}" class="${c}"/>`);
+    else s.push(`<path d="M${f1(x)} ${y - 6}V${y + 6}M${f1(x - 3.2)} ${y - 2.5}L${f1(x)} ${y - 6}L${f1(x + 3.2)} ${y - 2.5}" class="${c}"/>`);
+  };
+  const stemTop = (g) => g.top + 36;
+  notes.forEach((it, n) => {
+    const g = geo(it.bar), mid = g.top + 60, x = cx(g, it.unit);
+    if (it.kind === "r") {                                                    // pausa: il simbolo convenzionale del suo valore (semiminima, croma, semicroma; puntata se serve)
+      const y = mid, bv = it.v === 4 || it.v === 6 ? 4 : it.v === 2 || it.v === 3 ? 2 : 1;
+      if (bv === 4) s.push(`<path d="M${f1(x + 1.5)} ${y - 8}L${f1(x - 2.5)} ${y - 3}L${f1(x + 2)} ${y + 1.5}L${f1(x - 1.5)} ${y + 5}C${f1(x - 4.5)} ${y + 7.5} ${f1(x + 0.5)} ${y + 9.5} ${f1(x + 2.5)} ${y + 6.5}" class="rt-rest"/>`);
+      else {
+        const fl = bv === 2 ? 1 : 2;
+        for (let k = 0; k < fl; k++) {
+          const yy = y - 4 + k * 4.5;
+          s.push(`<circle cx="${f1(x - 2.2)}" cy="${f1(yy)}" r="1.9" class="rt-fill"/><path d="M${f1(x - 0.6)} ${f1(yy - 0.4)}C${f1(x + 1.2)} ${f1(yy)} ${f1(x + 2.6)} ${f1(yy - 1.2)} ${f1(x + 3.2)} ${f1(yy - 2.6)}" class="rt-rest"/>`);
+        }
+        s.push(`<path d="M${f1(x + 3.2)} ${y - 6.6}L${f1(x - 2)} ${y + 4.5 + (fl - 1) * 4.5}" class="rt-rest"/>`);
+      }
+      if (it.v === 3 || it.v === 6) s.push(`<circle cx="${f1(x + 8)}" cy="${y - 2}" r="1.3" class="rt-fill"/>`);
+      if (it.stop) s.push(`<rect x="${f1(x - 2.5)}" y="${y + 12}" width="5" height="5" class="rt-fill"/>`);
+      return;
+    }
+    if (it.kind === "m") { line(x - 4, mid - 4, x + 4, mid + 4, "rt-nh", 2); line(x - 4, mid + 4, x + 4, mid - 4, "rt-nh", 2); }
+    else line(x - 5, mid + 5, x + 5, mid - 5, "rt-nh", 3.4);
+    const sx = it.kind === "m" ? x + 4 : x + 5;
+    line(sx, mid - 4, sx, stemTop(g), "rt-stem");
+    if (it.v === 3 || it.v === 6) s.push(`<circle cx="${f1(x + 10)}" cy="${mid + 2}" r="1.3" class="rt-fill"/>`);
+    if (it.stac) s.push(`<circle cx="${f1(x)}" cy="${mid + 14}" r="1.9" class="rt-fill"/>`);
+    if (it.psh) s.push(`<path d="M${f1(x - 8)} ${mid - 4}L${f1(x - 13)} ${mid}L${f1(x - 8)} ${mid + 4}" class="rt-acc"/>`);          // push: «<» davanti alla nota
+    if (!it.cont) { arrow(x, g.top + 12, it.dir, "rt-arrow"); if (it.acc) s.push(`<path d="M${f1(x - 4)} ${g.top + 24}L${f1(x + 4)} ${g.top + 27}L${f1(x - 4)} ${g.top + 30}" class="rt-acc"/>`); }
+    if (it.tie && !it.stac) { const nx = notes[n + 1], x2 = cx(g, nx.unit); s.push(`<path d="M${f1(x + 1)} ${mid + 9}Q${f1((x + x2) / 2)} ${mid + 19} ${f1(x2 - 1)} ${mid + 9}" class="rt-tie"/>`); }
+  });
+  // travature
+  const done = new Set();
+  notes.forEach((it) => {
+    const gr = it.beam;
+    if (!gr || done.has(gr)) return;
+    done.add(gr);
+    const g = geo(it.bar), top = stemTop(g), xs = gr.list.map((q) => cx(g, q.unit) + (q.kind === "m" ? 4 : 5));
+    if (gr.list.length === 1) {
+      const q = gr.list[0];
+      s.push(`<path d="M${f1(xs[0])} ${top}c0 5 6 7 5 14" class="rt-flag"/>`);
+      if (q.v === 1) s.push(`<path d="M${f1(xs[0])} ${top + 4}c0 5 6 7 5 14" class="rt-flag"/>`);
+      return;
+    }
+    line(xs[0], top, xs[xs.length - 1], top, "rt-beam", 3);
+    gr.list.forEach((q, k) => {
+      if (q.v !== 1) return;
+      const nx = gr.list[k + 1], pv = gr.list[k - 1];
+      if (nx && nx.v === 1) line(xs[k], top + 5, xs[k + 1], top + 5, "rt-beam", 3);
+      else if (!(pv && pv.v === 1)) { const d = k === 0 ? 1 : -1; line(xs[k], top + 5, xs[k] + d * 6, top + 5, "rt-beam", 3); }
+    });
+  });
+  return `<svg class="rt-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" style="max-width:${W}px" role="img">${s.join("")}</svg>`;
+}
+
+/* ---------- suono (solo browser) ---------- */
+const RT_FILES = ["D2", "F2", "Gs2", "B2", "D3", "F3", "Gs3", "B3", "D4", "F4", "Gs4", "B4"];
+const RT_PC = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+let rtBase = "../suoni/", rtC = null, rtOut = null, rtNoise = null, rtRunning = null;
+const rtBuf = new Map();
+const rtFileMidi = (f) => { const m = /^([A-G])(s?)(\d)$/.exec(f); return (+m[3] + 1) * 12 + RT_PC[m[1]] + (m[2] ? 1 : 0); };
+function rtSetBase(b) { rtBase = b; }
+function rtCtx() {
+  if (!rtC) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    rtC = new AC();
+    const comp = rtC.createDynamicsCompressor(), g = rtC.createGain();
+    g.gain.value = 0.85; g.connect(comp); comp.connect(rtC.destination); rtOut = g;
+    const len = Math.floor(rtC.sampleRate * 0.05), nb = rtC.createBuffer(1, len, rtC.sampleRate), d = nb.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+    rtNoise = nb;
+  }
+  if (rtC.state === "suspended") { try { const r = rtC.resume(); if (r && r.catch) r.catch(() => {}); } catch (e) {} }
+  return rtC;
+}
+function rtLoad() {
+  const c = rtCtx();
+  return Promise.all(RT_FILES.map((f) => {
+    if (!rtBuf.has(f)) {
+      rtBuf.set(f, fetch(rtBase + "guitar/" + f + ".mp3").then((r) => { if (!r.ok) throw new Error("sample " + r.status); return r.arrayBuffer(); })
+        .then((ab) => new Promise((ok, ko) => c.decodeAudioData(ab, ok, ko))).then((b) => { rtBuf.set(f, b); return b; }).catch((e) => { rtBuf.delete(f); throw e; }));
+    }
+    return rtBuf.get(f);
+  }));
+}
+const RT_LEAD = 0.048;                     // i campioni di chitarra hanno circa 48 ms di silenzio prima dell'attacco: si saltano, o la plettrata arriva in ritardo sul click
+const RT_EARLY = 0.008;                    // la plettrata si apre sul battito: il primo tasto un filo prima, perché il picco arriva dopo
+function rtNote(midi, when, dur, vel, bus) {
+  let best = null, d = 1e9;
+  for (const f of RT_FILES) { const x = Math.abs(rtFileMidi(f) - midi); if (x < d) { d = x; best = f; } }
+  const buf = rtBuf.get(best);
+  if (!buf || typeof buf.then === "function") return;
+  const c = rtC, src = c.createBufferSource(), g = c.createGain(), end = when + dur;
+  src.buffer = buf; src.playbackRate.value = Math.pow(2, (midi - rtFileMidi(best)) / 12);
+  g.gain.setValueAtTime(0.0001, when);
+  g.gain.linearRampToValueAtTime(vel, when + 0.004);
+  g.gain.setValueAtTime(vel, end);
+  g.gain.exponentialRampToValueAtTime(0.0001, end + 0.25);
+  src.connect(g); g.connect(bus);
+  src.start(when, RT_LEAD); src.stop(end + 0.3);
+  src.onended = () => { try { g.disconnect(); } catch (e) {} };
+}
+function rtDamp(bus, when, tc) {
+  if (!bus) return;
+  try { bus.gain.setTargetAtTime(0.0001, when, tc || 0.02); } catch (e) {}
+}
+/* un colpo: ↓ tutte le corde dalla grave, 12 ms tra l'una e l'altra; ↑ le quattro acute dall'acuta, più leggera; m: smorzato + fruscio */
+function rtStrike(ev, when, state) {
+  const c = rtC;
+  if (ev.type === "s") { rtDamp(state.bus, when, 0.02); state.bus = null; return; }                // stop esplicito: l'unico modo di smorzare, oltre a un nuovo attacco
+  if (ev.type !== "x" && ev.type !== "m") return;                                              // cella vuota, legatura: non accade niente, le corde continuano a risuonare
+  when -= RT_EARLY;
+  rtDamp(state.bus, when - 0.004, 0.03);                                                       // nuovo attacco: le stesse corde, dissolvenza breve di quelle di prima
+  state.bus = null;
+  const notes = rtVoicing(ev.chord);
+  if (!notes.length) return;
+  const bus = c.createGain(); bus.gain.value = 1; bus.connect(rtOut); state.bus = bus;
+  const muted = ev.type === "m", acc = ev.acc ? 1.45 : 1, up = ev.dir === "u";
+  if (ev.cut) rtDamp(bus, when + ev.cut, 0.02);                                // colpo staccato esplicito: si spegne a metà del valore scritto
+  const set = up ? notes.slice(-Math.min(4, notes.length)).reverse() : notes, step = up ? 0.008 : 0.012, vel0 = (up ? 0.3 : 0.42) * acc * (muted ? 0.8 : 1);
+  set.forEach((m, k) => rtNote(m, when + k * step, muted ? 0.035 : 2.4, vel0 * (1 - 0.04 * k), bus));
+  if (muted) {
+    const ns = c.createBufferSource(), bp = c.createBiquadFilter(), g = c.createGain();
+    ns.buffer = rtNoise; bp.type = "bandpass"; bp.frequency.value = 1800; g.gain.value = 0.18 * acc;
+    ns.connect(bp); bp.connect(g); g.connect(bus); ns.start(when);
+  }
+}
+function rtClick(when, strong) {
+  const c = rtC, o = c.createOscillator(), g = c.createGain();
+  o.frequency.value = strong ? 1500 : 1000; o.type = "square";
+  g.gain.setValueAtTime(strong ? 0.12 : 0.07, when); g.gain.exponentialRampToValueAtTime(0.0001, when + 0.04);
+  o.connect(g); g.connect(rtOut); o.start(when); o.stop(when + 0.05);
+}
+function rtStop() {
+  const r = rtRunning;
+  if (!r) return;
+  rtRunning = null;
+  clearInterval(r.timer);
+  r.timeouts.forEach(clearTimeout);
+  if (rtC) { rtDamp(r.state.bus, rtC.currentTime); (r.extra || []).forEach((b) => rtDamp(b, rtC.currentTime)); }
+  if (r.o.onEnd) r.o.onEnd();
+}
+/* suona {events, pulses, total} (da rtBuild). o: {loop, click, onCell(ev), onEnd(), onPulse(p)}. Dopo rtLoad(). */
+function rtRun(build, o) {
+  rtStop();
+  const c = rtCtx(), state = { bus: null }, r = { state, o, timeouts: [], timer: null };
+  rtRunning = r;
+  const ev = build.events.slice().sort((a, b) => a.t - b.t), cl = build.pulses;
+  const t0 = c.currentTime + 0.12;
+  let i = 0, k = 0, cycle = 0;
+  const say = (fn, when) => r.timeouts.push(setTimeout(fn, Math.max(0, (when - c.currentTime) * 1000)));
+  const tick = () => {
+    if (rtRunning !== r) return;
+    const h = c.currentTime + 0.18;
+    for (;;) {
+      const base = t0 + cycle * build.total, e = ev[i], pk = cl[k];
+      const te = e ? base + e.t : Infinity, tp = pk && o.click ? base + pk.t : Infinity, tp2 = pk ? base + pk.t : Infinity;
+      if (o.click ? Math.min(te, tp) > h : te > h && tp2 > h) {
+        if (!e && !pk) {
+          if (o.loop) { cycle++; i = 0; k = 0; continue; }
+          if (base + build.total <= h) { say(() => rtStop(), base + build.total); clearInterval(r.timer); r.timer = null; }
+        }
+        break;
+      }
+      if (pk && tp2 <= te) {
+        if (o.click) rtClick(tp2, pk.strong);
+        if (o.onPulse) say(() => o.onPulse(pk), tp2);
+        k++;
+      } else if (e) {
+        rtStrike(e, te, state);
+        if (o.onCell) say(() => o.onCell(e), te);
+        i++;
+      } else break;
+    }
+  };
+  r.timer = setInterval(tick, 25); tick();
+}
+const rtPlaying = () => !!rtRunning;
+
+if (typeof module !== "undefined") module.exports = { rtSpan, rtKind, rtPulisci, RT_TS, RT_MAX, rtMeter, rtCpb, rtPerBar, rtTotal, rtPos, rtNew, rtRegrid, rtAutoDir, rtDir, rtTimes, rtSplit, rtNotes, rtVoicing, rtLinear, rtPick, rtSeq, rtPatSeq, rtBuild, rtSvg };
 
 /* risorse.js — scheda «Risorse» del player: accordi (real book e testo), centri tonali, diatonici, commenti, immagini e partiture.
    Dipende da accordi.js (acBuild) e dal player ($, tr, LANG, cryptoKey, decryptBytes, hubMode, SLUG, PW). Inserito da stems.py. */
@@ -3691,7 +4345,7 @@ function risUsed(model, view) {
   const u = new Map();
   const add = (c) => { const i = risInfo(c, view); if (i && !u.has(i.nome)) u.set(i.nome, i.col); };
   model.bars.forEach((b) => b.chords.forEach(add));
-  model.lyrics.forEach((l) => (l.segs || []).forEach((s) => add(s.chord)));
+  model.lyrics.forEach((l) => { (l.segs || []).forEach((s) => add(s.chord)); (l.bars || []).forEach((b) => b.chords.forEach(add)); });
   return u;
 }
 function risLegend(model, view) {
@@ -3713,7 +4367,7 @@ function risViewSwitch() {
   return sw;
 }
 
-const risHas = (r) => !!(r && ((r.files || []).length || (r.chart || "").trim() || (r.lyrics || "").trim() || (r.commenti || []).length || risTeoOn(r, risWho())));
+const risHas = (r) => !!(r && ((r.files || []).length || (r.chart || "").trim() || (r.lyrics || "").trim() || (r.commenti || []).length || (r.ritmi || []).length || risTeoOn(r, risWho())));
 function risChordFill(el, label) {            // nome dell'accordo con Δ e apici (acDisplay)
   const d = acDisplay(label); el.textContent = d.base;
   if (d.sup) el.appendChild(risEl("sup", "cs", d.sup));
@@ -3978,7 +4632,7 @@ function risTeoView(root, src, who) {
 }
 
 function risInit(r) {
-  RIS = { files: [], tonalita: "", chart: "", lyrics: "", commenti: [], scale: [], teoria_studenti: {}, ...(r || {}) };
+  RIS = { files: [], tonalita: "", chart: "", lyrics: "", commenti: [], scale: [], teoria_studenti: {}, ritmi: [], ...(r || {}) };
   risUpdateTab();
   risRender();
   risTeoLoad();
@@ -4008,8 +4662,8 @@ function risTies(wrap, ties, chordEl) {
   wrap.appendChild(svg);
 }
 
-function risBars(model, view, tip) {
-  const wrap = risEl("div", "rb");
+function risBars(model, view, tip, compact, minis) {
+  const wrap = risEl("div", "rb" + (compact ? " rb-sm" : ""));
   if (!model.bars.length) return wrap;
   const sig = model.bars[0].ts || "4/4";
   const chordEl = new Map(), ties = [];
@@ -4021,6 +4675,7 @@ function risBars(model, view, tip) {
     if (b.rs) bar.classList.add("rs"); if (b.re) bar.classList.add("re"); if (b.fin) bar.classList.add("fin");
     if (b.end) bar.classList.add("end" + b.end);
     bar.dataset.n = b.n;
+    if (compact) bar.style.setProperty("--bw", Math.min(12, Math.max(b.explicit ? b.beats : b.chords.length, 1)));   // compatto: una colonna per battito, tutti i battiti larghi uguale
     bar.appendChild(risEl("i", "rb-n", b.n));
     if (idx === 0 || b.ts) bar.appendChild(risEl("span", "rb-ts", b.ts || sig));
     if (b.mod) bar.appendChild(risEl("span", "rb-mod", b.mod));
@@ -4049,6 +4704,11 @@ function risBars(model, view, tip) {
       cs.appendChild(sl);
     }
     bar.appendChild(cs);
+    const mi = minis && minis.get(b.n);                                             // strumming della battuta, in piccolo sotto gli accordi
+    if (mi) {
+      const per = rtPerBar(mi.p), q = { ...mi.p, battute: 1, celle: mi.p.celle.slice(mi.pb * per, (mi.pb + 1) * per) };
+      const r = risEl("div", "rb-rt"); r.innerHTML = rtSvg(q, { bare: true, perRow: 1, cellBase: mi.pb * per }); r.title = mi.p.nome || ""; bar.appendChild(r);
+    }
     if (b.note) bar.appendChild(risEl("span", "rb-note", b.note));
     wrap.appendChild(bar);
   });
@@ -4063,6 +4723,7 @@ function risLyrics(model, view, tip) {
   model.lyrics.forEach((l) => {
     if (l.gap) { if (!lastGap) wrap.appendChild(risEl("div", "rl-gap")); lastGap = true; return; }
     lastGap = false;
+    if (l.real) { wrap.appendChild(risBars({ bars: l.bars }, view, tip, true)); return; }           // {real}…{/real}: una porzione di real book in linea col testo
     if (l.section) { wrap.appendChild(risEl("div", "rl-sec", l.section)); return; }
     const blank = (x) => !(x.text || "").trim();
     const onlyChords = l.segs.some((x) => x.chord) && l.segs.every((x) => x.mod || blank(x));      // riga di soli accordi (nessuna parola): niente riga di testo sotto
@@ -4159,7 +4820,7 @@ function risFiles(files) {
 }
 
 /* ---------- la scheda: tre sotto-schede (Real book · Testo e accordi · Note e file) ---------- */
-const RIS_SUBS = ["book", "lyrics", "teoria", "notes"];
+const RIS_SUBS = ["book", "ritmo", "lyrics", "teoria", "notes"];
 function risSub() { try { return sessionStorage.getItem("stems-ris-sub") || ""; } catch (e) { return ""; } }
 function risSetSub(s) { try { sessionStorage.setItem("stems-ris-sub", s); } catch (e) {} risRender(); window.scrollTo(0, 0); }
 function risSection(titleKey, node) {
@@ -4176,16 +4837,41 @@ function risErrs(model) {
   model.errors.slice(0, 5).forEach((x) => e.appendChild(risEl("li", "", tr("risLine", x.line || "-") + x.msg)));
   return e;
 }
-const risHasLy = (m) => m.lyrics.some((l) => l.segs && l.segs.some((s) => s.chord));
+const risHasLy = (m) => m.lyrics.some((l) => l.real || (l.segs && l.segs.some((s) => s.chord)));
+
+/* ---------- trasposizione: la stessa dell'audio ----------
+   Gli accordi si leggono nella tonalità in cui suona la traccia (Intonazione di Home, in semitoni). I pulsanti qui cambiano l'intonazione dell'audio. */
+let risShLast = 0;
+const risShift = () => { try { return stOf(pitchCents); } catch (e) { return 0; } };
+function risShiftBar(src) {
+  const st = risShift(), bar = risEl("div", "rs-shift" + (st ? " on" : ""));
+  const dn = risEl("button", "tbtn", "−"), up = risEl("button", "tbtn", "+"), rs = risEl("button", "tbtn", tr("zero")), val = risEl("output", "rs-sh-v");
+  dn.type = up.type = rs.type = "button"; dn.setAttribute("aria-label", tr("stDown")); up.setAttribute("aria-label", tr("stUp"));
+  dn.disabled = pitchCents <= -1200; up.disabled = pitchCents >= 1200; rs.disabled = !st;
+  dn.onclick = () => setPitch(pitchCents - 100); up.onclick = () => setPitch(pitchCents + 100); rs.onclick = () => setPitch(pitchCents - st * 100);
+  const k = acParseKey(src.tonalita), k2 = k && st ? acParseKey(acTransposeKey(src.tonalita, st)) : null;
+  val.textContent = (st > 0 ? "+" : "") + st + " st" + (k ? " · " + (LANG === "it" ? (k2 || k).name : (k2 || k).nameEn) : "") + (k2 ? "  (" + (LANG === "it" ? k.name : k.nameEn) + ")" : "");
+  bar.append(risEl("span", "rs-sh-l", tr("risShift")), dn, val, up, rs, risEl("span", "rs-sh-h", tr("risShiftHint")));
+  return bar;
+}
+function risOnPitch() {                                  // l'intonazione è cambiata (da qui o da Home): se i semitoni sono cambiati, si ridisegnano gli accordi
+  const st = risShift(); if (st === risShLast) return;
+  risShLast = st;
+  if (!$("risView")) return;
+  const y = window.scrollY; risRender(); window.scrollTo(0, y);
+}
 
 function risRender() {
   const root = $("risView"), tabs = $("risTabs");
   if (!root || !tabs) return;
   root.textContent = ""; tabs.textContent = "";
   const src = risEdit || RIS;
-  const mb = acBuild({ tonalita: src.tonalita, chart: src.chart, spiegazioni: src.spiegazioni }), ml = acBuild({ tonalita: src.tonalita, lyrics: src.lyrics, spiegazioni: src.spiegazioni });
+  const sh = risShift(); risShLast = sh;                                       // trasposizione = quella dell'audio (Intonazione, in semitoni)
+  const mb = acBuild({ tonalita: src.tonalita, chart: src.chart, spiegazioni: src.spiegazioni, trasponi: sh }), ml = acBuild({ tonalita: src.tonalita, lyrics: src.lyrics, spiegazioni: src.spiegazioni, trasponi: sh });
   const asHub = hubMode && !risPreview, who = risWho();
-  const av = asHub ? RIS_SUBS : RIS_SUBS.filter((s) => (s === "book" ? mb.bars.length : s === "lyrics" ? risHasLy(ml) : s === "teoria" ? risTeoOn(src, who) : (src.commenti || []).length || (RIS.files || []).length));
+  const av = asHub ? RIS_SUBS : RIS_SUBS.filter((s) => (s === "book" ? mb.bars.length : s === "ritmo" ? (src.ritmi || []).length : s === "lyrics" ? risHasLy(ml) : s === "teoria" ? risTeoOn(src, who) : (src.commenti || []).length || (RIS.files || []).length));
+  const mergeRt = !asHub && av.includes("book") && av.includes("ritmo");                  // chi studia vede Real book e strumming nella stessa scheda
+  if (mergeRt) av.splice(av.indexOf("ritmo"), 1);
   document.querySelectorAll("#risEditor [data-sub]").forEach((e) => { e.hidden = true; });
   const edBox = $("risEditor"); if (edBox && edBox.dataset.built) edBox.hidden = risPreview;
   if (risPreview) {
@@ -4208,16 +4894,35 @@ function risRender() {
   if (cur === "book") {
     const acc = risEl("section", "panel rs-panel"); acc.appendChild(risEl("h3", "", tr("risSub_book")));
     const view = risView(), tip = risEl("p", "rs-tip"); tip.hidden = true; tip.setAttribute("aria-live", "polite");
+    acc.appendChild(risShiftBar(src));
     const swb = risViewSwitch(); if (swb) acc.appendChild(swb);
+    const hasRt = mb.bars.length && (src.ritmi || []).length, minis = hasRt ? risRtMinis(mb, src) : null;
+    let cards = null;
+    if (hasRt) {                                                                       // interruttore: lo strumming si può nascondere
+      let on = true; try { on = localStorage.getItem("stems-ris-strum") !== "0"; } catch (e) {}
+      const sb = risEl("button", "tbtn rs-strum-sw", tr("rtShowStrum")); sb.type = "button";
+      const apply = () => { sb.setAttribute("aria-pressed", String(on)); acc.classList.toggle("rs-nostrum", !on); if (cards) cards.hidden = !on; if (!on) rtStop(); };
+      sb.onclick = () => { on = !on; try { localStorage.setItem("stems-ris-strum", on ? "1" : "0"); } catch (e) {} apply(); };
+      acc.appendChild(sb);
+      if (mergeRt) { cards = risEl("div", "rs-strum-all"); risRtView(cards, src); }
+      acc.rsApply = apply;
+    }
     if (mb.strip.some((s) => s.key >= 0)) acc.appendChild(risStrip(mb));
-    if (mb.bars.length) { acc.appendChild(risBars(mb, view, tip)); acc.appendChild(tip); acc.appendChild(risLegend(mb, view)); }
+    if (hasRt) acc.appendChild(risRtBook(mb, src));        // suona il giro con lo strumming
+    if (mb.bars.length) { acc.appendChild(risBars(mb, view, tip, false, minis)); acc.appendChild(tip); acc.appendChild(risLegend(mb, view)); }
     else acc.appendChild(risEl("p", "vuoto", tr("risEmptyBook")));
     const e = risErrs(mb); if (e) acc.appendChild(e);
     root.appendChild(acc);
+    if (cards) root.appendChild(cards);                                               // i pattern da soli, sotto il real book
+    if (acc.rsApply) acc.rsApply();
     if (mb.bars.length && mb.diatonic.length) root.appendChild(risSection("risDia", risDiatonic(mb)));
+  } else if (cur === "ritmo") {
+    risRtView(root, src);
+    if (!root.children.length) root.appendChild(risEl("p", "vuoto", tr("rtNone")));
   } else if (cur === "lyrics") {
     const acc = risEl("section", "panel rs-panel"); acc.appendChild(risEl("h3", "", tr("risSub_lyrics")));
     const view = risView(), tip = risEl("p", "rs-tip"); tip.hidden = true; tip.setAttribute("aria-live", "polite");
+    acc.appendChild(risShiftBar(src));
     const swl = risViewSwitch(); if (swl) acc.appendChild(swl);
     if (risHasLy(ml)) { acc.appendChild(risLyrics(ml, view, tip)); acc.appendChild(tip); acc.appendChild(risLegend(ml, view)); }
     else acc.appendChild(risEl("p", "vuoto", tr("risEmptyLy")));
@@ -4234,6 +4939,216 @@ function risRender() {
   }
 }
 
+/* ---------- strumming (ritmo.js): vista, suono, editor ---------- */
+let risRtBpm = 0, risRtClick = true, risRtOwner = null, risRtLoaded = null;
+const risRtPerRow = () => (window.innerWidth < 600 ? 1 : 4);                // telefono: una battuta per riga, così il contatore resta leggibile
+function risRtTempo() { if (risRtBpm) return risRtBpm; let b = 0; try { b = Math.round(song().bpm); } catch (e) {} return b >= 40 && b <= 220 ? b : 100; }
+/* il primo accordo vero del real book: su quello suona il pattern da solo */
+function risRtChord(src) {
+  const m = acBuild({ tonalita: src.tonalita, chart: src.chart, spiegazioni: src.spiegazioni });
+  for (const b of m.bars) for (const c of b.chords) if (c.pcs && !c.nc) return c;
+  return { ...acParseChord("Am"), raw: "Am" };
+}
+function risRtLight(box, idx) {
+  box.querySelectorAll(".on").forEach((e) => e.classList.remove("on"));
+  if (idx !== null && idx !== undefined) box.querySelectorAll('[data-c="' + idx + '"]').forEach((e) => e.classList.add("on"));
+}
+/* i campioni stanno in <sito>/suoni: dalla pagina del brano pubblicata ../suoni/, nell'Hub (la pagina sta in /brani/<slug>/) /suoni/.
+   Si prova un solo campione per scegliere la cartella, poi si caricano tutti: così un tentativo fallito non lascia richieste in cache. */
+function risRtLoad() {
+  if (!risRtLoaded) {
+    risRtLoaded = ["../suoni/", "/suoni/"].reduce((pr, b) => pr.catch(() => fetch(b + "guitar/D3.mp3").then((r) => { if (!r.ok) throw new Error("suoni " + r.status); rtSetBase(b); })), Promise.reject())
+      .then(() => rtLoad()).catch((e) => { risRtLoaded = null; throw e; });
+  }
+  return risRtLoaded;
+}
+/* tasto ▶/■, tempo e click. getBuild() dà {events,pulses,total}; o: {loop, onCell, onDone} */
+function risRtControls(getBuild, o) {
+  const owner = { btn: Object.assign(risEl("button", "tbtn primary", tr("rtPlay")), { type: "button" }), label: tr("rtPlay"), err: risEl("p", "rs-out") };
+  owner.btn.setAttribute("aria-pressed", "false"); owner.err.setAttribute("role", "status");
+  const go = () => {
+    if (risRtOwner === owner && rtPlaying()) { rtStop(); return; }
+    rtCtx();                                                       // dentro il gesto dell'utente (iOS)
+    owner.err.textContent = ""; owner.btn.disabled = true;
+    risRtLoad().then(() => {
+      owner.btn.disabled = false; risRtOwner = owner;
+      owner.btn.textContent = tr("rtStop"); owner.btn.setAttribute("aria-pressed", "true");
+      rtRun(getBuild(), { loop: !!o.loop, click: risRtClick, onCell: o.onCell,
+        onEnd: () => { if (risRtOwner === owner) risRtOwner = null; owner.btn.textContent = owner.label; owner.btn.setAttribute("aria-pressed", "false"); if (o.onDone) o.onDone(); } });
+    }).catch(() => { owner.btn.disabled = false; owner.err.textContent = tr("rtNoSound"); });
+  };
+  const again = () => { if (risRtOwner === owner && rtPlaying()) { rtStop(); go(); } };
+  owner.btn.onclick = go;
+  const row = risEl("div", "rs-row rt-ctl");
+  const tempo = Object.assign(risEl("input"), { type: "range", min: 40, max: 220, step: 1, value: risRtTempo() }), tv = risEl("span", "rt-bpm", risRtTempo() + " BPM");
+  tempo.setAttribute("aria-label", tr("rtTempo"));
+  tempo.oninput = () => { risRtBpm = +tempo.value; tv.textContent = risRtBpm + " BPM"; again(); };
+  const cl = risEl("label", "rs-chk"), ck = Object.assign(risEl("input"), { type: "checkbox", checked: risRtClick });
+  ck.onchange = () => { risRtClick = ck.checked; again(); };
+  cl.append(ck, risEl("span", "", tr("rtClick")));
+  row.append(owner.btn, tempo, tv, cl);
+  return { row, owner };
+}
+function risRtMeta(p) {
+  const bits = [p.ts, p.sub === 16 ? tr("rt16") : tr("rt8"), tr("rtBarsL") + " " + p.battute];
+  if (p.swing && !/\/8$/.test(p.ts)) bits.push(tr("rtSwingL") + " " + (p.swingPct || 67) + "%");
+  const s = p.sezioni || [];
+  bits.push(s.length ? tr("rtApplied", s.map((x) => (x === "*" ? tr("rtWhole") : x)).join(", ")) : tr("rtNoApplied"));
+  return bits.join(" · ");
+}
+/* notazione + suono di un pattern da solo */
+function risRtCard(p, src) {
+  const card = risEl("div", "rt-card"), box = risEl("div", "rt-box");
+  box.innerHTML = rtSvg(p, { perRow: risRtPerRow() });
+  const c = risRtControls(() => rtBuild(rtPatSeq(p, [risRtChord(src)]), risRtTempo()), { loop: true, onCell: (e) => risRtLight(box, e.cell), onDone: () => risRtLight(box, null) });
+  card.append(box, c.row, c.owner.err);
+  card.rtBox = box;
+  return card;
+}
+function risRtView(root, src) {
+  (src.ritmi || []).forEach((p) => {
+    const sec = risEl("section", "panel rs-panel");
+    sec.appendChild(risEl("h3", "", p.nome || tr("rtUntitled")));
+    sec.appendChild(risEl("p", "rs-hint", risRtMeta(p)));
+    sec.appendChild(risRtCard(p, src));
+    root.appendChild(sec);
+  });
+}
+/* il pattern di ogni battuta del real book (la prima volta che suona): n → {p, pb} */
+function risRtMinis(mb, src) {
+  const m = new Map();
+  rtSeq(mb.bars, src.ritmi).forEach((s) => { if (s.p && !s.mismatch && !m.has(s.n)) m.set(s.n, s); });
+  return m;
+}
+/* sul real book: suona il giro di accordi con i pattern assegnati alle sezioni */
+function risRtBook(mb, src) {
+  const seq = rtSeq(mb.bars, src.ritmi), wrap = risEl("div", "rt-book");
+  const bad = seq.filter((s) => s.mismatch).map((s) => s.n);
+  const els = () => document.querySelectorAll("#risView .rb-bar");
+  const now = (n) => { els().forEach((e) => e.classList.remove("rb-now")); const e = n ? els()[n - 1] : null; if (e) { e.classList.add("rb-now"); e.scrollIntoView({ block: "nearest", behavior: "smooth" }); } };
+  let last = 0;
+  const lit = (e) => {                                                          // la cella che suona si accende nella miniatura della sua battuta
+    document.querySelectorAll("#risView .rb-rt .on").forEach((x) => x.classList.remove("on"));
+    const b = e && e.cell !== null && e.cell !== undefined ? els()[e.n - 1] : null;
+    if (b) b.querySelectorAll('.rb-rt [data-c="' + e.cell + '"]').forEach((x) => x.classList.add("on"));
+  };
+  const c = risRtControls(() => rtBuild(seq, risRtTempo()), { loop: false, onCell: (e) => { lit(e); if (e.n !== last) { last = e.n; now(e.n); } }, onDone: () => { last = 0; now(0); lit(null); } });
+  c.owner.btn.textContent = c.owner.label = tr("rtBookPlay");
+  wrap.append(c.row, c.owner.err);
+  if (bad.length) wrap.appendChild(risEl("p", "rs-hint", tr("rtMismatch", bad.join(", "))));
+  return wrap;
+}
+
+function risRtEditor(parent, RT, sync, getSrc) {
+  let ri = 0, tool = "x";
+  const host = risEl("div", "rt-ed");
+  parent.appendChild(host);
+  const change = () => { rtStop(); RT.forEach(rtPulisci); sync(); };                // i dati vecchi (l) si portano alla forma attuale a ogni salvataggio
+  const secsOf = () => [...new Set(String(getSrc().chart || "").split(/\r?\n/).map((l) => /^\[(.+)\]$/.exec(l.trim())).filter(Boolean).map((m) => m[1].replace(/^\$\s*/, "").trim()).filter(Boolean))];
+  const sel = (opts, val, set) => { const s = risEl("select"); opts.forEach(([v, l]) => s.appendChild(Object.assign(risEl("option", "", l), { value: String(v) }))); s.value = String(val); s.onchange = () => set(s.value); return s; };
+  const lab = (text, el) => { const l = risEl("label", "rs-f"); l.append(risEl("span", "", text), el); return l; };
+  const build = () => {
+    rtStop(); host.textContent = "";
+    host.appendChild(risEl("h4", "", tr("rtEdit")));
+    const hp = risEl("div", "rs-help"); hp.innerHTML = tr("rtHelp"); host.appendChild(hp);
+    const names = risEl("div", "rs-row");
+    RT.forEach((q, i) => { const b = risEl("button", "tbtn", q.nome || tr("rtUntitled")); b.type = "button"; b.setAttribute("aria-pressed", String(i === ri)); b.onclick = () => { ri = i; build(); }; names.appendChild(b); });
+    if (RT.length < RT_MAX.pattern) {
+      const add = risEl("button", "tbtn", "+ " + tr("rtAdd")); add.type = "button";
+      add.onclick = () => { RT.push(rtNew("4/4", 8, 1, tr("rtUntitled") + " " + (RT.length + 1))); ri = RT.length - 1; change(); build(); };
+      names.appendChild(add);
+    }
+    host.appendChild(names);
+    const p = RT[ri];
+    if (!p) { host.appendChild(risEl("p", "vuoto", tr("rtNone"))); return; }
+    const nameIn = Object.assign(risEl("input"), { type: "text", value: p.nome || "", maxLength: 40 });
+    nameIn.oninput = () => { p.nome = nameIn.value; if (names.children[ri]) names.children[ri].textContent = p.nome || tr("rtUntitled"); change(); };
+    const dup = risEl("button", "tbtn", tr("rtDup")); dup.type = "button";
+    dup.onclick = () => { if (RT.length >= RT_MAX.pattern) return; const c = JSON.parse(JSON.stringify(p)); c.id = rtNew().id; c.nome = (p.nome || tr("rtUntitled")) + " 2"; RT.splice(ri + 1, 0, c); ri++; change(); build(); };
+    const del = risEl("button", "tbtn", tr("rtDel")); del.type = "button";
+    del.onclick = () => { if (!confirm(tr("rtConfirmDel", p.nome || tr("rtUntitled")))) return; RT.splice(ri, 1); ri = Math.max(0, ri - 1); change(); build(); };
+    const r1 = risEl("div", "rs-row"); r1.append(lab(tr("rtName"), nameIn), dup, del); host.appendChild(r1);
+    const re = (patch) => { RT[ri] = rtRegrid(p, patch); change(); build(); };
+    const comp = rtMeter(p.ts).comp;
+    const r2 = risEl("div", "rs-row");
+    r2.append(
+      lab(tr("rtMeterL"), sel(RT_TS.map((t) => [t, t]), p.ts, (v) => re({ ts: v }))),
+      lab(tr("rtGridL"), sel([[8, tr("rt8")], [16, tr("rt16")]], p.sub, (v) => {
+        const cpb = rtCpb(p);
+        if (+v === 8 && p.celle.some((c, i) => (i % cpb) % 2 === 1 && rtKind(c) !== "r") && !confirm(tr("rtLossy"))) { build(); return; }
+        re({ sub: +v });
+      })),
+      lab(tr("rtBarsL"), sel(Array.from({ length: RT_MAX.battute }, (_, i) => [i + 1, i + 1]), p.battute, (v) => re({ battute: +v }))));
+    host.appendChild(r2);
+    const sw = risEl("div", "rs-row"), swc = risEl("label", "rs-chk"), swi = Object.assign(risEl("input"), { type: "checkbox", checked: !!p.swing && !comp, disabled: comp });
+    const pct = Object.assign(risEl("input"), { type: "range", min: 50, max: 75, step: 1, value: p.swingPct || 67, disabled: comp || !p.swing }), pv = risEl("span", "rt-bpm", (p.swingPct || 67) + "%");
+    pct.setAttribute("aria-label", tr("rtSwingPct"));
+    swi.onchange = () => { p.swing = swi.checked; pct.disabled = !swi.checked; refresh(); change(); };
+    pct.oninput = () => { p.swingPct = +pct.value; pv.textContent = pct.value + "%"; change(); };
+    swc.append(swi, risEl("span", "", tr("rtSwingL")));
+    sw.append(swc, pct, pv); host.appendChild(sw);
+    host.appendChild(risEl("h4", "", tr("rtApplyL")));
+    const ap = risEl("div", "rs-row");
+    const chk = (label, val) => {
+      const l = risEl("label", "rs-chk"), c = Object.assign(risEl("input"), { type: "checkbox", checked: (p.sezioni || []).includes(val) });
+      c.onchange = () => { const s = new Set(p.sezioni || []); if (c.checked) s.add(val); else s.delete(val); p.sezioni = [...s].slice(0, 24); change(); };
+      l.append(c, risEl("span", "", label)); ap.appendChild(l);
+    };
+    chk(tr("rtWhole"), "*"); secsOf().forEach((s) => chk(s, s));
+    host.appendChild(ap);
+    // strumenti e griglia
+    const tools = risEl("div", "rt-tools"); tools.setAttribute("role", "toolbar"); tools.setAttribute("aria-label", tr("rtToolsL"));
+    const tb = {}, more = risEl("details", "rt-more"), mtx = risEl("div", "rt-tools");
+    more.appendChild(risEl("summary", "tbtn", tr("rtMore")));
+    ["x", "m", "stac", "s", "t", "acc", "psh", "d", "u", "auto"].forEach((t) => {                    // un solo strumento di base (colpo: tocca per accendere o spegnere); il resto sono articolazioni
+      const b = risEl("button", "tbtn", tr("rtT_" + t)); b.type = "button"; b.setAttribute("aria-pressed", String(t === tool));
+      b.onclick = () => { tool = t; Object.keys(tb).forEach((k) => tb[k].setAttribute("aria-pressed", String(k === t))); };
+      tb[t] = b; (t === "x" ? tools : mtx).appendChild(b);
+    });
+    more.appendChild(mtx); tools.appendChild(more);
+    host.appendChild(tools);
+    const grid = risEl("div", "rt-grid"), cells = [];
+    const M = rtMeter(p.ts), cpb = rtCpb(p), perBar = M.pulses * cpb, L = RT_LAB[cpb];
+    const sym = (i) => { const c = p.celle[i], k = rtKind(c); return k === "r" ? "·" : k === "s" ? "■" : k === "t" ? "‿" : k === "m" ? "✕" : rtDir(p, i) === "d" ? "↓" : "↑"; };
+    const paint = (i) => { const c = p.celle[i], b = cells[i], k = rtKind(c); b.textContent = sym(i); b.className = "rt-cell " + k + (c.acc ? " acc" : "") + (c.psh ? " psh" : "") + (c.dir ? " man" : "") + (c.stac ? " stac" : ""); b.title = tr("rtT_" + k) + (c.acc ? " · " + tr("rtT_acc") : "") + (c.stac ? " · " + tr("rtT_stac") : "") + (c.psh ? " · " + tr("rtT_psh") : ""); };
+    const box = risEl("div", "rt-box");
+    const refresh = () => { box.innerHTML = rtSvg(p, { perRow: risRtPerRow() }); };
+    refresh();
+    const press = (i) => {
+      const c = p.celle[i];
+      const atk = rtAtk(c);
+      if (tool === "x" || tool === "m") c.t = c.t === tool ? "r" : tool;                         // colpo: tocca per accendere, ritocca per spegnere (la cella vuota non fa niente)
+      else if (tool === "s" || tool === "t") { if (!atk) c.t = c.t === tool ? "r" : tool; }       // stop e legatura stanno su una cella vuota
+      else if (tool === "acc") { if (atk) { if (c.acc) delete c.acc; else c.acc = true; } }
+      else if (tool === "psh") { if (atk) { if (c.psh) delete c.psh; else c.psh = true; } }
+      else if (tool === "stac") { if (c.t === "x") { if (c.stac) delete c.stac; else c.stac = true; } }
+      else if (tool === "d" || tool === "u") { if (atk) c.dir = tool; }
+      else if (tool === "auto") delete c.dir;
+      rtPulisci({ celle: [c] });
+      paint(i); refresh(); change();
+    };
+    for (let b = 0; b < p.battute; b++) {
+      const bar = risEl("div", "rt-bar"); bar.appendChild(risEl("span", "rt-bn", String(b + 1)));
+      for (let q = 0; q < M.pulses; q++) {
+        const pu = risEl("div", "rt-pulse");
+        for (let j = 0; j < cpb; j++) {
+          const i = b * perBar + q * cpb + j, w = risEl("div", "rt-cellw"), bt = risEl("button"); bt.type = "button"; bt.dataset.c = i;
+          cells[i] = bt; bt.onclick = () => press(i); paint(i);
+          w.append(bt, risEl("span", "rt-cl", L[j] === "n" ? String(q + 1) : L[j]));
+          pu.appendChild(w);
+        }
+        bar.appendChild(pu);
+      }
+      grid.appendChild(bar);
+    }
+    host.appendChild(grid);
+    // anteprima con suono (si aggiorna da sola a ogni modifica)
+    const ctl = risRtControls(() => rtBuild(rtPatSeq(p, [risRtChord(getSrc())]), risRtTempo()), { loop: true, onCell: (e) => { risRtLight(box, e.cell); risRtLight(grid, e.cell); }, onDone: () => { risRtLight(box, null); risRtLight(grid, null); } });
+    host.append(box, ctl.row, ctl.owner.err);
+  };
+  build();
+}
+
 /* ---------- editor, solo nell'Hub (https di tailscale serve, o http sulla tailnet) ---------- */
 const risLines = (arr) => (arr || []).map((c) => (c.rif ? c.rif + " | " : "") + c.testo).join("\n");
 const risParseLines = (t) => String(t || "").split(/\r?\n/).map((x) => x.trim()).filter(Boolean).map((x) => {
@@ -4247,9 +5162,9 @@ function risEnableEditor() {
   const vchk = [];
   const viste = () => (vchk[0] && vchk[0].checked ? ["fn", "prestiti"] : ["fn"]);
   const SP = JSON.parse(JSON.stringify(RIS.spiegazioni || {}));
-  const SC = JSON.parse(JSON.stringify(RIS.scale || [])), TS = JSON.parse(JSON.stringify(RIS.teoria_studenti || {}));
+  const SC = JSON.parse(JSON.stringify(RIS.scale || [])), TS = JSON.parse(JSON.stringify(RIS.teoria_studenti || {})), RT = JSON.parse(JSON.stringify(RIS.ritmi || []));
   const lists = [];
-  const cur = () => ({ ...RIS, tonalita: keys[0].value, chart: F.chart.value, lyrics: F.ly.value, commenti: risParseLines(F.cm.value), viste: viste(), spiegazioni: SP, scale: SC, teoria_studenti: TS });
+  const cur = () => ({ ...RIS, tonalita: keys[0].value, chart: F.chart.value, lyrics: F.ly.value, commenti: risParseLines(F.cm.value), viste: viste(), spiegazioni: SP, scale: SC, teoria_studenti: TS, ritmi: RT });
   const light = () => { risEdit = cur(); risRender(); };                         // dalla lista: non la ricostruisco (perderebbe il fuoco)
   const buildLists = () => {
     const src = cur();
@@ -4285,7 +5200,7 @@ function risEnableEditor() {
     c.addEventListener("change", () => { vchk.forEach((o) => { o.checked = c.checked; }); sync(); });
     l.append(c, risEl("span", "", tr("risViewsPrest"))); parent.appendChild(l);
   };
-  const dBook = sub("book"), dLy = sub("lyrics"), dNotes = sub("notes");
+  const dBook = sub("book"), dRt = sub("ritmo"), dLy = sub("lyrics"), dNotes = sub("notes");
   mkKey(dBook);
   F.chart = mk(dBook, tr("risChart"), Object.assign(risEl("textarea"), { rows: 8, placeholder: "4/4 ||: Fmaj7 | C7 | Dm7 | Bb :||", spellcheck: false }));
   help(dBook, "risHelpBook");
@@ -4388,6 +5303,7 @@ function risEnableEditor() {
     ta.setSelectionRange(a, a + res.length);
   }));
   F.chart.value = RIS.chart || ""; F.ly.value = RIS.lyrics || ""; F.cm.value = risLines(RIS.commenti);
+  risRtEditor(dRt, RT, sync, cur);
   const out = risEl("p", "rs-out"); out.setAttribute("role", "status");
   const row = risEl("div", "rs-row");
   const save = risEl("button", "tbtn primary", tr("risSave")); save.type = "button";
@@ -4404,7 +5320,7 @@ function risEnableEditor() {
   };
   save.onclick = async () => {
     save.disabled = true; out.textContent = tr("saving");
-    const body = { slug: SLUG, password: PW, risorse: { tonalita: keys[0].value.trim(), chart: F.chart.value, lyrics: F.ly.value, commenti: risParseLines(F.cm.value), viste: viste(), spiegazioni: SP, scale: SC, teoria_studenti: TS } };
+    const body = { slug: SLUG, password: PW, risorse: { tonalita: keys[0].value.trim(), chart: F.chart.value, lyrics: F.ly.value, commenti: risParseLines(F.cm.value), viste: viste(), spiegazioni: SP, scale: SC, teoria_studenti: TS, ritmi: RT } };
     try {
       const j = await post("/api/brani/risorse", { method: "POST", headers: { "Content-Type": "application/json", "X-Hub": "1" }, body: JSON.stringify(body) });
       RIS = { ...RIS, ...body.risorse }; risEdit = null; out.textContent = tr(j.pubblicato === false ? "savedLocal" : "saved"); risRender();

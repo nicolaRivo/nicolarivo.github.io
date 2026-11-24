@@ -81,6 +81,9 @@ main.wide { max-width: 860px; }
 @media (hover: hover) and (pointer: fine) { .ccard:hover { border-color: var(--accent); } }
 .cprev { display: grid; place-items: center; min-height: 92px; padding: 8px 10px; border-radius: 10px; background: #f6f1e6; color: #23211c; overflow: hidden; }
 .cprev svg { display: block; height: 80px; width: auto; max-width: 100%; fill: currentColor; }
+.cprev.scl { align-content: center; text-align: center; gap: 4px; }
+.cprev.scl span { font: italic 600 1.05rem/1.25 var(--display, serif); }
+.cprev.scl small { font: 500 0.72rem var(--mono, monospace); color: #6c675b; }
 .cprev.gtr svg { height: 96px; color: #23211c; --muted: #6c675b; --line: #cfc8b6; --fg: #23211c; }
 .ctxt { min-width: 0; }
 .ctxt b { display: block; font: italic 600 1.25rem/1.15 var(--display); overflow-wrap: anywhere; }
@@ -144,6 +147,7 @@ main.wide { max-width: 860px; }
 <script>/* Libreria didattica: lick, voicings e moves. Una sola sede: la usano il portale degli studenti e l'anteprima dell'Hub.
    Il concetto arriva già pronto (lo spartito è inciso a monte da libreria.py): qui si legge, si suona e si segue.
    Concetto con spartito: { id, tipo, titolo, sub, svg, prima, bpm, beats, bar, measures:[[id,q]], notes:[[id,midi,q,dur,[ids legati]]], lo, hi, didattica:[{da,a,titolo,testo}] }
+   Scale (una o più):     { id, tipo:"scala", strumento, titolo, sub, scala:{confronto, chiave, scale:[…]} }  (vedi libScaleRows)
    Voicing di chitarra:   { id, tipo:"voicing", strumento:"chitarra", titolo, accordi:[{nome, corde:[{fret,dito}×6, dalla corda grave]}] } */
 
 /* ---------- funzioni pure (provate in libreria.test.js) ---------- */
@@ -214,6 +218,115 @@ function libArp(notes) {
   return delay;
 }
 const libMidiName = (m) => LIB_NOTE[m % 12] + (Math.floor(m / 12) - 1);
+
+/* ---------- scale a confronto (funzioni pure) ----------
+   c.scala = { confronto: "tonica" | "note", chiave: 0–11, scale: [{tipo} | {grado}] }
+   «tonica»: stessa tonica per tutte, ogni scala ha il suo tipo (Do minore naturale / armonica / melodica).
+   «note»: la prima scala (tipo) dà le note; le altre sono la stessa scala che parte dal suo grado (scale[i].grado, 1 = secondo grado): relative e modi. */
+const LIB_LET = ["C", "D", "E", "F", "G", "A", "B"], LIB_NAT = [0, 2, 4, 5, 7, 9, 11];
+const libModo = (s) => s.map((x, i) => [i, x]);
+/* [scostamento di lettera, semitoni dalla tonica]: stessa tabella di AC_SCALES in accordi.js (libreria.test.js le tiene uguali) */
+const LIB_SCALE = {
+  maj: libModo([0, 2, 4, 5, 7, 9, 11]), min: libModo([0, 2, 3, 5, 7, 8, 10]), harm: libModo([0, 2, 3, 5, 7, 8, 11]), mel: libModo([0, 2, 3, 5, 7, 9, 11]),
+  pmaj: [[0, 0], [1, 2], [2, 4], [4, 7], [5, 9]], pmin: [[0, 0], [2, 3], [3, 5], [4, 7], [6, 10]], blues: [[0, 0], [2, 3], [3, 5], [4, 6], [4, 7], [6, 10]],
+  dor: libModo([0, 2, 3, 5, 7, 9, 10]), phr: libModo([0, 1, 3, 5, 7, 8, 10]), lyd: libModo([0, 2, 4, 6, 7, 9, 11]), mix: libModo([0, 2, 4, 5, 7, 9, 10]), loc: libModo([0, 1, 3, 5, 6, 8, 10])
+};
+const LIB_SCALE_NAME = {
+  maj: ["major", "maggiore"], min: ["natural minor", "minore naturale"], harm: ["harmonic minor", "minore armonica"], mel: ["melodic minor", "minore melodica"],
+  pmaj: ["major pentatonic", "pentatonica maggiore"], pmin: ["minor pentatonic", "pentatonica minore"], blues: ["blues", "blues"],
+  dor: ["Dorian", "dorica"], phr: ["Phrygian", "frigia"], lyd: ["Lydian", "lidia"], mix: ["Mixolydian", "misolidia"], loc: ["Locrian", "locria"]
+};
+const LIB_MODI_MAGGIORE = ["maj", "dor", "phr", "lyd", "mix", "min", "loc"];
+const LIB_SCALE_COL = ["var(--accent)", "#3f78b5", "#3f8f5f", "#c98a1b", "#7b4fa0", "#1f8a8a", "#7a7a72"];
+const libAlt = (a) => (a === 0 ? "" : a > 0 ? "♯".repeat(a) : "♭".repeat(-a));
+const libNorm = (d) => ((((d + 6) % 12) + 12) % 12) - 6;                        // differenza di semitoni ridotta a −6…+5
+/* le righe da mostrare nella tonalità key (0–11, grafia di LIB_KEYS): [{nome:[en,it], pc, set, notes:[{name, pc, semis, deg}]}] */
+/* una riga di scala: intervalli iv ([scostamento di lettera, semitoni]), nome [en,it], tonica pc (0–11; la lettera viene dalla grafia di LIB_KEYS) */
+function libScaleRowAt(iv, nome, pc) { return libScaleMk(iv, LIB_LET.indexOf(/^([A-G])/.exec(LIB_KEYS[pc])[1]), pc, nome); }
+function libScaleMk(iv, letter, pc, nome) {
+  const notes = iv.map(([lo, s]) => {
+    const l = (letter + lo) % 7, p = (pc + s) % 12;
+    return { name: LIB_LET[l] + libAlt(libNorm(p - LIB_NAT[l])), pc: p, semis: s, deg: libAlt(libNorm(s - LIB_NAT[lo])) + (lo + 1) };
+  });
+  return { nome, pc, iv, set: new Set(notes.map((n) => n.pc)), notes };
+}
+function libScaleRows(sc, key) {
+  if (sc.scale.every((x) => Number.isInteger(x.tonica))) return sc.scale.map((x) => libScaleRowAt(LIB_SCALE[x.tipo], LIB_SCALE_NAME[x.tipo], x.tonica));     // formato attuale: ogni scala ha la sua tonica
+  key = key == null ? sc.chiave : key;                                                                                                             // formato vecchio (confronto «tonica» / «note»): si legge ancora
+  const rk = /^([A-G])([b#]?)$/.exec(LIB_KEYS[key]), L0 = LIB_LET.indexOf(rk[1]);
+  const mk = (iv, letter, pc, nome) => libScaleMk(iv, letter, pc, nome);
+  const t0 = sc.scale[0].tipo, base = LIB_SCALE[t0];
+  if (sc.confronto === "tonica") return sc.scale.map((x) => mk(LIB_SCALE[x.tipo], L0, key, LIB_SCALE_NAME[x.tipo]));
+  const ref = mk(base, L0, key, LIB_SCALE_NAME[t0]), n0 = LIB_SCALE_NAME[t0];
+  return sc.scale.map((x, i) => {
+    const g = i === 0 ? 0 : x.grado, [lg, sg] = base[g];
+    const iv = base.map((_, j) => base[(g + j) % base.length]).map(([lo, s]) => [(lo - lg + 7) % 7, (s - sg + 12) % 12]);
+    const nome = g === 0 ? n0 : t0 === "maj" ? LIB_SCALE_NAME[LIB_MODI_MAGGIORE[g]] : t0 === "pmaj" && g === 4 ? LIB_SCALE_NAME.pmin : ["mode " + (g + 1) + " of " + n0[0], "modo " + (g + 1) + " di " + n0[1]];
+    return mk(iv, (L0 + lg) % 7, ref.notes[g].pc, nome);
+  });
+}
+/* le altezze MIDI per ascoltare una riga: su fino all'ottava e giù (base = Do di partenza) */
+function libScaleMidis(row, base) {
+  const t = base + row.pc, up = row.notes.map((n) => t + n.semis);
+  up.push(t + 12);
+  return up.concat(up.slice(0, -1).reverse());
+}
+
+/* ---------- scale al pianoforte: ottave e diteggiatura ---------- */
+const LIB_NERI = [1, 3, 6, 8, 10];
+/* la tonica più grave: Do4…Fa♯4, poi Sol3…Si3 (così due ottave stanno sempre sotto Fa♯6) */
+const libT0 = (pc) => (pc < 6 ? 60 : 48) + pc;
+/* le note da suonare, in salita: oct ottave dalla tonica, con la tonica in cima: [{midi, k (indice della nota nella scala)}] */
+function libSpan(row, oct) {
+  const t0 = libT0(row.pc), out = [];
+  for (let o = 0; o < oct; o++) row.notes.forEach((n, k) => out.push({ midi: t0 + n.semis + 12 * o, k }));
+  out.push({ midi: t0 + 12 * oct, k: 0 });
+  return out;
+}
+/* diteggiatura classica delle scale maggiori a un'ottava, in salita (stesso ordine dei tasti per tutte e due le mani): mano destra e sinistra, per tonica */
+const LIB_DITA_DX = { 0: "12312345", 7: "12312345", 2: "12312345", 9: "12312345", 4: "12312345", 11: "12312345", 5: "12341234", 10: "41231234", 3: "31234123", 8: "34123123", 1: "23123412", 6: "23412312" };
+const LIB_DITA_SX = { 0: "54321321", 7: "54321321", 2: "54321321", 9: "54321321", 4: "54321321", 5: "54321321", 11: "43214321", 10: "32143213", 3: "32143213", 8: "32143213", 1: "32143213", 6: "43213214" };
+/* Proposta per ogni altra scala (minori, modi, pentatoniche…): programmazione dinamica con le regole consuete — il pollice passa sotto dopo il 3 o il 4 e non cade sui tasti neri,
+   il 5 solo in cima (destra) o in basso (sinistra), sui tasti neri il dito che sta meglio (2-3-4), si finisce sul 5 (destra) o sull'1 (sinistra). Da ritoccare nell'Hub. */
+function libFingerDP(midis, hand, degs, len) {
+  const LH = hand === "sx", n = midis.length, IDEAL = LH ? { 1: 3, 3: 2, 6: 4, 8: 3, 10: 2 } : { 1: 2, 3: 3, 6: 2, 8: 3, 10: 4 };
+  const own = (i, f) => {
+    const pc = midis[i] % 12; let c = 0;
+    if (LIB_NERI.includes(pc)) c += f === 1 ? 50 : f === 5 ? 8 : 0.3 * Math.abs(f - IDEAL[pc]);
+    if (f === 5 && !(LH ? i === 0 : i === n - 1)) c += 30;
+    if (f === 1 && len === 7 && !(LH ? [0, 4] : [0, 3]).includes(degs[i])) c += 0.5;           // il pollice sul grado 1 e 4 (destra) o 1 e 5 (sinistra)
+    return c;
+  };
+  const step = (f, g, iv) => {
+    if (!LH) return g === f + 1 ? 0 : g === 1 && (f === 3 || f === 4) ? 0 : g === 1 && f === 2 ? 5 : g === f + 2 && iv >= 3 ? 1 : Infinity;
+    return g === f - 1 ? 0 : f === 1 && (g === 3 || g === 4) ? 0 : f === 1 && g === 2 ? 5 : g === f - 2 && iv >= 3 ? 1 : Infinity;
+  };
+  const F = [1, 2, 3, 4, 5], cost = [], from = [];
+  cost.push(F.map((f) => own(0, f) + (LH ? 0.3 * (5 - f) : 0.2 * (f - 1)))); from.push(F.map(() => -1));
+  for (let i = 1; i < n; i++) {
+    const iv = midis[i] - midis[i - 1], c = [], b = [];
+    F.forEach((g) => {
+      let best = Infinity, bf = -1;
+      F.forEach((f, j) => { const v = cost[i - 1][j] + step(f, g, iv); if (v < best) { best = v; bf = j; } });
+      c.push(best + own(i, g)); b.push(bf);
+    });
+    cost.push(c); from.push(b);
+  }
+  let bj = 0, bv = Infinity;
+  F.forEach((f, j) => { const v = cost[n - 1][j] + (LH ? (f === 1 ? 0 : 1) : (f === 5 ? 0 : 1)); if (v < bv) { bv = v; bj = j; } });
+  const out = new Array(n);
+  for (let i = n - 1; i >= 0; i--) { out[i] = bj + 1; bj = from[i][bj]; }
+  return out;
+}
+/* le dita da proporre per una riga di scala, a oct ottave, con la mano "dx" o "sx" (una per nota di libSpan) */
+function libFingers(row, oct, hand) {
+  const sp = libSpan(row, oct);
+  if (row.notes.map((n) => n.semis).join() === "0,2,4,5,7,9,11") {
+    const s = (hand === "sx" ? LIB_DITA_SX : LIB_DITA_DX)[row.pc];
+    if (s) { const p = s.split("").map(Number); return oct === 1 ? p : hand === "sx" ? p.concat(p.slice(1)) : p.slice(0, 7).concat(p); }
+  }
+  return libFingerDP(sp.map((x) => x.midi), hand, sp.map((x) => x.k), row.notes.length);
+}
 
 /* ---------- stile ---------- */
 function libStyle() {
@@ -298,6 +411,49 @@ function libStyle() {
 .lib-keys [data-g]::after { content: attr(data-g); position: absolute; left: 0; right: 0; text-align: center; font: 600 0.62rem/1 var(--mono, monospace); color: #fff; pointer-events: none; }
 .lib-keys .w[data-g]::after { bottom: 18px; }
 .lib-keys .b[data-g]::after { bottom: 6px; }
+.lib-sc-rows { display: grid; gap: 14px; margin: 12px 0 6px; }
+.lib-sc-block { --c: var(--accent); padding: 12px 12px 10px; border: 1px solid var(--line); border-left: 5px solid var(--c); border-radius: 14px; }
+.lib-sc-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.lib-sc-top b { flex: 1 1 auto; font-family: var(--display, serif); font-style: italic; font-size: 1.15rem; line-height: 1.15; color: var(--c); }
+.lib-sc-tonic { display: inline-flex; align-items: center; gap: 6px; font: 500 0.72rem var(--mono, monospace); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.lib-sc-sel { min-height: 40px; padding: 0 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel, transparent); color: var(--fg); font: 600 1rem var(--body, inherit); }
+.lib-sc-cell { border: 0; color: inherit; font: inherit; cursor: pointer; }
+.lib-sc-cell.off { opacity: 0.38; }
+.lib-sc-cell.off .n { text-decoration: line-through; }
+.lib-keys .w.in, .lib-keys .b.in { cursor: pointer; }
+.lib-sc-body b { display: block; font-family: var(--display, serif); font-style: italic; font-size: 1.1rem; line-height: 1.15; }
+.lib-sc-notes { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.lib-sc-cell { min-width: 42px; padding: 4px 7px 3px; border-radius: 8px; text-align: center; background: color-mix(in srgb, var(--fg) 6%, transparent); transition: background-color 0.08s, color 0.08s; }
+.lib-sc-cell .n { display: block; font-weight: 600; font-size: 1rem; line-height: 1.2; }
+.lib-sc-cell small { display: block; font: 500 0.68rem var(--mono, monospace); color: var(--muted); }
+.lib-sc-cell.t { box-shadow: inset 0 -3px 0 var(--c); }
+.lib-sc-cell.now { background: var(--c); color: #fff; }
+.lib-sc-cell.now small { color: #fff; }
+.lib-dots { position: absolute; left: 0; right: 0; display: flex; flex-wrap: wrap-reverse; justify-content: center; gap: 2px; padding: 0 2px; pointer-events: none; }
+.lib-keys .w .lib-dots { bottom: 18px; } .lib-keys .b .lib-dots { bottom: 5px; }
+.lib-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.lib-dot.fn { display: grid; place-items: center; width: 18px; height: 18px; font: 700 0.7rem/1 var(--mono, monospace); color: #fff; }
+.lib-dot.fn.t { border-radius: 4px; }
+.lib-dot.fn.off { width: 12px; height: 12px; }
+@media (max-width: 560px) { .lib-dot.fn { width: 15px; height: 15px; font-size: 0.62rem; } }
+.lib-sc-opts { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 8px; }
+.lib-seg { display: inline-flex; gap: 4px; }
+.lib-sc-inst .lib-keys { margin-top: 10px; }
+.lib-theory { margin: 12px 0 4px; padding: 14px 16px 10px; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--fg) 3%, transparent); }
+.lib-th-body p { margin: 0; white-space: pre-line; line-height: 1.55; font-size: 1rem; }
+.lib-th-nav { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 12px; }
+.lib-th-arrow { width: 40px; height: 40px; padding: 0; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--fg); font: 600 1.4rem/1 var(--body, inherit); cursor: pointer; transition: transform 0.12s var(--ease-out, ease-out), opacity 0.15s; }
+.lib-th-arrow:active:not(:disabled) { transform: scale(0.94); } .lib-th-arrow:disabled { opacity: 0.3; cursor: default; }
+.lib-th-dots { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; }
+.lib-th-dot { width: 24px; height: 24px; padding: 0; border: 0; background: transparent; cursor: pointer; position: relative; }
+.lib-th-dot::after { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: color-mix(in srgb, var(--fg) 28%, transparent); transition: background-color 0.15s, transform 0.15s; }
+.lib-th-dot[aria-current="true"]::after { background: var(--accent); transform: scale(1.3); }
+.lib-dot.off { background: transparent; box-shadow: inset 0 0 0 1.5px var(--c); opacity: 0.6; }
+.lib-dot.t { border-radius: 1px; }
+.lib-keys .w.now { background: #ffe9a8; } .lib-keys .b.now { background: #7a6a2c; }
+.lib-fbwrap { overflow-x: auto; margin-top: 8px; border-radius: 14px; background: var(--lib-paper); color: var(--lib-ink); border: 1px solid rgba(0, 0, 0, 0.08); -webkit-overflow-scrolling: touch; }
+.lib-fb { display: block; width: 100%; min-width: 560px; height: auto; padding: 6px 4px; box-sizing: border-box; }
+.lib-fb [data-now] { transform-box: fill-box; transform-origin: center; transform: scale(1.3); }
 @media (prefers-reduced-motion: reduce) { .lib-play, .lib-chip, .lib-chord, .lib-loopmark, .lib-playhead, .lib-note { transition: none; } }
 `;
   document.head.appendChild(st);
@@ -688,6 +844,209 @@ function libCredit(kinds, it) {
   return p;
 }
 
+
+/* ---------- scale (una o più a confronto): righe di note + tastiera o manico a strati, con ascolto ---------- */
+/* la teoria dietro una scala: paragrafi separati da una riga vuota, uno per pagina, sfogliabili con le frecce e i puntini */
+function libTheory(text, it) {
+  const pages = String(text || "").split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
+  if (!pages.length) return null;
+  const L = (en, itx) => (it ? itx : en), box = libEl("section", "lib-theory"), body = libEl("div", "lib-th-body");
+  box.setAttribute("aria-label", L("Theory", "Teoria")); body.setAttribute("aria-live", "polite");
+  let i = 0;
+  const prev = libEl("button", "lib-th-arrow", "‹"), next = libEl("button", "lib-th-arrow", "›"), dots = libEl("div", "lib-th-dots");
+  prev.type = next.type = "button"; prev.setAttribute("aria-label", L("Previous page", "Pagina precedente")); next.setAttribute("aria-label", L("Next page", "Pagina successiva"));
+  const dotEls = pages.map((_, k) => { const d = libEl("button", "lib-th-dot"); d.type = "button"; d.setAttribute("aria-label", L("Page ", "Pagina ") + (k + 1) + L(" of ", " di ") + pages.length); d.onclick = () => go(k); dots.append(d); return d; });
+  function go(k) {
+    i = Math.max(0, Math.min(pages.length - 1, k)); body.replaceChildren(libEl("p", "", pages[i]));
+    dotEls.forEach((d, j) => { if (j === i) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
+    prev.disabled = i === 0; next.disabled = i === pages.length - 1;
+  }
+  prev.onclick = () => go(i - 1); next.onclick = () => go(i + 1);
+  let x0 = null;
+  body.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  body.addEventListener("touchend", (e) => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) go(i + (dx < 0 ? 1 : -1)); }, { passive: true });
+  box.append(body);
+  if (pages.length > 1) { const nav = libEl("div", "lib-th-nav"); nav.append(prev, dots, next); box.append(nav); }
+  go(0);
+  return box;
+}
+
+function libScaleView(c, it) {
+  libStyle();
+  const L = (en, itx) => (it ? itx : en), sc = c.scala, guitar = c.strumento === "chitarra", kind = guitar ? "guitar" : "piano", base = guitar ? 48 : 60;
+  const root = libEl("section", "lib"), head = libEl("div", "lib-head");
+  head.append(libEl("h3", "", c.titolo || "")); if (c.sub) head.append(libEl("p", "", c.sub));
+  const theory = libTheory(sc.teoria, it);
+  const status = libEl("p", "lib-status"); status.setAttribute("role", "status"); status.setAttribute("aria-live", "polite");
+  const init = libScaleRows(sc), solo = init.length === 1;
+  /* una scala = una sezione sua: colore, tonica scelta da chi guarda, ottave e mano (pianoforte), strumento, gradi accesi/spenti */
+  const S = init.map((r, i) => ({ i, iv: r.iv, nome: r.nome, r, pc0: r.pc, dita: (sc.scale[i] || {}).dita || null, oct: 1, hand: "dx", off: new Set(), cells: [], keyEl: new Map(), mg: null, fing: new Map(), col: LIB_SCALE_COL[i % LIB_SCALE_COL.length] }));
+  let seq = 0, state = "idle", loaded = false, timers = [];
+  const play = libEl("button", "lib-play"); play.type = "button"; play.setAttribute("data-lib-play", "");
+  const setPlay = () => { const p = state === "playing"; play.innerHTML = (p ? LIB_PAUSE : LIB_PLAY) + "<span>" + (p ? L("Stop", "Stop") : state === "loading" ? L("Loading…", "Carico…") : L("Play all", "Ascolta tutte")) + "</span>"; play.disabled = state === "loading"; };
+  const bar = libEl("div", "lib-bar"); if (!solo) bar.append(play);
+  const box = libEl("div", "lib-sc-rows");
+  const hint = libEl("p", "lib-hint", L("Tap a note or a " + (guitar ? "dot on the fretboard" : "key") + " to hide or show that degree. Each scale has its own tonic.", "Tocca una nota o un " + (guitar ? "punto sul manico" : "tasto") + " per nascondere o mostrare quel grado. Ogni scala ha la sua tonica.")
+    + (guitar ? "" : L(" The numbers are the fingers (1 = thumb).", " I numeri sono le dita (1 = pollice).")));
+
+  const ns = "http://www.w3.org/2000/svg", mkS = (tag, a, x) => { const e = document.createElementNS(ns, tag); for (const k in a) e.setAttribute(k, a[k]); if (x !== undefined) e.textContent = x; return e; };
+  const tun = libTuning(c), FW = 50, X0 = 36, Y0 = 22, SS = 26, FR = 12;
+  function toggle(s, pc) { if (s.off.has(pc)) s.off.delete(pc); else s.off.add(pc); paint(s); s.cells.forEach((e, k) => e.classList.toggle("off", s.off.has(s.r.notes[k].pc))); }
+  /* dita da mostrare: quelle scritte nell'Hub se valgono per questa tonica, altrimenti la proposta */
+  function fingersOf(s) {
+    const sp = libSpan(s.r, s.oct), w = (s.dita || {})[s.hand + s.oct];
+    return s.pc0 === s.r.pc && Array.isArray(w) && w.length === sp.length ? w : libFingers(s.r, s.oct, s.hand);
+  }
+  function pianoOf(s) {                                                    // tastiera della scala: dal tasto bianco sotto la tonica a quello sopra la cima
+    const inst = libEl("div", "lib-keys"), sp = libSpan(s.r, s.oct), lo0 = sp[0].midi, hi0 = sp[sp.length - 1].midi;
+    const k0 = LIB_NERI.includes(lo0 % 12) ? lo0 - 1 : lo0, k1 = LIB_NERI.includes(hi0 % 12) ? hi0 + 1 : hi0, whites = [];
+    for (let m = k0; m <= k1; m++) if (!LIB_NERI.includes(m % 12)) whites.push(m);
+    const ww = 100 / whites.length; s.keyEl = new Map();
+    inst.classList.toggle("wide", s.oct === 1);
+    whites.forEach((m, i) => { const k = libEl("span", "w"); k.style.left = i * ww + "%"; k.style.width = ww + "%"; if (m % 12 === 0) k.append(libEl("i", "", "C" + (Math.floor(m / 12) - 1))); inst.append(k); s.keyEl.set(m, k); });
+    for (let m = k0; m <= k1; m++) if (LIB_NERI.includes(m % 12)) { const i = whites.indexOf(m - 1), k = libEl("span", "b"); k.style.width = ww * 0.62 + "%"; k.style.left = (i + 1) * ww - ww * 0.31 + "%"; inst.append(k); s.keyEl.set(m, k); }
+    s.keyEl.forEach((k, m) => { k.onclick = () => { if (s.fing.has(m)) toggle(s, m % 12); }; });
+    return inst;
+  }
+  function guitarOf(s) {
+    const W = X0 + FW * FR + 16, H = Y0 + SS * 5 + 34, svg = mkS("svg", { viewBox: `0 0 ${W} ${H}`, class: "lib-fb", role: "img", "aria-label": L("Fretboard", "Manico") });
+    for (let f = 0; f <= FR; f++) svg.append(mkS("line", { x1: X0 + f * FW, x2: X0 + f * FW, y1: Y0, y2: Y0 + SS * 5, stroke: "currentColor", "stroke-opacity": f === 0 ? 0.9 : 0.3, "stroke-width": f === 0 ? 4 : 1.2 }));
+    [3, 5, 7, 9].forEach((f) => svg.append(mkS("circle", { cx: X0 + (f - 0.5) * FW, cy: Y0 + SS * 2.5, r: 5, fill: "currentColor", "fill-opacity": 0.12 })));
+    [1.5, 3.5].forEach((y) => svg.append(mkS("circle", { cx: X0 + 11.5 * FW, cy: Y0 + SS * y, r: 5, fill: "currentColor", "fill-opacity": 0.12 })));
+    tun.forEach((m, st) => {
+      const y = Y0 + (5 - st) * SS;
+      svg.append(mkS("line", { x1: X0, x2: X0 + FW * FR, y1: y, y2: y, stroke: "currentColor", "stroke-opacity": 0.5, "stroke-width": 1 + (5 - st) * 0.18 }));
+      svg.append(mkS("text", { x: 8, y: y + 4, "font-size": 11, fill: "currentColor", "fill-opacity": 0.6, "font-family": "var(--mono, monospace)" }, libTuneName(m)));
+    });
+    [3, 5, 7, 9, 12].forEach((f) => svg.append(mkS("text", { x: X0 + (f - 0.5) * FW, y: H - 10, "text-anchor": "middle", "font-size": 11, fill: "currentColor", "fill-opacity": 0.55, "font-family": "var(--mono, monospace)" }, String(f))));
+    s.mg = mkS("g", {}); svg.append(s.mg);
+    const w = libEl("div", "lib-fbwrap"); w.append(svg); return w;
+  }
+  function paint(s) {
+    if (!guitar) {
+      s.keyEl.forEach((k, m) => {
+        k.querySelectorAll(".lib-dots").forEach((e) => e.remove());
+        const f = s.fing.get(m); k.classList.toggle("in", !!f); if (!f) return;
+        const off = s.off.has(m % 12), d = libEl("span", "lib-dot fn" + (m % 12 === s.r.pc ? " t" : "") + (off ? " off" : ""), off ? "" : String(f.finger));
+        const box = libEl("span", "lib-dots"); box.append(d); k.append(box);
+      });
+      return;
+    }
+    s.mg.replaceChildren();
+    tun.forEach((open, st) => {
+      for (let f = 0; f <= FR; f++) {
+        const pc = (open + f) % 12; if (!s.r.set.has(pc)) continue;
+        const cx = f === 0 ? X0 - 15 : X0 + (f - 0.5) * FW, cy = Y0 + (5 - st) * SS, off = s.off.has(pc), g = mkS("g", { "data-pc": pc, style: "cursor:pointer" });
+        g.append(mkS("circle", { cx, cy, r: 10, fill: off ? "none" : s.col, stroke: s.col, "stroke-width": off ? 1.6 : 0, "stroke-opacity": off ? 0.55 : 1 }));
+        if (pc === s.r.pc) g.append(mkS("circle", { cx, cy, r: 12.5, fill: "none", stroke: "currentColor", "stroke-width": 1.8, "stroke-opacity": off ? 0.4 : 1 }));
+        g.onclick = () => toggle(s, pc);
+        s.mg.append(g);
+      }
+    });
+  }
+  function fill(s) {                                                         // titolo, note e strumento di una scala, dopo un cambio di tonica, di ottave o di mano
+    s.r = libScaleRowAt(s.iv, s.nome, s.pc == null ? s.r.pc : s.pc);
+    const label = s.r.notes[0].name + " " + s.nome[it ? 1 : 0];
+    s.title.textContent = label;
+    s.list.replaceChildren(); s.cells = [];
+    s.r.notes.forEach((n, k) => {
+      const cell = libEl("button", "lib-sc-cell" + (k === 0 ? " t" : "") + (s.off.has(n.pc) ? " off" : "")); cell.type = "button";
+      cell.append(libEl("span", "n", n.name), libEl("small", "", n.deg));
+      cell.setAttribute("aria-label", n.name + " (" + n.deg + "): " + L("show or hide", "mostra o nascondi")); cell.onclick = () => toggle(s, n.pc);
+      s.list.append(cell); s.cells.push(cell);
+    });
+    if (!guitar) {
+      const sp = libSpan(s.r, s.oct), fg = fingersOf(s); s.fing = new Map();
+      sp.forEach((x, j) => s.fing.set(x.midi, { k: x.k, finger: fg[j] }));
+      const inst = pianoOf(s); inst.style.setProperty("--c", s.col); s.instBox.replaceChildren(inst);
+    }
+    paint(s);
+  }
+  function seg(label, opts, get, set) {                                      // interruttore a due scelte
+    const g = libEl("div", "lib-seg"); g.setAttribute("role", "group"); g.setAttribute("aria-label", label);
+    opts.forEach(([v, txt]) => { const b = libEl("button", "lib-chip", txt); b.type = "button"; b.setAttribute("aria-pressed", String(get() === v)); b.onclick = () => { if (get() === v) return; stop(); set(v); [...g.children].forEach((x, j) => x.setAttribute("aria-pressed", String(opts[j][0] === v))); }; g.append(b); });
+    return g;
+  }
+  function build() {
+    box.replaceChildren();
+    S.forEach((s) => {
+      const blk = libEl("div", "lib-sc-block"); blk.style.setProperty("--c", s.col);
+      const top = libEl("div", "lib-sc-top"); s.title = libEl("b", "");
+      const sel = libEl("select", "lib-sc-sel"); sel.setAttribute("aria-label", L("Tonic", "Tonica") + ": " + s.nome[it ? 1 : 0]);
+      LIB_KEYS.forEach((k, pc) => { const o = libEl("option", "", k); o.value = String(pc); sel.append(o); }); sel.value = String(s.r.pc);
+      sel.onchange = () => { stop(); s.pc = +sel.value; s.off.clear(); fill(s); };
+      const lab = libEl("label", "lib-sc-tonic"); lab.append(libEl("span", "", L("Tonic", "Tonica")), sel);
+      const pb = libEl("button", "lib-chip", L("▶ Play", "▶ Ascolta")); pb.type = "button"; pb.onclick = () => (state === "playing" ? stop() : playRows([s.i]));
+      top.append(s.title, lab, pb);
+      blk.append(top);
+      if (!guitar) {
+        const opts = libEl("div", "lib-sc-opts");
+        opts.append(seg(L("Octaves", "Ottave"), [[1, L("1 octave", "1 ottava")], [2, L("2 octaves", "2 ottave")]], () => s.oct, (v) => { s.oct = v; fill(s); }),
+          seg(L("Hand", "Mano"), [["dx", L("Right hand", "Mano destra")], ["sx", L("Left hand", "Mano sinistra")]], () => s.hand, (v) => { s.hand = v; fill(s); }));
+        blk.append(opts);
+      }
+      s.list = libEl("div", "lib-sc-notes"); blk.append(s.list);
+      s.instBox = libEl("div", "lib-sc-inst"); blk.append(s.instBox);
+      if (guitar) { const inst = guitarOf(s); inst.style.setProperty("--c", s.col); s.instBox.append(inst); }
+      box.append(blk);
+      fill(s);
+    });
+  }
+  const seqOf = (s) => {                                                    // su dalla tonica fino alla cima e giù, solo i gradi accesi: [midi, indice della nota]
+    let up = [];
+    if (!guitar) libSpan(s.r, s.oct).forEach((x) => { if (!s.off.has(x.midi % 12)) up.push([x.midi, x.k]); });
+    else { s.r.notes.forEach((n, k) => { if (!s.off.has(n.pc)) up.push([base + s.r.pc + n.semis, k]); }); if (!s.off.has(s.r.pc)) up.push([base + s.r.pc + 12, 0]); }
+    return up.concat(up.slice(0, -1).reverse());
+  };
+  function clearNow() {
+    S.forEach((s) => { s.cells.forEach((e) => e.classList.remove("now")); s.keyEl.forEach((k) => k.classList.remove("now")); if (s.mg) s.mg.querySelectorAll("[data-now]").forEach((e) => e.removeAttribute("data-now")); });
+  }
+  function setNow(s, cell, midi) {
+    clearNow(); s.cells[cell].classList.add("now");
+    if (!guitar) { const k = s.keyEl.get(midi); if (k) k.classList.add("now"); }
+    else s.mg.querySelectorAll(`[data-pc="${midi % 12}"]`).forEach((e) => e.setAttribute("data-now", ""));
+  }
+  async function ensure() {
+    libStopOthers(api); try { libCtx().resume(); } catch (e) { }
+    if (loaded) return true;
+    status.className = "lib-status"; status.textContent = guitar ? L("Loading guitar…", "Carico la chitarra…") : L("Loading piano…", "Carico il pianoforte…");
+    const ms = new Set();
+    S.forEach((s) => { for (let pc = 0; pc < 12; pc++) { const r = libScaleRowAt(s.iv, s.nome, pc); if (guitar) { r.notes.forEach((n) => ms.add(base + pc + n.semis)); ms.add(base + pc + 12); } else [1, 2].forEach((o) => libSpan(r, o).forEach((x) => ms.add(x.midi))); } });
+    try { await libLoad(kind, [...ms]); loaded = true; status.textContent = ""; return true; }
+    catch (e) { status.className = "lib-status err"; status.textContent = L("The sound could not load. Check your connection and tap again.", "Il suono non si è caricato. Controlla la connessione e riprova."); return false; }
+  }
+  function stop() {
+    seq++; timers.forEach(clearTimeout); timers = [];
+    if (libCtxObj) libSilence();
+    state = "idle"; clearNow(); setPlay();
+  }
+  async function playRows(idx) {
+    stop(); const me = ++seq;
+    state = "loading"; setPlay();
+    const ok = await ensure();
+    if (me !== seq) return;
+    if (!ok) { state = "idle"; setPlay(); return; }
+    const ctx = libCtx(), step = 0.36; let t = ctx.currentTime + 0.1;
+    state = "playing"; setPlay();
+    idx.forEach((i) => {
+      const s = S[i], q = seqOf(s);
+      q.forEach(([m, cell]) => {
+        libNote(kind, m, t, step * 0.95, 0.55);
+        timers.push(setTimeout(() => { if (me === seq) setNow(s, cell, m); }, Math.max(0, (t - ctx.currentTime) * 1000)));
+        t += step;
+      });
+      if (q.length) t += step * 1.2;
+    });
+    timers.push(setTimeout(() => { if (me === seq) { state = "idle"; clearNow(); setPlay(); } }, Math.max(0, (t - ctx.currentTime) * 1000)));
+  }
+  const all = () => S.map((s) => s.i);
+  play.onclick = () => { if (state === "playing" || state === "loading") stop(); else playRows(all()); };
+  root.append(head, ...(theory ? [theory] : []), ...(solo ? [] : [bar]), status, box, hint, libCredit([kind], it));
+  setPlay(); build();
+  const api = { element: root, play() { return playRows(all()); }, pause: stop, stop, toggle() { if (state === "playing" || state === "loading") stop(); else playRows(all()); }, layout() { }, state: () => state, destroy() { stop(); if (libCurrent === api) libCurrent = null; } };
+  return api;
+}
+
 /* concetto → vista giusta */
 const LIB_KEYS = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
 
@@ -714,7 +1073,7 @@ function libTransposable(c, it) {
   return api;
 }
 
-function libView(c, it) { return c.accordi ? libGuitarView(c, it) : c.trasposti ? libTransposable(c, it) : libScoreView(c, it); }
+function libView(c, it) { return c.scala ? libScaleView(c, it) : c.accordi ? libGuitarView(c, it) : c.trasposti ? libTransposable(c, it) : libScoreView(c, it); }
 
 /* Disposizione dei gradi: una colonna sotto il pentagramma per ogni inizio di nota, le note dall'acuta in alto alla grave in basso (tutte le voci e le mani).
    items: [{id, q, x, midi, label, grace}], geom: {bottomY, ss}. L'acciaccatura sta a sinistra della colonna a cui porta, sulla riga della nota più vicina, con una linea verso di essa. */
@@ -749,11 +1108,11 @@ function libDegreeLayout(items, geom) {
   for (const g of orphans) out.push({ id: g.id, x: g.x, y: y0, size: gsize, text: g.label, grace: true, link: null });
   return out;
 }
-if (typeof module !== "undefined") module.exports = { libDegreeLayout, libSampleMidi, libPick, libKeyRange, libX, libActive, libFirst, libBar, libBarRange, libArp, libMidiName, LIB_PIANO, LIB_GUITAR };
+if (typeof module !== "undefined") module.exports = { libScaleRowAt, libT0, libSpan, libFingers, libFingerDP, libDegreeLayout, libSampleMidi, libPick, libKeyRange, libX, libActive, libFirst, libBar, libBarRange, libArp, libMidiName, LIB_PIANO, LIB_GUITAR, LIB_SCALE, LIB_SCALE_NAME, libScaleRows, libScaleMidis };
 </script>
 <script>
 libSetBase("../../suoni/");
-const ENC_META = "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", SALT = "ylkxwH+h1XPCxR0QB9rJZg==", ITER = 600000, CODE = "8ea82c5bca", LINGUA = "en";     // LINGUA: it | en (bloccata dall'insegnante) o vuota
+const ENC_META = "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", SALT = "o+hs/6ZRil7Ik0XrKWnIEA==", ITER = 600000, CODE = "8ea82c5bca", LINGUA = "en";     // LINGUA: it | en (bloccata dall'insegnante) o vuota
 const PASSPARTOUT = null;
 async function openWithPassword(password, openRegular, owner, pageSalt, decodeBase64) {
   if (!password) return null;
@@ -780,7 +1139,7 @@ async function openWithPassword(password, openRegular, owner, pageSalt, decodeBa
 // Misurazione d'uso (sezione «Attività» dell'hub). Impostata da stems alla costruzione della pagina, da config.json → analytics:
 //   modo "off"   = niente (predefinito)   ·   "test" = solo i codici in `codici`   ·   "optin" = solo dopo il «sì» dello studente alla versione `ver`
 const TRK = {"modo": "off", "ver": "1", "codici": []};
-window.VERSIONE_PULL = { versione: "v 2.4_231126_1713" };
+window.VERSIONE_PULL = { versione: "v 2.7_241126_1602" };
 const I18N = {
   en: { pagesAria: "Pages", okAria: "Dismiss", title: "Practice stems", gateSub: "Enter your password to see your songs.", pw: "Password", keep: "Remember me on this device", open: "Open", opening: "Opening…",
     bad: "That password doesn't open this page.", needHttps: "This page needs a secure connection (https).", hello: (n) => "Hi " + n, instr: { piano: "Piano", chitarra: "Guitar" },
@@ -788,14 +1147,14 @@ const I18N = {
     ios: "To use it as an app: tap Share, then “Add to Home Screen”.", android: "To use it as an app: open the ⋮ menu, then “Install app”.",
     privTitle: "Privacy", privTxt: "[Privacy notice: text to be written]", privYes: "OK, continue", privNo: "No thanks, continue without", privLnk: "Privacy",
     tWeek: "This week", tSongs: "Songs", tLib: "Library", longform: "Longform", brushing: "Brushing Your Teeth", wSongs: "Songs", wConcepts: "From the library", back: "Back",
-    gLick: "Licks", gVoicing: "Voicings", gMove: "Moves", gMoveSub: "Building blocks you can use in any song.", gLickSub: "Lines to play, steal and make yours.", gVoicingSub: "Shapes for the chords you meet.", kLick: "Lick", kVoicing: "Voicing", kMove: "Move" },
+    gLick: "Licks", gVoicing: "Voicings", gMove: "Moves", gMoveSub: "Building blocks you can use in any song.", gLickSub: "Lines to play, steal and make yours.", gVoicingSub: "Shapes for the chords you meet.", kLick: "Lick", kVoicing: "Voicing", kMove: "Move", gScala: "Scales", gScalaSub: "One scale, or several side by side: hear them and see what changes.", kScala: "Scale" },
   it: { pagesAria: "Pagine", okAria: "Chiudi", title: "Stems per studiare", gateSub: "Scrivi la tua password per vedere i tuoi brani.", pw: "Password", keep: "Ricordami su questo dispositivo", open: "Apri", opening: "Apro…",
     bad: "Questa password non apre la pagina.", needHttps: "Questa pagina richiede una connessione sicura (https).", hello: (n) => "Ciao " + n, instr: { piano: "Pianoforte", chitarra: "Chitarra" },
     count: (k) => k === 1 ? "1 brano" : k + " brani", none: "Ancora nessun brano. Il tuo insegnante li aggiungerà qui.", exit: "Esci su questo dispositivo", langBtn: "English",
     ios: "Per usarla come app: tocca Condividi, poi «Aggiungi alla schermata Home».", android: "Per usarla come app: apri il menu ⋮, poi «Installa app».",
     privTitle: "Privacy", privTxt: "[Informativa sulla privacy: testo da scrivere]", privYes: "Ok, continua", privNo: "No grazie, continua senza", privLnk: "Privacy",
     tWeek: "Questa settimana", tSongs: "Brani", tLib: "Libreria", longform: "Longform", brushing: "Brushing Your Teeth", wSongs: "Brani", wConcepts: "Dalla libreria", back: "Indietro",
-    gLick: "Lick", gVoicing: "Voicings", gMove: "Moves", gMoveSub: "Mattoncini da usare in ogni brano.", gLickSub: "Frasi da suonare, rubare e fare tue.", gVoicingSub: "Forme per gli accordi che incontri.", kLick: "Lick", kVoicing: "Voicing", kMove: "Move" },
+    gLick: "Lick", gVoicing: "Voicings", gMove: "Moves", gMoveSub: "Mattoncini da usare in ogni brano.", gLickSub: "Frasi da suonare, rubare e fare tue.", gVoicingSub: "Forme per gli accordi che incontri.", kLick: "Lick", kVoicing: "Voicing", kMove: "Move", gScala: "Scale", gScalaSub: "Una scala, o più scale a confronto: ascolta e guarda cosa cambia.", kScala: "Scala" },
 };
 const $ = (id) => document.getElementById(id);
 const KEY = "stems-pw:" + location.pathname;
@@ -865,9 +1224,15 @@ function conceptCard(c, from) {
   const prev = document.createElement("div"); prev.className = "cprev";
   if (c.prima) prev.innerHTML = c.prima;                                    // SVG ripulito dall'Hub quando l'ha inciso
   else if (c.accordi) { prev.classList.add("gtr"); prev.append(libChordSvg(c.accordi[0].corde)); }
+  else if (c.scala) {                                                         // scale a confronto: le note della prima, e quante sono
+    const rs = libScaleRows(c.scala), ln = document.createElement("span"), nn = document.createElement("small");
+    prev.classList.add("scl"); ln.textContent = rs[0].notes.map((n) => n.name).join(" "); prev.append(ln);
+    if (rs.length > 1) { nn.textContent = rs.length + (LANG === "it" ? " scale a confronto" : " scales compared"); prev.append(nn); }
+  }
   const tx = document.createElement("div"); tx.className = "ctxt";
   const b = document.createElement("b"); b.textContent = c.titolo; tx.append(b);
-  if (c.sub) { const s = document.createElement("span"); s.textContent = c.sub; tx.append(s); }
+  const subTxt = c.sub || (c.scala && c.scala.teoria ? c.scala.teoria.split(/\n\s*\n/)[0].replace(/\s+/g, " ").trim().slice(0, 90) : "");   // scale: la prima riga della teoria al posto del sottotitolo
+  if (subTxt) { const s = document.createElement("span"); s.textContent = subTxt; tx.append(s); }
   const k = document.createElement("small"); k.textContent = tr("k" + c.tipo[0].toUpperCase() + c.tipo.slice(1)) + " · " + tr("instr")[c.strumento]; tx.append(k);
   btn.append(prev, tx);
   btn.onclick = () => openDetail(c, from);
@@ -921,7 +1286,7 @@ function renderLearning() {
   }
   /* libreria */
   const lb = $("paneLib"); lb.replaceChildren();
-  for (const tipo of ["lick", "voicing", "move"]) {
+  for (const tipo of ["lick", "voicing", "move", "scala"]) {
     const items = cs.filter((c) => c.tipo === tipo); if (!items.length) continue;
     const g = document.createElement("section"); g.className = "lgroup";
     const T = tipo[0].toUpperCase() + tipo.slice(1);
